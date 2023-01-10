@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'res/theme/colors/light_colors.dart';
+import 'view/login/login.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -24,17 +24,17 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/login',
         routes: {
-          '/login': (context) => home(),
-          '/forgot-password': (context) => home(),
-          '/email-confirmation': (context) => home(),
-          '/terms': (context) => home(),
-          '/profile': (context) => home(),
-          '/dashboard-employee': (context) => DashboardEmployee(),
-          '/dashboard-manager': (context) => DashboardManager(),
-          '/report': (context) => const RegisterScreen(),
-          '/report-form': (context) => spp(),
-          '/notification': (context) => health(),
-          '/setting': (context) => health()
+          '/login': (context) => const LoginPage(),
+          // '/forgot-password': (context) => home(),
+          // '/email-confirmation': (context) => home(),
+          // '/terms': (context) => home(),
+          // '/profile': (context) => home(),
+          // '/dashboard-employee': (context) => DashboardEmployee(),
+          // '/dashboard-manager': (context) => DashboardManager(),
+          // '/report': (context) => const RegisterScreen(),
+          // '/report-form': (context) => spp(),
+          // '/notification': (context) => health(),
+          // '/setting': (context) => health()
         });
   }
 }
