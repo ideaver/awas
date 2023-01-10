@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:awas/res/widgets/ktext_form_field.dart';
+import 'package:flutter/material.dart';
+
 import '../../res/theme/colors/light_colors.dart';
+import '../../res/widgets/kelevated_button.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -18,58 +21,127 @@ class LoginPage extends StatelessWidget {
         Stack(children: [
           Positioned(
             top: 200,
+            height: 650,
             child: Container(
               width: MediaQuery.of(context).size.width,
-              height: 500,
               decoration: const BoxDecoration(
                   color: LightColors.kBackgroundColor,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(defaultCircular),
                       topRight: Radius.circular(defaultCircular))),
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.all(defaultMargin),
                 children: [
+                  logoAndTextWidget(),
+                  const SizedBox(height: defaultMargin * 2),
+                  const KtextFormFieldWidget(icon: Icons.email, title: 'Email'),
+                  const SizedBox(height: defaultMargin),
+                  KtextFormFieldWidget(
+                    obscureText: true,
+                    icon: Icons.lock,
+                    title: 'Password',
+                    suffix: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.visibility,
+                          color: LightColors.kBlackColor,
+                        )),
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Forgot Password?',
+                          style: LightColors.linkTextStyle,
+                        )),
+                  ),
+                  const SizedBox(height: defaultMargin),
+                  KelevatedButtonWidget(onPressed: () {}, title: 'Sign In'),
+                  const SizedBox(height: defaultMargin),
+                  KelevatedButtonWidget(
+                      backgroundColor: LightColors.kDarkGreyColor,
+                      onPressed: () {},
+                      title: 'Offline Report'),
+                  const SizedBox(height: defaultMargin),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        'assets/logo.png',
-                        width: 100,
-                        height: 100,
+                      Text(
+                        'I have read',
+                        style: LightColors.subTitle2TextStyle,
                       ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Hello!',
-                              style: LightColors.titleTextStyle,
-                            ),
-                            Text(
-                              'Welcome to AWAS app',
-                              overflow: TextOverflow.visible,
-                              style: LightColors.subTitleTextStyle,
-                            ),
-                            Text(
-                              'Awareness for Safety-Application',
-                              overflow: TextOverflow.visible,
-                              style: LightColors.subTitleTextStyle
-                                  .copyWith(fontSize: 14),
-                            ),
-                          ],
-                        ),
-                      )
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Terms & Conditions',
+                            style: LightColors.linkTextStyle,
+                          )),
                     ],
-                  )
+                  ),
+                  const SizedBox(height: defaultMargin),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Dont have an Account?',
+                        style: LightColors.subTitle2TextStyle
+                            .copyWith(fontSize: 14),
+                      ),
+                      TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            'Ask Manager',
+                            style: LightColors.linkTextStyle
+                                .copyWith(fontSize: 14),
+                          )),
+                    ],
+                  ),
+                  const SizedBox(height: defaultMargin * 4),
                 ],
               ),
             ),
           ),
         ])
       ]),
+    );
+  }
+
+  Row logoAndTextWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Image.asset(
+          'assets/logo.png',
+          width: 100,
+          height: 100,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Hello!',
+                style: LightColors.titleTextStyle,
+              ),
+              Text(
+                'Welcome to AWAS app',
+                overflow: TextOverflow.visible,
+                style: LightColors.subTitleTextStyle,
+              ),
+              Text(
+                'Awareness for Safety-Application',
+                overflow: TextOverflow.visible,
+                style: LightColors.subTitleTextStyle.copyWith(fontSize: 14),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 

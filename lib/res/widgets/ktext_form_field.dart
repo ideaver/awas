@@ -1,26 +1,28 @@
-import 'package:awas/res/theme/colors/light_colors.dart';
+import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
-class KtextFormField extends StatelessWidget {
+class KtextFormFieldWidget extends StatelessWidget {
+  final bool obscureText;
   final String title;
   final IconData? icon;
   final bool withTitle;
   final bool editable;
-  final Widget? prefix;
+  final Widget? suffix;
   final TextEditingController? controller;
   final void Function(String value)? onFieldSubmitted;
   final void Function(String value)? onChanged;
 
-  const KtextFormField(
+  const KtextFormFieldWidget(
       {this.editable = true,
       this.withTitle = true,
       required this.title,
       this.icon,
       super.key,
       this.controller,
-      this.prefix,
+      this.suffix,
       this.onFieldSubmitted,
-      this.onChanged});
+      this.onChanged,
+      this.obscureText = false});
 
   @override
   Widget build(BuildContext context) {
@@ -37,35 +39,34 @@ class KtextFormField extends StatelessWidget {
           height: 10,
         ),
         TextFormField(
+          obscureText: obscureText,
           readOnly: editable ? false : true,
-          style: LightColors.subTitleTextStyle.copyWith(fontSize: 16),
+          style: LightColors.subTitleTextStyle
+              .copyWith(fontSize: 16, fontWeight: FontWeight.w900),
           decoration: InputDecoration(
-              prefix: prefix,
-              suffixIcon: icon != null
+              prefixIcon: icon != null
                   ? Icon(
                       icon,
-                      color: LightColors.kPrimaryColor,
+                      color: LightColors.kBlackColor,
                     )
                   : null,
+              suffixIcon: suffix,
               filled: true,
               fillColor: editable
                   ? LightColors.kGreyColor
                   : LightColors.kDarkGreyColor.withOpacity(0.5),
               contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(defaultCircular - 10),
-                  borderSide:
-                      const BorderSide(color: LightColors.kDarkGreyColor)),
+                  borderRadius: BorderRadius.circular(defaultCircular - 20),
+                  borderSide: const BorderSide(color: LightColors.kGreyColor)),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(defaultCircular - 10),
-                  borderSide:
-                      const BorderSide(color: LightColors.kDarkGreyColor)),
+                borderRadius: BorderRadius.circular(defaultCircular - 20),
+                // borderSide:
+                //     const BorderSide(color: LightColors.kDarkGreyColor)
+              ),
               hintText: 'Masukkan $title',
               hintMaxLines: 2,
-              hintStyle: LightColors.subTitleTextStyle.copyWith(
-                  fontSize: 14,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.bold),
+              hintStyle: LightColors.subTitleTextStyle.copyWith(fontSize: 14),
               focusColor: LightColors.kPrimaryColor),
           controller: controller,
           onFieldSubmitted: onFieldSubmitted,

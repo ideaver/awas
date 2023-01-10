@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //Circular Value
-const defaultCircular = 35.0;
-const defaultTopLeftCircular = 50.0;
+const defaultCircular = 30.0;
+const defaultTopLeftCircular = 35.0;
 const defaultMargin = 25.0;
 
 class LightColors {
@@ -50,6 +50,27 @@ class LightColors {
       textStyle: const TextStyle(
     color: LightColors.kDarkGreyColor,
     fontSize: 18,
+    fontWeight: FontWeight.normal,
+  ));
+
+  static TextStyle subTitle2TextStyle = GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+    color: LightColors.kDarkGreyColor,
+    fontSize: 14,
+    fontWeight: FontWeight.normal,
+  ));
+
+  static TextStyle linkTextStyle = GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+    color: LightColors.Blue,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  ));
+
+  static TextStyle whiteTextStyle = GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+    color: kWhiteColor,
+    fontSize: 16,
     fontWeight: FontWeight.normal,
   ));
 }
