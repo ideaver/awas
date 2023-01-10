@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'res/theme/colors/light_colors.dart';
@@ -19,12 +20,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+            primarySwatch: Colors.blue,
+            textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
         initialRoute: '/login',
         routes: {
-          '/login': (context) => const LoginPage(),
+          '/login': (context) => LoginPage(),
           // '/forgot-password': (context) => home(),
           // '/email-confirmation': (context) => home(),
           // '/terms': (context) => home(),
