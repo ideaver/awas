@@ -1,3 +1,5 @@
+import 'package:awas/res/widgets/kdropdown_widget.dart';
+
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/ktext_form_field.dart';
@@ -38,6 +40,7 @@ class ProfilePage extends StatelessWidget {
 
   ListView tabBar1Widget() {
     return ListView(
+      physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(defaultMargin),
       children: [
         KcardWidget(
@@ -66,7 +69,22 @@ class ProfilePage extends StatelessWidget {
         const SizedBox(height: defaultMargin),
         const KtextFormFieldWidget(title: 'Email'),
         const SizedBox(height: defaultMargin),
-        KtextFormFieldWidget.password(title: 'Password')
+        KtextFormFieldWidget.password(title: 'Password'),
+        const SizedBox(height: defaultMargin),
+        Text(
+          'PT. Adiguna Usaha',
+          style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
+        ),
+        const SizedBox(height: defaultMargin),
+        const KdropdownWidget(title: 'Crew Rank'),
+        const SizedBox(height: defaultMargin),
+        const KdropdownWidget(title: 'Employee Rank'),
+        const SizedBox(height: defaultMargin),
+        const KdropdownWidget(title: 'Vessel'),
+        const SizedBox(height: defaultMargin),
+        const KdropdownWidget(title: 'Office'),
+        const SizedBox(height: defaultMargin),
+        const SizedBox(height: defaultMargin * 5),
       ],
     );
   }

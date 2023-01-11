@@ -53,7 +53,7 @@ class LightColors {
       textStyle: const TextStyle(
     color: LightColors.kDarkGreyColor,
     fontSize: 18,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w600,
   ));
 
   static TextStyle subTitle2TextStyle = GoogleFonts.montserrat(
