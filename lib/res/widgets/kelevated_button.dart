@@ -19,24 +19,22 @@ class KelevatedButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        height: 40,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              backgroundColor: backgroundColor,
-              side: BorderSide(
-                color: LightColors.kPrimaryColor,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(defaultCircular / 2), // <-- Radius
-              )),
-          onPressed: onPressed,
-          child: Text(
-            title,
-            style: LightColors.whiteTextStyle.copyWith(color: textColor),
-          ),
+    return SizedBox(
+      height: 40,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: backgroundColor,
+            side: const BorderSide(
+              color: LightColors.kPrimaryColor,
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.circular(defaultCircular / 2), // <-- Radius
+            )),
+        onPressed: onPressed,
+        child: Text(
+          title,
+          style: LightColors.whiteTextStyle.copyWith(color: textColor),
         ),
       ),
     );

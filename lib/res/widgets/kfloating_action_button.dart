@@ -14,9 +14,9 @@ class KfloatingActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MediaQuery.of(context).viewInsets.bottom == 0.0
         ? Container(
-            padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
             width: double.infinity,
-            height: 40,
+            padding: const EdgeInsets.symmetric(
+                horizontal: defaultMargin, vertical: defaultMargin * 2),
             child: KelevatedButtonWidget(title: title, onPressed: onPressed),
           )
         : const SizedBox();

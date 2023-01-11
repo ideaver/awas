@@ -50,7 +50,9 @@ class LoginPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/forgot-password');
+                        },
                         child: Text(
                           'Forgot Password?',
                           style: LightColors.linkTextStyle,

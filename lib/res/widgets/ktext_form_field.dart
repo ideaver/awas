@@ -64,7 +64,7 @@ class KtextFormFieldWidget extends StatelessWidget {
                 // borderSide:
                 //     const BorderSide(color: LightColors.kDarkGreyColor)
               ),
-              hintText: 'Masukkan $title',
+              hintText: 'Enter $title',
               hintMaxLines: 2,
               hintStyle: LightColors.subTitleTextStyle.copyWith(fontSize: 14),
               focusColor: LightColors.kPrimaryColor),

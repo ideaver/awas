@@ -17,7 +17,7 @@ class TermsPage extends StatelessWidget {
         child: RawScrollbar(
           thumbColor: LightColors.kPrimaryColor,
           radius: const Radius.circular(defaultCircular),
-          isAlwaysShown: true,
+          thumbVisibility: true,
           thickness: 8.0,
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
@@ -73,15 +73,19 @@ class TermsPage extends StatelessWidget {
               ),
               Row(
                 children: [
-                  KelevatedButtonWidget(
-                      backgroundColor: LightColors.kWhiteColor,
-                      textColor: LightColors.kPrimaryColor,
-                      onPressed: () {},
-                      title: 'Decline'),
+                  Expanded(
+                    child: KelevatedButtonWidget(
+                        backgroundColor: LightColors.kWhiteColor,
+                        textColor: LightColors.kPrimaryColor,
+                        onPressed: () {},
+                        title: 'Decline'),
+                  ),
                   const SizedBox(
                     width: defaultMargin,
                   ),
-                  KelevatedButtonWidget(onPressed: () {}, title: 'Understand'),
+                  Expanded(
+                      child: KelevatedButtonWidget(
+                          onPressed: () {}, title: 'Understand')),
                 ],
               ),
               const SizedBox(
