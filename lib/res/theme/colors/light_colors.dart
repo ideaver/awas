@@ -6,6 +6,8 @@ const defaultCircular = 30.0;
 const defaultTopLeftCircular = 35.0;
 const defaultMargin = 25.0;
 
+BorderRadius kBorderRadius = BorderRadius.circular(defaultCircular);
+
 class LightColors {
   static const Color kPrimaryColor = Blue;
   static const Color kSecondaryColor = kRed;

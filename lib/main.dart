@@ -2,7 +2,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'res/theme/colors/light_colors.dart';
-import 'view/login/login.dart';
+import 'view/login/login_page.dart';
+import 'view/login/terms_page.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -23,12 +24,12 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/terms',
         routes: {
-          '/login': (context) => LoginPage(),
+          '/login': (context) => const LoginPage(),
           // '/forgot-password': (context) => home(),
           // '/email-confirmation': (context) => home(),
-          // '/terms': (context) => home(),
+          '/terms': (context) => TermsPage(),
           // '/profile': (context) => home(),
           // '/dashboard-employee': (context) => DashboardEmployee(),
           // '/dashboard-manager': (context) => DashboardManager(),

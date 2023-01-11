@@ -1,5 +1,4 @@
 import 'package:flutter_session_manager/flutter_session_manager.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:awas/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +33,7 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.all(defaultMargin),
                 children: [
                   logoAndTextWidget(),
-                  const SizedBox(height: defaultMargin * 2),
+                  const SizedBox(height: defaultMargin),
                   const KtextFormFieldWidget(icon: Icons.email, title: 'Email'),
                   const SizedBox(height: defaultMargin),
                   KtextFormFieldWidget(
@@ -73,7 +72,9 @@ class LoginPage extends StatelessWidget {
                         style: LightColors.subTitle2TextStyle,
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/terms');
+                          },
                           child: Text(
                             'Terms & Conditions',
                             style: LightColors.linkTextStyle,
