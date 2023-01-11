@@ -14,7 +14,7 @@ class KappBarWidget extends StatelessWidget {
 
   static AppBar appBarWidget() {
     return AppBar(
-      toolbarHeight: 80,
+      toolbarHeight: 60,
       leading: IconButton(
           onPressed: () {},
           icon: const Icon(
