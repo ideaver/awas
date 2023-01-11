@@ -1,5 +1,6 @@
 import 'package:awas/res/widgets/kdropdown_widget.dart';
 
+import '../res/widgets/star_badge_widget.dart';
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/ktext_form_field.dart';
@@ -49,7 +50,23 @@ class _ProfilePageState extends State<ProfilePage> {
           },
           body: TabBarView(children: [
             tabBar1Widget(),
-            const Text('sdgsd'),
+            Container(
+              color: LightColors.kGreyColor,
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(defaultMargin),
+                children: [
+                  const SizedBox(
+                    height: defaultMargin,
+                  ),
+                  userDetailsCardWidget(),
+                  const SizedBox(
+                    height: defaultMargin,
+                  ),
+                  userDetailsCardWidget()
+                ],
+              ),
+            ),
             const Text('gdsg')
           ]),
         ),
@@ -63,6 +80,80 @@ class _ProfilePageState extends State<ProfilePage> {
           onPressed: () {},
         ),
       ),
+    );
+  }
+
+  KcardWidget userDetailsCardWidget() {
+    return KcardWidget(
+        color: LightColors.kBackgroundColor,
+        elevation: 0.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '      Antoni Sudarsono',
+              style: LightColors.blackTextStyle
+                  .copyWith(fontWeight: FontWeight.bold, fontSize: 14.0),
+            ),
+            const SizedBox(
+              height: defaultMargin,
+            ),
+            dataTable2Widget(),
+          ],
+        ));
+  }
+
+  DataTable dataTable2Widget() {
+    return DataTable(
+      headingRowHeight: 0.0,
+      dataTextStyle: LightColors.blackTextStyle.copyWith(fontSize: 12),
+      dividerThickness: 0.0,
+      columnSpacing: defaultMargin,
+      dataRowHeight: defaultMargin,
+      columns: const [
+        DataColumn(
+          label: SizedBox(),
+        ),
+        DataColumn(
+          label: SizedBox(),
+        ),
+      ],
+      rows: [
+        DataRow(
+          cells: [
+            DataCell(Text(
+              'Employee Rank',
+              style: LightColors.blackTextStyle
+                  .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold),
+            )),
+            const DataCell(Text(': 19')),
+          ],
+        ),
+        DataRow(
+          cells: [
+            DataCell(Text('Crew Rank',
+                style: LightColors.blackTextStyle
+                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
+            const DataCell(Text(': 43')),
+          ],
+        ),
+        DataRow(
+          cells: [
+            DataCell(Text('Vessel',
+                style: LightColors.blackTextStyle
+                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
+            const DataCell(Text(': 27')),
+          ],
+        ),
+        DataRow(
+          cells: [
+            DataCell(Text('Office',
+                style: LightColors.blackTextStyle
+                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
+            const DataCell(Text(': 27')),
+          ],
+        ),
+      ],
     );
   }
 
@@ -218,30 +309,17 @@ class _ProfilePageState extends State<ProfilePage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
-          children: [
-            const CircleAvatar(
+          children: const [
+            CircleAvatar(
               backgroundImage: NetworkImage(
                   'https://cdn.visily.ai/app/production/1672195451865/static/media/F2.da2ec199.png'),
               radius: 35,
               backgroundColor: LightColors.kWhiteColor,
             ),
-            const SizedBox(
+            SizedBox(
               height: defaultMargin,
             ),
-            Chip(
-                avatar: const Icon(
-                  Icons.star,
-                  color: LightColors.kWhiteColor,
-                ),
-                elevation: defaultMargin / 4,
-                backgroundColor: LightColors.kTertiaryColor,
-                label: Text(
-                  '3200',
-                  style: LightColors.subTitle2TextStyle.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: LightColors.kWhiteColor,
-                      fontSize: 12.0),
-                ))
+            StarBadgeWidget()
           ],
         ),
         Expanded(

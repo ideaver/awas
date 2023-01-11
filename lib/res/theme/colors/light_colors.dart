@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //Circular Value
-const defaultCircular = 30.0;
+const defaultCircular = 25.0;
 const defaultTopLeftCircular = 35.0;
 const defaultMargin = 25.0;
 
@@ -30,7 +30,7 @@ class LightColors {
   static const Color kDarkBlue = Color(0xFF0D253F);
 
   //Secondary Color
-  static const Color kDangerColor = Color(0xffF27D81);
+  static const Color kDangerColor = kSecondaryColor;
   static const Color kWarningColor = Color(0xffF6CE7E);
   static const Color kSuccessColor = Color(0xFF0EAA42);
   static const Color kInfoColor = Color(0xff60B2F0);
@@ -73,6 +73,13 @@ class LightColors {
   static TextStyle whiteTextStyle = GoogleFonts.montserrat(
       textStyle: const TextStyle(
     color: kWhiteColor,
+    fontSize: 16,
+    fontWeight: FontWeight.normal,
+  ));
+
+  static TextStyle blackTextStyle = GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+    color: kBlackColor,
     fontSize: 16,
     fontWeight: FontWeight.normal,
   ));

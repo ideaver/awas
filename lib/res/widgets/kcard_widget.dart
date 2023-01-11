@@ -6,17 +6,19 @@ class KcardWidget extends StatelessWidget {
   final Widget child;
   final double? height;
   final double elevation;
+  final Color? color;
 
   const KcardWidget(
       {super.key,
       required this.child,
       this.height,
-      this.elevation = defaultMargin});
+      this.elevation = defaultMargin,
+      this.color = LightColors.kPrimaryColor});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: LightColors.kPrimaryColor,
+        color: color,
         elevation: elevation,
         clipBehavior: Clip.hardEdge,
         shape: RoundedRectangleBorder(
@@ -26,8 +28,7 @@ class KcardWidget extends StatelessWidget {
             onTap: () {},
             splashColor: LightColors.kSecondaryColor,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: defaultMargin, vertical: 20),
+              padding: const EdgeInsets.all(defaultMargin),
               child: child,
             )));
   }

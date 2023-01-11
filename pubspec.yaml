@@ -39,6 +39,7 @@ dependencies:
   flutter_session_manager: ^1.0.3
   google_fonts: ^3.0.1
   animated_custom_dropdown: ^1.2.2
+  fl_chart: ^0.55.2
 
 dev_dependencies:
   flutter_test:
