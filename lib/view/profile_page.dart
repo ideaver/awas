@@ -10,8 +10,31 @@ import 'package:flutter/material.dart';
 
 import '../res/theme/colors/light_colors.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  ScrollController scrollController = ScrollController();
+  bool isFabVisible = true;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController = ScrollController();
+    scrollController.addListener(() {
+      // FAB should be visible if and only if user has not scrolled to bottom
+      var userHasScrolledToBottom = scrollController.position.atEdge &&
+          scrollController.position.pixels > 0;
+
+      if (isFabVisible == userHasScrolledToBottom) {
+        setState(() => isFabVisible = !userHasScrolledToBottom);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +43,7 @@ class ProfilePage extends StatelessWidget {
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
+          controller: scrollController,
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [sliverAppBarWidget()];
           },
@@ -31,9 +55,13 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: KelevatedButtonWidget.floating(
-        title: 'Save Changes',
-        onPressed: () {},
+      floatingActionButton: AnimatedSlide(
+        duration: const Duration(milliseconds: 300),
+        offset: isFabVisible ? const Offset(0, 2) : Offset.zero,
+        child: KelevatedButtonWidget.floating(
+          title: 'Save Changes',
+          onPressed: () {},
+        ),
       ),
     );
   }
