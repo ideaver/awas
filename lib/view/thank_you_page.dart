@@ -1,4 +1,5 @@
-import '/res/widgets/kfloating_action_button.dart';
+import 'package:awas/res/widgets/kelevated_button.dart';
+
 import '/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -45,8 +46,10 @@ class ThankYouPage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: KfloatingActionButton(
-          icon: const Icon(Icons.email), onPressed: () {}, title: 'Open Gmail'),
+      floatingActionButton: KelevatedButtonWidget.floating(
+        title: 'Open Gmail',
+        onPressed: () {},
+      ),
     );
   }
 

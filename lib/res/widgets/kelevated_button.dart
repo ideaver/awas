@@ -4,23 +4,47 @@ import '/res/theme/colors/light_colors.dart';
 
 // ignore: must_be_immutable
 class KelevatedButtonWidget extends StatelessWidget {
-  void Function() onPressed;
+  final void Function() onPressed;
   final String title;
   final Color backgroundColor;
   final Color textColor;
   final Widget icon;
+  final bool keyboardShow;
 
-  KelevatedButtonWidget({
+  const KelevatedButtonWidget({
     Key? key,
     required this.onPressed,
     required this.title,
     this.backgroundColor = LightColors.kPrimaryColor,
     this.textColor = LightColors.kWhiteColor,
     this.icon = const SizedBox(),
+    this.keyboardShow = false,
   }) : super(key: key);
+
+  const KelevatedButtonWidget.floating(
+      {required String title, required void Function() onPressed})
+      : this(
+          keyboardShow: true,
+          title: title,
+          onPressed: onPressed,
+        );
 
   @override
   Widget build(BuildContext context) {
+    if (keyboardShow) {
+      return MediaQuery.of(context).viewInsets.bottom == 0.0
+          ? Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(
+                  horizontal: defaultMargin, vertical: defaultMargin * 2),
+              child: elevatedButtonWidget(),
+            )
+          : const SizedBox();
+    }
+    return elevatedButtonWidget();
+  }
+
+  SizedBox elevatedButtonWidget() {
     return SizedBox(
       height: 40,
       child: ElevatedButton.icon(

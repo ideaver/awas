@@ -36,17 +36,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: defaultMargin),
                   const KtextFormFieldWidget(icon: Icons.email, title: 'Email'),
                   const SizedBox(height: defaultMargin),
-                  KtextFormFieldWidget(
-                    obscureText: true,
-                    icon: Icons.lock,
-                    title: 'Password',
-                    suffix: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.visibility,
-                          color: LightColors.kBlackColor,
-                        )),
-                  ),
+                  KtextFormFieldWidget.password(title: 'Password'),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(

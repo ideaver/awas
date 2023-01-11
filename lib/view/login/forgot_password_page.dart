@@ -1,4 +1,5 @@
-import '/res/widgets/kfloating_action_button.dart';
+import 'package:awas/res/widgets/kelevated_button.dart';
+
 import '/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
 
@@ -58,8 +59,10 @@ class ForgotPasswordPage extends StatelessWidget {
         ])
       ]),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton:
-          KfloatingActionButton(onPressed: () {}, title: 'Sign In'),
+      floatingActionButton: KelevatedButtonWidget.floating(
+        title: 'Sign In',
+        onPressed: () {},
+      ),
     );
   }
 

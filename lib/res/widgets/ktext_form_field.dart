@@ -24,6 +24,18 @@ class KtextFormFieldWidget extends StatelessWidget {
       this.onChanged,
       this.obscureText = false});
 
+  KtextFormFieldWidget.password(
+      {required String title, void Function()? onPressed})
+      : this(
+            title: title,
+            obscureText: true,
+            suffix: IconButton(
+                onPressed: onPressed,
+                icon: const Icon(
+                  Icons.visibility,
+                  color: LightColors.kBlackColor,
+                )));
+
   @override
   Widget build(BuildContext context) {
     return Column(
