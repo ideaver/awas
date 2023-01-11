@@ -8,6 +8,7 @@ class KelevatedButtonWidget extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color textColor;
+  final Widget icon;
 
   KelevatedButtonWidget({
     Key? key,
@@ -15,13 +16,15 @@ class KelevatedButtonWidget extends StatelessWidget {
     required this.title,
     this.backgroundColor = LightColors.kPrimaryColor,
     this.textColor = LightColors.kWhiteColor,
+    this.icon = const SizedBox(),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 40,
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
+        icon: icon,
         style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor,
             side: const BorderSide(
@@ -32,7 +35,7 @@ class KelevatedButtonWidget extends StatelessWidget {
                   BorderRadius.circular(defaultCircular / 2), // <-- Radius
             )),
         onPressed: onPressed,
-        child: Text(
+        label: Text(
           title,
           style: LightColors.whiteTextStyle.copyWith(color: textColor),
         ),

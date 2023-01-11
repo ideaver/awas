@@ -1,7 +1,9 @@
+import 'package:awas/view/thank_you_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'res/theme/colors/light_colors.dart';
+import 'view/profile_page.dart';
 import 'view/login/forgot_password_page.dart';
 import 'view/login/login_page.dart';
 import 'view/login/terms_page.dart';
@@ -25,13 +27,13 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/thank-you',
         routes: {
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),
-          // '/email-confirmation': (context) => home(),
+          '/thank-you': (context) => const ThankYouPage(),
           '/terms': (context) => const TermsPage(),
-          // '/profile': (context) => home(),
+          '/profile': (context) => const ProfilePage(),
           // '/dashboard-employee': (context) => DashboardEmployee(),
           // '/dashboard-manager': (context) => DashboardManager(),
           // '/report': (context) => const RegisterScreen(),

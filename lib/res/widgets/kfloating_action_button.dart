@@ -7,8 +7,12 @@ import 'kelevated_button.dart';
 class KfloatingActionButton extends StatelessWidget {
   void Function() onPressed;
   final String title;
+  final Widget icon;
   KfloatingActionButton(
-      {super.key, required this.onPressed, required this.title});
+      {super.key,
+      required this.onPressed,
+      required this.title,
+      this.icon = const SizedBox()});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +21,8 @@ class KfloatingActionButton extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.symmetric(
                 horizontal: defaultMargin, vertical: defaultMargin * 2),
-            child: KelevatedButtonWidget(title: title, onPressed: onPressed),
+            child: KelevatedButtonWidget(
+                icon: icon, title: title, onPressed: onPressed),
           )
         : const SizedBox();
   }

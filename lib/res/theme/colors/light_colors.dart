@@ -18,6 +18,7 @@ class LightColors {
   static const Color kDarkYellow = Color(0xFFF9BE7C);
   static const Color kPalePink = Color(0xFFFED4D6);
 
+  // ignore: constant_identifier_names
   static const Color Blue = Color(0xFF0095FF);
 
   static const Color kRed = Color(0xFFE9003A);
@@ -31,7 +32,7 @@ class LightColors {
   //Secondary Color
   static const Color kDangerColor = Color(0xffF27D81);
   static const Color kWarningColor = Color(0xffF6CE7E);
-  static const Color kSuccessColor = kGreen;
+  static const Color kSuccessColor = Color(0xFF0EAA42);
   static const Color kInfoColor = Color(0xff60B2F0);
 
 //Gray Color Set
