@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/dashboard-employee',
+        initialRoute: '/thank-you',
         routes: {
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),

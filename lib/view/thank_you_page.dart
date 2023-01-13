@@ -12,38 +12,35 @@ class ThankYouPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(defaultMargin),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Chip(
-                labelPadding: EdgeInsets.all(defaultMargin / 2),
-                backgroundColor: LightColors.kSuccessColor,
-                label: Icon(
-                  Icons.done,
-                  color: LightColors.kWhiteColor,
-                  size: 50,
-                )),
-            const SizedBox(
-              height: defaultMargin,
-            ),
-            Text(
-              'Reset Password Instructions sent to your email',
-              style: LightColors.linkTextStyle
-                  .copyWith(fontSize: 20.0, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(
-              height: defaultMargin * 2,
-            ),
-            Text(
-              'Check your inbox',
-              style: LightColors.subTitleTextStyle,
-              textAlign: TextAlign.center,
-            )
-          ],
-        ),
+        children: [
+          const Chip(
+              labelPadding: EdgeInsets.all(defaultMargin / 2),
+              backgroundColor: LightColors.kSuccessColor,
+              label: Icon(
+                Icons.done,
+                color: LightColors.kWhiteColor,
+                size: 50,
+              )),
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          Text(
+            'Reset Password Instructions sent to your email',
+            style: LightColors.linkTextStyle
+                .copyWith(fontSize: 20.0, fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: defaultMargin * 2,
+          ),
+          Text(
+            'Check your inbox',
+            style: LightColors.subTitleTextStyle,
+            textAlign: TextAlign.center,
+          )
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: KelevatedButtonWidget.floating(
