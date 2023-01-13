@@ -47,13 +47,7 @@ class MyApp extends StatelessWidget {
 
   ThankYouPage thankYouPage() {
     return ThankYouPage(
-        thankYouPageModel: ThankYouPageModel(
-            title: 'Thank You Budi, Profile Updated',
-            instruction: 'Redirecting to your Dashboard...',
-            floatingActionButton: KelevatedButtonWidget.floating(
-              title: 'Go to Dashboard',
-              onPressed: () {},
-              icon: const Icon(Icons.home),
-            )));
+      event: Event.profileUpdatedSuccess,
+    );
   }
 }

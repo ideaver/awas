@@ -1,10 +1,14 @@
-import 'package:awas/res/widgets/kcard_widget.dart';
-import 'package:awas/res/widgets/kelevated_button.dart';
-
-import '/res/widgets/ktext_form_field.dart';
+import '../res/widgets/kelevated_button.dart';
+import '/res/widgets/kcard_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../res/theme/colors/light_colors.dart';
+
+enum Event {
+  resetPasswordSuccess,
+  profileUpdatedSuccess,
+  ;
+}
 
 class ThankYouPageModel {
   final String title;
@@ -26,12 +30,27 @@ class PointsTransactionWidgetModel {
 }
 
 class ThankYouPage extends StatelessWidget {
-  final ThankYouPageModel thankYouPageModel;
+  final Event event;
+  late final ThankYouPageModel thankYouPageModel;
 
-  const ThankYouPage({super.key, required this.thankYouPageModel});
+  ThankYouPage({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
+    switch (event) {
+      case Event.profileUpdatedSuccess:
+        thankYouPageModel = ThankYouPageModel(
+            title: 'Thank You Budi, Profile Updated',
+            instruction: 'Redirecting to your Dashboard...',
+            floatingActionButton: KelevatedButtonWidget.floating(
+              title: 'Go to Dashboard',
+              onPressed: () {},
+              icon: const Icon(Icons.home),
+            ));
+        break;
+      default:
+    }
+
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       body: ListView(
@@ -70,7 +89,7 @@ class ThankYouPage extends StatelessWidget {
           const SizedBox(
             height: defaultMargin * 4,
           ),
-          PointsTransactionWidget()
+          pointsTransactionWidget()
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -78,7 +97,7 @@ class ThankYouPage extends StatelessWidget {
     );
   }
 
-  KcardWidget PointsTransactionWidget() {
+  KcardWidget pointsTransactionWidget() {
     return KcardWidget(
       elevation: 0.0,
       color: LightColors.kGreyColor,
