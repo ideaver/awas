@@ -8,7 +8,7 @@ class KelevatedButtonWidget extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color textColor;
-  final Widget icon;
+  final Widget? icon;
   final bool keyboardShow;
 
   const KelevatedButtonWidget({
@@ -17,17 +17,14 @@ class KelevatedButtonWidget extends StatelessWidget {
     required this.title,
     this.backgroundColor = LightColors.kPrimaryColor,
     this.textColor = LightColors.kWhiteColor,
-    this.icon = const SizedBox(),
+    this.icon,
     this.keyboardShow = false,
   }) : super(key: key);
 
   const KelevatedButtonWidget.floating(
-      {required String title, required void Function() onPressed})
+      {required String title, required void Function() onPressed, Widget? icon})
       : this(
-          keyboardShow: true,
-          title: title,
-          onPressed: onPressed,
-        );
+            keyboardShow: true, title: title, onPressed: onPressed, icon: icon);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,7 @@ class KelevatedButtonWidget extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: ElevatedButton.icon(
-        icon: icon,
+        icon: icon ?? const SizedBox(),
         style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor,
             side: const BorderSide(

@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'res/theme/colors/light_colors.dart';
+import 'res/widgets/kelevated_button.dart';
 import 'view/dashboard/dashboard_employee_page.dart';
 import 'view/profile_page.dart';
 import 'view/login/forgot_password_page.dart';
@@ -32,15 +33,27 @@ class MyApp extends StatelessWidget {
         routes: {
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),
-          '/thank-you': (context) => const ThankYouPage(),
+          '/thank-you': (context) => thankYouPage(),
           '/terms': (context) => const TermsPage(),
           '/profile': (context) => const ProfilePage(),
-          '/dashboard-employee': (context) => DashboardEmployeePage(),
+          '/dashboard-employee': (context) => const DashboardEmployeePage(),
           // '/dashboard-manager': (context) => DashboardManager(),
           // '/report': (context) => const RegisterScreen(),
           // '/report-form': (context) => spp(),
           // '/notification': (context) => health(),
           // '/setting': (context) => health()
         });
+  }
+
+  ThankYouPage thankYouPage() {
+    return ThankYouPage(
+        thankYouPageModel: ThankYouPageModel(
+            title: 'Thank You Budi, Profile Updated',
+            instruction: 'Redirecting to your Dashboard...',
+            floatingActionButton: KelevatedButtonWidget.floating(
+              title: 'Go to Dashboard',
+              onPressed: () {},
+              icon: const Icon(Icons.home),
+            )));
   }
 }

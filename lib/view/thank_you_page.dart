@@ -1,3 +1,4 @@
+import 'package:awas/res/widgets/kcard_widget.dart';
 import 'package:awas/res/widgets/kelevated_button.dart';
 
 import '/res/widgets/ktext_form_field.dart';
@@ -5,16 +6,41 @@ import 'package:flutter/material.dart';
 
 import '../res/theme/colors/light_colors.dart';
 
+class ThankYouPageModel {
+  final String title;
+  final String instruction;
+  final PointsTransactionWidgetModel? pointsTransactionWidget;
+  final Widget? floatingActionButton;
+
+  ThankYouPageModel(
+      {required this.title,
+      required this.instruction,
+      this.pointsTransactionWidget,
+      this.floatingActionButton});
+}
+
+class PointsTransactionWidgetModel {
+  final Map<String, int> item;
+
+  PointsTransactionWidgetModel({required this.item});
+}
+
 class ThankYouPage extends StatelessWidget {
-  const ThankYouPage({super.key});
+  final ThankYouPageModel thankYouPageModel;
+
+  const ThankYouPage({super.key, required this.thankYouPageModel});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(defaultMargin),
         children: [
+          const SizedBox(
+            height: defaultMargin * 3,
+          ),
           const Chip(
               labelPadding: EdgeInsets.all(defaultMargin / 2),
               backgroundColor: LightColors.kSuccessColor,
@@ -27,7 +53,7 @@ class ThankYouPage extends StatelessWidget {
             height: defaultMargin,
           ),
           Text(
-            'Reset Password Instructions sent to your email',
+            thankYouPageModel.title,
             style: LightColors.linkTextStyle
                 .copyWith(fontSize: 20.0, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
@@ -36,16 +62,44 @@ class ThankYouPage extends StatelessWidget {
             height: defaultMargin * 2,
           ),
           Text(
-            'Check your inbox',
-            style: LightColors.subTitleTextStyle,
+            thankYouPageModel.instruction,
+            style: LightColors.subTitleTextStyle
+                .copyWith(fontSize: 14.0, fontWeight: FontWeight.normal),
             textAlign: TextAlign.center,
-          )
+          ),
+          const SizedBox(
+            height: defaultMargin * 4,
+          ),
+          PointsTransactionWidget()
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: KelevatedButtonWidget.floating(
-        title: 'Open Gmail',
-        onPressed: () {},
+      floatingActionButton: thankYouPageModel.floatingActionButton,
+    );
+  }
+
+  KcardWidget PointsTransactionWidget() {
+    return KcardWidget(
+      elevation: 0.0,
+      color: LightColors.kGreyColor,
+      child: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Point $index',
+                style: LightColors.subTitle2TextStyle,
+              ),
+              const SizedBox(
+                height: defaultMargin,
+              )
+            ],
+          );
+        },
       ),
     );
   }

@@ -7,29 +7,38 @@ class KcardWidget extends StatelessWidget {
   final double? height;
   final double elevation;
   final Color? color;
+  final void Function()? onTap;
 
   const KcardWidget(
       {super.key,
       required this.child,
       this.height,
       this.elevation = defaultMargin,
-      this.color = LightColors.kPrimaryColor});
+      this.color = LightColors.kPrimaryColor,
+      this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        color: color,
-        elevation: elevation,
-        clipBehavior: Clip.hardEdge,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(defaultCircular),
-        ),
-        child: InkWell(
-            onTap: () {},
-            splashColor: LightColors.kSecondaryColor,
-            child: Padding(
-              padding: const EdgeInsets.all(defaultMargin),
-              child: child,
-            )));
+    final Widget kChild = Padding(
+      padding: const EdgeInsets.all(defaultMargin),
+      child: child,
+    );
+
+    return SizedBox(
+      height: height,
+      child: Card(
+          color: color,
+          elevation: elevation,
+          clipBehavior: Clip.hardEdge,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(defaultCircular),
+          ),
+          child: onTap != null
+              ? InkWell(
+                  onTap: onTap,
+                  splashColor: LightColors.kSecondaryColor,
+                  child: kChild)
+              : kChild),
+    );
   }
 }
