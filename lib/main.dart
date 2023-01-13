@@ -5,7 +5,8 @@ import 'package:flutter/services.dart';
 import 'res/theme/colors/light_colors.dart';
 import 'res/widgets/kelevated_button.dart';
 import 'view/dashboard/dashboard_employee_page.dart';
-import 'view/profile_page.dart';
+import 'view/user/point_transactions_page.dart';
+import 'view/user/profile_page.dart';
 import 'view/login/forgot_password_page.dart';
 import 'view/login/login_page.dart';
 import 'view/login/terms_page.dart';
@@ -29,13 +30,14 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/thank-you',
+        initialRoute: '/point-transactions',
         routes: {
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),
           '/thank-you': (context) => thankYouPage(),
           '/terms': (context) => const TermsPage(),
           '/profile': (context) => const ProfilePage(),
+          '/point-transactions': (context) => const PointTransactionsPage(),
           '/dashboard-employee': (context) => const DashboardEmployeePage(),
           // '/dashboard-manager': (context) => DashboardManager(),
           // '/report': (context) => const RegisterScreen(),

@@ -1,15 +1,15 @@
 import 'package:awas/res/widgets/kdropdown_widget.dart';
 
-import '../res/widgets/star_badge_widget.dart';
+import '../../res/widgets/star_badge_widget.dart';
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/ktext_form_field.dart';
 
-import '../res/widgets/appbar_widget.dart';
+import '../../res/widgets/kappbar_widget.dart';
 
 import 'package:flutter/material.dart';
 
-import '../res/theme/colors/light_colors.dart';
+import '../../res/theme/colors/light_colors.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
