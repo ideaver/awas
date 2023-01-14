@@ -56,16 +56,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
               title,
               style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
             ),
-      actions: actions != null
-          ? [
-              TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Log out',
-                    style: LightColors.subTitle2TextStyle,
-                  ))
-            ]
-          : null,
+      actions: actions,
       bottom: PreferredSize(
           preferredSize: const Size.fromHeight(0),
           child: SizedBox(

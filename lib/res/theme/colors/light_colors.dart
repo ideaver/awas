@@ -63,6 +63,13 @@ class LightColors {
     fontWeight: FontWeight.normal,
   ));
 
+  static TextStyle subTitle3TextStyle = GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+    color: LightColors.kDarkGreyColor,
+    fontSize: 12,
+    fontWeight: FontWeight.normal,
+  ));
+
   static TextStyle linkTextStyle = GoogleFonts.montserrat(
       textStyle: const TextStyle(
     color: LightColors.Blue,
@@ -82,5 +89,12 @@ class LightColors {
     color: kBlackColor,
     fontSize: 16,
     fontWeight: FontWeight.normal,
+  ));
+
+  static TextStyle black2TextStyle = GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+    color: kBlackColor,
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
   ));
 }

@@ -7,6 +7,7 @@ class KcardWidget extends StatelessWidget {
   final double? height;
   final double elevation;
   final Color? color;
+  final EdgeInsetsGeometry? padding;
   final void Function()? onTap;
 
   const KcardWidget(
@@ -15,7 +16,8 @@ class KcardWidget extends StatelessWidget {
       this.height,
       this.elevation = defaultMargin,
       this.color = LightColors.kPrimaryColor,
-      this.onTap});
+      this.onTap,
+      this.padding = const EdgeInsets.all(defaultMargin)});
 
   @override
   Widget build(BuildContext context) {

@@ -38,11 +38,14 @@ class _KtabBarWidgetState extends State<KtabBarWidget> {
   Widget build(BuildContext context) {
     return Expanded(
       child: TabBar(
+          padding: const EdgeInsets.all(defaultMargin / 2),
           controller: widget.controller,
+          indicatorPadding:
+              const EdgeInsets.symmetric(horizontal: defaultMargin / 2),
           indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
               color: LightColors.kPrimaryColor.withOpacity(0.2)),
-          padding: const EdgeInsets.all(defaultMargin / 2),
+          splashBorderRadius: BorderRadius.circular(defaultCircular),
           labelPadding: const EdgeInsets.symmetric(
               horizontal: defaultMargin, vertical: defaultMargin / 2),
           tabs: widget.titles.map((e) {
