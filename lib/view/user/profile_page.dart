@@ -1,13 +1,11 @@
-import 'package:awas/res/widgets/kdropdown_widget.dart';
-import 'package:awas/view/thank_you_page.dart';
+import '/res/widgets/kdropdown_widget.dart';
 
+import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
 import '../../res/widgets/star_badge_widget.dart';
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/ktext_form_field.dart';
-
-import '../../res/widgets/kappbar_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -20,13 +18,17 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ProfilePageState extends State<ProfilePage>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
   ScrollController scrollController = ScrollController();
   bool isFabVisible = true;
 
+//TODO: Extract from and move FAB to form only
   @override
   void initState() {
     super.initState();
+    tabController = TabController(vsync: this, length: 3);
     scrollController = ScrollController();
     scrollController.addListener(() {
       // FAB should be visible if and only if user has not scrolled to bottom
@@ -43,36 +45,36 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      body: DefaultTabController(
-        length: 3,
-        child: NestedScrollView(
-          physics: const BouncingScrollPhysics(),
-          controller: scrollController,
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [sliverAppBarWidget()];
-          },
-          body: TabBarView(physics: const BouncingScrollPhysics(), children: [
-            tabBar1Widget(),
-            Container(
-              color: LightColors.kGreyColor,
-              child: ListView(
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.all(defaultMargin),
-                children: [
-                  const SizedBox(
-                    height: defaultMargin,
-                  ),
-                  userDetailsCardWidget(),
-                  const SizedBox(
-                    height: defaultMargin,
-                  ),
-                  userDetailsCardWidget()
-                ],
+      body: NestedScrollView(
+        physics: const BouncingScrollPhysics(),
+        controller: scrollController,
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [sliverAppBarWidget()];
+        },
+        body: TabBarView(
+            physics: const BouncingScrollPhysics(),
+            controller: tabController,
+            children: [
+              tabBar1Widget(),
+              Container(
+                color: LightColors.kGreyColor,
+                child: ListView(
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: const EdgeInsets.all(defaultMargin),
+                  children: [
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    userDetailsCardWidget(),
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    userDetailsCardWidget()
+                  ],
+                ),
               ),
-            ),
-            const PointTransactionListWidget()
-          ]),
-        ),
+              const PointTransactionListWidget()
+            ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: AnimatedSlide(
@@ -280,30 +282,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 bottom: 80),
             child: cardProfileWidget(),
           )),
-      bottom: tabBarWidget(),
+      bottom: KtabBarWidget(
+        controller: tabController,
+        titles: ['Details', 'Reports', 'Points'],
+      ),
     );
-  }
-
-  TabBar tabBarWidget() {
-    return TabBar(
-        unselectedLabelColor: LightColors.kDarkGreyColor,
-        indicator: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: LightColors.kPrimaryColor.withOpacity(0.2)),
-        padding: const EdgeInsets.all(defaultMargin / 2),
-        labelPadding: const EdgeInsets.symmetric(
-            horizontal: defaultMargin, vertical: defaultMargin / 2),
-        tabs: [
-          Text('Details',
-              style: LightColors.linkTextStyle
-                  .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold)),
-          Text('Reports',
-              style: LightColors.subTitleTextStyle
-                  .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold)),
-          Text('Points',
-              style: LightColors.subTitleTextStyle
-                  .copyWith(fontSize: 14.0, fontWeight: FontWeight.bold))
-        ]);
   }
 
   Widget cardProfileWidget() {

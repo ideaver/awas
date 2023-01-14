@@ -12,7 +12,7 @@ class KdividerWidget extends StatelessWidget {
       height: 1.0,
       indent: horizontalMargin,
       endIndent: horizontalMargin,
-      color: LightColors.kDarkGreyColor,
+      color: LightColors.kDarkGreyColor.withOpacity(0.5),
     );
   }
 }

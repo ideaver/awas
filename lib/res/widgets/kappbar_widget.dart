@@ -1,3 +1,4 @@
+import '/res/widgets/kdivider_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -7,6 +8,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String? subTitle;
   final List<Widget>? actions;
   final bool? centerTitle;
+  final PreferredSizeWidget? bottom;
 
   const KappBarWidget({
     Key? key,
@@ -14,10 +16,11 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.subTitle,
     this.actions,
     this.centerTitle = true,
+    this.bottom,
   }) : super(key: key);
 
   @override
-  Size get preferredSize => const Size.fromHeight(60.0);
+  Size get preferredSize => const Size.fromHeight(130);
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +29,6 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
 
   AppBar appBarWidget() {
     return AppBar(
-      automaticallyImplyLeading: true,
-      toolbarHeight: 60,
       leading: IconButton(
           onPressed: () {},
           icon: const Icon(
@@ -65,6 +66,21 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
                   ))
             ]
           : null,
+      bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(0),
+          child: SizedBox(
+            width: double.infinity,
+            height: 70,
+            child: Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Column(
+                children: [
+                  const KdividerWidget(),
+                  bottom as Widget,
+                ],
+              ),
+            ),
+          )),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:awas/view/report/report_list_page.dart';
 import 'package:awas/view/thank_you_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/login',
+        initialRoute: '/report-list',
         routes: {
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
           '/profile': (context) => const ProfilePage(),
           '/point-transactions': (context) => const PointTransactionsPage(),
           '/dashboard-employee': (context) => const DashboardEmployeePage(),
+          '/report-list': (context) => ReportListPage(),
           // '/dashboard-manager': (context) => DashboardManager(),
           // '/report': (context) => const RegisterScreen(),
           // '/report-form': (context) => spp(),
