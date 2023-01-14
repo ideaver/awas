@@ -9,7 +9,7 @@ class PointTransactionListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      physics: const BouncingScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: 20,
       itemBuilder: (context, index) {
         if (index == 0) {
@@ -62,7 +62,7 @@ class PointTransactionListWidget extends StatelessWidget {
   Padding titleSeparatorWidget({required String title}) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-          horizontal: defaultMargin, vertical: defaultMargin),
+          horizontal: defaultMargin, vertical: defaultMargin / 2),
       child: Text(
         title.toUpperCase(),
         style: LightColors.subTitle2TextStyle,

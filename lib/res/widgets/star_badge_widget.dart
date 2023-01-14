@@ -9,6 +9,7 @@ class StarBadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: Rapikan badge
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, '/point-transactions');

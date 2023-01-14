@@ -1,5 +1,7 @@
 import 'package:awas/res/widgets/kdropdown_widget.dart';
+import 'package:awas/view/thank_you_page.dart';
 
+import '../../res/widgets/point_transaction_list_widget.dart';
 import '../../res/widgets/star_badge_widget.dart';
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
@@ -68,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ],
               ),
             ),
-            const Text('gdsg')
+            const PointTransactionListWidget()
           ]),
         ),
       ),
@@ -312,8 +314,7 @@ class _ProfilePageState extends State<ProfilePage> {
         Column(
           children: const [
             CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://cdn.visily.ai/app/production/1672195451865/static/media/F2.da2ec199.png'),
+              backgroundImage: AssetImage('assets/avatar1.png'),
               radius: 35,
               backgroundColor: LightColors.kWhiteColor,
             ),

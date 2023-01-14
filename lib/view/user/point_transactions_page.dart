@@ -14,6 +14,7 @@ class PointTransactionsPage extends StatelessWidget {
       backgroundColor: LightColors.kGreyColor,
       appBar: const KappBarWidget(title: 'Points History'),
       body: NestedScrollView(
+          physics: const BouncingScrollPhysics(),
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
