@@ -1,3 +1,5 @@
+import 'package:awas/res/widgets/report_list_widget.dart';
+
 import '/res/widgets/kdropdown_widget.dart';
 
 import '../../res/widgets/ktabbar_widget.dart';
@@ -56,23 +58,7 @@ class _ProfilePageState extends State<ProfilePage>
             controller: tabController,
             children: [
               tabBar1Widget(),
-              Container(
-                color: LightColors.kGreyColor,
-                child: ListView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  padding: const EdgeInsets.all(defaultMargin),
-                  children: [
-                    const SizedBox(
-                      height: defaultMargin,
-                    ),
-                    userDetailsCardWidget(),
-                    const SizedBox(
-                      height: defaultMargin,
-                    ),
-                    userDetailsCardWidget()
-                  ],
-                ),
-              ),
+              const ReportListWidget(),
               const PointTransactionListWidget()
             ]),
       ),
@@ -84,6 +70,26 @@ class _ProfilePageState extends State<ProfilePage>
           title: 'Save Changes',
           onPressed: () {},
         ),
+      ),
+    );
+  }
+
+  Container profileDetailsWidget() {
+    return Container(
+      color: LightColors.kGreyColor,
+      child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(defaultMargin),
+        children: [
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          userDetailsCardWidget(),
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          userDetailsCardWidget()
+        ],
       ),
     );
   }
