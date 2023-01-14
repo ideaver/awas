@@ -44,16 +44,17 @@ class _ProfilePageState extends State<ProfilePage> {
       body: DefaultTabController(
         length: 3,
         child: NestedScrollView(
+          physics: const BouncingScrollPhysics(),
           controller: scrollController,
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [sliverAppBarWidget()];
           },
-          body: TabBarView(children: [
+          body: TabBarView(physics: const BouncingScrollPhysics(), children: [
             tabBar1Widget(),
             Container(
               color: LightColors.kGreyColor,
               child: ListView(
-                physics: const BouncingScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.all(defaultMargin),
                 children: [
                   const SizedBox(
@@ -159,7 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   ListView tabBar1Widget() {
     return ListView(
-      physics: const BouncingScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(defaultMargin),
       children: [
         KcardWidget(

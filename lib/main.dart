@@ -30,11 +30,13 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/point-transactions',
+        initialRoute: '/login',
         routes: {
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),
-          '/thank-you': (context) => thankYouPage(),
+          '/thank-you': (context) => ThankYouPage(
+                event: Event.profileUpdatedSuccess,
+              ),
           '/terms': (context) => const TermsPage(),
           '/profile': (context) => const ProfilePage(),
           '/point-transactions': (context) => const PointTransactionsPage(),
@@ -45,11 +47,5 @@ class MyApp extends StatelessWidget {
           // '/notification': (context) => health(),
           // '/setting': (context) => health()
         });
-  }
-
-  ThankYouPage thankYouPage() {
-    return ThankYouPage(
-      event: Event.profileUpdatedSuccess,
-    );
   }
 }

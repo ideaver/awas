@@ -10,13 +10,12 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO : Change to sliver
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       body: Stack(children: [
-        Image.network(
-          'https://images.unsplash.com/photo-1552879890-3a06dd3a06c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzM4Mzh8MHwxfHNlYXJjaHwyM3x8c2hpcHBpbmclMjBzYWZldHl8ZW58MHx8fHwxNjcyNjUyODY2&ixlib=rb-4.0.3&q=200&w=700',
-          fit: BoxFit.cover,
-          height: 400,
+        Image.asset(
+          'assets/bg1.jpeg',
         ),
         Positioned(
           top: 50,
@@ -61,7 +60,9 @@ class ForgotPasswordPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Sign In',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, '/thank-you');
+        },
       ),
     );
   }

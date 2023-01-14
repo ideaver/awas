@@ -9,20 +9,25 @@ class StarBadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      avatar: const Icon(
-        Icons.star_outline,
-        color: LightColors.kWhiteColor,
-      ),
-      elevation: 2,
-      backgroundColor: LightColors.kTertiaryColor,
-      labelPadding: const EdgeInsets.only(left: 5, right: defaultMargin),
-      label: Text(
-        '3200',
-        style: LightColors.subTitle2TextStyle.copyWith(
-            fontWeight: FontWeight.bold,
-            color: LightColors.kWhiteColor,
-            fontSize: 12.0),
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '/point-transactions');
+      },
+      child: Chip(
+        avatar: const Icon(
+          Icons.star_outline,
+          color: LightColors.kWhiteColor,
+        ),
+        elevation: 2,
+        backgroundColor: LightColors.kTertiaryColor,
+        labelPadding: const EdgeInsets.only(left: 5, right: defaultMargin),
+        label: Text(
+          '3200',
+          style: LightColors.subTitle2TextStyle.copyWith(
+              fontWeight: FontWeight.bold,
+              color: LightColors.kWhiteColor,
+              fontSize: 12.0),
+        ),
       ),
     );
   }

@@ -14,8 +14,8 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       body: Stack(children: [
-        Image.network(
-          'https://images.unsplash.com/photo-1552879890-3a06dd3a06c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMzM4Mzh8MHwxfHNlYXJjaHwyM3x8c2hpcHBpbmclMjBzYWZldHl8ZW58MHx8fHwxNjcyNjUyODY2&ixlib=rb-4.0.3&q=80&w=400',
+        Image.asset(
+          'assets/bg1.jpeg',
         ),
         Stack(children: [
           Positioned(
@@ -49,7 +49,11 @@ class LoginPage extends StatelessWidget {
                         )),
                   ),
                   const SizedBox(height: defaultMargin),
-                  KelevatedButtonWidget(onPressed: () {}, title: 'Sign In'),
+                  KelevatedButtonWidget(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/profile');
+                      },
+                      title: 'Sign In'),
                   const SizedBox(height: defaultMargin),
                   KelevatedButtonWidget(
                       backgroundColor: LightColors.kDarkGreyColor,
