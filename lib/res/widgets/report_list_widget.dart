@@ -10,19 +10,22 @@ class ReportListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(defaultMargin),
-      itemCount: 20,
-      itemBuilder: (context, index) {
-        if (index == 0) {
-          return Text(
-            '235 Records found',
-            style: LightColors.subTitle2TextStyle,
-          );
-        }
-        return listTileWidget();
-      },
+    return Scaffold(
+      backgroundColor: LightColors.kGreyColor,
+      body: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(defaultMargin),
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Text(
+              '235 Records found',
+              style: LightColors.subTitle2TextStyle,
+            );
+          }
+          return listTileWidget();
+        },
+      ),
     );
   }
 

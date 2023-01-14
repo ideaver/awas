@@ -1,3 +1,4 @@
+import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/report_list_page.dart';
 import 'package:awas/view/thank_you_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,8 +32,9 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/profile',
+        initialRoute: '/menu',
         routes: {
+          '/menu': (context) => MenuPage(),
           '/login': (context) => const LoginPage(),
           '/forgot-password': (context) => const ForgotPasswordPage(),
           '/thank-you': (context) => ThankYouPage(
@@ -42,7 +44,8 @@ class MyApp extends StatelessWidget {
           '/profile': (context) => const ProfilePage(),
           '/point-transactions': (context) => const PointTransactionsPage(),
           '/dashboard-employee': (context) => const DashboardEmployeePage(),
-          '/report-list': (context) => ReportListPage(),
+          '/report-list': (context) => const ReportListPage(),
+
           // '/dashboard-manager': (context) => DashboardManager(),
           // '/report': (context) => const RegisterScreen(),
           // '/report-form': (context) => spp(),

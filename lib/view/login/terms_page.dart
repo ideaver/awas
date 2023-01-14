@@ -1,5 +1,7 @@
-import 'package:awas/res/theme/colors/light_colors.dart';
-import 'package:awas/res/widgets/kdivider_widget.dart';
+import 'package:awas/res/widgets/kscrollbar_widget.dart';
+
+import '/res/theme/colors/light_colors.dart';
+import '/res/widgets/kdivider_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../res/widgets/kelevated_button.dart';
@@ -14,11 +16,7 @@ class TermsPage extends StatelessWidget {
       appBar: appBarWidget(),
       body: Padding(
         padding: const EdgeInsets.all(defaultMargin),
-        child: RawScrollbar(
-          thumbColor: LightColors.kPrimaryColor,
-          radius: const Radius.circular(defaultCircular),
-          thumbVisibility: true,
-          thickness: 8.0,
+        child: KscrollBarWidget(
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: 20,

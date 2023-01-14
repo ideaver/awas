@@ -26,10 +26,9 @@ class _ReportListPageState extends State<ReportListPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: LightColors.kGreyColor,
-      appBar: appBarWidget(),
-      body: const ReportListWidget(),
+    //TODO: Fix appbar report list
+    return const Scaffold(
+      body: ReportListWidget(),
     );
   }
 

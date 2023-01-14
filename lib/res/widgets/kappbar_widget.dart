@@ -57,21 +57,23 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
               style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
             ),
       actions: actions,
-      bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(0),
-          child: SizedBox(
-            width: double.infinity,
-            height: 70,
-            child: Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Column(
-                children: [
-                  const KdividerWidget(),
-                  bottom as Widget,
-                ],
-              ),
-            ),
-          )),
+      bottom: bottom != null
+          ? PreferredSize(
+              preferredSize: const Size.fromHeight(0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 70,
+                child: Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Column(
+                    children: [
+                      const KdividerWidget(),
+                      bottom as Widget,
+                    ],
+                  ),
+                ),
+              ))
+          : null,
     );
   }
 }
