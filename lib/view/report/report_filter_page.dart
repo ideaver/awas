@@ -1,9 +1,7 @@
+import '/res/widgets/risk_level_grid_widget.dart';
 import '../../res/widgets/report_category_grid_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/kexpansionTile_widget.dart';
-import '/res/widgets/krange_slider_widget.dart';
-
-import '../../res/widgets/company_custom_field_widget.dart';
 import '../../res/widgets/kanimated_list_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
@@ -49,10 +47,14 @@ class ReportFilterPage extends StatelessWidget {
                 )
               ]),
           const KexpansionTileWidget(
-            initiallyExpanded: false,
-            title: 'Points',
-            children: [KrangeSliderWidget()],
-          ),
+              initiallyExpanded: false,
+              title: 'Risk Level',
+              children: [
+                RiskLevelGridWidget(),
+                SizedBox(
+                  height: defaultMargin,
+                )
+              ]),
           const KanimatedListExpansionWidget()
         ],
       ),

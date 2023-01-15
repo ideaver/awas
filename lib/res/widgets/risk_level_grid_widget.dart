@@ -1,18 +1,17 @@
-import 'package:awas/res/widgets/kgridview_count_widget.dart';
+import '/res/widgets/kgridview_count_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'grid_tile_widget.dart';
 
-class ReportCategoryGridWidget extends StatefulWidget {
-  const ReportCategoryGridWidget({super.key});
+class RiskLevelGridWidget extends StatefulWidget {
+  const RiskLevelGridWidget({super.key});
 
   @override
-  State<ReportCategoryGridWidget> createState() =>
-      _ReportCategoryGridWidgetState();
+  State<RiskLevelGridWidget> createState() => _RiskLevelGridWidgetState();
 }
 
-class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
+class _RiskLevelGridWidgetState extends State<RiskLevelGridWidget> {
   int selectedIndex = 0;
 
   @override
@@ -21,8 +20,8 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
       children: [
         GridTileWidget(
             selected: selectedIndex == 1,
-            title: 'Safe Observation',
-            icon: Icons.policy,
+            title: 'Low',
+            icon: Icons.insert_emoticon,
             onTap: () {
               setState(() {
                 selectedIndex = 1;
@@ -30,8 +29,8 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
             }),
         GridTileWidget(
             selected: selectedIndex == 2,
-            title: 'Unsafe Observation',
-            icon: Icons.error,
+            title: 'Medium',
+            icon: Icons.sentiment_neutral,
             onTap: () {
               setState(() {
                 selectedIndex = 2;
@@ -39,8 +38,8 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
             }),
         GridTileWidget(
             selected: selectedIndex == 3,
-            title: 'Near Miss',
-            icon: Icons.healing,
+            title: 'High',
+            icon: Icons.sentiment_dissatisfied,
             onTap: () {
               setState(() {
                 selectedIndex = 3;
@@ -48,8 +47,8 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
             }),
         GridTileWidget(
             selected: selectedIndex == 4,
-            title: 'HIPO',
-            icon: Icons.person_outline,
+            title: 'Escalation',
+            icon: Icons.sentiment_very_dissatisfied,
             onTap: () {
               setState(() {
                 selectedIndex = 4;
