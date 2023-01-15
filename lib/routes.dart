@@ -8,6 +8,7 @@ import 'view/login/forgot_password_page.dart';
 import 'view/login/login_page.dart';
 import 'view/login/terms_page.dart';
 import 'view/menu_page.dart';
+import 'view/report/report_filter_page.dart';
 import 'view/report/report_list_page.dart';
 import 'view/thank_you_page.dart';
 import 'view/user/point_transactions_page.dart';
@@ -28,6 +29,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/point-transactions': (context) => const PointTransactionsPage(),
   '/dashboard-employee': (context) => const DashboardEmployeePage(),
   '/report-list': (context) => const ReportListPage(),
+  '/report-filter': (context) => const ReportFilterPage(),
 
   // '/dashboard-manager': (context) => DashboardManager(),
   // '/report': (context) => const RegisterScreen(),

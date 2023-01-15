@@ -7,7 +7,8 @@ class KcardWidget extends StatelessWidget {
   final double? height;
   final double elevation;
   final Color? color;
-  final EdgeInsetsGeometry? padding;
+  final Color? borderColor;
+  final EdgeInsetsGeometry padding;
   final void Function()? onTap;
 
   const KcardWidget(
@@ -17,12 +18,13 @@ class KcardWidget extends StatelessWidget {
       this.elevation = defaultMargin,
       this.color = LightColors.kPrimaryColor,
       this.onTap,
-      this.padding = const EdgeInsets.all(defaultMargin)});
+      this.padding = const EdgeInsets.all(defaultMargin),
+      this.borderColor});
 
   @override
   Widget build(BuildContext context) {
     final Widget kChild = Padding(
-      padding: const EdgeInsets.all(defaultMargin),
+      padding: padding,
       child: child,
     );
 
@@ -33,7 +35,12 @@ class KcardWidget extends StatelessWidget {
           elevation: elevation,
           clipBehavior: Clip.hardEdge,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(defaultCircular),
+            borderRadius:
+                BorderRadius.circular(defaultCircular), // if you need this
+            side: BorderSide(
+              color: borderColor != null ? borderColor! : Colors.transparent,
+              width: 1,
+            ),
           ),
           child: onTap != null
               ? InkWell(
