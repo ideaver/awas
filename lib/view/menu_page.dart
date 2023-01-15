@@ -1,21 +1,11 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
+import '../routes.dart';
 import '/res/widgets/kappbar_widget.dart';
 import '/res/widgets/kscrollbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class MenuPage extends StatelessWidget {
-  MenuPage({super.key});
-
-  List<String> routes = [
-    'login',
-    'forgot-password',
-    'thank-you',
-    'terms',
-    'profile',
-    'point-transactions',
-    'dashboard-employee',
-    'report-list'
-  ];
+  const MenuPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +16,18 @@ class MenuPage extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           itemCount: routes.length,
           itemBuilder: (context, index) {
+            if (index == 0) {
+              return const SizedBox();
+            }
             return ListTile(
               tileColor: index.isOdd ? LightColors.kGreyColor : null,
               contentPadding: const EdgeInsets.all(defaultMargin),
               onTap: () {
-                Navigator.pushNamed(context, '/${routes[index]}');
+                Navigator.pushNamed(
+                    context, routes.entries.elementAt(index).key);
               },
               title: Text(
-                routes[index].toUpperCase(),
+                routes.entries.elementAt(index).key.substring(1).toUpperCase(),
                 style: LightColors.titleTextStyle.copyWith(fontSize: 20),
               ),
               trailing: const Icon(

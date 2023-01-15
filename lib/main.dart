@@ -1,3 +1,4 @@
+import 'package:awas/view/inbox_page.dart';
 import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/report_list_page.dart';
 import 'package:awas/view/thank_you_page.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'res/theme/colors/light_colors.dart';
 import 'res/widgets/kelevated_button.dart';
+import 'routes.dart';
 import 'view/dashboard/dashboard_employee_page.dart';
 import 'view/user/point_transactions_page.dart';
 import 'view/user/profile_page.dart';
@@ -33,24 +35,6 @@ class MyApp extends StatelessWidget {
             textTheme: GoogleFonts.robotoTextTheme()),
         debugShowCheckedModeBanner: false,
         initialRoute: '/menu',
-        routes: {
-          '/menu': (context) => MenuPage(),
-          '/login': (context) => const LoginPage(),
-          '/forgot-password': (context) => const ForgotPasswordPage(),
-          '/thank-you': (context) => ThankYouPage(
-                event: Event.profileUpdatedSuccess,
-              ),
-          '/terms': (context) => const TermsPage(),
-          '/profile': (context) => const ProfilePage(),
-          '/point-transactions': (context) => const PointTransactionsPage(),
-          '/dashboard-employee': (context) => const DashboardEmployeePage(),
-          '/report-list': (context) => const ReportListPage(),
-
-          // '/dashboard-manager': (context) => DashboardManager(),
-          // '/report': (context) => const RegisterScreen(),
-          // '/report-form': (context) => spp(),
-          // '/notification': (context) => health(),
-          // '/setting': (context) => health()
-        });
+        routes: routes);
   }
 }
