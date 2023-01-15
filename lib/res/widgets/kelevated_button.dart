@@ -21,6 +21,7 @@ class KelevatedButtonWidget extends StatelessWidget {
     this.keyboardShow = false,
   }) : super(key: key);
 
+  // ignore: use_key_in_widget_constructors
   const KelevatedButtonWidget.floating(
       {required String title, required void Function() onPressed, Widget? icon})
       : this(

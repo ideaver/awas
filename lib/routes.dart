@@ -12,7 +12,7 @@ import 'view/user/point_transactions_page.dart';
 import 'view/user/profile_page.dart';
 
 final Map<String, Widget Function(BuildContext)> routes = {
-  '/menu': (context) => MenuPage(),
+  '/menu': (context) => const MenuPage(),
   '/login': (context) => const LoginPage(),
   '/forgot-password': (context) => const ForgotPasswordPage(),
   '/thank-you': (context) => ThankYouPage(

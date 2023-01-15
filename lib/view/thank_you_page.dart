@@ -33,6 +33,7 @@ class ThankYouPage extends StatelessWidget {
   final Event event;
   late final ThankYouPageModel thankYouPageModel;
 
+  // ignore: prefer_const_constructors_in_immutables
   ThankYouPage({super.key, required this.event});
 
   @override

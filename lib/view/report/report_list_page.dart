@@ -1,5 +1,3 @@
-import 'package:awas/res/widgets/kcard_widget.dart';
-
 import '../../res/widgets/report_list_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';

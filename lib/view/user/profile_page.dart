@@ -290,7 +290,7 @@ class _ProfilePageState extends State<ProfilePage>
           )),
       bottom: KtabBarWidget(
         controller: tabController,
-        titles: ['Details', 'Reports', 'Points'],
+        titles: const ['Details', 'Reports', 'Points'],
       ),
     );
   }

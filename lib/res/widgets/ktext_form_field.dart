@@ -24,6 +24,7 @@ class KtextFormFieldWidget extends StatelessWidget {
       this.onChanged,
       this.obscureText = false});
 
+  // ignore: use_key_in_widget_constructors
   KtextFormFieldWidget.password(
       {required String title, void Function()? onPressed})
       : this(

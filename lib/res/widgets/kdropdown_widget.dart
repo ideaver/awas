@@ -7,10 +7,10 @@ class KdropdownWidget extends StatefulWidget {
   const KdropdownWidget({Key? key, required this.title}) : super(key: key);
 
   @override
-  _KdropdownWidgetState createState() => _KdropdownWidgetState();
+  KdropdownWidgetState createState() => KdropdownWidgetState();
 }
 
-class _KdropdownWidgetState extends State<KdropdownWidget> {
+class KdropdownWidgetState extends State<KdropdownWidget> {
   final jobRoleCtrl = TextEditingController();
 
   @override

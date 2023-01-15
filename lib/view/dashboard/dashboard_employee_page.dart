@@ -1,5 +1,4 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
-import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:awas/res/widgets/star_badge_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +31,7 @@ class DashboardEmployeePage extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: LightColors.kBackgroundColor,
                     borderRadius: kBorderRadius),
-                child: const chartWidget(
+                child: const ChartWidget(
                   isShowingMainData: false,
                 ),
               ),

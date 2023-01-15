@@ -1,19 +1,7 @@
-import 'package:awas/view/inbox_page.dart';
-import 'package:awas/view/menu_page.dart';
-import 'package:awas/view/report/report_list_page.dart';
-import 'package:awas/view/thank_you_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'res/theme/colors/light_colors.dart';
-import 'res/widgets/kelevated_button.dart';
+
 import 'routes.dart';
-import 'view/dashboard/dashboard_employee_page.dart';
-import 'view/user/point_transactions_page.dart';
-import 'view/user/profile_page.dart';
-import 'view/login/forgot_password_page.dart';
-import 'view/login/login_page.dart';
-import 'view/login/terms_page.dart';
 
 void main() {
   // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

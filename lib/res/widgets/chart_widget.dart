@@ -2,8 +2,8 @@ import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class chartWidget extends StatelessWidget {
-  const chartWidget({required this.isShowingMainData});
+class ChartWidget extends StatelessWidget {
+  const ChartWidget({super.key, required this.isShowingMainData});
 
   final bool isShowingMainData;
 
@@ -139,7 +139,7 @@ class chartWidget extends StatelessWidget {
         text = Text('DEC', style: style);
         break;
       default:
-        text = Text('');
+        text = const Text('');
         break;
     }
 
@@ -347,7 +347,7 @@ class LineChartSample1State extends State<LineChartSample1> {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(right: 16, left: 6),
-                    child: chartWidget(isShowingMainData: isShowingMainData),
+                    child: ChartWidget(isShowingMainData: isShowingMainData),
                   ),
                 ),
                 const SizedBox(
