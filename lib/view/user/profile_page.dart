@@ -1,5 +1,6 @@
 import 'package:awas/res/widgets/report_list_widget.dart';
 
+import '../../res/widgets/company_custom_field_widget.dart';
 import '../../res/widgets/user_custom_field_datatable_widget.dart';
 import '/res/widgets/kdropdown_widget.dart';
 
@@ -207,13 +208,7 @@ class _ProfilePageState extends State<ProfilePage>
           style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
         ),
         const SizedBox(height: defaultMargin),
-        const KdropdownWidget(title: 'Crew Rank'),
-        const SizedBox(height: defaultMargin),
-        const KdropdownWidget(title: 'Employee Rank'),
-        const SizedBox(height: defaultMargin),
-        const KdropdownWidget(title: 'Vessel'),
-        const SizedBox(height: defaultMargin),
-        const KdropdownWidget(title: 'Office'),
+        const CompanyCustomFieldWidget(),
         const SizedBox(height: defaultMargin),
         const SizedBox(height: defaultMargin * 5),
       ],

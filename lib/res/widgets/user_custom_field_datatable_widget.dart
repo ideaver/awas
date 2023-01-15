@@ -33,8 +33,8 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             )),
             DataCell(Text(': 19',
-                style:
-                    LightColors.subTitle2TextStyle.copyWith(color: textColor))),
+                style: LightColors.whiteTextStyle
+                    .copyWith(color: textColor, fontSize: 12))),
           ],
         ),
         DataRow(
@@ -45,8 +45,8 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold))),
             DataCell(Text(': 43',
-                style:
-                    LightColors.subTitle2TextStyle.copyWith(color: textColor))),
+                style: LightColors.whiteTextStyle
+                    .copyWith(color: textColor, fontSize: 12))),
           ],
         ),
         DataRow(
@@ -58,7 +58,8 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold))),
             DataCell(Text(
               ': 27',
-              style: LightColors.subTitle2TextStyle.copyWith(color: textColor),
+              style: LightColors.whiteTextStyle
+                  .copyWith(color: textColor, fontSize: 12),
             )),
           ],
         ),
@@ -70,8 +71,8 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold))),
             DataCell(Text(': 27',
-                style:
-                    LightColors.subTitle2TextStyle.copyWith(color: textColor))),
+                style: LightColors.whiteTextStyle
+                    .copyWith(color: textColor, fontSize: 12))),
           ],
         ),
       ],

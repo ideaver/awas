@@ -20,7 +20,7 @@ class KdropdownWidgetState extends State<KdropdownWidget> {
       children: [
         Text(
           widget.title,
-          style: LightColors.subTitleTextStyle.copyWith(fontSize: 16),
+          style: LightColors.subTitle2TextStyle.copyWith(fontSize: 16),
         ),
         const SizedBox(
           height: defaultMargin / 3,
