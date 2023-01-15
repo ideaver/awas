@@ -19,7 +19,6 @@ class _ReportListPageState extends State<ReportListPage>
   void initState() {
     super.initState();
     tabController = TabController(vsync: this, length: 3);
-    ;
   }
 
   @override

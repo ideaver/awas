@@ -20,7 +20,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
-  Size get preferredSize => const Size.fromHeight(130);
+  Size get preferredSize => Size.fromHeight(bottom != null ? 130 : 52);
 
   @override
   Widget build(BuildContext context) {

@@ -81,8 +81,9 @@ class _InboxPageState extends State<InboxPage>
           case 8:
             return const TitleSeparatorWidget(title: 'older');
           case 19: //should be last
-            return const SizedBox(
-              height: defaultMargin * 4,
+            return Image.asset(
+              'assets/logo.png',
+              scale: 3,
             );
         }
 
