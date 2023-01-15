@@ -1,3 +1,4 @@
+import 'package:awas/view/report/offline_submitting_loading_page.dart';
 import 'package:awas/view/user/user_filter_page.dart';
 import 'package:awas/view/user/user_list_page.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/inbox': (context) => const InboxPage(),
   '/point-transactions': (context) => const PointTransactionsPage(),
   '/dashboard-employee': (context) => const DashboardEmployeePage(),
+  '/report-offline-loading': (context) => const OfflineSubmittingLoadingPage(),
   '/report-list': (context) => const ReportListPage(),
   '/report-filter': (context) => const ReportFilterPage(),
 
