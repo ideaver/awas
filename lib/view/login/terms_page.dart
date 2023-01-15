@@ -17,6 +17,7 @@ class TermsPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(defaultMargin),
         child: KscrollBarWidget(
+          //TODO: fix hidden bottom text
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: 20,

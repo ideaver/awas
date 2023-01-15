@@ -1,5 +1,6 @@
 import 'package:awas/res/widgets/report_list_widget.dart';
 
+import '../../res/widgets/user_custom_field_datatable_widget.dart';
 import '/res/widgets/kdropdown_widget.dart';
 
 import '../../res/widgets/ktabbar_widget.dart';
@@ -296,6 +297,7 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Widget cardProfileWidget() {
+    //TODO: Fix streching card widget
     return KcardWidget(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -324,65 +326,11 @@ class _ProfilePageState extends State<ProfilePage>
               const SizedBox(
                 height: defaultMargin,
               ),
-              dataTableWidget(),
+              const UserCustomFieldDatatableWidget(),
             ],
           ),
         )
       ],
     ));
-  }
-
-  DataTable dataTableWidget() {
-    return DataTable(
-      headingRowHeight: 0.0,
-      dataTextStyle: LightColors.whiteTextStyle.copyWith(fontSize: 12),
-      dividerThickness: 0.0,
-      columnSpacing: defaultMargin,
-      dataRowHeight: defaultMargin,
-      columns: const [
-        DataColumn(
-          label: SizedBox(),
-        ),
-        DataColumn(
-          label: SizedBox(),
-        ),
-      ],
-      rows: [
-        DataRow(
-          cells: [
-            DataCell(Text(
-              'Employee Rank',
-              style: LightColors.whiteTextStyle
-                  .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold),
-            )),
-            const DataCell(Text(': 19')),
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Text('Crew Rank',
-                style: LightColors.whiteTextStyle
-                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
-            const DataCell(Text(': 43')),
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Text('Vessel',
-                style: LightColors.whiteTextStyle
-                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
-            const DataCell(Text(': 27')),
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Text('Office',
-                style: LightColors.whiteTextStyle
-                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
-            const DataCell(Text(': 27')),
-          ],
-        ),
-      ],
-    );
   }
 }

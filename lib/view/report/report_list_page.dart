@@ -44,7 +44,7 @@ class _ReportListPageState extends State<ReportListPage>
             titles: const ['All', 'Posivite', 'Negative'],
             controller: tabController),
       ),
-      body: ReportListWidget(),
+      body: const ReportListWidget(),
     );
   }
 }
