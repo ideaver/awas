@@ -23,32 +23,28 @@ class _ReportListPageState extends State<ReportListPage>
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Fix appbar report list
-    return const Scaffold(
+    return Scaffold(
+      appBar: KappBarWidget(
+        title: 'Report List',
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search,
+                color: LightColors.kPrimaryColor,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.filter_alt,
+                color: LightColors.kPrimaryColor,
+              ))
+        ],
+        bottom: KtabBarWidget(
+            titles: const ['All', 'Posivite', 'Negative'],
+            controller: tabController),
+      ),
       body: ReportListWidget(),
-    );
-  }
-
-  KappBarWidget appBarWidget() {
-    return KappBarWidget(
-      title: 'Report List',
-      actions: [
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.search,
-              color: LightColors.kPrimaryColor,
-            )),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.filter_alt,
-              color: LightColors.kPrimaryColor,
-            ))
-      ],
-      bottom: KtabBarWidget(
-          titles: const ['All', 'Posivite', 'Negative'],
-          controller: tabController),
     );
   }
 }

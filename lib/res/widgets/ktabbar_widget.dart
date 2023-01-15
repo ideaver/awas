@@ -12,12 +12,12 @@ class KtabBarWidget extends StatefulWidget implements PreferredSizeWidget {
     required this.titles,
     this.labelIcon,
   }) : super(key: key);
-  @override
+
   @override
   State<KtabBarWidget> createState() => _KtabBarWidgetState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(60.0);
+  Size get preferredSize => const Size.fromHeight(500.0);
 }
 
 class _KtabBarWidgetState extends State<KtabBarWidget> {

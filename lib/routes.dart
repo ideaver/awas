@@ -1,3 +1,4 @@
+import 'package:awas/view/user/user_list_page.dart';
 import 'package:flutter/material.dart';
 
 import 'view/dashboard/dashboard_employee_page.dart';
@@ -20,6 +21,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
       ),
   '/terms': (context) => const TermsPage(),
   '/profile': (context) => const ProfilePage(),
+  '/user-list': (context) => const UserListPage(),
   '/inbox': (context) => const InboxPage(),
   '/point-transactions': (context) => const PointTransactionsPage(),
   '/dashboard-employee': (context) => const DashboardEmployeePage(),

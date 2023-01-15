@@ -9,19 +9,19 @@ class StarBadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: Rapikan badge
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, '/point-transactions');
       },
       child: Chip(
+        visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
         avatar: const Icon(
-          Icons.star_outline,
+          Icons.star,
           color: LightColors.kWhiteColor,
+          size: 20,
         ),
         elevation: 2,
         backgroundColor: LightColors.kTertiaryColor,
-        labelPadding: const EdgeInsets.only(left: 5, right: defaultMargin),
         label: Text(
           '3200',
           style: LightColors.subTitle2TextStyle.copyWith(

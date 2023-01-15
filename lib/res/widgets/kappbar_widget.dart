@@ -37,7 +37,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
             size: 30,
           )),
       backgroundColor: LightColors.kBackgroundColor,
-      elevation: 0,
+      elevation: 0.0,
       centerTitle: subTitle != null ? false : centerTitle,
       title: subTitle != null
           ? Row(
