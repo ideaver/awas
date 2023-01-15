@@ -5,11 +5,13 @@ class KexpansionTileWidget extends StatelessWidget {
   final String title;
   final List<Widget> children;
   final bool? initiallyExpanded;
+  final EdgeInsetsGeometry? childrenPadding;
   const KexpansionTileWidget({
     super.key,
     required this.title,
     required this.children,
     this.initiallyExpanded,
+    this.childrenPadding,
   });
 
   @override
@@ -23,7 +25,7 @@ class KexpansionTileWidget extends StatelessWidget {
         ),
         tilePadding: const EdgeInsets.only(
             left: defaultMargin, right: defaultMargin, top: defaultMargin),
-        childrenPadding: const EdgeInsets.all(defaultMargin),
+        childrenPadding: childrenPadding ?? const EdgeInsets.all(defaultMargin),
         children: children);
   }
 }

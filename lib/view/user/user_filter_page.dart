@@ -1,7 +1,9 @@
+import 'package:awas/res/widgets/kelevated_button.dart';
 import 'package:awas/res/widgets/kexpansionTile_widget.dart';
 import 'package:awas/res/widgets/krange_slider_widget.dart';
 
 import '../../res/widgets/company_custom_field_widget.dart';
+import '../../res/widgets/kanimated_list_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
@@ -48,8 +50,14 @@ class UserFilterPage extends StatelessWidget {
             initiallyExpanded: false,
             title: 'Points',
             children: [KrangeSliderWidget()],
-          )
+          ),
+          const KanimatedListExpansionWidget()
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: KelevatedButtonWidget.floating(
+        title: 'Confirm',
+        onPressed: () {},
       ),
     );
   }

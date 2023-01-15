@@ -70,10 +70,10 @@ class KtextFormFieldWidget extends StatelessWidget {
                   : LightColors.kDarkGreyColor.withOpacity(0.5),
               contentPadding: const EdgeInsets.symmetric(horizontal: 20),
               enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(defaultCircular - 20),
+                  borderRadius: BorderRadius.circular(defaultCircular - 10),
                   borderSide: const BorderSide(color: LightColors.kGreyColor)),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(defaultCircular - 20),
+                borderRadius: BorderRadius.circular(defaultCircular - 10),
                 // borderSide:
                 //     const BorderSide(color: LightColors.kDarkGreyColor)
               ),

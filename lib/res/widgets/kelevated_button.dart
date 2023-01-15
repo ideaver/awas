@@ -22,6 +22,7 @@ class KelevatedButtonWidget extends StatelessWidget {
   }) : super(key: key);
 
   // ignore: use_key_in_widget_constructors
+  //TODO: work on hide on scroll
   const KelevatedButtonWidget.floating(
       {required String title, required void Function() onPressed, Widget? icon})
       : this(
