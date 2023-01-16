@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 //Circular Value
-const defaultCircular = 25.0;
+const defaultCircular = 20.0;
 const defaultTopLeftCircular = 35.0;
 const defaultMargin = 25.0;
 

@@ -1,3 +1,5 @@
+import 'package:awas/res/widgets/kdivider_widget.dart';
+
 import '../../res/widgets/status_chip_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
@@ -29,10 +31,15 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle titleTextStyle =
+        LightColors.black2TextStyle.copyWith(fontWeight: FontWeight.bold);
+    final TextStyle contentTextStyle = LightColors.subTitle2TextStyle;
+
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
         //TODO: Change to sliver background flexible one image
+        backgroundColor: LightColors.kSecondaryColor,
         centerTitle: true,
         title: 'Report',
         subTitle: '  ID663298450',
@@ -41,14 +48,16 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
               onPressed: () {},
               icon: const Icon(
                 Icons.share,
-                color: LightColors.kDarkGreyColor,
+                color: LightColors.kBackgroundColor,
               ))
         ],
         bottom: KtabBarWidget(
+            //TODO: implement tabbar with scroll indicator
             controller: tabController,
             titles: const ['Overview', 'Detail', 'Comments (20)']),
       ),
       body: ListView(
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(defaultMargin),
         children: [
           Row(
@@ -57,7 +66,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
               const statusChipWidget(),
               Text(
                 'Duration: 70 min',
-                style: LightColors.subTitle2TextStyle,
+                style: contentTextStyle,
               )
             ],
           ),
@@ -66,9 +75,269 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
             'Resiko Menumpahkan Masakan Panas',
             style: LightColors.blackTextStyle
                 .copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: defaultMargin / 2),
+          Row(
+            children: [
+              const Icon(
+                Icons.healing,
+                color: LightColors.kDangerColor,
+              ),
+              const SizedBox(width: defaultMargin / 4),
+              Text(
+                'Near miss',
+                style: contentTextStyle,
+              ),
+              const Spacer(),
+              const Icon(
+                Icons.sentiment_very_dissatisfied_rounded,
+                color: LightColors.kDangerColor,
+              ),
+              const SizedBox(width: defaultMargin / 4),
+              Text(
+                'Risk Level: High',
+                style: contentTextStyle,
+              )
+            ],
+          ),
+          const SizedBox(height: defaultMargin),
+          const KdividerWidget(
+            horizontalMargin: 0.0,
+          ),
+          const SizedBox(height: defaultMargin),
+          Text(
+            'Observation Event',
+            style: titleTextStyle,
+          ),
+          const SizedBox(height: defaultMargin / 2),
+          Text(
+            'Reaksi Orang',
+            style: contentTextStyle,
+          ),
+          const SizedBox(height: defaultMargin),
+          Text(
+            'Observation Detail',
+            style: titleTextStyle,
+          ),
+          const SizedBox(height: defaultMargin / 2),
+          Text(
+            'Merubah Posisi',
+            style: contentTextStyle,
+          ),
+          const SizedBox(height: defaultMargin),
+          const KdividerWidget(
+            horizontalMargin: 0.0,
+          ),
+          const SizedBox(height: defaultMargin),
+          Text(
+            'Observed Action/Condition',
+            style: titleTextStyle,
+          ),
+          const SizedBox(height: defaultMargin / 2),
+          Text(
+            'Ullamco veniam culpa excepteur id duis aliquip enim esse veniam.',
+            style: contentTextStyle,
+          ),
+          const SizedBox(height: defaultMargin),
+          Text(
+            'Impact observer believe will occur',
+            style: titleTextStyle,
+          ),
+          const SizedBox(height: defaultMargin / 2),
+          Text(
+            'Ullamco veniam az excepteur id duis aliquip enim esse veniam.',
+            style: contentTextStyle,
+          ),
+          const SizedBox(height: defaultMargin),
+          Text(
+            'Corrective & Preventive Actions',
+            style: titleTextStyle,
+          ),
+          const SizedBox(height: defaultMargin / 2),
+          Text(
+            'Ullamco veniam az excepteur id duis aliquip enim esse veniam.',
+            style: contentTextStyle,
+          ),
+          const SizedBox(height: defaultMargin),
+          const KdividerWidget(
+            horizontalMargin: 0.0,
+          ),
+          const SizedBox(height: defaultMargin),
+          observerTileWidget(),
+          const SizedBox(height: defaultMargin),
+          const LocationAndDateTimeTileWidget(),
+          const SizedBox(height: defaultMargin),
+          const KdividerWidget(
+            horizontalMargin: 0.0,
+          ),
+          const SizedBox(height: defaultMargin),
+          Row(
+            children: [
+              const Icon(
+                Icons.forum,
+                color: LightColors.kDarkGreyColor,
+                size: 16,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(
+                '0 Comments',
+                style: LightColors.subTitle3TextStyle,
+              ),
+              const Spacer(),
+              TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.share,
+                    color: LightColors.kDarkGreyColor,
+                    size: 16,
+                  ),
+                  label: Text(
+                    '0 Share',
+                    style: LightColors.subTitle3TextStyle,
+                  ))
+            ],
+          ),
+          const SizedBox(height: defaultMargin),
+          const KdividerWidget(
+            horizontalMargin: 0.0,
+          ),
+          const SizedBox(height: defaultMargin),
+          //TODO: implement comments
+          const SizedBox(height: defaultMargin * 8),
+        ],
+      ),
+    );
+  }
+
+  ListTile observerTileWidget() {
+    return ListTile(
+      onTap: () {
+        Navigator.pushNamed(context, '/profile');
+      },
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(defaultCircular)),
+      contentPadding: const EdgeInsets.all(0.0),
+      leading: const CircleAvatar(
+        backgroundImage: AssetImage('assets/avatar1.png'),
+        radius: 25,
+        backgroundColor: LightColors.kSecondaryColor,
+      ),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Budi - ID8982357',
+            style: LightColors.blackTextStyle
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: defaultMargin / 4),
+          Row(
+            children: [
+              Text(
+                'Masinis - ',
+                style: LightColors.subTitle3TextStyle,
+              ),
+              Text(
+                'Staff',
+                style: LightColors.black2TextStyle
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+            ],
           )
         ],
       ),
+      trailing: Chip(
+        backgroundColor: LightColors.kPrimaryColor.withOpacity(0.1),
+        label: Text(
+          'Observer',
+          style: LightColors.linkTextStyle,
+        ),
+      ),
+    );
+  }
+}
+
+class LocationAndDateTimeTileWidget extends StatelessWidget {
+  const LocationAndDateTimeTileWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    const EdgeInsets contentPadding = EdgeInsets.all(defaultMargin / 2);
+    final RoundedRectangleBorder shape = RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultCircular));
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Location',
+          style:
+              LightColors.black2TextStyle.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: defaultMargin / 2),
+        ListTile(
+          onTap: () {
+            //TODO: Navigate to map
+          },
+          contentPadding: contentPadding,
+          tileColor: LightColors.kPrimaryColor.withOpacity(0.1),
+          shape: shape,
+          leading: const Icon(
+            Icons.navigation,
+            color: LightColors.kPrimaryColor,
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'North Mining Site',
+                style: LightColors.blackTextStyle
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: defaultMargin / 4),
+              Text(
+                'Lat Long (48.276791, 13.161050)',
+                style: LightColors.subTitle2TextStyle,
+              )
+            ],
+          ),
+          trailing: const Icon(Icons.chevron_right),
+        ),
+        const SizedBox(height: defaultMargin),
+        Text(
+          'Date Time',
+          style:
+              LightColors.black2TextStyle.copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: defaultMargin / 2),
+        ListTile(
+          contentPadding: contentPadding,
+          tileColor: LightColors.kPrimaryColor.withOpacity(0.1),
+          shape: shape,
+          leading: const Icon(
+            Icons.calendar_today,
+            color: LightColors.kPrimaryColor,
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Date & Time',
+                style: LightColors.subTitle2TextStyle
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: defaultMargin / 4),
+              Text(
+                '03:30 PM | 03/30/2022',
+                style: LightColors.subTitleTextStyle,
+              )
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

@@ -9,6 +9,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final bool? centerTitle;
   final PreferredSizeWidget? bottom;
+  final Color? backgroundColor;
 
   const KappBarWidget({
     Key? key,
@@ -17,6 +18,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.centerTitle = true,
     this.bottom,
+    this.backgroundColor,
   }) : super(key: key);
 
   @override
@@ -32,12 +34,14 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: IconButton(
           onPressed: () {},
-          icon: const Icon(
+          icon: Icon(
             Icons.chevron_left_rounded,
-            color: LightColors.kDarkGreyColor,
+            color: backgroundColor != null
+                ? LightColors.kBackgroundColor
+                : LightColors.kBackgroundColor,
             size: 30,
           )),
-      backgroundColor: LightColors.kBackgroundColor,
+      backgroundColor: backgroundColor ?? LightColors.kBackgroundColor,
       elevation: 0.0,
       centerTitle: subTitle != null ? false : centerTitle,
       title: subTitle != null
@@ -45,11 +49,18 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Text(
                   title,
-                  style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
+                  style: LightColors.titleTextStyle.copyWith(
+                      fontSize: 18.0,
+                      color: backgroundColor != null
+                          ? LightColors.kBackgroundColor
+                          : null),
                 ),
                 Text(
                   subTitle!,
-                  style: LightColors.subTitle2TextStyle,
+                  style: LightColors.subTitle2TextStyle.copyWith(
+                      color: backgroundColor != null
+                          ? LightColors.kBackgroundColor
+                          : null),
                 )
               ],
             )
@@ -61,7 +72,8 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
       bottom: bottom != null
           ? PreferredSize(
               preferredSize: const Size.fromHeight(0),
-              child: SizedBox(
+              child: Container(
+                color: LightColors.kBackgroundColor,
                 width: double.infinity,
                 height: 70,
                 child: Padding(
