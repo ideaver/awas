@@ -23,6 +23,7 @@ class PointTransactionListWidget extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(top: 2),
             child: Material(
+              //TODO: Change to list separated
               child: ListTile(
                 onTap: () {},
                 tileColor: LightColors.kBackgroundColor,

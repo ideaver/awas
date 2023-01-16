@@ -28,6 +28,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }
 
   AppBar appBarWidget() {
+    //TODO: Change to sliver app bar to hide on scroll
     return AppBar(
       leading: IconButton(
           onPressed: () {},

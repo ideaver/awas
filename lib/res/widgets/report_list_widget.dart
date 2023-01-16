@@ -1,3 +1,4 @@
+import 'package:awas/res/widgets/status_chip_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -13,6 +14,7 @@ class ReportListWidget extends StatelessWidget {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       body: ListView.builder(
+        //TODO: Change to list separated
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(defaultMargin),
         itemCount: 20,
@@ -143,20 +145,7 @@ class ReportListWidget extends StatelessWidget {
               Icons.insert_emoticon,
               color: LightColors.kWhiteColor,
             )),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5),
-          child: Chip(
-              visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-              backgroundColor: LightColors.kBackgroundColor,
-              // labelPadding:
-              //     const EdgeInsets.symmetric(horizontal: 10),
-              side: const BorderSide(color: LightColors.kSuccessColor),
-              label: Text(
-                'closed',
-                style: LightColors.subTitle3TextStyle
-                    .copyWith(color: LightColors.kSuccessColor),
-              )),
-        ),
+        const statusChipWidget(),
         Text(
           'April 27',
           style: LightColors.subTitle3TextStyle,

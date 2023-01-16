@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
       body: Stack(children: [
         Image.asset(
           'assets/bg1.jpeg',
-        ),
+        ), //TODO: change to scrollable inseted of fixed
         Stack(children: [
           Positioned(
             top: 200,
@@ -141,6 +141,8 @@ class LoginPage extends StatelessWidget {
       ],
     );
   }
+
+  //TODO: implement login save
 
   //   savePref(BuildContext context,String? id) async {
   //   await SessionManager().set("id", id).then((value) =>
