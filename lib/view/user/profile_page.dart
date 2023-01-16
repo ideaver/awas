@@ -1,8 +1,7 @@
-import 'package:awas/res/widgets/report_list_widget.dart';
+import '/res/widgets/report_list_widget.dart';
 
 import '../../res/widgets/company_custom_field_widget.dart';
 import '../../res/widgets/user_custom_field_datatable_widget.dart';
-import '/res/widgets/kdropdown_widget.dart';
 
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';

@@ -5,6 +5,7 @@ import '../theme/colors/light_colors.dart';
 class KcardWidget extends StatelessWidget {
   final Widget child;
   final double? height;
+  final double? width;
   final double elevation;
   final Color? color;
   final Color? borderColor;
@@ -15,6 +16,7 @@ class KcardWidget extends StatelessWidget {
       {super.key,
       required this.child,
       this.height,
+      this.width,
       this.elevation = defaultMargin,
       this.color = LightColors.kPrimaryColor,
       this.onTap,
@@ -30,6 +32,7 @@ class KcardWidget extends StatelessWidget {
 
     return SizedBox(
       height: height,
+      width: width,
       child: Card(
           color: color,
           elevation: elevation,
