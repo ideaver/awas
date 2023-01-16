@@ -1,4 +1,4 @@
-import 'package:awas/res/widgets/kdivider_widget.dart';
+import '/res/widgets/kdivider_widget.dart';
 
 import '../../res/widgets/status_chip_widget.dart';
 import '/res/theme/colors/light_colors.dart';

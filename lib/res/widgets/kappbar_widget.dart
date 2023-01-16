@@ -38,7 +38,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
             Icons.chevron_left_rounded,
             color: backgroundColor != null
                 ? LightColors.kBackgroundColor
-                : LightColors.kBackgroundColor,
+                : LightColors.kDarkGreyColor,
             size: 30,
           )),
       backgroundColor: backgroundColor ?? LightColors.kBackgroundColor,
@@ -54,6 +54,9 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
                       color: backgroundColor != null
                           ? LightColors.kBackgroundColor
                           : null),
+                ),
+                const SizedBox(
+                  width: defaultMargin / 3,
                 ),
                 Text(
                   subTitle!,

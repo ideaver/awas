@@ -10,7 +10,7 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KappBarWidget(title: 'Awas: Menu Screens (${routes.length - 1})'),
+      appBar: KappBarWidget(title: 'Awas: All Screens (${routes.length - 1})'),
       body: KscrollBarWidget(
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
@@ -18,6 +18,10 @@ class MenuPage extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == 0) {
               return const SizedBox();
+            } else if (index == routes.length - 1) {
+              return const SizedBox(
+                height: defaultMargin * 8,
+              );
             }
             return ListTile(
               tileColor: index.isOdd ? LightColors.kGreyColor : null,
@@ -28,8 +32,8 @@ class MenuPage extends StatelessWidget {
                     context, routes.entries.elementAt(index).key);
               },
               title: Text(
-                '$index. ${routes.entries.elementAt(index).key.substring(1).toUpperCase()} Page',
-                style: LightColors.titleTextStyle.copyWith(fontSize: 20),
+                '$index. ${routes.entries.elementAt(index).key.substring(1).replaceAll('-', ' ').toUpperCase()} Page',
+                style: LightColors.titleTextStyle.copyWith(fontSize: 16),
               ),
               trailing: const Icon(
                 Icons.arrow_forward,
