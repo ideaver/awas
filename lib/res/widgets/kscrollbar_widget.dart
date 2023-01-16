@@ -9,6 +9,7 @@ class KscrollBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawScrollbar(
+        crossAxisMargin: -defaultMargin / 2,
         thumbColor: LightColors.kPrimaryColor,
         radius: const Radius.circular(defaultCircular),
         thumbVisibility: true,

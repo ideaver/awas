@@ -1,6 +1,10 @@
-import 'package:awas/res/widgets/kcard_widget.dart';
-import 'package:awas/res/widgets/kelevated_button.dart';
-import 'package:awas/res/widgets/report_category_grid_widget.dart';
+import '/res/widgets/kscrollbar_widget.dart';
+import '/res/widgets/ktext_form_field.dart';
+
+import '../../res/widgets/kchoicechip_widget.dart';
+import '/res/widgets/kcard_widget.dart';
+import '/res/widgets/kelevated_button.dart';
+import '/res/widgets/report_category_grid_widget.dart';
 
 import '../../res/widgets/kdropdown_widget.dart';
 import '../../res/widgets/kexpansiontile_widget.dart';
@@ -68,35 +72,6 @@ class _ReportFormPageState extends State<ReportFormPage>
             observationTabBarViewWidget(titleTextStyle, context),
             actionTabBarViewWidget(titleTextStyle, context)
           ]),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: tabController.index == 0
-          //TODO: Apply set state using riverpod here, hide on tab 2
-          ? Padding(
-              padding: const EdgeInsets.all(defaultMargin),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: KelevatedButtonWidget(
-                      backgroundColor: LightColors.kBackgroundColor,
-                      textColor: LightColors.kPrimaryColor,
-                      title: 'Draft',
-                      onPressed: () {},
-                    ),
-                  ),
-                  const Spacer(),
-                  Expanded(
-                    flex: 2,
-                    child: KelevatedButtonWidget(
-                      title: 'Next',
-                      onPressed: () {},
-                      icon: const Icon(Icons.chevron_right),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          : null,
     );
   }
 
@@ -108,50 +83,113 @@ class _ReportFormPageState extends State<ReportFormPage>
         const SizedBox(
           height: defaultMargin,
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          child: LocationAndDateTimeTileWidget(),
-        ),
-        const SizedBox(
-          height: defaultMargin,
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Risk Level',
+                'Observed Action/Condition',
                 style: titleTextStyle,
               ),
               const SizedBox(
                 height: defaultMargin,
               ),
-              ListTile(
-                contentPadding: const EdgeInsets.all(defaultMargin),
-                tileColor: LightColors.kPrimaryColor.withOpacity(0.1),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(defaultCircular)),
-                leading: const Icon(
-                  Icons.sentiment_very_dissatisfied,
-                  size: 32,
+              const KtextFormFieldWidget(
+                  minLines: 5, withTitle: false, title: 'description'),
+              const SizedBox(
+                height: defaultMargin,
+              ),
+              Text(
+                'Impact you believe will occur',
+                style: titleTextStyle,
+              ),
+              const SizedBox(
+                height: defaultMargin,
+              ),
+              const KtextFormFieldWidget(
+                  minLines: 5, withTitle: false, title: 'description'),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: 100,
+          child: KscrollBarWidget(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 20,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return const SizedBox(
+                    width: defaultMargin,
+                  );
+                }
+                return const KchoiceChipWidget(selected: true);
+              },
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: defaultMargin,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(defaultMargin),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Preventive and corrective actions',
+                style: titleTextStyle,
+              ),
+              const SizedBox(
+                height: defaultMargin,
+              ),
+              const KtextFormFieldWidget(
+                  minLines: 5, withTitle: false, title: 'description'),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: defaultMargin,
+        ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+          child: LocationAndDateTimeTileWidget(),
+        ),
+        const SizedBox(
+          height: defaultMargin * 2,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(defaultMargin),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: KelevatedButtonWidget(
+                  backgroundColor: LightColors.kBackgroundColor,
+                  textColor: LightColors.kPrimaryColor,
+                  title: 'Back',
+                  icon: const Icon(
+                    Icons.chevron_left,
+                    color: LightColors.kPrimaryColor,
+                  ),
+                  onPressed: () {
+                    tabController.animateTo(tabController.previousIndex);
+                  },
                 ),
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'High',
-                      style: LightColors.blackTextStyle
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: defaultMargin / 4),
-                    Text(
-                      'This report will be notify Supervisor & Manager',
-                      style: LightColors.subTitle2TextStyle,
-                    )
-                  ],
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 2,
+                child: KelevatedButtonWidget(
+                  title: 'Submit',
+                  onPressed: () {},
+                  icon: const Icon(Icons.file_upload),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -194,6 +232,36 @@ class _ReportFormPageState extends State<ReportFormPage>
           height: defaultMargin,
         ),
         riskLevelSectionWidget(titleTextStyle),
+        const SizedBox(
+          height: defaultMargin * 2,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(defaultMargin),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: KelevatedButtonWidget(
+                  backgroundColor: LightColors.kBackgroundColor,
+                  textColor: LightColors.kPrimaryColor,
+                  title: 'Draft',
+                  onPressed: () {},
+                ),
+              ),
+              const Spacer(),
+              Expanded(
+                flex: 2,
+                child: KelevatedButtonWidget(
+                  title: 'Next',
+                  onPressed: () {
+                    tabController.animateTo(1);
+                  },
+                  icon: const Icon(Icons.chevron_right),
+                ),
+              ),
+            ],
+          ),
+        ),
         const SizedBox(
           height: defaultMargin * 8,
         ),

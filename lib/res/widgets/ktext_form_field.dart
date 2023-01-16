@@ -8,6 +8,7 @@ class KtextFormFieldWidget extends StatelessWidget {
   final bool withTitle;
   final bool editable;
   final Widget? suffix;
+  final int? minLines;
   final TextEditingController? controller;
   final void Function(String value)? onFieldSubmitted;
   final void Function(String value)? onChanged;
@@ -22,7 +23,8 @@ class KtextFormFieldWidget extends StatelessWidget {
       this.suffix,
       this.onFieldSubmitted,
       this.onChanged,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.minLines});
 
   // ignore: use_key_in_widget_constructors
   KtextFormFieldWidget.password(
@@ -54,9 +56,13 @@ class KtextFormFieldWidget extends StatelessWidget {
         TextFormField(
           obscureText: obscureText,
           readOnly: editable ? false : true,
+          minLines: minLines,
+          maxLines: minLines ?? 0 + 1,
           style: LightColors.subTitleTextStyle
               .copyWith(fontSize: 16, fontWeight: FontWeight.w900),
           decoration: InputDecoration(
+              counterStyle: LightColors.subTitle2TextStyle,
+              counterText: '1230 Char',
               prefixIcon: icon != null
                   ? Icon(
                       icon,
@@ -68,7 +74,9 @@ class KtextFormFieldWidget extends StatelessWidget {
               fillColor: editable
                   ? LightColors.kGreyColor
                   : LightColors.kDarkGreyColor.withOpacity(0.5),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+              contentPadding: EdgeInsets.symmetric(
+                  vertical: minLines != null ? defaultMargin : 0.0,
+                  horizontal: defaultMargin),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(defaultCircular - 10),
                   borderSide: const BorderSide(color: LightColors.kGreyColor)),
