@@ -44,6 +44,7 @@ class _InboxPageState extends State<InboxPage>
               ))
         ],
         bottom: KtabBarWidget(
+            isScrollable: true,
             controller: tabController,
             labelIcon: Container(
               margin: const EdgeInsets.only(left: 5),

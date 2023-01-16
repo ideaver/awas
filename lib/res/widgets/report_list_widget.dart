@@ -49,7 +49,8 @@ class ReportListWidget extends StatelessWidget {
   Expanded cardWidget() {
     return Expanded(
       child: KcardWidget(
-          padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+          padding: const EdgeInsets.symmetric(
+              vertical: defaultMargin / 2, horizontal: defaultMargin),
           onTap: () {},
           elevation: 0.0,
           color: LightColors.kBackgroundColor,

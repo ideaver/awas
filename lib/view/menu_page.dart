@@ -18,7 +18,7 @@ class MenuPage extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == 0) {
               return const SizedBox();
-            } else if (index == routes.length - 1) {
+            } else if (index == routes.length) {
               return const SizedBox(
                 height: defaultMargin * 8,
               );

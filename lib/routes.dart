@@ -1,11 +1,11 @@
-import '/view/report/report_form_page.dart';
+import 'package:flutter/material.dart';
 
+import '/view/settings/settings_page.dart';
+import '/view/report/report_form_page.dart';
 import '/view/report/offline_submitting_loading_page.dart';
 import '/view/report/report_details_page.dart';
 import '/view/user/user_filter_page.dart';
 import '/view/user/user_list_page.dart';
-import 'package:flutter/material.dart';
-
 import 'view/dashboard/dashboard_employee_page.dart';
 import 'view/inbox_page.dart';
 import 'view/login/forgot_password_page.dart';
@@ -37,10 +37,5 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/report-list': (context) => const ReportListPage(),
   '/report-filter': (context) => const ReportFilterPage(),
   '/report-details': (context) => const ReportDetailsPage(),
-
-  // '/dashboard-manager': (context) => DashboardManager(),
-  // '/report': (context) => const RegisterScreen(),
-  // '/report-form': (context) => spp(),
-  // '/notification': (context) => health(),
-  // '/setting': (context) => health()
+  '/settings': (context) => const SettingsPage(),
 };

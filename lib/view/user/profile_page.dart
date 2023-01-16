@@ -243,7 +243,7 @@ class _ProfilePageState extends State<ProfilePage>
     return SliverAppBar(
       elevation: 0.0,
       backgroundColor: LightColors.kBackgroundColor,
-      toolbarHeight: 70,
+      toolbarHeight: 52,
       leading: IconButton(
           onPressed: () {},
           icon: const Icon(

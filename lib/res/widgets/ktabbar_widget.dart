@@ -19,7 +19,7 @@ class KtabBarWidget extends StatefulWidget implements PreferredSizeWidget {
   State<KtabBarWidget> createState() => _KtabBarWidgetState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(500.0);
+  Size get preferredSize => const Size.fromHeight(100.0);
 }
 
 class _KtabBarWidgetState extends State<KtabBarWidget> {
@@ -32,12 +32,6 @@ class _KtabBarWidgetState extends State<KtabBarWidget> {
     });
 
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    widget.controller.dispose();
-    super.dispose();
   }
 
   @override

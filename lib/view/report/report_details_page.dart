@@ -54,6 +54,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
         ],
         bottom: KtabBarWidget(
             //TODO: implement tabbar with scroll indicator
+            isScrollable: true,
             controller: tabController,
             titles: const ['Overview', 'Detail', 'Comments (20)']),
       ),
