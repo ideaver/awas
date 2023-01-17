@@ -25,6 +25,7 @@ class _ReportListPageState extends State<ReportListPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KappBarWidget(
+        context: context,
         title: 'Report List',
         actions: [
           IconButton(
@@ -34,7 +35,9 @@ class _ReportListPageState extends State<ReportListPage>
                 color: LightColors.kPrimaryColor,
               )),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, '/report-filter');
+              },
               icon: const Icon(
                 Icons.filter_alt,
                 color: LightColors.kPrimaryColor,
@@ -44,7 +47,7 @@ class _ReportListPageState extends State<ReportListPage>
             titles: const ['All', 'Posivite', 'Negative'],
             controller: tabController),
       ),
-      body: const ReportListWidget(),
+      body: ReportListWidget(context: context),
     );
   }
 }

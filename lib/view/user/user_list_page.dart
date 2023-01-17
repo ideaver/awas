@@ -35,6 +35,7 @@ class _UserListPageState extends State<UserListPage>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: KappBarWidget(
+          context: context,
           title: 'Employee List',
           actions: [
             IconButton(
@@ -44,7 +45,9 @@ class _UserListPageState extends State<UserListPage>
                   color: LightColors.kPrimaryColor,
                 )),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/user-filter');
+                },
                 icon: const Icon(
                   Icons.filter_alt,
                   color: LightColors.kPrimaryColor,
@@ -71,7 +74,9 @@ class _UserListPageState extends State<UserListPage>
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            //TODO: slice add employee page
+          },
           child: const Icon(
             Icons.add,
             color: LightColors.kWhiteColor,
@@ -100,8 +105,11 @@ class _UserListPageState extends State<UserListPage>
           ),
           Expanded(
             child: KcardWidget(
-                padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
-                onTap: () {},
+                padding: const EdgeInsets.symmetric(
+                    vertical: defaultMargin, horizontal: defaultMargin),
+                onTap: () {
+                  Navigator.pushNamed(context, '/profile');
+                },
                 elevation: 0.0,
                 color: LightColors.kBackgroundColor,
                 child: Column(

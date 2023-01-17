@@ -10,7 +10,8 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KappBarWidget(title: 'Awas: All Screens (${routes.length - 1})'),
+      appBar: KappBarWidget(
+          context: context, title: 'Awas: All Screens (${routes.length - 1})'),
       body: KscrollBarWidget(
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),

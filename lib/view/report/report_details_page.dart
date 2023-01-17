@@ -39,6 +39,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
+        context: context,
         //TODO: Change to sliver background flexible one image
         backgroundColor: LightColors.kSecondaryColor,
         centerTitle: true,

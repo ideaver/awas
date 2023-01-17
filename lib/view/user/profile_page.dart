@@ -61,7 +61,7 @@ class _ProfilePageState extends State<ProfilePage>
             controller: tabController,
             children: [
               tabBar1Widget(),
-              const ReportListWidget(),
+              ReportListWidget(context: context),
               const PointTransactionListWidget()
             ]),
       ),
@@ -71,7 +71,9 @@ class _ProfilePageState extends State<ProfilePage>
         offset: isFabVisible ? const Offset(0, 2) : Offset.zero,
         child: KelevatedButtonWidget.floating(
           title: 'Save Changes',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
       ),
     );

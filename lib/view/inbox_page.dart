@@ -34,6 +34,7 @@ class _InboxPageState extends State<InboxPage>
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       appBar: KappBarWidget(
+        context: context,
         title: 'Inbox',
         actions: [
           IconButton(
@@ -91,7 +92,9 @@ class _InboxPageState extends State<InboxPage>
         return Column(
           children: [
             ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/report-details');
+              },
               tileColor: index > 3
                   ? LightColors.kBackgroundColor
                   : LightColors.kInfoColor.withOpacity(0.1),

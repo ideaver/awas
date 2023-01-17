@@ -21,7 +21,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
-      appBar: const KappBarWidget(title: 'Settings'),
+      appBar: KappBarWidget(context: context, title: 'Settings'),
       body: KscrollBarWidget(
         child: ListView(
           physics: const BouncingScrollPhysics(),
@@ -94,7 +94,9 @@ class SettingsPage extends StatelessWidget {
             KelevatedButtonWidget(
                 icon: Icons.logout,
                 backgroundColor: LightColors.kSecondaryColor,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 title: 'Logout'),
             Image.asset(
               'assets/logo.png',

@@ -47,6 +47,7 @@ class _ReportFormPageState extends State<ReportFormPage>
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
+        context: context,
         title: 'Report',
         subTitle: 'ID45345783',
         actions: [

@@ -51,7 +51,9 @@ class ReportLoadingPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Cancel',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, '/report-list');
+        },
       ),
     );
   }

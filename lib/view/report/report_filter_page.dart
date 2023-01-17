@@ -18,12 +18,13 @@ class ReportFilterPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
+        context: context,
         title: 'Filters',
         actions: [
           IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.close,
+                Icons.clear_all,
                 color: LightColors.kDarkGreyColor,
                 size: 20,
               ))
@@ -64,7 +65,9 @@ class ReportFilterPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Confirm (6)',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
     );
   }

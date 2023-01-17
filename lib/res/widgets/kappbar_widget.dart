@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../theme/colors/light_colors.dart';
 
 class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  final BuildContext context;
   final String title;
   final String? subTitle;
   final List<Widget>? actions;
@@ -19,6 +20,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = true,
     this.bottom,
     this.backgroundColor,
+    required this.context,
   }) : super(key: key);
 
   @override
@@ -33,7 +35,9 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     //TODO: Change to sliver app bar to hide on scroll
     return AppBar(
       leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(
             Icons.chevron_left_rounded,
             color: backgroundColor != null

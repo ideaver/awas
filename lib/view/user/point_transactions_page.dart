@@ -12,7 +12,7 @@ class PointTransactionsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
-      appBar: const KappBarWidget(title: 'Points History'),
+      appBar: KappBarWidget(context: context, title: 'Points History'),
       body: NestedScrollView(
           physics: const BouncingScrollPhysics(),
           headerSliverBuilder: (context, innerBoxIsScrolled) {

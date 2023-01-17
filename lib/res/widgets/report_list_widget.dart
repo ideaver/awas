@@ -5,8 +5,11 @@ import '../theme/colors/light_colors.dart';
 import 'kcard_widget.dart';
 
 class ReportListWidget extends StatelessWidget {
+  final BuildContext context;
+
   const ReportListWidget({
     Key? key,
+    required this.context,
   }) : super(key: key);
 
   @override
@@ -51,7 +54,9 @@ class ReportListWidget extends StatelessWidget {
       child: KcardWidget(
           padding: const EdgeInsets.symmetric(
               vertical: defaultMargin / 2, horizontal: defaultMargin),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/report-details');
+          },
           elevation: 0.0,
           color: LightColors.kBackgroundColor,
           child: Column(

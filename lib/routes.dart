@@ -1,4 +1,3 @@
-import 'package:awas/view/import_export_page.dart';
 import 'package:flutter/material.dart';
 
 import 'view/settings/settings_page.dart';
@@ -18,6 +17,7 @@ import 'view/report/report_list_page.dart';
 import 'view/thank_you_page.dart';
 import 'view/user/point_transactions_page.dart';
 import 'view/user/profile_page.dart';
+import '/view/import_export_page.dart';
 
 final Map<String, Widget Function(BuildContext)> routes = {
   '/menu': (context) => const MenuPage(),
