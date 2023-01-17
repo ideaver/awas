@@ -127,6 +127,8 @@ class _ReportFormPageState extends State<ReportFormPage>
                     width: defaultMargin,
                   );
                 }
+                //TODO: extract word recommendation widget,user singlechildscrollview
+                //TODO: change background color
                 return const KchoiceChipWidget(selected: true);
               },
             ),

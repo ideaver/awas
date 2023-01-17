@@ -15,7 +15,8 @@ class SettingsPage extends StatelessWidget {
   const SettingsPage.employee() : this(role: Role.employee);
   const SettingsPage.manager() : this(role: Role.manager);
   const SettingsPage.superUser() : this(role: Role.superUser);
-
+//TODO: slice employee UI
+//TODO: slice superuser UI
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +37,9 @@ class SettingsPage extends StatelessWidget {
               icon: Icons.person,
             ),
             listTileWidget(
-              onTap: () {},
+              onTap: () {
+                //TODO: Navigate to Privacy settings
+              },
               title: 'Privacy',
               icon: Icons.privacy_tip,
             ),

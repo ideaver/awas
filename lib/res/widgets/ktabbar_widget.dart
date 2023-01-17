@@ -19,7 +19,7 @@ class KtabBarWidget extends StatefulWidget implements PreferredSizeWidget {
   State<KtabBarWidget> createState() => _KtabBarWidgetState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(100.0);
+  Size get preferredSize => const Size.fromHeight(50.0);
 }
 
 class _KtabBarWidgetState extends State<KtabBarWidget> {
@@ -51,7 +51,7 @@ class _KtabBarWidgetState extends State<KtabBarWidget> {
             horizontal: defaultMargin,
             vertical: widget.labelIcon != null
                 ? defaultMargin / 3
-                : defaultMargin / 2),
+                : defaultMargin / 2.5),
         tabs: widget.titles.map((e) {
           bool selected = widget.controller.index != widget.titles.indexOf(e);
 

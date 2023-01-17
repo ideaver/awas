@@ -3,8 +3,8 @@ import 'package:awas/res/widgets/kelevated_button.dart';
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
-class OfflineSubmittingLoadingPage extends StatelessWidget {
-  const OfflineSubmittingLoadingPage({super.key});
+class ReportLoadingPage extends StatelessWidget {
+  const ReportLoadingPage({super.key});
 
   @override
   Widget build(BuildContext context) {

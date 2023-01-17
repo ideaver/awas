@@ -33,7 +33,7 @@ class LightColors {
   static const Color kDangerColor = kSecondaryColor;
   static const Color kWarningColor = Color(0xffF6CE7E);
   static const Color kSuccessColor = Color(0xFF0EAA42);
-  static const Color kInfoColor = Color(0xff60B2F0);
+  static const Color kInfoColor = Colors.blueGrey;
 
 //Gray Color Set
   static const Color kBackgroundColor = Color(0xffffffff); //0xFF000000

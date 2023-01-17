@@ -51,10 +51,12 @@ class KelevatedButtonWidget extends StatelessWidget {
         icon: Icon(
           icon,
           color: textColor,
+          size: icon == null ? 0 : null,
         ),
         style: ElevatedButton.styleFrom(
             disabledBackgroundColor: LightColors.kPrimaryColor.withOpacity(0.2),
             backgroundColor: backgroundColor,
+            alignment: Alignment.center,
             side: backgroundColor != LightColors.kWhiteColor
                 ? null
                 : const BorderSide(
@@ -64,12 +66,13 @@ class KelevatedButtonWidget extends StatelessWidget {
               borderRadius:
                   BorderRadius.circular(defaultCircular / 2), // <-- Radius
             )),
-        onPressed: null,
+        onPressed: onPressed,
         label: Text(
           title,
           style: LightColors.whiteTextStyle.copyWith(
               color:
                   onPressed != null ? textColor : LightColors.kDarkGreyColor),
+          textAlign: TextAlign.center,
         ),
       ),
     );

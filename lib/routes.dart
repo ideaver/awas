@@ -1,8 +1,9 @@
+import 'package:awas/view/import_export_page.dart';
 import 'package:flutter/material.dart';
 
-import '/view/settings/settings_page.dart';
+import 'view/settings/settings_page.dart';
 import '/view/report/report_form_page.dart';
-import '/view/report/offline_submitting_loading_page.dart';
+import 'view/report/report_loading_page.dart';
 import '/view/report/report_details_page.dart';
 import '/view/user/user_filter_page.dart';
 import '/view/user/user_list_page.dart';
@@ -30,10 +31,11 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/inbox': (context) => const InboxPage(),
   '/point-transactions': (context) => const PointTransactionsPage(),
   '/dashboard-employee': (context) => const DashboardEmployeePage(),
-  '/report-offline-loading': (context) => const OfflineSubmittingLoadingPage(),
+  '/report-offline-loading': (context) => const ReportLoadingPage(),
   '/report-form': (context) => const ReportFormPage(),
   '/report-list': (context) => const ReportListPage(),
   '/report-filter': (context) => const ReportFilterPage(),
   '/report-details': (context) => const ReportDetailsPage(),
   '/settings': (context) => const SettingsPage.employee(),
+  '/import-export': (context) => const ImportExportPage(),
 };

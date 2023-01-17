@@ -13,6 +13,7 @@ class UserFilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: add clear button
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(

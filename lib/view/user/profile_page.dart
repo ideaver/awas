@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import '/res/widgets/report_list_widget.dart';
 
 import '../../res/widgets/company_custom_field_widget.dart';
@@ -174,25 +176,9 @@ class _ProfilePageState extends State<ProfilePage>
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(defaultMargin),
       children: [
-        KcardWidget(
-            elevation: 0.0,
-            child: Row(
-              children: [
-                const Icon(
-                  Icons.account_circle,
-                  color: LightColors.kWhiteColor,
-                ),
-                const SizedBox(width: 10.0),
-                Expanded(
-                  child: Text(
-                    'Please Complete your profile first',
-                    style: LightColors.whiteTextStyle,
-                  ),
-                ),
-                const SizedBox(width: 10.0),
-                const Icon(Icons.chevron_right, color: LightColors.kWhiteColor),
-              ],
-            )),
+        KcardWidget.tile(
+            leadingIcon: Icons.account_circle,
+            title: 'Please complete your profile'),
         const SizedBox(height: defaultMargin),
         const KtextFormFieldWidget(title: 'Name'),
         const SizedBox(height: defaultMargin),
@@ -291,7 +277,6 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Widget cardProfileWidget() {
-    //TODO: Fix streching card widget
     return KcardWidget(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

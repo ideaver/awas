@@ -1,13 +1,16 @@
+import 'package:awas/res/theme/colors/light_colors.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 
 import 'routes.dart';
 
 void main() {
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //   systemNavigationBarColor: LightColors.Blue, // navigation bar color
-  //   statusBarColor: LightColors.Blue, // status bar color
-  // ));
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: LightColors.kBackgroundColor,
+    statusBarColor: LightColors.kBackgroundColor, // status bar color
+  ));
   runApp(const MyApp());
 }
 

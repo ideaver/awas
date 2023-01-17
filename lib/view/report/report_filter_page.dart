@@ -1,3 +1,4 @@
+import '../../res/widgets/checkbox_listtile_widget.dart';
 import '/res/widgets/risk_level_grid_widget.dart';
 import '../../res/widgets/report_category_grid_widget.dart';
 import '/res/widgets/kelevated_button.dart';
@@ -12,6 +13,8 @@ class ReportFilterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO: add clear button
+    //TODO: Filter by words recommendation
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
@@ -28,16 +31,16 @@ class ReportFilterPage extends StatelessWidget {
       ),
       body: ListView(
         physics: const BouncingScrollPhysics(),
-        children: [
+        children: const [
           KexpansionTileWidget(title: 'Conditions', children: [
-            checkboxListTileWidget(title: 'Trending'),
-            checkboxListTileWidget(title: 'Open'),
-            checkboxListTileWidget(title: 'Close'),
-            checkboxListTileWidget(title: 'Frequent'),
-            checkboxListTileWidget(title: 'Most liked'),
-            checkboxListTileWidget(title: 'Most shared'),
+            CheckboxListTileWidget(title: 'Trending'),
+            CheckboxListTileWidget(title: 'Open'),
+            CheckboxListTileWidget(title: 'Close'),
+            CheckboxListTileWidget(title: 'Frequent'),
+            CheckboxListTileWidget(title: 'Most liked'),
+            CheckboxListTileWidget(title: 'Most shared'),
           ]),
-          const KexpansionTileWidget(
+          KexpansionTileWidget(
               initiallyExpanded: false,
               title: 'Report Category',
               children: [
@@ -46,7 +49,7 @@ class ReportFilterPage extends StatelessWidget {
                   height: defaultMargin,
                 )
               ]),
-          const KexpansionTileWidget(
+          KexpansionTileWidget(
               initiallyExpanded: false,
               title: 'Risk Level',
               children: [
@@ -55,27 +58,13 @@ class ReportFilterPage extends StatelessWidget {
                   height: defaultMargin,
                 )
               ]),
-          const KanimatedListExpansionWidget()
+          KanimatedListExpansionWidget()
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Confirm (6)',
         onPressed: () {},
-      ),
-    );
-  }
-
-  Widget checkboxListTileWidget({required String title}) {
-    return CheckboxListTile(
-      value: false,
-      dense: true,
-      checkboxShape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-      onChanged: (value) {},
-      title: Text(
-        title,
-        style: LightColors.subTitle2TextStyle,
       ),
     );
   }

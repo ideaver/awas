@@ -35,7 +35,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
     final TextStyle titleTextStyle =
         LightColors.black2TextStyle.copyWith(fontWeight: FontWeight.bold);
     final TextStyle contentTextStyle = LightColors.subTitle2TextStyle;
-
+//TODO: add 5 whys close statement
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(

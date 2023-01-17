@@ -22,7 +22,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   }) : super(key: key);
 
   @override
-  Size get preferredSize => Size.fromHeight(bottom != null ? 130 : 52);
+  Size get preferredSize => Size.fromHeight(bottom != null ? 120 : 60);
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +82,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(0.0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const KdividerWidget(),
                       bottom as Widget,
