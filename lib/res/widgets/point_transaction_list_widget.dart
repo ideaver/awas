@@ -8,7 +8,6 @@ class PointTransactionListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: fix space in profile page
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       body: ListView.builder(

@@ -1,14 +1,9 @@
+import '../res/const.dart';
 import '../res/widgets/kelevated_button.dart';
 import '/res/widgets/kcard_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../res/theme/colors/light_colors.dart';
-
-enum Event {
-  resetPasswordSuccess,
-  profileUpdatedSuccess,
-  ;
-}
 
 class ThankYouPageModel {
   final String title;
@@ -31,10 +26,16 @@ class PointsTransactionWidgetModel {
 
 class ThankYouPage extends StatelessWidget {
   final Event event;
-  late final ThankYouPageModel thankYouPageModel;
+  ThankYouPageModel? thankYouPageModel;
 
   // ignore: prefer_const_constructors_in_immutables
-  ThankYouPage({super.key, required this.event});
+  ThankYouPage(
+      {super.key, required this.event, required this.thankYouPageModel});
+
+  ThankYouPage.profileUpdate({ThankYouPageModel? thankYouPageModel})
+      : this(
+            event: Event.profileUpdatedSuccess,
+            thankYouPageModel: thankYouPageModel);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +47,7 @@ class ThankYouPage extends StatelessWidget {
             floatingActionButton: KelevatedButtonWidget.floating(
               title: 'Go to Dashboard',
               onPressed: () {},
-              icon: const Icon(Icons.home),
+              icon: Icons.home,
             ));
         break;
       default:
@@ -73,7 +74,7 @@ class ThankYouPage extends StatelessWidget {
             height: defaultMargin,
           ),
           Text(
-            thankYouPageModel.title,
+            thankYouPageModel?.title ?? 'null',
             style: LightColors.linkTextStyle
                 .copyWith(fontSize: 20.0, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
@@ -82,7 +83,7 @@ class ThankYouPage extends StatelessWidget {
             height: defaultMargin * 2,
           ),
           Text(
-            thankYouPageModel.instruction,
+            thankYouPageModel?.instruction ?? 'null',
             style: LightColors.subTitleTextStyle
                 .copyWith(fontSize: 14.0, fontWeight: FontWeight.normal),
             textAlign: TextAlign.center,
@@ -94,7 +95,7 @@ class ThankYouPage extends StatelessWidget {
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: thankYouPageModel.floatingActionButton,
+      floatingActionButton: thankYouPageModel?.floatingActionButton,
     );
   }
 

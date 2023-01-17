@@ -172,10 +172,7 @@ class _ReportFormPageState extends State<ReportFormPage>
                   backgroundColor: LightColors.kBackgroundColor,
                   textColor: LightColors.kPrimaryColor,
                   title: 'Back',
-                  icon: const Icon(
-                    Icons.chevron_left,
-                    color: LightColors.kPrimaryColor,
-                  ),
+                  icon: Icons.chevron_left,
                   onPressed: () {
                     tabController.animateTo(tabController.previousIndex);
                   },
@@ -187,7 +184,7 @@ class _ReportFormPageState extends State<ReportFormPage>
                 child: KelevatedButtonWidget(
                   title: 'Submit',
                   onPressed: () {},
-                  icon: const Icon(Icons.file_upload),
+                  icon: Icons.file_upload,
                 ),
               ),
             ],
@@ -256,7 +253,7 @@ class _ReportFormPageState extends State<ReportFormPage>
                   onPressed: () {
                     tabController.animateTo(1);
                   },
-                  icon: const Icon(Icons.chevron_right),
+                  icon: Icons.chevron_right,
                 ),
               ),
             ],

@@ -22,9 +22,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/menu': (context) => const MenuPage(),
   '/login': (context) => const LoginPage(),
   '/forgot-password': (context) => const ForgotPasswordPage(),
-  '/thank-you': (context) => ThankYouPage(
-        event: Event.profileUpdatedSuccess,
-      ),
+  '/thank-you': (context) => ThankYouPage.profileUpdate(),
   '/terms': (context) => const TermsPage(),
   '/profile': (context) => const ProfilePage(),
   '/user-list': (context) => const UserListPage(),
@@ -37,5 +35,5 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/report-list': (context) => const ReportListPage(),
   '/report-filter': (context) => const ReportFilterPage(),
   '/report-details': (context) => const ReportDetailsPage(),
-  '/settings': (context) => const SettingsPage(),
+  '/settings': (context) => const SettingsPage.employee(),
 };

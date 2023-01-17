@@ -67,7 +67,7 @@ class LightColors {
       textStyle: const TextStyle(
     color: LightColors.kDarkGreyColor,
     fontSize: 12,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
   ));
 
   static TextStyle linkTextStyle = GoogleFonts.montserrat(

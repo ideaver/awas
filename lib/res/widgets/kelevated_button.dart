@@ -8,7 +8,7 @@ class KelevatedButtonWidget extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color textColor;
-  final Widget? icon;
+  final IconData? icon;
   final bool keyboardShow;
 
   const KelevatedButtonWidget({
@@ -21,10 +21,11 @@ class KelevatedButtonWidget extends StatelessWidget {
     this.keyboardShow = false,
   }) : super(key: key);
 
-  // ignore: use_key_in_widget_constructors
   //TODO: work on hide on scroll
   const KelevatedButtonWidget.floating(
-      {required String title, required void Function() onPressed, Widget? icon})
+      {required String title,
+      required void Function() onPressed,
+      IconData? icon})
       : this(
             keyboardShow: true, title: title, onPressed: onPressed, icon: icon);
 
@@ -47,20 +48,28 @@ class KelevatedButtonWidget extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: ElevatedButton.icon(
-        icon: icon ?? const SizedBox(),
+        icon: Icon(
+          icon,
+          color: textColor,
+        ),
         style: ElevatedButton.styleFrom(
+            disabledBackgroundColor: LightColors.kPrimaryColor.withOpacity(0.2),
             backgroundColor: backgroundColor,
-            side: const BorderSide(
-              color: LightColors.kPrimaryColor,
-            ),
+            side: backgroundColor != LightColors.kWhiteColor
+                ? null
+                : const BorderSide(
+                    color: LightColors.kPrimaryColor,
+                  ),
             shape: RoundedRectangleBorder(
               borderRadius:
                   BorderRadius.circular(defaultCircular / 2), // <-- Radius
             )),
-        onPressed: onPressed,
+        onPressed: null,
         label: Text(
           title,
-          style: LightColors.whiteTextStyle.copyWith(color: textColor),
+          style: LightColors.whiteTextStyle.copyWith(
+              color:
+                  onPressed != null ? textColor : LightColors.kDarkGreyColor),
         ),
       ),
     );

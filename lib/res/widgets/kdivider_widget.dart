@@ -4,15 +4,17 @@ import '../theme/colors/light_colors.dart';
 
 class KdividerWidget extends StatelessWidget {
   final double horizontalMargin;
-  const KdividerWidget({super.key, this.horizontalMargin = defaultMargin});
+  final double opacity;
+  const KdividerWidget(
+      {super.key, this.horizontalMargin = defaultMargin, this.opacity = 0.5});
 
   @override
   Widget build(BuildContext context) {
     return Divider(
-      height: 1.0,
+      height: 2.0,
       indent: horizontalMargin,
       endIndent: horizontalMargin,
-      color: LightColors.kDarkGreyColor.withOpacity(0.5),
+      color: LightColors.kDarkGreyColor.withOpacity(opacity),
     );
   }
 }
