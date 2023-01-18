@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'view/settings/point_setting_page.dart';
 import 'view/settings/settings_page.dart';
 import '/view/report/report_form_page.dart';
 import 'view/report/report_loading_page.dart';
@@ -37,5 +38,6 @@ final Map<String, Widget Function(BuildContext)> routes = {
   '/report-filter': (context) => const ReportFilterPage(),
   '/report-details': (context) => const ReportDetailsPage(),
   '/settings': (context) => const SettingsPage.employee(),
+  '/point-setting': (context) => const PointSettingPage(),
   '/import-export': (context) => const ImportExportPage(),
 };

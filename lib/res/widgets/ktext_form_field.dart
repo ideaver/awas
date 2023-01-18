@@ -11,6 +11,7 @@ class KtextFormFieldWidget extends StatelessWidget {
   final int? minLines;
   final bool withCounterText;
   final bool withEnterText;
+  final Color borderSideColor;
   final TextEditingController? controller;
   final void Function(String value)? onFieldSubmitted;
   final void Function(String value)? onChanged;
@@ -28,7 +29,8 @@ class KtextFormFieldWidget extends StatelessWidget {
       this.obscureText = false,
       this.minLines,
       this.withCounterText = false,
-      this.withEnterText = true});
+      this.withEnterText = true,
+      this.borderSideColor = LightColors.kGreyColor});
 
   // ignore: use_key_in_widget_constructors
   KtextFormFieldWidget.password(
@@ -84,7 +86,7 @@ class KtextFormFieldWidget extends StatelessWidget {
                   horizontal: defaultMargin),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(defaultCircular - 10),
-                  borderSide: const BorderSide(color: LightColors.kGreyColor)),
+                  borderSide: BorderSide(color: borderSideColor)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(defaultCircular - 10),
                 // borderSide:
