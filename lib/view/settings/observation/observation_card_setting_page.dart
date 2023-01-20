@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:awas/res/widgets/kelevated_button.dart';
-import 'package:awas/res/widgets/ktext_form_field.dart';
+import '/res/widgets/kelevated_button.dart';
+import '/res/widgets/ktext_form_field.dart';
 
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
@@ -108,9 +108,12 @@ class ObservationCardSettingPage extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: KelevatedButtonWidget.floating(
-        title: 'Save changes',
+      floatingActionButton: FloatingActionButton(
         onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: LightColors.kWhiteColor,
+        ),
       ),
     );
   }

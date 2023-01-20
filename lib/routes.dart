@@ -1,4 +1,5 @@
-import 'package:awas/view/settings/observation_card_setting_page.dart';
+import 'package:awas/view/settings/observation/observation_card_setting_page.dart';
+import 'package:awas/view/settings/observation/observation_checklist_setting_page.dart';
 import 'package:awas/view/settings/report_setting_page.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ import '/view/report/report_details_page.dart';
 import '/view/user/user_filter_page.dart';
 import '/view/user/user_list_page.dart';
 import 'view/dashboard/dashboard_employee_page.dart';
-import 'view/inbox_page.dart';
+import 'view/user/inbox_page.dart';
 import 'view/login/forgot_password_page.dart';
 import 'view/login/login_page.dart';
 import 'view/login/terms_page.dart';
@@ -20,7 +21,7 @@ import 'view/report/report_list_page.dart';
 import 'view/thank_you_page.dart';
 import 'view/user/point_transactions_page.dart';
 import 'view/user/profile_page.dart';
-import '/view/import_export_page.dart';
+import 'view/settings/import_export_page.dart';
 
 final Map<String, Widget Function(BuildContext)> routes = {
   '/menu': (context) => const MenuPage(),
@@ -45,5 +46,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   ImportExportPage.routeName: (context) => const ImportExportPage(),
   ReportSettingPage.routeName: (context) => const ReportSettingPage(),
   ObservationCardSettingPage.routeName: (context) =>
-      const ObservationCardSettingPage()
+      const ObservationCardSettingPage(),
+  ObservationChecklistSettingPage.routeName: (context) =>
+      const ObservationChecklistSettingPage()
 };
