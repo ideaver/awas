@@ -1,3 +1,4 @@
+import 'package:awas/view/settings/observation_card_setting_page.dart';
 import 'package:awas/view/settings/report_setting_page.dart';
 import 'package:flutter/material.dart';
 
@@ -43,4 +44,6 @@ final Map<String, Widget Function(BuildContext)> routes = {
   PointSettingPage.routeName: (context) => const PointSettingPage(),
   ImportExportPage.routeName: (context) => const ImportExportPage(),
   ReportSettingPage.routeName: (context) => const ReportSettingPage(),
+  ObservationCardSettingPage.routeName: (context) =>
+      const ObservationCardSettingPage()
 };
