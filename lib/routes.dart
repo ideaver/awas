@@ -1,3 +1,4 @@
+import 'package:awas/view/settings/report_setting_page.dart';
 import 'package:flutter/material.dart';
 
 import 'view/settings/point_setting_page.dart';
@@ -30,15 +31,16 @@ final Map<String, Widget Function(BuildContext)> routes = {
   ProfilePage.routeName: (context) => const ProfilePage(),
   UserListPage.routeName: (context) => const UserListPage(),
   UserFilterPage.routeName: (context) => const UserFilterPage(),
-  '/inbox': (context) => const InboxPage(),
-  '/point-transactions': (context) => const PointTransactionsPage(),
-  '/dashboard-employee': (context) => const DashboardEmployeePage(),
-  '/report-offline-loading': (context) => const ReportLoadingPage(),
-  '/report-form': (context) => const ReportFormPage(),
-  '/report-list': (context) => const ReportListPage(),
-  '/report-filter': (context) => const ReportFilterPage(),
-  '/report-details': (context) => const ReportDetailsPage(),
-  '/settings': (context) => const SettingsPage.employee(),
-  '/point-setting': (context) => const PointSettingPage(),
-  '/import-export': (context) => const ImportExportPage(),
+  InboxPage.routeName: (context) => const InboxPage(),
+  PointTransactionsPage.routeName: (context) => const PointTransactionsPage(),
+  DashboardEmployeePage.routeName: (context) => const DashboardEmployeePage(),
+  ReportLoadingPage.routeName: (context) => const ReportLoadingPage(),
+  ReportFormPage.routeName: (context) => const ReportFormPage(),
+  ReportListPage.routeName: (context) => const ReportListPage(),
+  ReportFilterPage.routeName: (context) => const ReportFilterPage(),
+  ReportDetailsPage.routeName: (context) => const ReportDetailsPage(),
+  SettingsPage.employeeRouteName: (context) => const SettingsPage.employee(),
+  PointSettingPage.routeName: (context) => const PointSettingPage(),
+  ImportExportPage.routeName: (context) => const ImportExportPage(),
+  ReportSettingPage.routeName: (context) => const ReportSettingPage(),
 };

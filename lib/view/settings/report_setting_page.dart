@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:awas/res/widgets/kelevated_button.dart';
 import 'package:awas/res/widgets/ktext_form_field.dart';
 
@@ -21,6 +19,8 @@ class PointSettingPageModel {
 }
 
 class ReportSettingPage extends StatelessWidget {
+  static const String routeName = '/report-setting';
+
   const ReportSettingPage({super.key});
 
   //TODO: Fix bottom spacing
@@ -29,7 +29,7 @@ class ReportSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      appBar: KappBarWidget(title: 'Points Settings', context: context),
+      appBar: KappBarWidget(title: 'Report Settings', context: context),
       body: SizedBox(
         //expand to device widht
         width: double.infinity,
