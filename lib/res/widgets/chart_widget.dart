@@ -335,7 +335,7 @@ class ChartWidgetState extends State<ChartWidget> {
                 Text(
                   'Monthly Report',
                   style: LightColors.titleTextStyle
-                      .copyWith(color: LightColors.kWhiteColor, fontSize: 25),
+                      .copyWith(color: LightColors.kWhiteColor, fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
                 Expanded(

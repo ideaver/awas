@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'kcard_widget.dart';
 
 class CustomCircularProgressWidget extends StatefulWidget {
+  const CustomCircularProgressWidget({super.key});
+
   @override
   _CustomCircularProgressWidgetState createState() =>
       _CustomCircularProgressWidgetState();

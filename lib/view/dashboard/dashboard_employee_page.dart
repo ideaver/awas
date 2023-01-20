@@ -22,29 +22,113 @@ class DashboardEmployeePage extends StatelessWidget {
           children: [
             syncNotificationWidget(),
             const SizedBox(
-              height: defaultMargin,
+              height: defaultMargin / 2,
             ),
             const KcardWidget(
+              width: double.infinity,
               padding: EdgeInsets.all(0.0),
               color: LightColors.kGreyColor,
-              height: 300,
-              elevation: 10,
+              height: 250,
+              elevation: 5,
               child: ChartWidget(),
             ),
             const SizedBox(
-              height: defaultMargin,
+              height: defaultMargin / 2,
             ),
             Row(
-              children: [
+              children: const [
                 Expanded(child: CustomCircularProgressWidget()),
                 Expanded(child: CustomCircularProgressWidget()),
               ],
-            )
+            ),
+            const SizedBox(
+              height: defaultMargin / 2,
+            ),
+            KcardWidget(
+                elevation: 0.0,
+                color: LightColors.kBackgroundColor,
+                borderColor: LightColors.kLavender,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Your total Report',
+                          style: LightColors.subTitle2TextStyle,
+                        ),
+                        const SizedBox(
+                          height: defaultMargin / 2,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            style: LightColors.linkTextStyle,
+                            children: const [
+                              TextSpan(
+                                  text: '23/',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 32)),
+                              TextSpan(
+                                  text: '35',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20)),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: defaultMargin / 2,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.arrow_drop_up,
+                              color: LightColors.kSuccessColor,
+                            ),
+                            Text(
+                              '+3',
+                              style: LightColors.black2TextStyle.copyWith(
+                                color: LightColors.kSuccessColor,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: defaultMargin,
+                            ),
+                            Text(
+                              'period of month',
+                              style: LightColors.subTitle2TextStyle,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    const KcardWidget(
+                      elevation: 5.0,
+                      padding: EdgeInsets.all(defaultMargin / 2),
+                      child: Icon(
+                        Icons.receipt,
+                        color: LightColors.kBackgroundColor,
+                      ),
+                    )
+                  ],
+                )),
+            Text(
+              'Trending Report',
+              style: LightColors.blackTextStyle
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: defaultMargin * 8,
+            ),
           ]),
     );
   }
 
-  KcardWidget syncNotificationWidget() {
+  Widget syncNotificationWidget() {
     return KcardWidget(
         padding: const EdgeInsets.symmetric(
             horizontal: defaultMargin, vertical: defaultMargin / 2),
