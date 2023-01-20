@@ -92,8 +92,8 @@ class _UserListPageState extends State<UserListPage>
       child: Row(
         children: [
           Column(
-            children: const [
-              CircleAvatar(
+            children: [
+              const CircleAvatar(
                 backgroundImage: AssetImage('assets/avatar1.png'),
                 radius: 25,
                 backgroundColor: LightColors.kSecondaryColor,

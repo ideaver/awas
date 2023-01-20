@@ -21,22 +21,14 @@ class DashboardEmployeePage extends StatelessWidget {
           children: [
             syncNotificationWidget(),
             const SizedBox(
-              height: defaultMargin * 2,
+              height: defaultMargin,
             ),
             Card(
-              elevation: 20,
+              elevation: 0.0,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(defaultCircular),
               ),
-              child: Container(
-                height: 200,
-                decoration: BoxDecoration(
-                    color: LightColors.kBackgroundColor,
-                    borderRadius: kBorderRadius),
-                child: const ChartWidget(
-                  isShowingMainData: false,
-                ),
-              ),
+              child: Text('ug'),
             )
           ]),
     );
@@ -90,22 +82,21 @@ class DashboardEmployeePage extends StatelessWidget {
       centerTitle: true,
       title: Image.asset('assets/logo.png', scale: 5),
       actions: [
-        Center(
-          child: SizedBox(
-            width: 125,
-            child: Stack(children: const [
-              StarBadgeWidget(),
-              Positioned(
-                right: 0,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://cdn.visily.ai/app/production/1672195451865/static/media/F2.da2ec199.png'),
-                  radius: 25,
-                  backgroundColor: LightColors.kWhiteColor,
-                ),
-              )
-            ]),
-          ),
+        SizedBox(
+          width: 120,
+          child: Stack(alignment: AlignmentDirectional.centerStart, children: [
+            StarBadgeWidget.rightMargin(),
+            const Positioned(
+              right: 0,
+              top: 0,
+              bottom: 0,
+              child: CircleAvatar(
+                radius: 23,
+                backgroundImage: AssetImage('assets/avatar1.png'),
+                backgroundColor: LightColors.kSecondaryColor,
+              ),
+            )
+          ]),
         ),
         const SizedBox(
           width: defaultMargin / 4,

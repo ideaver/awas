@@ -1,8 +1,8 @@
-import 'package:awas/view/settings/observation/observation_card_setting_page.dart';
-import 'package:awas/view/settings/observation/observation_checklist_setting_page.dart';
-import 'package:awas/view/settings/report_setting_page.dart';
 import 'package:flutter/material.dart';
 
+import '/view/settings/observation/observation_card_setting_page.dart';
+import '/view/settings/observation/observation_checklist_setting_page.dart';
+import '/view/settings/report_setting_page.dart';
 import 'view/settings/point_setting_page.dart';
 import 'view/settings/settings_page.dart';
 import '/view/report/report_form_page.dart';

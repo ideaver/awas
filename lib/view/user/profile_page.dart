@@ -286,13 +286,13 @@ class _ProfilePageState extends State<ProfilePage>
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
-          children: const [
-            CircleAvatar(
+          children: [
+            const CircleAvatar(
               backgroundImage: AssetImage('assets/avatar1.png'),
               radius: 35,
               backgroundColor: LightColors.kWhiteColor,
             ),
-            SizedBox(
+            const SizedBox(
               height: defaultMargin,
             ),
             StarBadgeWidget()
