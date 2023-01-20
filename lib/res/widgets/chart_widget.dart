@@ -2,8 +2,8 @@ import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class ChartWidget extends StatelessWidget {
-  const ChartWidget({super.key, required this.isShowingMainData});
+class LineChartWidget extends StatelessWidget {
+  const LineChartWidget({super.key, required this.isShowingMainData});
 
   final bool isShowingMainData;
 
@@ -33,8 +33,8 @@ class ChartWidget extends StatelessWidget {
         titlesData: titlesData2,
         borderData: borderData,
         lineBarsData: lineBarsData2,
-        minX: 0,
-        maxX: 14,
+        minX: 1,
+        maxX: 12,
         maxY: 6,
         minY: 0,
       );
@@ -68,7 +68,7 @@ class ChartWidget extends StatelessWidget {
       ];
 
   LineTouchData get lineTouchData2 => LineTouchData(
-        enabled: false,
+        enabled: true,
       );
 
   FlTitlesData get titlesData2 => FlTitlesData(
@@ -93,7 +93,8 @@ class ChartWidget extends StatelessWidget {
       ];
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    TextStyle style = LightColors.blackTextStyle;
+    TextStyle style =
+        LightColors.whiteTextStyle.copyWith(fontWeight: FontWeight.bold);
     String text;
     switch (value.toInt()) {
       case 1:
@@ -126,17 +127,18 @@ class ChartWidget extends StatelessWidget {
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    TextStyle style = LightColors.blackTextStyle;
+    TextStyle style =
+        LightColors.whiteTextStyle.copyWith(fontWeight: FontWeight.bold);
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = Text('SEPT', style: style);
+        text = Text('Sept', style: style);
         break;
       case 7:
-        text = Text('OCT', style: style);
+        text = Text('Oct', style: style);
         break;
       case 12:
-        text = Text('DEC', style: style);
+        text = Text('Dec', style: style);
         break;
       default:
         text = const Text('');
@@ -162,7 +164,7 @@ class ChartWidget extends StatelessWidget {
   FlBorderData get borderData => FlBorderData(
         show: true,
         border: const Border(
-          bottom: BorderSide(color: Colors.white, width: 1),
+          bottom: BorderSide(color: Colors.grey, width: 0.2),
           left: BorderSide(color: Colors.transparent),
           right: BorderSide(color: Colors.transparent),
           top: BorderSide(color: Colors.transparent),
@@ -244,13 +246,13 @@ class ChartWidget extends StatelessWidget {
 
   LineChartBarData get lineChartBarData2_2 => LineChartBarData(
         isCurved: true,
-        color: const Color(0x99aa4cfc),
+        color: LightColors.kPrimaryColor,
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: FlDotData(show: false),
         belowBarData: BarAreaData(
           show: true,
-          color: const Color(0x33aa4cfc),
+          color: LightColors.kLavender,
         ),
         spots: const [
           FlSpot(1, 1),
@@ -265,11 +267,13 @@ class ChartWidget extends StatelessWidget {
   LineChartBarData get lineChartBarData2_3 => LineChartBarData(
         isCurved: true,
         curveSmoothness: 0,
-        color: const Color(0x4427b6fc),
+        color: LightColors.kSecondaryColor,
         barWidth: 2,
         isStrokeCapRound: true,
         dotData: FlDotData(show: true),
-        belowBarData: BarAreaData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+        ),
         spots: const [
           FlSpot(1, 3.8),
           FlSpot(3, 1.9),
@@ -280,14 +284,14 @@ class ChartWidget extends StatelessWidget {
       );
 }
 
-class LineChartSample1 extends StatefulWidget {
-  const LineChartSample1({super.key});
+class ChartWidget extends StatefulWidget {
+  const ChartWidget({super.key});
 
   @override
-  State<StatefulWidget> createState() => LineChartSample1State();
+  State<StatefulWidget> createState() => ChartWidgetState();
 }
 
-class LineChartSample1State extends State<LineChartSample1> {
+class ChartWidgetState extends State<ChartWidget> {
   late bool isShowingMainData;
 
   @override
@@ -302,56 +306,43 @@ class LineChartSample1State extends State<LineChartSample1> {
       aspectRatio: 1.23,
       child: DecoratedBox(
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(18)),
+          borderRadius: BorderRadius.all(Radius.circular(defaultCircular)),
           gradient: LinearGradient(
             colors: [
-              Color(0xff2c274c),
-              Color(0xff46426c),
+              LightColors.kDarkBlue,
+              Colors.blueGrey,
             ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Stack(
-          children: <Widget>[
+          children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
+              children: [
                 const SizedBox(
-                  height: 37,
+                  height: defaultMargin,
                 ),
-                const Text(
-                  'Unfold Shop 2018',
-                  style: TextStyle(
-                    color: Color(0xff827daa),
-                    fontSize: 16,
-                  ),
+                Text(
+                  'Report by Category 2022',
+                  style: LightColors.subTitle2TextStyle,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(
-                  height: 4,
+                  height: 5,
                 ),
-                const Text(
-                  'Monthly Sales',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
-                  ),
+                Text(
+                  'Monthly Report',
+                  style: LightColors.titleTextStyle
+                      .copyWith(color: LightColors.kWhiteColor, fontSize: 25),
                   textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 37,
                 ),
                 Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 16, left: 6),
-                    child: ChartWidget(isShowingMainData: isShowingMainData),
-                  ),
+                  child: LineChartWidget(isShowingMainData: isShowingMainData),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: defaultMargin,
                 ),
               ],
             ),

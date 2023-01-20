@@ -1,5 +1,5 @@
-import 'package:awas/res/theme/colors/light_colors.dart';
-import 'package:awas/res/widgets/star_badge_widget.dart';
+import '/res/theme/colors/light_colors.dart';
+import '/res/widgets/star_badge_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../res/widgets/chart_widget.dart';
@@ -23,12 +23,12 @@ class DashboardEmployeePage extends StatelessWidget {
             const SizedBox(
               height: defaultMargin,
             ),
-            Card(
-              elevation: 0.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(defaultCircular),
-              ),
-              child: Text('ug'),
+            const KcardWidget(
+              padding: EdgeInsets.all(0.0),
+              color: LightColors.kGreyColor,
+              height: 300,
+              elevation: 10,
+              child: ChartWidget(),
             )
           ]),
     );
