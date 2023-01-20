@@ -8,6 +8,8 @@ import '/res/widgets/ktabbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReportDetailsPage extends StatefulWidget {
+  static const String routeName = '/report-details';
+
   const ReportDetailsPage({super.key});
 
   @override

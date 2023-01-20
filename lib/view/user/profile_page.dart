@@ -17,6 +17,8 @@ import 'package:flutter/material.dart';
 import '../../res/theme/colors/light_colors.dart';
 
 class ProfilePage extends StatefulWidget {
+  static const String routeName = '/profile';
+
   const ProfilePage({super.key});
 
   @override

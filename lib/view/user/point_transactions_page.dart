@@ -6,6 +6,8 @@ import '/res/widgets/kcard_widget.dart';
 import 'package:flutter/material.dart';
 
 class PointTransactionsPage extends StatelessWidget {
+  static const String routeName = '/point-transactions';
+
   const PointTransactionsPage({super.key});
 
   @override

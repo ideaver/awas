@@ -22,13 +22,14 @@ import '/view/import_export_page.dart';
 
 final Map<String, Widget Function(BuildContext)> routes = {
   '/menu': (context) => const MenuPage(),
-  '/login': (context) => const LoginPage(),
-  '/forgot-password': (context) => const ForgotPasswordPage(),
-  '/thank-you': (context) => ThankYouPage.profileUpdate(),
-  '/terms': (context) => const TermsPage(),
-  '/profile': (context) => const ProfilePage(),
-  '/user-list': (context) => const UserListPage(),
-  '/user-filter': (context) => const UserFilterPage(),
+  LoginPage.routeName: (context) => const LoginPage(),
+  ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
+  ThankYouPage.profileUpdaterouteName: (context) =>
+      ThankYouPage.profileUpdate(),
+  TermsPage.routeName: (context) => const TermsPage(),
+  ProfilePage.routeName: (context) => const ProfilePage(),
+  UserListPage.routeName: (context) => const UserListPage(),
+  UserFilterPage.routeName: (context) => const UserFilterPage(),
   '/inbox': (context) => const InboxPage(),
   '/point-transactions': (context) => const PointTransactionsPage(),
   '/dashboard-employee': (context) => const DashboardEmployeePage(),

@@ -17,6 +17,8 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 class ReportFormPage extends StatefulWidget {
+  static const String routeName = '/report-form';
+
   const ReportFormPage({super.key});
 
   @override

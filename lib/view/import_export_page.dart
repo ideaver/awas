@@ -8,6 +8,8 @@ import '/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
 
 class ImportExportPage extends StatefulWidget {
+  static const String routeName = '/import-export';
+
   const ImportExportPage({super.key});
 
   @override

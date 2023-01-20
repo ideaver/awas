@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 class SettingsPage extends StatelessWidget {
   final Role role;
 
+  static const String employeeRouteName = '/settings-employee';
+
   const SettingsPage({super.key, required this.role});
 
   const SettingsPage.employee() : this(role: Role.employee);

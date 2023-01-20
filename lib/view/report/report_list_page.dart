@@ -5,6 +5,8 @@ import '/res/widgets/ktabbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReportListPage extends StatefulWidget {
+  static const String routeName = '/report-list';
+
   const ReportListPage({super.key});
 
   @override

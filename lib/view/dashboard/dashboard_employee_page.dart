@@ -6,6 +6,8 @@ import '../../res/widgets/chart_widget.dart';
 import '../../res/widgets/kcard_widget.dart';
 
 class DashboardEmployeePage extends StatelessWidget {
+  static const String routeName = '/dashboard-employee';
+
   const DashboardEmployeePage({super.key});
 
   @override

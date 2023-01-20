@@ -9,6 +9,8 @@ import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class UserFilterPage extends StatelessWidget {
+  static const String routeName = '/user-filter';
+
   const UserFilterPage({super.key});
 
   @override

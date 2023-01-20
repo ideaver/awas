@@ -28,6 +28,8 @@ class ThankYouPage extends StatelessWidget {
   final Event event;
   ThankYouPageModel? thankYouPageModel;
 
+  static const String profileUpdaterouteName = '/profile-update-thank-you';
+
   // ignore: prefer_const_constructors_in_immutables
   ThankYouPage(
       {super.key, required this.event, required this.thankYouPageModel});

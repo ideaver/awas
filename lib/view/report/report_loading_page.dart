@@ -4,6 +4,8 @@ import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
 class ReportLoadingPage extends StatelessWidget {
+  static const String routeName = '/report-offline-loading';
+
   const ReportLoadingPage({super.key});
 
   @override

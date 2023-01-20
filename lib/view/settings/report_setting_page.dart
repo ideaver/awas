@@ -20,10 +20,8 @@ class PointSettingPageModel {
       required this.switchButton});
 }
 
-class PointSettingPage extends StatelessWidget {
-  static const String routeName = '/point-setting';
-
-  const PointSettingPage({super.key});
+class ReportSettingPage extends StatelessWidget {
+  const ReportSettingPage({super.key});
 
   //TODO: Fix bottom spacing
 

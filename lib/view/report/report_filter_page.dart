@@ -9,6 +9,8 @@ import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReportFilterPage extends StatelessWidget {
+  static const String routeName = '/report-filter';
+
   const ReportFilterPage({super.key});
 
   @override

@@ -9,6 +9,8 @@ import 'package:flutter/material.dart';
 import '../../res/widgets/kcard_widget.dart';
 
 class UserListPage extends StatefulWidget {
+  static const String routeName = '/user-list';
+
   const UserListPage({super.key});
 
   @override

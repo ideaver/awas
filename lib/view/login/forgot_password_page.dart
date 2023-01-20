@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import '../../res/theme/colors/light_colors.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
+  static const String routeName = '/forgot-password';
+
   const ForgotPasswordPage({super.key});
 
   @override

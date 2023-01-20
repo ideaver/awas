@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import '../../res/widgets/kelevated_button.dart';
 
 class TermsPage extends StatelessWidget {
+  static const String routeName = '/terms';
+
   const TermsPage({super.key});
 
   @override

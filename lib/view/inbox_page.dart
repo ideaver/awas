@@ -7,6 +7,8 @@ import '/res/widgets/ktabbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class InboxPage extends StatefulWidget {
+  static const String routeName = '/inbox';
+
   const InboxPage({super.key});
 
   @override
