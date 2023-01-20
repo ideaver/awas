@@ -1,3 +1,4 @@
+import '../../res/widgets/custom_circular_progress_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/star_badge_widget.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,15 @@ class DashboardEmployeePage extends StatelessWidget {
               height: 300,
               elevation: 10,
               child: ChartWidget(),
+            ),
+            const SizedBox(
+              height: defaultMargin,
+            ),
+            Row(
+              children: [
+                Expanded(child: CustomCircularProgressWidget()),
+                Expanded(child: CustomCircularProgressWidget()),
+              ],
             )
           ]),
     );
@@ -36,13 +46,15 @@ class DashboardEmployeePage extends StatelessWidget {
 
   KcardWidget syncNotificationWidget() {
     return KcardWidget(
+        padding: const EdgeInsets.symmetric(
+            horizontal: defaultMargin, vertical: defaultMargin / 2),
         color: LightColors.kDangerColor,
         elevation: 0.0,
         child: Row(
           children: [
             const Icon(
               Icons.signal_wifi_off,
-              color: LightColors.kWhiteColor,
+              color: LightColors.kBackgroundColor,
             ),
             Expanded(
               child: Column(
@@ -54,10 +66,10 @@ class DashboardEmployeePage extends StatelessWidget {
                   ),
                   Text(
                     'Please connect to the internet ASAP',
-                    style: LightColors.subTitle2TextStyle.copyWith(
-                        fontSize: 11,
-                        fontWeight: FontWeight.bold,
-                        color: LightColors.kWhiteColor),
+                    style: LightColors.whiteTextStyle.copyWith(
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
