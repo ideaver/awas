@@ -10,7 +10,7 @@ class LineChartWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LineChart(
-      isShowingMainData ? sampleData1 : sampleData2,
+      isShowingMainData ? sampleData2 : sampleData1,
       swapAnimationDuration: const Duration(milliseconds: 250),
     );
   }

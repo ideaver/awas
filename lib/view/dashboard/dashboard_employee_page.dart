@@ -1,9 +1,11 @@
+import 'package:awas/res/widgets/pie_chart_widget.dart';
+
 import '../../res/widgets/custom_circular_progress_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/star_badge_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../res/widgets/chart_widget.dart';
+import '../../res/widgets/line_chart_widget.dart';
 import '../../res/widgets/kcard_widget.dart';
 
 class DashboardEmployeePage extends StatelessWidget {
@@ -20,9 +22,99 @@ class DashboardEmployeePage extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           padding: const EdgeInsets.all(defaultMargin),
           children: [
-            syncNotificationWidget(),
+            // syncNotificationWidget(),
+
+            Row(
+              children: [
+                Text(
+                  'Report Overview',
+                  style: LightColors.subTitleTextStyle,
+                ),
+                const Spacer(),
+                Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: TextButton.icon(
+                    style: ButtonStyle(),
+                    //TODO apply rounded splash
+                    onPressed: () {},
+                    label: Text(
+                      '2022',
+                      style: LightColors.linkTextStyle,
+                    ),
+                    icon: const Icon(
+                      Icons.arrow_drop_down,
+                      color: LightColors.kBlackColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(
-              height: defaultMargin / 2,
+              height: defaultMargin / 3,
+            ),
+            Row(
+              children: [
+                const Icon(
+                  Icons.sentiment_very_dissatisfied,
+                  color: LightColors.kDangerColor,
+                  size: 17,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 4,
+                ),
+                Text(
+                  'Near Miss',
+                  style: LightColors.subTitle3TextStyle,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 3,
+                ),
+                const Icon(
+                  Icons.sentiment_very_dissatisfied,
+                  color: LightColors.kSuccessColor,
+                  size: 17,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 4,
+                ),
+                Text(
+                  'Safe',
+                  style: LightColors.subTitle3TextStyle,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 3,
+                ),
+                const Icon(
+                  Icons.sentiment_very_dissatisfied,
+                  color: LightColors.kPrimaryColor,
+                  size: 17,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 4,
+                ),
+                Text(
+                  'Unsafe',
+                  style: LightColors.subTitle3TextStyle,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 3,
+                ),
+                const Icon(
+                  Icons.sentiment_very_dissatisfied,
+                  color: LightColors.kBlackColor,
+                  size: 17,
+                ),
+                const SizedBox(
+                  width: defaultMargin / 4,
+                ),
+                Text(
+                  'Escalation',
+                  style: LightColors.subTitle3TextStyle,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: defaultMargin,
             ),
             const KcardWidget(
               width: double.infinity,
@@ -37,7 +129,7 @@ class DashboardEmployeePage extends StatelessWidget {
             ),
             Row(
               children: const [
-                Expanded(child: CustomCircularProgressWidget()),
+                Expanded(child: PieChartWidget()),
                 Expanded(child: CustomCircularProgressWidget()),
               ],
             ),
