@@ -1,4 +1,5 @@
 import '../../res/widgets/user_custom_field_datatable_widget.dart';
+import '../../res/widgets/user_list_widget.dart';
 import '/res/widgets/star_badge_widget.dart';
 
 import '/res/theme/colors/light_colors.dart';
@@ -71,7 +72,7 @@ class _UserListPageState extends State<UserListPage>
                   style: LightColors.subTitle2TextStyle,
                 );
               }
-              return listTileWidget();
+              return const UserListWidget();
             },
           ),
         ),

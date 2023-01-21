@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'kcard_widget.dart';
+import 'report_card_widget.dart';
 
 class ReportListWidget extends StatelessWidget {
   final BuildContext context;
@@ -43,7 +44,7 @@ class ReportListWidget extends StatelessWidget {
           const SizedBox(
             width: defaultMargin / 2,
           ),
-          cardWidget()
+          ReportCardWidget(context: context)
         ],
       ),
     );
