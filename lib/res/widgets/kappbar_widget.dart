@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import '/res/widgets/kdivider_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +36,8 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   AppBar appBarWidget() {
     //TODO: Change to sliver app bar to hide on scroll
     return AppBar(
+      systemOverlayStyle:
+          SystemUiOverlayStyle(statusBarColor: LightColors.kBackgroundColor),
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
