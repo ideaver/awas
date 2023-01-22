@@ -49,7 +49,7 @@ class _CustomCircularProgressWidgetState
     const current = 1234.5;
 
     return KcardWidget(
-      elevation: 1,
+      elevation: 0.0,
       padding: const EdgeInsets.all(defaultMargin / 2),
       color: LightColors.kBackgroundColor,
       borderColor: LightColors.kLavender,
@@ -93,48 +93,45 @@ class _CustomCircularProgressWidgetState
             ),
           ]),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'This month',
-                      style:
-                          LightColors.subTitle2TextStyle.copyWith(fontSize: 10),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      '73%',
-                      style: LightColors.blackTextStyle,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'This month',
+                    style:
+                        LightColors.subTitle2TextStyle.copyWith(fontSize: 10),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '73%',
+                    style: LightColors.blackTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Last month',
-                      style:
-                          LightColors.subTitle2TextStyle.copyWith(fontSize: 10),
-                      textAlign: TextAlign.center,
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      '63%',
-                      style: LightColors.blackTextStyle,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Last month',
+                    style:
+                        LightColors.subTitle2TextStyle.copyWith(fontSize: 10),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    '63%',
+                    style: LightColors.blackTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
             ],
           ),

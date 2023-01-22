@@ -16,8 +16,8 @@ class PieChartWidgetState extends State {
   @override
   Widget build(BuildContext context) {
     return KcardWidget(
-      elevation: 1,
-      padding: const EdgeInsets.all(defaultMargin / 2),
+      elevation: 0,
+      padding: const EdgeInsets.all(defaultMargin),
       color: LightColors.kBackgroundColor,
       borderColor: LightColors.kLavender,
       child: Column(
@@ -27,35 +27,88 @@ class PieChartWidgetState extends State {
             style: LightColors.black2TextStyle.copyWith(fontSize: 12),
             textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 187,
-            child: PieChart(
-              PieChartData(
-                pieTouchData: PieTouchData(
-                  touchCallback: (FlTouchEvent event, pieTouchResponse) {
-                    setState(() {
-                      if (!event.isInterestedForInteractions ||
-                          pieTouchResponse == null ||
-                          pieTouchResponse.touchedSection == null) {
-                        touchedIndex = -1;
-                        return;
-                      }
-                      touchedIndex =
-                          pieTouchResponse.touchedSection!.touchedSectionIndex;
-                    });
-                  },
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 187,
+                      child: PieChart(
+                        PieChartData(
+                          pieTouchData: PieTouchData(
+                            touchCallback:
+                                (FlTouchEvent event, pieTouchResponse) {
+                              setState(() {
+                                if (!event.isInterestedForInteractions ||
+                                    pieTouchResponse == null ||
+                                    pieTouchResponse.touchedSection == null) {
+                                  touchedIndex = -1;
+                                  return;
+                                }
+                                touchedIndex = pieTouchResponse
+                                    .touchedSection!.touchedSectionIndex;
+                              });
+                            },
+                          ),
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          sectionsSpace: 0,
+                          centerSpaceRadius: 0,
+                          sections: showingSections(),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                borderData: FlBorderData(
-                  show: false,
-                ),
-                sectionsSpace: 0,
-                centerSpaceRadius: 0,
-                sections: showingSections(),
               ),
-            ),
+              const SizedBox(
+                width: defaultMargin,
+              ),
+              Expanded(
+                  child: Column(
+                children: [
+                  labelWidget(),
+                  labelWidget(),
+                  labelWidget(),
+                  labelWidget(),
+                ],
+              ))
+            ],
           ),
         ],
       ),
+    );
+  }
+
+  Widget labelWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Icon(
+          Icons.sentiment_dissatisfied,
+          color: LightColors.kPrimaryColor,
+        ),
+        SizedBox(
+          width: defaultMargin / 4,
+        ),
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              style: LightColors.subTitle2TextStyle,
+              children: const [
+                TextSpan(
+                    text: '134', style: TextStyle(fontWeight: FontWeight.bold)),
+                TextSpan(text: ' Reports', style: TextStyle()),
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
 
