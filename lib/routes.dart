@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '/view/settings/observation/observation_card_setting_page.dart';
 import '/view/settings/observation/observation_checklist_setting_page.dart';
 import '/view/settings/report_setting_page.dart';
+import 'view/dashboard/dashboard_manager_page.dart';
 import 'view/settings/point_setting_page.dart';
 import 'view/settings/settings_page.dart';
 import '/view/report/report_form_page.dart';
@@ -36,6 +37,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   InboxPage.routeName: (context) => const InboxPage(),
   PointTransactionsPage.routeName: (context) => const PointTransactionsPage(),
   DashboardEmployeePage.routeName: (context) => const DashboardEmployeePage(),
+  DashboardManagerPage.routeName: (context) => const DashboardManagerPage(),
   ReportLoadingPage.routeName: (context) => const ReportLoadingPage(),
   ReportFormPage.routeName: (context) => const ReportFormPage(),
   ReportListPage.routeName: (context) => const ReportListPage(),
