@@ -1,3 +1,5 @@
+import 'package:awas/enums.dart';
+
 import '/res/widgets/pie_chart_widget.dart';
 import '/res/widgets/report_card_widget.dart';
 import 'package:flutter/services.dart';
@@ -21,121 +23,156 @@ class DashboardManagerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kDarkBlue,
-      appBar: appBarWidget(),
-      body: ListView(
+      body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
-        children: [
-          Container(
-            padding: const EdgeInsets.only(top: defaultMargin * 4),
-            child: Stack(children: [
-              Container(
-                margin: const EdgeInsets.only(top: defaultMargin * 2),
-                decoration: const BoxDecoration(
-                    color: LightColors.kBackgroundColor,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(defaultCircular * 2),
-                        topRight: Radius.circular(defaultCircular * 2))),
-                child: Padding(
-                  padding: const EdgeInsets.all(defaultMargin),
-                  child: Column(
-                    children: [
-                      syncNotificationWidget(),
-                      const SizedBox(
-                        height: defaultMargin,
-                      ),
-                      Row(
-                        children: [
-                          Text('Report Overview',
-                              style: LightColors.titleTextStyle
-                                  .copyWith(fontSize: 16.0)),
-                          const Spacer(),
-                          Directionality(
-                            textDirection: TextDirection.rtl,
-                            child: ActionChip(
-                              onPressed: () {},
-                              backgroundColor: LightColors.kInfoColor,
-                              label: Text(
-                                '2022',
-                                style: LightColors.whiteTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold, fontSize: 12),
-                              ),
-                              avatar: const Icon(
-                                Icons.arrow_drop_down,
-                                color: LightColors.kBackgroundColor,
-                              ),
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: false,
+            snap: true,
+            systemOverlayStyle: const SystemUiOverlayStyle(
+                statusBarColor: LightColors.kDarkBlue),
+            elevation: 0.0,
+            toolbarHeight: 52,
+            stretch: true,
+            backgroundColor: Colors.transparent,
+            leading: const Padding(
+              padding: EdgeInsets.only(
+                  left: defaultMargin, right: defaultMargin / 3),
+              child: CircleAvatar(
+                radius: 23,
+                backgroundImage: AssetImage('assets/avatar1.png'),
+                backgroundColor: LightColors.kSecondaryColor,
+              ),
+            ),
+            title: Text(
+              'Hi Budi',
+              style: LightColors.titleTextStyle.copyWith(
+                  fontSize: 24.0, color: LightColors.kBackgroundColor),
+            ),
+            bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(150),
+                child: riskLevelIndicatorWidget()),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: const EdgeInsets.only(top: defaultMargin),
+              decoration: const BoxDecoration(
+                  color: LightColors.kBackgroundColor,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(defaultCircular * 2),
+                      topRight: Radius.circular(defaultCircular * 2))),
+              child: Padding(
+                padding: const EdgeInsets.all(defaultMargin),
+                child: Column(
+                  children: [
+                    syncNotificationWidget(),
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    Row(
+                      children: [
+                        Text('Report Overview',
+                            style: LightColors.titleTextStyle
+                                .copyWith(fontSize: 16.0)),
+                        const Spacer(),
+                        Directionality(
+                          textDirection: TextDirection.rtl,
+                          child: ActionChip(
+                            onPressed: () {},
+                            backgroundColor: LightColors.kInfoColor,
+                            label: Text(
+                              '2022',
+                              style: LightColors.whiteTextStyle.copyWith(
+                                  fontWeight: FontWeight.bold, fontSize: 12),
+                            ),
+                            avatar: const Icon(
+                              Icons.arrow_drop_down,
+                              color: LightColors.kBackgroundColor,
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: defaultMargin,
-                      ),
-                      labelInfoWidget(),
-                      const SizedBox(
-                        height: defaultMargin,
-                      ),
-                      const KcardWidget(
-                        width: double.infinity,
-                        padding: EdgeInsets.all(0.0),
-                        color: LightColors.kGreyColor,
-                        height: 250,
-                        elevation: 5,
-                        child: ChartWidget(),
-                      ),
-                      const SizedBox(
-                        height: defaultMargin,
-                      ),
-                      Row(
-                        children: const [
-                          Expanded(child: CustomCircularProgressWidget()),
-                          //TODO: decide what chart first row
-                          Expanded(child: CustomCircularProgressWidget())
-                        ],
-                      ),
-                      const SizedBox(
-                        height: defaultMargin,
-                      ),
-                      const PieChartWidget(),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    labelInfoWidget(),
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    const KcardWidget(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(0.0),
+                      color: LightColors.kGreyColor,
+                      height: 250,
+                      elevation: 5,
+                      child: ChartWidget(),
+                    ),
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    Row(
+                      children: const [
+                        Expanded(child: CustomCircularProgressWidget()),
+                        //TODO: decide what chart first row
+                        Expanded(child: CustomCircularProgressWidget())
+                      ],
+                    ),
+                    const SizedBox(
+                      height: defaultMargin,
+                    ),
+                    const PieChartWidget(),
+                  ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
-                child: KcardWidget(
-                    elevation: 5,
-                    width: double.infinity,
-                    color: LightColors.kBackgroundColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        riskLevelIndicatorWidget(),
-                        riskLevelIndicatorWidget(),
-                        riskLevelIndicatorWidget(),
-                        riskLevelIndicatorWidget(),
-                      ],
-                    )),
-              ),
-            ]),
+            ),
           ),
-          sublistWidget(),
+          SliverToBoxAdapter(
+            child: sublistWidget(),
+          )
         ],
       ),
     );
   }
 
-  Column riskLevelIndicatorWidget() {
+  Padding riskLevelIndicatorWidget() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+      child: KcardWidget(
+          elevation: 5,
+          width: double.infinity,
+          color: LightColors.kBackgroundColor,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.low),
+              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.medium),
+              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.high),
+              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.escalation),
+            ],
+          )),
+    );
+  }
+
+  Column riskLevelIndicatorItemWidget({required RiskLevel riskLevel}) {
     return Column(
       children: [
-        const Icon(
-          Icons.sentiment_very_dissatisfied,
-          color: LightColors.kDangerColor,
+        Icon(
+          riskLevel.iconData,
+          color: riskLevel.color,
         ),
-        Text(
-          'Low',
-          style: LightColors.subTitle2TextStyle,
+        const SizedBox(
+          height: defaultMargin / 4,
         ),
         Text('30', style: LightColors.black2TextStyle),
+        const SizedBox(
+          height: defaultMargin / 4,
+        ),
+        Text(
+          riskLevel.name.toUpperCase(),
+          style: LightColors.subTitle3TextStyle,
+        ),
       ],
     );
   }
@@ -396,10 +433,10 @@ class DashboardManagerPage extends StatelessWidget {
       elevation: 0.0,
       backgroundColor: LightColors.kDarkBlue,
       toolbarHeight: 80,
-      leadingWidth: 250,
+      leadingWidth: defaultMargin,
       leading: Row(
-        children: [
-          const Padding(
+        children: const [
+          Padding(
             padding:
                 EdgeInsets.only(left: defaultMargin, right: defaultMargin / 3),
             child: CircleAvatar(
@@ -408,34 +445,17 @@ class DashboardManagerPage extends StatelessWidget {
               backgroundColor: LightColors.kSecondaryColor,
             ),
           ),
-          Expanded(
-            child: Text(
-              'Hi Budi',
-              style: LightColors.titleTextStyle.copyWith(
-                  fontSize: 24.0, color: LightColors.kBackgroundColor),
-            ),
-          ),
         ],
       ),
-      centerTitle: true,
-      title: Image.asset('assets/logo.png', scale: 5, color: Colors.white),
+      centerTitle: false,
+      title: Text(
+        'Hi Budi',
+        style: LightColors.titleTextStyle
+            .copyWith(fontSize: 24.0, color: LightColors.kBackgroundColor),
+      ),
       actions: [
-        SizedBox(
-          width: 120,
-          child: Stack(alignment: AlignmentDirectional.centerStart, children: [
-            StarBadgeWidget.rightMargin(),
-            const Positioned(
-              right: 0,
-              top: 0,
-              bottom: 0,
-              child: CircleAvatar(
-                radius: 23,
-                backgroundImage: AssetImage('assets/avatar1.png'),
-                backgroundColor: LightColors.kSecondaryColor,
-              ),
-            )
-          ]),
-        ),
+        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+        IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
         const SizedBox(
           width: defaultMargin / 4,
         )
