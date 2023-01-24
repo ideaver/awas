@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 
-import '/view/settings/observation/observation_card_setting_page.dart';
-import '/view/settings/observation/observation_checklist_setting_page.dart';
-import '/view/settings/report_setting_page.dart';
-import 'view/dashboard/dashboard_manager_page.dart';
-import 'view/settings/point_setting_page.dart';
-import 'view/settings/settings_page.dart';
-import '/view/report/report_form_page.dart';
-import 'view/report/report_loading_page.dart';
-import '/view/report/report_details_page.dart';
-import '/view/user/user_filter_page.dart';
-import '/view/user/user_list_page.dart';
-import 'view/dashboard/dashboard_employee_page.dart';
-import 'view/user/inbox_page.dart';
-import 'view/login/forgot_password_page.dart';
-import 'view/login/login_page.dart';
-import 'view/login/terms_page.dart';
-import 'view/menu_page.dart';
-import 'view/report/report_filter_page.dart';
-import 'view/report/report_list_page.dart';
-import 'view/thank_you_page.dart';
-import 'view/user/point_transactions_page.dart';
-import 'view/user/profile_page.dart';
-import 'view/settings/import_export_page.dart';
+import '../../view/dashboard/dashboard_employee_page.dart';
+import '../../view/dashboard/dashboard_manager_page.dart';
+import '../../view/login/forgot_password_page.dart';
+import '../../view/login/login_page.dart';
+import '../../view/login/terms_page.dart';
+import '../../view/menu_page.dart';
+import '../../view/report/report_details_page.dart';
+import '../../view/report/report_filter_page.dart';
+import '../../view/report/report_form_page.dart';
+import '../../view/report/report_list_page.dart';
+import '../../view/report/report_loading_page.dart';
+import '../../view/settings/import_export_page.dart';
+import '../../view/settings/observation/observation_card_setting_page.dart';
+import '../../view/settings/observation/observation_checklist_setting_page.dart';
+import '../../view/settings/point_setting_page.dart';
+import '../../view/settings/report_setting_page.dart';
+import '../../view/settings/settings_page.dart';
+import '../../view/thank_you_page.dart';
+import '../../view/user/inbox_page.dart';
+import '../../view/user/point_transactions_page.dart';
+import '../../view/user/profile_page.dart';
+import '../../view/user/user_filter_page.dart';
+import '../../view/user/user_list_page.dart';
 
-final Map<String, Widget Function(BuildContext)> routes = {
+final Map<String, WidgetBuilder> routes = {
   '/menu': (context) => const MenuPage(),
   LoginPage.routeName: (context) => const LoginPage(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),

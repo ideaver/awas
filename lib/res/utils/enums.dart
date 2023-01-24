@@ -1,6 +1,20 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
+enum Event {
+  resetPasswordSuccess,
+  profileUpdatedSuccess,
+  ;
+}
+
+enum Role {
+  superUser,
+  manager,
+  supervisor,
+  employee,
+  ;
+}
+
 enum StatusCode {
   badRequest(401, 'Bad request'),
   unauthorized(401, 'Unauthorized'),

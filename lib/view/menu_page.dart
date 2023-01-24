@@ -1,5 +1,6 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
-import '../routes.dart';
+
+import '../res/utils/routes.dart';
 import '/res/widgets/kappbar_widget.dart';
 import '/res/widgets/kscrollbar_widget.dart';
 import 'package:flutter/material.dart';

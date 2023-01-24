@@ -1,5 +1,4 @@
-import 'package:awas/enums.dart';
-
+import '../../res/utils/enums.dart';
 import '/res/widgets/pie_chart_widget.dart';
 import '/res/widgets/report_card_widget.dart';
 import 'package:flutter/services.dart';
@@ -8,7 +7,7 @@ import '../../res/widgets/custom_circular_progress_widget.dart';
 
 import '../../res/widgets/user_list_widget.dart';
 import '/res/theme/colors/light_colors.dart';
-import '/res/widgets/star_badge_widget.dart';
+
 import 'package:flutter/material.dart';
 
 import '../../res/widgets/line_chart_widget.dart';

@@ -1,4 +1,4 @@
-import '../../res/const.dart';
+import '../../res/utils/enums.dart';
 import '/res/widgets/kappbar_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/kdivider_widget.dart';
