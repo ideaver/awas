@@ -1,20 +1,16 @@
-import 'package:flutter/services.dart';
-
-import '/res/widgets/report_list_widget.dart';
-
 import '../../res/widgets/company_custom_field_widget.dart';
 import '../../res/widgets/user_custom_field_datatable_widget.dart';
-
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
 import '../../res/widgets/star_badge_widget.dart';
+import '../../res/theme/colors/light_colors.dart';
+
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/ktext_form_field.dart';
+import '/res/widgets/report_list_widget.dart';
 
 import 'package:flutter/material.dart';
-
-import '../../res/theme/colors/light_colors.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String routeName = '/profile';
@@ -177,7 +173,8 @@ class _ProfilePageState extends State<ProfilePage>
 
   ListView tabBar1Widget() {
     return ListView(
-      physics: const NeverScrollableScrollPhysics(),
+      physics:
+          const NeverScrollableScrollPhysics(parent: BouncingScrollPhysics()),
       padding: const EdgeInsets.all(defaultMargin),
       children: [
         KcardWidget.tile(

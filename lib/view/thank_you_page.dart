@@ -25,7 +25,7 @@ class PointsTransactionWidgetModel {
 }
 
 class ThankYouPage extends StatelessWidget {
-  final Event event;
+  final ConfirmationEvent event;
   ThankYouPageModel? thankYouPageModel;
 
   static const String profileUpdaterouteName = '/profile-update-thank-you';
@@ -36,13 +36,13 @@ class ThankYouPage extends StatelessWidget {
 
   ThankYouPage.profileUpdate({ThankYouPageModel? thankYouPageModel})
       : this(
-            event: Event.profileUpdatedSuccess,
+            event: ConfirmationEvent.profileUpdatedSuccess,
             thankYouPageModel: thankYouPageModel);
 
   @override
   Widget build(BuildContext context) {
     switch (event) {
-      case Event.profileUpdatedSuccess:
+      case ConfirmationEvent.profileUpdatedSuccess:
         thankYouPageModel = ThankYouPageModel(
             title: 'Thank You Budi, Profile Updated',
             instruction: 'Redirecting to your Dashboard...',
