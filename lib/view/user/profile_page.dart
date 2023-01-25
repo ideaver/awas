@@ -1,14 +1,12 @@
-import '../../res/widgets/company_custom_field_widget.dart';
-import '../../res/widgets/user_custom_field_datatable_widget.dart';
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
-import '../../res/widgets/star_badge_widget.dart';
 import '../../res/theme/colors/light_colors.dart';
 
 import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
-import '/res/widgets/ktext_form_field.dart';
 import '/res/widgets/report_list_widget.dart';
+import '/res/widgets/profile_card_widget.dart';
+import '/res/widgets/user_form_widget.dart';
 
 import 'package:flutter/material.dart';
 
@@ -58,7 +56,7 @@ class _ProfilePageState extends State<ProfilePage>
             physics: const BouncingScrollPhysics(),
             controller: tabController,
             children: [
-              tabBar1Widget(),
+              const UserFormWidget(),
               ReportListWidget(context: context),
               const PointTransactionListWidget()
             ]),
@@ -171,36 +169,6 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  ListView tabBar1Widget() {
-    return ListView(
-      physics:
-          const NeverScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-      padding: const EdgeInsets.all(defaultMargin),
-      children: [
-        KcardWidget.tile(
-            leadingIcon: Icons.account_circle,
-            title: 'Please complete your profile'),
-        const SizedBox(height: defaultMargin),
-        const KtextFormFieldWidget(title: 'Name'),
-        const SizedBox(height: defaultMargin),
-        const KtextFormFieldWidget(title: 'Phone'),
-        const SizedBox(height: defaultMargin),
-        const KtextFormFieldWidget(title: 'Email'),
-        const SizedBox(height: defaultMargin),
-        KtextFormFieldWidget.password(title: 'Password'),
-        const SizedBox(height: defaultMargin),
-        Text(
-          'PT. Adiguna Usaha',
-          style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
-        ),
-        const SizedBox(height: defaultMargin),
-        const CompanyCustomFieldWidget(),
-        const SizedBox(height: defaultMargin),
-        const SizedBox(height: defaultMargin * 5),
-      ],
-    );
-  }
-
   SliverList sliverListWidget() {
     return SliverList(
         delegate: SliverChildListDelegate([
@@ -260,57 +228,20 @@ class _ProfilePageState extends State<ProfilePage>
       ],
       pinned: true,
       expandedHeight: 350,
-      flexibleSpace: FlexibleSpaceBar(
-          stretchModes: const [StretchMode.blurBackground],
+      flexibleSpace: const FlexibleSpaceBar(
+          stretchModes: [StretchMode.blurBackground],
           background: Padding(
-            padding: const EdgeInsets.only(
+            padding: EdgeInsets.only(
                 top: 120,
                 left: defaultMargin,
                 right: defaultMargin,
                 bottom: 80),
-            child: cardProfileWidget(),
+            child: ProfileCardWidget(),
           )),
       bottom: KtabBarWidget(
         controller: tabController,
         titles: const ['Details', 'Reports', 'Points'],
       ),
     );
-  }
-
-  Widget cardProfileWidget() {
-    return KcardWidget(
-        child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          children: [
-            const CircleAvatar(
-              backgroundImage: AssetImage('assets/avatar1.png'),
-              radius: 35,
-              backgroundColor: LightColors.kWhiteColor,
-            ),
-            const SizedBox(
-              height: defaultMargin,
-            ),
-            StarBadgeWidget()
-          ],
-        ),
-        Expanded(
-          child: Column(
-            children: [
-              Text(
-                'Antoni Sudarsono',
-                style: LightColors.whiteTextStyle
-                    .copyWith(fontWeight: FontWeight.bold, fontSize: 14.0),
-              ),
-              const SizedBox(
-                height: defaultMargin,
-              ),
-              const UserCustomFieldDatatableWidget(),
-            ],
-          ),
-        )
-      ],
-    ));
   }
 }
