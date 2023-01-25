@@ -10,16 +10,16 @@ import '/res/widgets/user_form_widget.dart';
 
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatefulWidget {
+class UserPage extends StatefulWidget {
   static const String routeName = '/profile';
 
-  const ProfilePage({super.key});
+  const UserPage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<UserPage> createState() => _UserPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage>
+class _UserPageState extends State<UserPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
   ScrollController scrollController = ScrollController();
