@@ -1,3 +1,4 @@
+import 'package:awas/view/report/camera_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -43,6 +44,7 @@ final Map<String, WidgetBuilder> routes = {
   PointTransactionsPage.routeName: (context) => const PointTransactionsPage(),
   DashboardEmployeePage.routeName: (context) => const DashboardEmployeePage(),
   DashboardManagerPage.routeName: (context) => const DashboardManagerPage(),
+  CameraPage.routeName: (context) => const CameraPage(),
   ReportLoadingPage.routeName: (context) => const ReportLoadingPage(),
   ReportFormPage.routeName: (context) => const ReportFormPage(),
   ReportListPage.routeName: (context) => const ReportListPage(),

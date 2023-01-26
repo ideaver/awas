@@ -118,13 +118,16 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                       title: 'Type message...'),
                 ),
                 const SizedBox(width: defaultMargin / 2),
-                IconButton(
-                    onPressed: () {
-                      _handleSendPressed(types.PartialText(text: 'asfa'));
+                KcardWidget(
+                    elevation: 0.0,
+                    padding: const EdgeInsets.all(15),
+                    color: LightColors.kPrimaryColor,
+                    onTap: () {
+                      _handleSendPressed(const types.PartialText(text: 'asfa'));
                     },
-                    icon: const Icon(
+                    child: const Icon(
                       Icons.send,
-                      color: LightColors.kPrimaryColor,
+                      color: LightColors.kBackgroundColor,
                     )),
               ],
             )),
