@@ -45,6 +45,7 @@ class _UserPageState extends State<UserPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //TODO: Change to kappbar
       backgroundColor: LightColors.kBackgroundColor,
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),

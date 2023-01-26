@@ -13,17 +13,22 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? centerTitle;
   final PreferredSizeWidget? bottom;
   final Color? backgroundColor;
+  final SystemUiOverlayStyle systemOverlayStyle;
+  final Widget? leading;
 
-  const KappBarWidget({
-    Key? key,
-    required this.title,
-    this.subTitle,
-    this.actions,
-    this.centerTitle = true,
-    this.bottom,
-    this.backgroundColor,
-    required this.context,
-  }) : super(key: key);
+  const KappBarWidget(
+      {Key? key,
+      required this.title,
+      this.subTitle,
+      this.actions,
+      this.centerTitle = true,
+      this.bottom,
+      this.backgroundColor,
+      required this.context,
+      this.systemOverlayStyle = const SystemUiOverlayStyle(
+          statusBarColor: LightColors.kBackgroundColor),
+      this.leading})
+      : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(bottom != null ? 120 : 60);
@@ -36,19 +41,23 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   AppBar appBarWidget() {
     //TODO: Change to sliver app bar to hide on scroll
     return AppBar(
-      systemOverlayStyle:
-          SystemUiOverlayStyle(statusBarColor: LightColors.kBackgroundColor),
-      leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.chevron_left_rounded,
-            color: backgroundColor != null
-                ? LightColors.kBackgroundColor
-                : LightColors.kDarkGreyColor,
-            size: 30,
-          )),
+      systemOverlayStyle: systemOverlayStyle,
+      leadingWidth: double.infinity,
+      leading: Align(
+        alignment: Alignment.centerLeft,
+        child: leading ??
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.chevron_left_rounded,
+                  color: backgroundColor != null
+                      ? LightColors.kBackgroundColor
+                      : LightColors.kDarkGreyColor,
+                  size: 30,
+                )),
+      ),
       backgroundColor: backgroundColor ?? LightColors.kBackgroundColor,
       elevation: 0.0,
       centerTitle: subTitle != null ? false : centerTitle,

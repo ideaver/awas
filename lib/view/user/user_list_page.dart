@@ -1,3 +1,5 @@
+import 'package:awas/view/user/create_user_page.dart';
+
 import '../../res/widgets/user_custom_field_datatable_widget.dart';
 import '../../res/widgets/user_list_widget.dart';
 import '/res/widgets/star_badge_widget.dart';
@@ -78,7 +80,7 @@ class _UserListPageState extends State<UserListPage>
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            //TODO: slice add employee page
+            Navigator.pushNamed(context, CreateUserPage.routeName);
           },
           child: const Icon(
             Icons.add,

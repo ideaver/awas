@@ -1,4 +1,6 @@
+import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/dashboard/dashboard_manager_page.dart';
@@ -36,6 +38,7 @@ final Map<String, WidgetBuilder> routes = {
   UserListPage.routeName: (context) => const UserListPage(),
   UserFilterPage.routeName: (context) => const UserFilterPage(),
   CreateUserPage.routeName: (context) => const CreateUserPage(),
+  ChatRoomPage.routeName: (context) => const ChatRoomPage(),
   InboxPage.routeName: (context) => const InboxPage(),
   PointTransactionsPage.routeName: (context) => const PointTransactionsPage(),
   DashboardEmployeePage.routeName: (context) => const DashboardEmployeePage(),

@@ -41,6 +41,12 @@ dependencies:
   animated_custom_dropdown: ^1.2.2
   fl_chart: ^0.55.2
   dotted_border: ^2.0.0+3
+  flutter_chat_ui: ^1.6.6
+  file_picker: ^5.2.5
+  image_picker: ^0.8.6+1
+  mime: ^1.0.4
+  open_filex: ^4.3.2
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:
