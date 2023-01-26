@@ -44,7 +44,6 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KappBarWidget(
-          backgroundColor: LightColors.kPrimaryColor,
           leading: Row(
             children: [
               IconButton(
@@ -63,9 +62,6 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
               )
             ],
           ),
-          systemOverlayStyle: const SystemUiOverlayStyle(
-              statusBarColor: LightColors.kPrimaryColor,
-              systemNavigationBarColor: LightColors.kPrimaryColor),
           centerTitle: false,
           title: 'Bono',
           context: context),

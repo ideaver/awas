@@ -13,7 +13,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? centerTitle;
   final PreferredSizeWidget? bottom;
   final Color? backgroundColor;
-  final SystemUiOverlayStyle systemOverlayStyle;
+  final SystemUiOverlayStyle? systemOverlayStyle;
   final Widget? leading;
 
   const KappBarWidget(
@@ -25,8 +25,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
       this.bottom,
       this.backgroundColor,
       required this.context,
-      this.systemOverlayStyle = const SystemUiOverlayStyle(
-          statusBarColor: LightColors.kBackgroundColor),
+      this.systemOverlayStyle,
       this.leading})
       : super(key: key);
 
@@ -42,7 +41,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     //TODO: Change to sliver app bar to hide on scroll
     return AppBar(
       systemOverlayStyle: systemOverlayStyle,
-      leadingWidth: double.infinity,
+      leadingWidth: leading != null ? double.infinity : null,
       leading: Align(
         alignment: Alignment.centerLeft,
         child: leading ??
