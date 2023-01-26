@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import '../theme/colors/light_colors.dart';
 
 class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
+  final double elevation;
   final BuildContext context;
-  final String title;
+  final String? title;
   final String? subTitle;
   final List<Widget>? actions;
   final bool? centerTitle;
@@ -15,10 +16,11 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
   final SystemUiOverlayStyle? systemOverlayStyle;
   final Widget? leading;
+  final Widget? titleWidget;
 
   const KappBarWidget(
       {Key? key,
-      required this.title,
+      this.title,
       this.subTitle,
       this.actions,
       this.centerTitle = true,
@@ -26,7 +28,9 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
       this.backgroundColor,
       required this.context,
       this.systemOverlayStyle,
-      this.leading})
+      this.leading,
+      this.titleWidget,
+      this.elevation = 0.0})
       : super(key: key);
 
   @override
@@ -58,35 +62,33 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 )),
       ),
       backgroundColor: backgroundColor ?? LightColors.kBackgroundColor,
-      elevation: 0.0,
+      elevation: elevation,
       centerTitle: subTitle != null ? false : centerTitle,
-      title: subTitle != null
-          ? Row(
-              children: [
-                Text(
-                  title,
-                  style: LightColors.titleTextStyle.copyWith(
-                      fontSize: 18.0,
-                      color: backgroundColor != null
-                          ? LightColors.kBackgroundColor
-                          : null),
-                ),
-                const SizedBox(
-                  width: defaultMargin / 3,
-                ),
-                Text(
-                  subTitle!,
-                  style: LightColors.subTitle2TextStyle.copyWith(
-                      color: backgroundColor != null
-                          ? LightColors.kBackgroundColor
-                          : null),
-                )
-              ],
-            )
-          : Text(
-              title,
-              style: LightColors.titleTextStyle.copyWith(fontSize: 18.0),
-            ),
+      title: titleWidget ??
+          Row(
+            children: [
+              Text(
+                title ?? 'null',
+                style: LightColors.titleTextStyle.copyWith(
+                    fontSize: 18.0,
+                    color: backgroundColor != null
+                        ? LightColors.kBackgroundColor
+                        : null),
+              ),
+              const SizedBox(
+                width: defaultMargin / 3,
+              ),
+              subTitle != null
+                  ? Text(
+                      subTitle!,
+                      style: LightColors.subTitle2TextStyle.copyWith(
+                          color: backgroundColor != null
+                              ? LightColors.kBackgroundColor
+                              : null),
+                    )
+                  : const SizedBox()
+            ],
+          ),
       actions: actions,
       bottom: bottom != null
           ? PreferredSize(

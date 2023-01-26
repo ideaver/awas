@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:awas/res/widgets/kcard_widget.dart';
+import 'package:awas/res/widgets/kdivider_widget.dart';
 import 'package:awas/res/widgets/ktext_form_field.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -44,26 +45,37 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KappBarWidget(
-          leading: Row(
+          elevation: 0.5,
+          centerTitle: false,
+          titleWidget: Row(
             children: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(
-                    Icons.chevron_left_rounded,
-                    color: LightColors.kBackgroundColor,
-                    size: 30,
-                  )),
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 23,
                 backgroundImage: AssetImage('assets/avatar1.png'),
                 backgroundColor: LightColors.kSecondaryColor,
-              )
+              ),
+              const SizedBox(
+                width: defaultMargin,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Bono Bon',
+                    style: LightColors.black2TextStyle,
+                  ),
+                  const SizedBox(
+                    height: defaultMargin / 4,
+                  ),
+                  Text(
+                    'Active now',
+                    style:
+                        LightColors.subTitle2TextStyle.copyWith(fontSize: 11),
+                  )
+                ],
+              ),
             ],
           ),
-          centerTitle: false,
-          title: 'Bono',
           context: context),
       body: Chat(
         scrollPhysics: const BouncingScrollPhysics(),
@@ -77,25 +89,43 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
         user: _user,
         customBottomWidget: Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: defaultMargin,
+              horizontal: defaultMargin / 4,
               vertical: defaultMargin / 2,
             ),
             decoration: const BoxDecoration(
-                color: LightColors.kPrimaryColor,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(defaultCircular))),
+              border: Border(
+                top: BorderSide(
+                  color: LightColors.kGreyColor,
+                  width: 3.0,
+                ),
+              ),
+            ),
             child: Row(
               children: [
                 IconButton(
                     onPressed: () {
                       _handleAttachmentPressed();
                     },
-                    icon: const Icon(Icons.attachment_rounded)),
-                Expanded(
-                    child: KtextFormFieldWidget(
-                        withEnterText: false,
-                        withTitle: false,
-                        title: 'Type message...'))
+                    icon: const Icon(
+                      Icons.attachment_rounded,
+                      color: LightColors.kPrimaryColor,
+                    )),
+                const SizedBox(width: defaultMargin / 2),
+                const Expanded(
+                  child: KtextFormFieldWidget(
+                      withEnterText: false,
+                      withTitle: false,
+                      title: 'Type message...'),
+                ),
+                const SizedBox(width: defaultMargin / 2),
+                IconButton(
+                    onPressed: () {
+                      _handleSendPressed(types.PartialText(text: 'asfa'));
+                    },
+                    icon: const Icon(
+                      Icons.send,
+                      color: LightColors.kPrimaryColor,
+                    )),
               ],
             )),
       ),
