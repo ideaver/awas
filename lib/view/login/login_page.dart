@@ -1,4 +1,8 @@
+import 'package:awas/res/utils/enums.dart';
+import 'package:awas/view/dashboard/dashboard_employee_page.dart';
+import 'package:awas/view/user/user_page.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
+//TODO: implement session manager
 
 import 'package:awas/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +11,17 @@ import '../../res/theme/colors/light_colors.dart';
 import '../../res/widgets/kelevated_button.dart';
 
 class LoginPage extends StatelessWidget {
+  final Role loginRole;
+  final bool isNewUser = true;
   static const String routeName = '/login';
+  static const String employeeRoleRouteName = '/employee-login';
 
-  const LoginPage({super.key});
+//Constructors
+  const LoginPage({super.key, required this.loginRole});
+  const LoginPage.employeeRole()
+      : this(
+          loginRole: Role.employee,
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +65,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: defaultMargin),
                   KelevatedButtonWidget(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/profile');
+                        loginRoleAndIsNewUser(context);
                       },
                       title: 'Sign In'),
                   const SizedBox(height: defaultMargin),
@@ -105,6 +117,22 @@ class LoginPage extends StatelessWidget {
         ])
       ]),
     );
+  }
+
+  void loginRoleAndIsNewUser(BuildContext context) {
+    switch (loginRole) {
+      case Role.employee:
+        isNewUser
+            ? Navigator.pushReplacementNamed(context, UserPage.routeName)
+            : Navigator.pushReplacementNamed(
+                context, DashboardEmployeePage.routeName);
+        break;
+      case Role.manager:
+        break;
+      case Role.superUser:
+        break;
+      default:
+    }
   }
 
   Row logoAndTextWidget() {

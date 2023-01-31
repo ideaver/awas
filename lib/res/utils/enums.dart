@@ -15,6 +15,11 @@ enum Role {
   ;
 }
 
+enum NewVsExistingUser {
+  newUser,
+  existingUser;
+}
+
 enum StatusCode {
   badRequest(401, 'Bad request'),
   unauthorized(401, 'Unauthorized'),

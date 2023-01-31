@@ -33,7 +33,7 @@ import '/view/user/create_user_page.dart';
 final Map<String, WidgetBuilder> routes = {
   '/menu': (context) => const MenuPage(),
   '/all-screen': (context) => const AllScreenPage(),
-  LoginPage.routeName: (context) => const LoginPage(),
+  LoginPage.employeeRoleRouteName: (context) => const LoginPage.employeeRole(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
   ThankYouPage.profileUpdaterouteName: (context) =>
       ThankYouPage.profileUpdate(),

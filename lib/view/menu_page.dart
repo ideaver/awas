@@ -3,6 +3,8 @@ import 'package:awas/res/theme/colors/light_colors.dart';
 import '/res/widgets/kelevated_button.dart';
 import 'package:flutter/material.dart';
 
+import 'login/login_page.dart';
+
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
 
@@ -17,7 +19,11 @@ class MenuPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 KelevatedButtonWidget(
-                    onPressed: () {}, title: 'Login Employee'),
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, LoginPage.employeeRoleRouteName);
+                    },
+                    title: 'Login Employee'),
                 KelevatedButtonWidget(onPressed: () {}, title: 'Login Manager'),
                 KelevatedButtonWidget(
                     onPressed: () {}, title: 'Login SuperUser'),
