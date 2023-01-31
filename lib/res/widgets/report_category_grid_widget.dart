@@ -1,4 +1,4 @@
-import 'package:awas/res/widgets/kgridview_count_widget.dart';
+import '/res/widgets/kgridview_count_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -13,6 +13,7 @@ class ReportCategoryGridWidget extends StatefulWidget {
 }
 
 class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
+  //TODO: change index to enums
   int selectedIndex = 0;
 
   @override

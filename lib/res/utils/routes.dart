@@ -1,3 +1,4 @@
+import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/Archivedcamera_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ import '/view/dashboard/dashboard_manager_page.dart';
 import '/view/login/forgot_password_page.dart';
 import '/view/login/login_page.dart';
 import '/view/login/terms_page.dart';
-import '/view/menu_page.dart';
+import '../../view/all_screen_page.dart';
 import '/view/report/report_details_page.dart';
 import '/view/report/report_filter_page.dart';
 import '/view/report/report_form_page.dart';
@@ -31,6 +32,7 @@ import '/view/user/create_user_page.dart';
 
 final Map<String, WidgetBuilder> routes = {
   '/menu': (context) => const MenuPage(),
+  '/all-screen': (context) => const AllScreenPage(),
   LoginPage.routeName: (context) => const LoginPage(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
   ThankYouPage.profileUpdaterouteName: (context) =>
