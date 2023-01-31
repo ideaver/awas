@@ -1,3 +1,5 @@
+import 'package:awas/view/login/login_page.dart';
+
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
 import '../../res/theme/colors/light_colors.dart';
@@ -53,14 +55,16 @@ class _UserPageState extends State<UserPage>
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [sliverAppBarWidget()];
         },
-        body: TabBarView(
-            physics: const BouncingScrollPhysics(),
-            controller: tabController,
-            children: [
-              const UserFormWidget(),
-              ReportListWidget(context: context),
-              const PointTransactionListWidget()
-            ]),
+        body: isFirstTimeUser
+            ? const UserFormWidget()
+            : TabBarView(
+                physics: const BouncingScrollPhysics(),
+                controller: tabController,
+                children: [
+                    const UserFormWidget(),
+                    ReportListWidget(context: context),
+                    const PointTransactionListWidget()
+                  ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: AnimatedSlide(
@@ -73,100 +77,6 @@ class _UserPageState extends State<UserPage>
           },
         ),
       ),
-    );
-  }
-
-  Container profileDetailsWidget() {
-    return Container(
-      color: LightColors.kGreyColor,
-      child: ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.all(defaultMargin),
-        children: [
-          const SizedBox(
-            height: defaultMargin,
-          ),
-          userDetailsCardWidget(),
-          const SizedBox(
-            height: defaultMargin,
-          ),
-          userDetailsCardWidget()
-        ],
-      ),
-    );
-  }
-
-  KcardWidget userDetailsCardWidget() {
-    return KcardWidget(
-        color: LightColors.kBackgroundColor,
-        elevation: 0.0,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              '      Antoni Sudarsono',
-              style: LightColors.blackTextStyle
-                  .copyWith(fontWeight: FontWeight.bold, fontSize: 14.0),
-            ),
-            const SizedBox(
-              height: defaultMargin,
-            ),
-            dataTable2Widget(),
-          ],
-        ));
-  }
-
-  DataTable dataTable2Widget() {
-    return DataTable(
-      headingRowHeight: 0.0,
-      dataTextStyle: LightColors.blackTextStyle.copyWith(fontSize: 12),
-      dividerThickness: 0.0,
-      columnSpacing: defaultMargin,
-      dataRowHeight: defaultMargin,
-      columns: const [
-        DataColumn(
-          label: SizedBox(),
-        ),
-        DataColumn(
-          label: SizedBox(),
-        ),
-      ],
-      rows: [
-        DataRow(
-          cells: [
-            DataCell(Text(
-              'Employee Rank',
-              style: LightColors.blackTextStyle
-                  .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold),
-            )),
-            const DataCell(Text(': 19')),
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Text('Crew Rank',
-                style: LightColors.blackTextStyle
-                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
-            const DataCell(Text(': 43')),
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Text('Vessel',
-                style: LightColors.blackTextStyle
-                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
-            const DataCell(Text(': 27')),
-          ],
-        ),
-        DataRow(
-          cells: [
-            DataCell(Text('Office',
-                style: LightColors.blackTextStyle
-                    .copyWith(fontSize: 12.0, fontWeight: FontWeight.bold))),
-            const DataCell(Text(': 27')),
-          ],
-        ),
-      ],
     );
   }
 
@@ -228,21 +138,23 @@ class _UserPageState extends State<UserPage>
             ))
       ],
       pinned: true,
-      expandedHeight: 350,
-      flexibleSpace: const FlexibleSpaceBar(
-          stretchModes: [StretchMode.blurBackground],
+      expandedHeight: isFirstTimeUser ? 310 : 350,
+      flexibleSpace: FlexibleSpaceBar(
+          stretchModes: const [StretchMode.blurBackground],
           background: Padding(
             padding: EdgeInsets.only(
                 top: 120,
                 left: defaultMargin,
                 right: defaultMargin,
-                bottom: 80),
-            child: ProfileCardWidget(),
+                bottom: isFirstTimeUser ? defaultMargin : 80),
+            child: const ProfileCardWidget(),
           )),
-      bottom: KtabBarWidget(
-        controller: tabController,
-        titles: const ['Details', 'Reports', 'Points'],
-      ),
+      bottom: isFirstTimeUser
+          ? null
+          : KtabBarWidget(
+              controller: tabController,
+              titles: const ['Details', 'Reports', 'Points'],
+            ),
     );
   }
 }

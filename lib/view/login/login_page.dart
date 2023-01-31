@@ -1,18 +1,19 @@
-import 'package:awas/res/utils/enums.dart';
-import 'package:awas/view/dashboard/dashboard_employee_page.dart';
-import 'package:awas/view/user/user_page.dart';
+import '/res/utils/enums.dart';
+import '/view/dashboard/dashboard_employee_page.dart';
+import '/view/user/user_page.dart';
 import 'package:flutter_session_manager/flutter_session_manager.dart';
 //TODO: implement session manager
 
-import 'package:awas/res/widgets/ktext_form_field.dart';
+import '/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../res/theme/colors/light_colors.dart';
 import '../../res/widgets/kelevated_button.dart';
 
+bool isFirstTimeUser = true;
+
 class LoginPage extends StatelessWidget {
   final Role loginRole;
-  final bool isNewUser = true;
   static const String routeName = '/login';
   static const String employeeRoleRouteName = '/employee-login';
 
@@ -122,7 +123,7 @@ class LoginPage extends StatelessWidget {
   void loginRoleAndIsNewUser(BuildContext context) {
     switch (loginRole) {
       case Role.employee:
-        isNewUser
+        isFirstTimeUser
             ? Navigator.pushReplacementNamed(context, UserPage.routeName)
             : Navigator.pushReplacementNamed(
                 context, DashboardEmployeePage.routeName);
