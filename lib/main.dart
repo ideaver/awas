@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'res/utils/constants.dart';
 import 'res/utils/routes.dart';
+import 'res/widgets/kbottom_navigation_bar.dart';
 
 Future<void> main() async {
 //custom Status bar and navigation bar color
@@ -36,11 +37,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: GoogleFonts.robotoTextTheme()),
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/menu',
-        routes: routes);
+      theme: ThemeData(
+          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
+      debugShowCheckedModeBanner: false,
+      home: KbottomNavigationBar(),
+      // initialRoute: '/menu',
+      // routes: routes
+    );
   }
 }

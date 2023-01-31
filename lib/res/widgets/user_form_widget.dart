@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'company_custom_field_widget.dart';
+import 'kbottom_navigation_bar.dart';
 import 'kcard_widget.dart';
 import 'kelevated_button.dart';
 import 'ktext_form_field.dart';
@@ -75,10 +76,7 @@ class _UserFormWidgetState extends State<UserFormWidget>
         child: KelevatedButtonWidget.floating(
           title: 'Save Changes',
           onPressed: () {
-            isNewUser
-                ? Navigator.pushReplacementNamed(
-                    context, DashboardEmployeePage.routeName)
-                : Navigator.pop(context);
+            isNewUser ? const KbottomNavigationBar() : Navigator.pop(context);
           },
         ),
       ),
