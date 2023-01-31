@@ -1,3 +1,5 @@
+import 'package:awas/res/widgets/risk_level_grid_widget.dart';
+
 import '/res/widgets/kscrollbar_widget.dart';
 import '/res/widgets/ktext_form_field.dart';
 
@@ -224,12 +226,6 @@ class _ReportFormPageState extends State<ReportFormPage>
             height: defaultMargin,
           ),
         ]),
-        const KexpansionTileWidget(title: 'Report Category', children: [
-          ReportCategoryGridWidget(),
-          SizedBox(
-            height: defaultMargin,
-          )
-        ]),
         const SizedBox(
           height: defaultMargin,
         ),
@@ -281,6 +277,21 @@ class _ReportFormPageState extends State<ReportFormPage>
             'Risk Level',
             style: titleTextStyle,
           ),
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              '(Recommendation : Low Risk)',
+              style: LightColors.subTitle2TextStyle
+                  .copyWith(color: LightColors.kSuccessColor),
+            ),
+          ),
+          const SizedBox(
+            height: defaultMargin / 2,
+          ),
+          const RiskLevelGridWidget(),
           const SizedBox(
             height: defaultMargin,
           ),
