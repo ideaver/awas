@@ -1,12 +1,10 @@
-import 'package:awas/view/login/login_page.dart';
-
 import '../../res/utils/globals.dart';
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
 import '../../res/theme/colors/light_colors.dart';
 
 import '/res/widgets/kcard_widget.dart';
-import '/res/widgets/kelevated_button.dart';
+
 import '/res/widgets/report_list_widget.dart';
 import '/res/widgets/profile_card_widget.dart';
 import '/res/widgets/user_form_widget.dart';
@@ -25,24 +23,12 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-  ScrollController scrollController = ScrollController();
-  bool isFabVisible = true;
 
 //TODO: Extract from and move FAB to form only
   @override
   void initState() {
     super.initState();
     tabController = TabController(vsync: this, length: 3);
-    scrollController = ScrollController();
-    scrollController.addListener(() {
-      // FAB should be visible if and only if user has not scrolled to bottom
-      var userHasScrolledToBottom = scrollController.position.atEdge &&
-          scrollController.position.pixels > 0;
-
-      if (isFabVisible == userHasScrolledToBottom) {
-        setState(() => isFabVisible = !userHasScrolledToBottom);
-      }
-    });
   }
 
   @override
@@ -52,7 +38,6 @@ class _UserPageState extends State<UserPage>
       backgroundColor: LightColors.kBackgroundColor,
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
-        controller: scrollController,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [sliverAppBarWidget()];
         },
@@ -66,17 +51,6 @@ class _UserPageState extends State<UserPage>
                     ReportListWidget(context: context),
                     const PointTransactionListWidget()
                   ]),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: AnimatedSlide(
-        duration: const Duration(milliseconds: 300),
-        offset: isFabVisible ? const Offset(0, 2) : Offset.zero,
-        child: KelevatedButtonWidget.floating(
-          title: 'Save Changes',
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
       ),
     );
   }
