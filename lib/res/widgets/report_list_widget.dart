@@ -18,7 +18,6 @@ class ReportListWidget extends StatelessWidget {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       body: ListView.builder(
-        //TODO: Change to list separated
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(defaultMargin),
         itemCount: 20,
@@ -44,7 +43,7 @@ class ReportListWidget extends StatelessWidget {
           const SizedBox(
             width: defaultMargin / 2,
           ),
-          ReportCardWidget(context: context)
+          Expanded(child: ReportCardWidget(context: context))
         ],
       ),
     );

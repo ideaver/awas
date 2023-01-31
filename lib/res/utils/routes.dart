@@ -1,8 +1,9 @@
-import 'package:awas/view/report/camera_page.dart';
+import 'package:awas/view/report/Archivedcamera_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
+import '../../view/report/camera_page.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/dashboard/dashboard_manager_page.dart';
 import '/view/login/forgot_password_page.dart';

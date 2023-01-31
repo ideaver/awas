@@ -21,89 +21,92 @@ class ReportCardWidget extends StatelessWidget {
         },
         elevation: 0.0,
         color: LightColors.kBackgroundColor,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Text(
-                    'Safe Observation',
-                    style: LightColors.black2TextStyle,
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.sync,
-                    color: LightColors.kSecondaryColor,
-                  )
-                ],
+        child: SizedBox(
+          height: 110,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    Text(
+                      'Safe Observation',
+                      style: LightColors.black2TextStyle,
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      Icons.sync,
+                      color: LightColors.kSecondaryColor,
+                    )
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: defaultMargin / 2,
-            ),
-            Text(
-              overflow: TextOverflow.ellipsis,
-              'Laborum aliqua do nostrud ss ewsgvsg',
-              style: LightColors.subTitle3TextStyle,
-            ),
-            const SizedBox(
-              height: defaultMargin / 2,
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.near_me,
-                    color: LightColors.kPrimaryColor,
-                    size: 20,
-                  ),
-                  const SizedBox(
-                    width: defaultMargin / 2,
-                  ),
-                  Text(
-                    overflow: TextOverflow.ellipsis,
-                    'North Mining Site',
-                    style: LightColors.subTitle2TextStyle,
-                  )
-                ],
+              const SizedBox(
+                height: defaultMargin / 2,
               ),
-            ),
-            const SizedBox(
-              height: defaultMargin,
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.forum,
-                    color: LightColors.kDarkGreyColor,
-                    size: 16,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    '0',
-                    style: LightColors.subTitle2TextStyle,
-                  ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.share,
-                    color: LightColors.kDarkGreyColor,
-                    size: 16,
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Text(
-                    '0',
-                    style: LightColors.subTitle2TextStyle,
-                  )
-                ],
+              Text(
+                overflow: TextOverflow.ellipsis,
+                'Laborum aliqua do nostrud ss ewsgvsg',
+                style: LightColors.subTitle3TextStyle,
               ),
-            ),
-          ],
+              const SizedBox(
+                height: defaultMargin / 2,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.near_me,
+                      color: LightColors.kPrimaryColor,
+                      size: 20,
+                    ),
+                    const SizedBox(
+                      width: defaultMargin / 2,
+                    ),
+                    Text(
+                      overflow: TextOverflow.ellipsis,
+                      'North Mining Site',
+                      style: LightColors.subTitle2TextStyle,
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: defaultMargin,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.forum,
+                      color: LightColors.kDarkGreyColor,
+                      size: 16,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      '0',
+                      style: LightColors.subTitle2TextStyle,
+                    ),
+                    const Spacer(),
+                    const Icon(
+                      Icons.share,
+                      color: LightColors.kDarkGreyColor,
+                      size: 16,
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      '0',
+                      style: LightColors.subTitle2TextStyle,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         ));
   }
 }
