@@ -1,3 +1,4 @@
+import '../../res/utils/globals.dart';
 import '/res/utils/enums.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/user/user_page.dart';
@@ -9,8 +10,6 @@ import 'package:flutter/material.dart';
 
 import '../../res/theme/colors/light_colors.dart';
 import '../../res/widgets/kelevated_button.dart';
-
-bool isFirstTimeUser = true;
 
 class LoginPage extends StatelessWidget {
   final Role loginRole;
@@ -123,7 +122,7 @@ class LoginPage extends StatelessWidget {
   void loginRoleAndIsNewUser(BuildContext context) {
     switch (loginRole) {
       case Role.employee:
-        isFirstTimeUser
+        isNewUser
             ? Navigator.pushReplacementNamed(context, UserPage.routeName)
             : Navigator.pushReplacementNamed(
                 context, DashboardEmployeePage.routeName);

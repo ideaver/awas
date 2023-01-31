@@ -1,5 +1,6 @@
 import 'package:awas/view/login/login_page.dart';
 
+import '../../res/utils/globals.dart';
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
 import '../../res/theme/colors/light_colors.dart';
@@ -55,7 +56,7 @@ class _UserPageState extends State<UserPage>
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [sliverAppBarWidget()];
         },
-        body: isFirstTimeUser
+        body: isNewUser
             ? const UserFormWidget()
             : TabBarView(
                 physics: const BouncingScrollPhysics(),
@@ -138,7 +139,7 @@ class _UserPageState extends State<UserPage>
             ))
       ],
       pinned: true,
-      expandedHeight: isFirstTimeUser ? 310 : 350,
+      expandedHeight: isNewUser ? 310 : 350,
       flexibleSpace: FlexibleSpaceBar(
           stretchModes: const [StretchMode.blurBackground],
           background: Padding(
@@ -146,10 +147,10 @@ class _UserPageState extends State<UserPage>
                 top: 120,
                 left: defaultMargin,
                 right: defaultMargin,
-                bottom: isFirstTimeUser ? defaultMargin : 80),
+                bottom: isNewUser ? defaultMargin : 80),
             child: const ProfileCardWidget(),
           )),
-      bottom: isFirstTimeUser
+      bottom: isNewUser
           ? null
           : KtabBarWidget(
               controller: tabController,
