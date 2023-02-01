@@ -25,6 +25,13 @@ enum NewVsExistingUser {
   existingUser;
 }
 
+enum UserPageState {
+  edit,
+  viewAsMe,
+  viewAsOther,
+  ;
+}
+
 enum StatusCode {
   badRequest(401, 'Bad request'),
   unauthorized(401, 'Unauthorized'),

@@ -1,6 +1,8 @@
 import 'package:awas/view/login/terms_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../res/utils/globals.dart';
+import '../../state_management/global_states.dart';
 import '/res/utils/enums.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/user/user_page.dart';
@@ -65,11 +67,15 @@ class LoginPage extends StatelessWidget {
                         )),
                   ),
                   const SizedBox(height: defaultMargin),
-                  KelevatedButtonWidget(
-                      onPressed: () {
-                        loginRoleAndIsNewUser(context);
-                      },
-                      title: 'Sign In'),
+                  Consumer(
+                    builder: (context, ref, child) {
+                      return KelevatedButtonWidget(
+                          onPressed: () {
+                            loginRoleAndIsNewUser(context, ref);
+                          },
+                          title: 'Sign In');
+                    },
+                  ),
                   const SizedBox(height: defaultMargin),
                   KelevatedButtonWidget(
                       backgroundColor: LightColors.kDarkGreyColor,
@@ -121,10 +127,10 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  void loginRoleAndIsNewUser(BuildContext context) {
+  void loginRoleAndIsNewUser(BuildContext context, WidgetRef ref) {
     switch (loginRole) {
       case Role.employee:
-        isNewUser
+        ref.read(isNewUser)
             ? Navigator.pushReplacementNamed(context, TermsPage.routeName)
             : Navigator.pushReplacementNamed(
                 context, DashboardEmployeePage.routeName);

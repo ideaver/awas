@@ -108,7 +108,7 @@ class TermsPage extends StatelessWidget {
                       }
                       return KelevatedButtonWidget(
                           onPressed: () {
-                            isNewUser
+                            ref.read(isNewUser)
                                 ? Navigator.pushReplacementNamed(
                                     context, UserPage.routeName)
                                 : Navigator.pop(context);

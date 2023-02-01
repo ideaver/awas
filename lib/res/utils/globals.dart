@@ -1,1 +1,1 @@
-bool isNewUser = true;
+
