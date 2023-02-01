@@ -17,7 +17,6 @@ class TermsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('logme termspage build ');
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: appBarWidget(),
