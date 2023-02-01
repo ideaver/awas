@@ -1,5 +1,7 @@
 import 'package:awas/res/widgets/kscrollbar_widget.dart';
+import 'package:awas/view/user/user_page.dart';
 
+import '../../res/utils/globals.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kdivider_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +19,12 @@ class TermsPage extends StatelessWidget {
       backgroundColor: LightColors.kBackgroundColor,
       appBar: appBarWidget(),
       body: Padding(
-        padding: const EdgeInsets.all(defaultMargin),
+        padding: const EdgeInsets.only(
+            top: defaultMargin,
+            left: defaultMargin,
+            right: defaultMargin,
+            bottom: defaultMargin * 10),
         child: KscrollBarWidget(
-          //TODO: fix hidden bottom text
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             itemCount: 20,
@@ -41,7 +46,7 @@ class TermsPage extends StatelessWidget {
                   Text(
                     'Ut nostrud cupidatat elit est eiusmod voluptate dolore nisi. Eiusmod deserunt sit excepteur nisi reprehenderit dolor labore magna pariatur nisi. Elit deserunt cupidatat anim consequat reprehenderit voluptate. Labore labore non consequat ut voluptate reprehenderit est. Nostrud dolore et magna tempor co. Ut nostrud cupidatat elit est eiusmod voluptate dolore nisi. Eiusmod deserunt',
                     style: LightColors.subTitle2TextStyle,
-                  )
+                  ),
                 ],
               );
             },
@@ -78,7 +83,9 @@ class TermsPage extends StatelessWidget {
                     child: KelevatedButtonWidget(
                         backgroundColor: LightColors.kWhiteColor,
                         textColor: LightColors.kPrimaryColor,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                         title: 'Decline'),
                   ),
                   const SizedBox(
@@ -86,7 +93,13 @@ class TermsPage extends StatelessWidget {
                   ),
                   Expanded(
                       child: KelevatedButtonWidget(
-                          onPressed: () {}, title: 'Understand')),
+                          onPressed: () {
+                            isNewUser
+                                ? Navigator.pushReplacementNamed(
+                                    context, UserPage.routeName)
+                                : Navigator.pop(context);
+                          },
+                          title: 'Understand')),
                 ],
               ),
               const SizedBox(

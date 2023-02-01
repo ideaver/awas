@@ -125,7 +125,9 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       subTitle: 'ID663298450',
       actions: [
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              //TODO: Implement share intent
+            },
             icon: const Icon(
               Icons.share,
               color: LightColors.kDarkGreyColor,

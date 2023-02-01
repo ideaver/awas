@@ -1,3 +1,5 @@
+import 'package:awas/view/login/terms_page.dart';
+
 import '../../res/utils/globals.dart';
 import '/res/utils/enums.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
@@ -123,7 +125,7 @@ class LoginPage extends StatelessWidget {
     switch (loginRole) {
       case Role.employee:
         isNewUser
-            ? Navigator.pushReplacementNamed(context, UserPage.routeName)
+            ? Navigator.pushReplacementNamed(context, TermsPage.routeName)
             : Navigator.pushReplacementNamed(
                 context, DashboardEmployeePage.routeName);
         break;
