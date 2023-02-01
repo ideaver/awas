@@ -1,4 +1,5 @@
 import 'package:camera/camera.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/view/report/camera_page.dart';
 
 import '/res/theme/colors/light_colors.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 
 import 'res/utils/constants.dart';
 import 'res/utils/routes.dart';
-import 'res/widgets/kbottom_navigation_bar.dart';
 
 Future<void> main() async {
 //custom Status bar and navigation bar color
@@ -29,7 +29,7 @@ Future<void> main() async {
   }
 //end region
 
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

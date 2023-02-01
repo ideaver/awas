@@ -1,5 +1,8 @@
-import 'package:awas/res/widgets/kscrollbar_widget.dart';
-import 'package:awas/view/user/user_page.dart';
+import 'package:awas/state_management/global_states.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '/res/widgets/kscrollbar_widget.dart';
+import '/view/user/user_page.dart';
 
 import '../../res/utils/globals.dart';
 import '/res/theme/colors/light_colors.dart';
@@ -8,13 +11,15 @@ import 'package:flutter/material.dart';
 
 import '../../res/widgets/kelevated_button.dart';
 
-class TermsPage extends StatelessWidget {
+class TermsPage extends ConsumerWidget {
   static const String routeName = '/terms';
 
   const TermsPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    StateController<bool> isChecked = ref.watch(termsChecked.notifier);
+    print('logme termspage build and ${isChecked.state}');
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: appBarWidget(),
@@ -64,8 +69,10 @@ class TermsPage extends StatelessWidget {
                   Checkbox(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0)),
-                    value: true,
-                    onChanged: (value) {},
+                    value: isChecked.state,
+                    onChanged: (value) {
+                      isChecked.state = !isChecked.state;
+                    },
                   ),
                   Text(
                     'I have read & agree with above T&Cs',
