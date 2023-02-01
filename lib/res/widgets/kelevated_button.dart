@@ -4,7 +4,7 @@ import '/res/theme/colors/light_colors.dart';
 
 // ignore: must_be_immutable
 class KelevatedButtonWidget extends StatelessWidget {
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final String title;
   final Color backgroundColor;
   final Color textColor;
@@ -13,7 +13,7 @@ class KelevatedButtonWidget extends StatelessWidget {
 
   const KelevatedButtonWidget({
     Key? key,
-    required this.onPressed,
+    this.onPressed,
     required this.title,
     this.backgroundColor = LightColors.kPrimaryColor,
     this.textColor = LightColors.kWhiteColor,
@@ -70,8 +70,7 @@ class KelevatedButtonWidget extends StatelessWidget {
         label: Text(
           title,
           style: LightColors.whiteTextStyle.copyWith(
-              color:
-                  onPressed != null ? textColor : LightColors.kDarkGreyColor),
+              color: onPressed != null ? textColor : LightColors.kWhiteColor),
           textAlign: TextAlign.center,
         ),
       ),

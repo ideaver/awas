@@ -1,4 +1,4 @@
-import 'package:awas/state_management/global_states.dart';
+import '/state_management/global_states.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '/res/widgets/kscrollbar_widget.dart';
@@ -11,15 +11,13 @@ import 'package:flutter/material.dart';
 
 import '../../res/widgets/kelevated_button.dart';
 
-class TermsPage extends ConsumerWidget {
+class TermsPage extends StatelessWidget {
   static const String routeName = '/terms';
-
   const TermsPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    StateController<bool> isChecked = ref.watch(termsChecked.notifier);
-    print('logme termspage build and ${isChecked.state}');
+  Widget build(BuildContext context) {
+    print('logme termspage build ');
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: appBarWidget(),
@@ -66,12 +64,17 @@ class TermsPage extends ConsumerWidget {
             children: [
               Row(
                 children: [
-                  Checkbox(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5.0)),
-                    value: isChecked.state,
-                    onChanged: (value) {
-                      isChecked.state = !isChecked.state;
+                  Consumer(
+                    builder: (context, ref, child) {
+                      final icChecked = ref.watch(termsChecked);
+                      return Checkbox(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        value: icChecked,
+                        onChanged: (value) {
+                          ref.read(termsChecked.notifier).state = !icChecked;
+                        },
+                      );
                     },
                   ),
                   Text(
@@ -98,15 +101,22 @@ class TermsPage extends ConsumerWidget {
                   const SizedBox(
                     width: defaultMargin,
                   ),
-                  Expanded(
-                      child: KelevatedButtonWidget(
+                  Expanded(child: Consumer(
+                    builder:
+                        (BuildContext context, WidgetRef ref, Widget? child) {
+                      if (!ref.watch(termsChecked)) {
+                        return const KelevatedButtonWidget(title: 'Understand');
+                      }
+                      return KelevatedButtonWidget(
                           onPressed: () {
                             isNewUser
                                 ? Navigator.pushReplacementNamed(
                                     context, UserPage.routeName)
                                 : Navigator.pop(context);
                           },
-                          title: 'Understand')),
+                          title: 'Understand');
+                    },
+                  )),
                 ],
               ),
               const SizedBox(
