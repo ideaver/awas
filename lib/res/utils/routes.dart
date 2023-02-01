@@ -38,7 +38,7 @@ final Map<String, WidgetBuilder> routes = {
   LoginPage.employeeRoleRouteName: (context) => const LoginPage.employeeRole(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
   ThankYouPage.profileUpdaterouteName: (context) =>
-      ThankYouPage.profileUpdate(),
+      ThankYouPage.profileUpdated(),
   TermsPage.routeName: (context) => const TermsPage(),
   UserPage.routeName: (context) => const UserPage(),
   UserListPage.routeName: (context) => const UserListPage(),

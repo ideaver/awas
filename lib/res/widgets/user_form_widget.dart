@@ -1,5 +1,6 @@
 import 'package:awas/res/utils/globals.dart';
-import 'package:awas/view/dashboard/dashboard_employee_page.dart';
+import 'package:awas/view/thank_you_page.dart';
+import '/view/dashboard/dashboard_employee_page.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -78,7 +79,7 @@ class _UserFormWidgetState extends State<UserFormWidget>
           onPressed: () {
             isNewUser
                 ? Navigator.pushReplacementNamed(
-                    context, KbottomNavigationBar.routeName)
+                    context, ThankYouPage.profileUpdaterouteName)
                 : Navigator.pop(context);
           },
         ),

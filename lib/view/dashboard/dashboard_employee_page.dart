@@ -1,3 +1,5 @@
+import 'package:awas/view/user/user_page.dart';
+
 import '/res/widgets/pie_chart_widget.dart';
 import '/res/widgets/report_card_widget.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +23,7 @@ class DashboardEmployeePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kPrimaryColor,
-      appBar: appBarWidget(),
+      appBar: appBarWidget(context),
       body: NestedScrollView(
           physics: const BouncingScrollPhysics(),
           headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -362,7 +364,7 @@ class DashboardEmployeePage extends StatelessWidget {
         ));
   }
 
-  AppBar appBarWidget() {
+  AppBar appBarWidget(BuildContext context) {
     return AppBar(
       systemOverlayStyle:
           const SystemUiOverlayStyle(statusBarColor: LightColors.kPrimaryColor),
@@ -384,14 +386,24 @@ class DashboardEmployeePage extends StatelessWidget {
           width: 120,
           child: Stack(alignment: AlignmentDirectional.centerStart, children: [
             StarBadgeWidget.rightMargin(),
-            const Positioned(
+            Positioned(
               right: 0,
               top: 0,
               bottom: 0,
-              child: CircleAvatar(
-                radius: 23,
-                backgroundImage: AssetImage('assets/avatar1.png'),
-                backgroundColor: LightColors.kSecondaryColor,
+              child: Container(
+                width: 40,
+                height: 50,
+                decoration: const BoxDecoration(
+                    color: LightColors.kSecondaryColor,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: AssetImage('assets/avatar1.png'))),
+                child: InkWell(
+                  customBorder: const CircleBorder(),
+                  onTap: () {
+                    Navigator.pushNamed(context, UserPage.routeName);
+                  },
+                ),
               ),
             )
           ]),

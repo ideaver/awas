@@ -1,3 +1,6 @@
+import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
+import 'package:awas/view/dashboard/dashboard_employee_page.dart';
+
 import '../res/utils/enums.dart';
 import '../res/widgets/kelevated_button.dart';
 import '/res/widgets/kcard_widget.dart';
@@ -34,7 +37,7 @@ class ThankYouPage extends StatelessWidget {
   ThankYouPage(
       {super.key, required this.event, required this.thankYouPageModel});
 
-  ThankYouPage.profileUpdate({ThankYouPageModel? thankYouPageModel})
+  ThankYouPage.profileUpdated({ThankYouPageModel? thankYouPageModel})
       : this(
             event: ConfirmationEvent.profileUpdatedSuccess,
             thankYouPageModel: thankYouPageModel);
@@ -48,7 +51,10 @@ class ThankYouPage extends StatelessWidget {
             instruction: 'Redirecting to your Dashboard...',
             floatingActionButton: KelevatedButtonWidget.floating(
               title: 'Go to Dashboard',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                    context, KbottomNavigationBar.routeName);
+              },
               icon: Icons.home,
             ));
         break;

@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import '../../res/utils/globals.dart';
 import '../../res/widgets/ktabbar_widget.dart';
 import '../../res/widgets/point_transaction_list_widget.dart';
@@ -82,6 +84,8 @@ class _UserPageState extends State<UserPage>
 
   SliverAppBar sliverAppBarWidget() {
     return SliverAppBar(
+      systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: LightColors.kBackgroundColor),
       elevation: 0.0,
       backgroundColor: LightColors.kBackgroundColor,
       toolbarHeight: 52,
