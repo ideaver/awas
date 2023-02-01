@@ -23,63 +23,47 @@ class PieChartWidgetState extends State {
       child: Column(
         children: [
           Text(
-            'Report Volume',
+            'Frequent Events',
             style: LightColors.black2TextStyle.copyWith(fontSize: 12),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
           const SizedBox(
             height: defaultMargin,
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 187,
-                      child: PieChart(
-                        PieChartData(
-                          pieTouchData: PieTouchData(
-                            touchCallback:
-                                (FlTouchEvent event, pieTouchResponse) {
-                              setState(() {
-                                if (!event.isInterestedForInteractions ||
-                                    pieTouchResponse == null ||
-                                    pieTouchResponse.touchedSection == null) {
-                                  touchedIndex = -1;
-                                  return;
-                                }
-                                touchedIndex = pieTouchResponse
-                                    .touchedSection!.touchedSectionIndex;
-                              });
-                            },
-                          ),
-                          borderData: FlBorderData(
-                            show: false,
-                          ),
-                          sectionsSpace: 0,
-                          centerSpaceRadius: 0,
-                          sections: showingSections(),
-                        ),
-                      ),
-                    ),
-                  ],
+          SizedBox(
+            height: 187,
+            child: PieChart(
+              PieChartData(
+                pieTouchData: PieTouchData(
+                  touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                    setState(() {
+                      if (!event.isInterestedForInteractions ||
+                          pieTouchResponse == null ||
+                          pieTouchResponse.touchedSection == null) {
+                        touchedIndex = -1;
+                        return;
+                      }
+                      touchedIndex =
+                          pieTouchResponse.touchedSection!.touchedSectionIndex;
+                    });
+                  },
                 ),
+                borderData: FlBorderData(
+                  show: false,
+                ),
+                sectionsSpace: 0,
+                centerSpaceRadius: 0,
+                sections: showingSections(),
               ),
-              const SizedBox(
-                width: defaultMargin,
-              ),
-              Expanded(
-                  child: Column(
-                children: [
-                  labelWidget(),
-                  labelWidget(),
-                  labelWidget(),
-                  labelWidget(),
-                ],
-              ))
-            ],
+            ),
           ),
+          const SizedBox(
+            width: defaultMargin,
+          ),
+          labelWidget(),
+          labelWidget(),
+          labelWidget(),
+          labelWidget(),
         ],
       ),
     );
@@ -93,17 +77,18 @@ class PieChartWidgetState extends State {
           Icons.sentiment_dissatisfied,
           color: LightColors.kPrimaryColor,
         ),
-        SizedBox(
-          width: defaultMargin / 4,
+        const SizedBox(
+          width: defaultMargin / 2,
         ),
         Expanded(
           child: RichText(
+            overflow: TextOverflow.ellipsis,
             text: TextSpan(
               style: LightColors.subTitle2TextStyle,
               children: const [
                 TextSpan(
                     text: '134', style: TextStyle(fontWeight: FontWeight.bold)),
-                TextSpan(text: ' Reports', style: TextStyle()),
+                TextSpan(text: ' Terjatuh dari ketinggian', style: TextStyle()),
               ],
             ),
           ),
