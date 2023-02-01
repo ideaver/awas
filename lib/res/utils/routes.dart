@@ -1,3 +1,4 @@
+import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
 import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/Archivedcamera_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
@@ -33,6 +34,7 @@ import '/view/user/create_user_page.dart';
 final Map<String, WidgetBuilder> routes = {
   '/menu': (context) => const MenuPage(),
   '/all-screen': (context) => const AllScreenPage(),
+  KbottomNavigationBar.routeName: (context) => const KbottomNavigationBar(),
   LoginPage.employeeRoleRouteName: (context) => const LoginPage.employeeRole(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
   ThankYouPage.profileUpdaterouteName: (context) =>

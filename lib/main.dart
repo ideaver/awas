@@ -37,12 +37,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          primarySwatch: Colors.blue, textTheme: GoogleFonts.robotoTextTheme()),
-      debugShowCheckedModeBanner: false,
-      home: KbottomNavigationBar(),
-      // initialRoute: '/menu',
-      // routes: routes
-    );
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: GoogleFonts.robotoTextTheme()),
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/menu',
+        routes: routes);
   }
 }

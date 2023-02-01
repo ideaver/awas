@@ -76,7 +76,10 @@ class _UserFormWidgetState extends State<UserFormWidget>
         child: KelevatedButtonWidget.floating(
           title: 'Save Changes',
           onPressed: () {
-            isNewUser ? const KbottomNavigationBar() : Navigator.pop(context);
+            isNewUser
+                ? Navigator.pushReplacementNamed(
+                    context, KbottomNavigationBar.routeName)
+                : Navigator.pop(context);
           },
         ),
       ),
