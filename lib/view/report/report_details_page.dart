@@ -1,5 +1,7 @@
-import 'package:awas/res/utils/enums.dart';
-import 'package:awas/res/widgets/kcard_widget.dart';
+import '../../res/widgets/kcard_widget.dart';
+import '../../res/widgets/ktext_form_field.dart';
+import '/res/utils/enums.dart';
+
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -42,39 +44,93 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
     final TextStyle titleTextStyle =
         LightColors.black2TextStyle.copyWith(fontWeight: FontWeight.bold);
     final TextStyle contentTextStyle = LightColors.subTitle2TextStyle;
-//TODO: add 5 whys close statement
+
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      appBar: KappBarWidget(
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: LightColors.kBackgroundColor),
-        context: context,
-        //TODO: Change to sliver background flexible one image
-        centerTitle: true,
-        title: 'Report',
-        subTitle: 'ID663298450',
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.share,
-                color: LightColors.kDarkGreyColor,
-              ))
+      appBar: appBarWidget(context),
+      body: bodyWidget(contentTextStyle, titleTextStyle),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+      //TODO: Fix transparency gap
+      //TODO: Convert to animated list
+      floatingActionButton: Container(
+          height: 100,
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultMargin / 4,
+            vertical: defaultMargin / 2,
+          ),
+          decoration: const BoxDecoration(
+            color: LightColors.kBackgroundColor,
+            border: Border(
+              top: BorderSide(
+                color: LightColors.kGreyColor,
+                width: 3.0,
+              ),
+            ),
+          ),
+          child: Row(
+            children: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.attachment_rounded,
+                    color: LightColors.kPrimaryColor,
+                  )),
+              const SizedBox(width: defaultMargin / 2),
+              const Expanded(
+                child: KtextFormFieldWidget(
+                    withEnterText: false,
+                    withTitle: false,
+                    title: 'Type message...'),
+              ),
+              const SizedBox(width: defaultMargin / 2),
+              KcardWidget(
+                  elevation: 0.0,
+                  padding: const EdgeInsets.all(15),
+                  color: LightColors.kPrimaryColor,
+                  onTap: () {},
+                  child: const Icon(
+                    Icons.send,
+                    color: LightColors.kBackgroundColor,
+                  )),
+            ],
+          )),
+    );
+  }
+
+  NestedScrollView bodyWidget(
+      TextStyle contentTextStyle, TextStyle titleTextStyle) {
+    return NestedScrollView(
+      floatHeaderSlivers: true,
+      headerSliverBuilder: (context, innerBoxIsScrolled) {
+        return [sliverAppBarWidget()];
+      },
+      body: TabBarView(
+        controller: tabController,
+        children: [
+          overviewTabWidget(contentTextStyle, titleTextStyle),
+          detailTabWidget(),
+          commentTabWidget()
         ],
       ),
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [sliverAppBarWidget()];
-        },
-        body: TabBarView(
-          controller: tabController,
-          children: [
-            overviewTabWidget(contentTextStyle, titleTextStyle),
-            detailTabWidget(),
-            commentTabWidget()
-          ],
-        ),
-      ),
+    );
+  }
+
+  KappBarWidget appBarWidget(BuildContext context) {
+    return KappBarWidget(
+      systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: LightColors.kBackgroundColor),
+      context: context,
+      centerTitle: true,
+      title: 'Report',
+      subTitle: 'ID663298450',
+      actions: [
+        IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.share,
+              color: LightColors.kDarkGreyColor,
+            ))
+      ],
     );
   }
 
@@ -82,42 +138,109 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
     return ListView(
       physics:
           const NeverScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-      padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
       children: [
-        Row(
-          children: [
-            const Icon(
-              Icons.forum,
-              color: LightColors.kDarkGreyColor,
-              size: 16,
-            ),
-            const SizedBox(
-              width: 5,
-            ),
-            Text(
-              '0 Comments',
-              style: LightColors.subTitle3TextStyle,
-            ),
-            const Spacer(),
-            TextButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.share,
-                  color: LightColors.kDarkGreyColor,
-                  size: 16,
-                ),
-                label: Text(
-                  '0 Share',
-                  style: LightColors.subTitle3TextStyle,
-                ))
-          ],
+        const SizedBox(height: defaultMargin / 2),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.forum,
+                color: LightColors.kDarkGreyColor,
+                size: 16,
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              Text(
+                '0 Comments',
+                style: LightColors.subTitle3TextStyle,
+              ),
+              const Spacer(),
+              TextButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.share,
+                    color: LightColors.kDarkGreyColor,
+                    size: 16,
+                  ),
+                  label: Text(
+                    '0 Share',
+                    style: LightColors.subTitle3TextStyle,
+                  ))
+            ],
+          ),
         ),
-        const SizedBox(height: defaultMargin),
+        const SizedBox(height: defaultMargin / 2),
         const KdividerWidget(
           horizontalMargin: 0.0,
         ),
         const SizedBox(height: defaultMargin),
-        //TODO: implement comments
+        ...List.generate(10, (index) {
+          return commentTileWidget(index);
+        }),
+        const SizedBox(height: defaultMargin * 5),
+      ],
+    );
+  }
+
+  Widget commentTileWidget(int index) {
+    return Row(
+      children: [
+        SizedBox(
+          width: index.isOdd ? defaultMargin : 0,
+        ),
+        Expanded(
+          child: ListTile(
+            leading: const CircleAvatar(
+              backgroundImage: AssetImage('assets/avatar1.png'),
+              radius: 20,
+              backgroundColor: LightColors.kSecondaryColor,
+            ),
+            title: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: 'Sally Rooney ',
+                    style: LightColors.black2TextStyle.copyWith(fontSize: 12),
+                    children: [
+                      index.isOdd
+                          ? TextSpan(
+                              text: '@John Smiths ',
+                              style: LightColors.subTitle2TextStyle.copyWith(
+                                  fontSize: 12,
+                                  color: LightColors.kPrimaryColor))
+                          : TextSpan(),
+                      TextSpan(
+                          text:
+                              'Woahh 😍 which has an associated style that is used for that subtree. The text might break across multiple lines or might all be displayed on the same',
+                          style: LightColors.subTitle2TextStyle
+                              .copyWith(fontSize: 12)),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      '17h',
+                      style:
+                          LightColors.subTitle3TextStyle.copyWith(fontSize: 10),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Reply',
+                          style: LightColors.subTitle3TextStyle
+                              .copyWith(fontSize: 10),
+                        ))
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
