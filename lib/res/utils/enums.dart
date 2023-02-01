@@ -15,6 +15,11 @@ enum Role {
   ;
 }
 
+enum ReportRole {
+  observer,
+  validator;
+}
+
 enum NewVsExistingUser {
   newUser,
   existingUser;

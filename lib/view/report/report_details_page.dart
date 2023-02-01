@@ -1,3 +1,5 @@
+import 'package:awas/res/utils/enums.dart';
+import 'package:awas/res/widgets/kcard_widget.dart';
 import 'package:flutter/services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -122,12 +124,13 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
 
   ListView detailTabWidget() {
     return ListView(
-      physics:
-          const NeverScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
       children: [
         const SizedBox(height: defaultMargin),
-        observerTileWidget(),
+        reportRoleTileWidget(reportRole: ReportRole.observer),
+        const SizedBox(height: defaultMargin),
+        reportRoleTileWidget(reportRole: ReportRole.validator),
         const SizedBox(height: defaultMargin),
         const LocationAndDateTimeTileWidget(),
         const SizedBox(height: defaultMargin),
@@ -244,11 +247,37 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
           'Ullamco veniam az excepteur id duis aliquip enim esse veniam.',
           style: contentTextStyle,
         ),
+        const SizedBox(height: defaultMargin * 2),
+        ListTile(
+          contentPadding: const EdgeInsets.all(defaultMargin),
+          tileColor: LightColors.kPrimaryColor.withOpacity(0.1),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(defaultCircular)),
+          leading: const CircleAvatar(
+            backgroundImage: AssetImage('assets/avatar1.png'),
+            radius: 25,
+            backgroundColor: LightColors.kSecondaryColor,
+          ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Closing Statement',
+                style: LightColors.blackTextStyle
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: defaultMargin / 4),
+              Text(
+                'Ullamco veniam az excepteur id duis aliquip enim esse veniam.',
+                style: LightColors.subTitle2TextStyle,
+              )
+            ],
+          ),
+        ),
         const SizedBox(height: defaultMargin),
         const KdividerWidget(
           horizontalMargin: 0.0,
         ),
-        const SizedBox(height: defaultMargin * 8),
       ],
     );
   }
@@ -273,7 +302,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
     );
   }
 
-  ListTile observerTileWidget() {
+  ListTile reportRoleTileWidget({required ReportRole reportRole}) {
     return ListTile(
       onTap: () {
         Navigator.pushNamed(context, '/profile');
@@ -311,9 +340,11 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
         ],
       ),
       trailing: Chip(
-        backgroundColor: LightColors.kPrimaryColor.withOpacity(0.1),
+        backgroundColor: reportRole == ReportRole.observer
+            ? LightColors.kPrimaryColor.withOpacity(0.1)
+            : LightColors.kTertiaryColor.withOpacity(0.5),
         label: Text(
-          'Observer',
+          reportRole.name,
           style: LightColors.linkTextStyle,
         ),
       ),
