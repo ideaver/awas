@@ -154,9 +154,11 @@ class ThankYouPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Total Safety Awareness Points',
-                style: LightColors.subTitle2TextStyle,
+              Expanded(
+                child: Text(
+                  'Total Safety Awareness Points',
+                  style: LightColors.subTitle2TextStyle,
+                ),
               ),
               Text(
                 '20',

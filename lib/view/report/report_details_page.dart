@@ -26,11 +26,24 @@ class ReportDetailsPage extends StatefulWidget {
 class _ReportDetailsPageState extends State<ReportDetailsPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
+  bool isCommentTextFieldVisible = true;
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(vsync: this, length: 3);
+    tabController.addListener(() {
+      // FAB should be visible if and only if user has not scrolled to bottom
+      if (tabController.index == 2) {
+        setState(() {
+          isCommentTextFieldVisible = false;
+        });
+      } else {
+        setState(() {
+          isCommentTextFieldVisible = true;
+        });
+      }
+    });
   }
 
   @override
@@ -52,48 +65,52 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
       //TODO: Fix transparency gap
       //TODO: Convert to animated list
-      floatingActionButton: Container(
-          height: 100,
-          padding: const EdgeInsets.symmetric(
-            horizontal: defaultMargin / 4,
-            vertical: defaultMargin / 2,
-          ),
-          decoration: const BoxDecoration(
-            color: LightColors.kBackgroundColor,
-            border: Border(
-              top: BorderSide(
-                color: LightColors.kGreyColor,
-                width: 3.0,
+      floatingActionButton: AnimatedSlide(
+        duration: const Duration(milliseconds: 300),
+        offset: isCommentTextFieldVisible ? const Offset(0, 2) : Offset.zero,
+        child: Container(
+            height: 100,
+            padding: const EdgeInsets.symmetric(
+              horizontal: defaultMargin / 4,
+              vertical: defaultMargin / 2,
+            ),
+            decoration: const BoxDecoration(
+              color: LightColors.kBackgroundColor,
+              border: Border(
+                top: BorderSide(
+                  color: LightColors.kGreyColor,
+                  width: 3.0,
+                ),
               ),
             ),
-          ),
-          child: Row(
-            children: [
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.attachment_rounded,
+            child: Row(
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.attachment_rounded,
+                      color: LightColors.kPrimaryColor,
+                    )),
+                const SizedBox(width: defaultMargin / 2),
+                const Expanded(
+                  child: KtextFormFieldWidget(
+                      withEnterText: false,
+                      withTitle: false,
+                      title: 'Type message...'),
+                ),
+                const SizedBox(width: defaultMargin / 2),
+                KcardWidget(
+                    elevation: 0.0,
+                    padding: const EdgeInsets.all(15),
                     color: LightColors.kPrimaryColor,
-                  )),
-              const SizedBox(width: defaultMargin / 2),
-              const Expanded(
-                child: KtextFormFieldWidget(
-                    withEnterText: false,
-                    withTitle: false,
-                    title: 'Type message...'),
-              ),
-              const SizedBox(width: defaultMargin / 2),
-              KcardWidget(
-                  elevation: 0.0,
-                  padding: const EdgeInsets.all(15),
-                  color: LightColors.kPrimaryColor,
-                  onTap: () {},
-                  child: const Icon(
-                    Icons.send,
-                    color: LightColors.kBackgroundColor,
-                  )),
-            ],
-          )),
+                    onTap: () {},
+                    child: const Icon(
+                      Icons.send,
+                      color: LightColors.kBackgroundColor,
+                    )),
+              ],
+            )),
+      ),
     );
   }
 
