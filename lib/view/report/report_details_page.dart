@@ -32,7 +32,6 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
 
   @override
   void initState() {
-    SystemChrome.restoreSystemUIOverlays();
     super.initState();
     tabController = TabController(vsync: this, length: 3);
     tabController.addListener(() {
@@ -572,8 +571,6 @@ class MyImageView extends StatelessWidget {
   final String imgPath;
 
   const MyImageView(this.imgPath, {super.key});
-
-  //TODO: build image fullscreen viewer with interactive zoom
 
   @override
   Widget build(BuildContext context) {

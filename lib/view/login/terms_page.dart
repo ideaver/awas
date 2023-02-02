@@ -131,6 +131,7 @@ class TermsPage extends StatelessWidget {
 
   AppBar appBarWidget() {
     return AppBar(
+      systemOverlayStyle: darkStatusBar,
       elevation: 0,
       backgroundColor: LightColors.kBackgroundColor,
       toolbarHeight: 100,

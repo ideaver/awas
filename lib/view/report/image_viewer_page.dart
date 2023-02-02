@@ -50,7 +50,6 @@ class _ImageViewerPageState extends State<ImageViewerPage>
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     const Image image = Image(image: AssetImage('assets/image3.jpeg'));
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -217,7 +216,26 @@ class _ImageViewerPageState extends State<ImageViewerPage>
 
   @override
   void dispose() {
-    _animationController.dispose();
     super.dispose();
+    print('logme disposed');
+    _animationController.dispose();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: LightColors.kBackgroundColor,
+      statusBarBrightness: Brightness.dark,
+      statusBarColor: LightColors.kBackgroundColor, // status bar color
+    ));
+  }
+
+  @override
+  void deactivate() {
+    print('logme deativate');
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: LightColors.kBackgroundColor,
+      statusBarBrightness: Brightness.dark,
+      statusBarColor: LightColors.kBackgroundColor, // status bar color
+    ));
+    super.deactivate();
   }
 }

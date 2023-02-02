@@ -1,3 +1,6 @@
+import 'package:flutter/services.dart';
+
+import '../utils/globals.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/report/report_list_page.dart';
@@ -131,6 +134,11 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
         IconButton(
           //update the bottom app bar view each time an item is clicked
           onPressed: () {
+            if (selectedIndex != 0) {
+              setState(() {
+                SystemChrome.setSystemUIOverlayStyle(darkStatusBar);
+              });
+            }
             updateTabSelection(index);
           },
           iconSize: 27.0,

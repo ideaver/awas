@@ -1,4 +1,5 @@
 import 'package:awas/view/login/terms_page.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../res/utils/globals.dart';
@@ -29,6 +30,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.restoreSystemUIOverlays();
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       body: Stack(children: [

@@ -1,8 +1,8 @@
+import 'package:awas/res/utils/globals.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/view/report/camera_page.dart';
 
-import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +12,7 @@ import 'res/utils/routes.dart';
 
 Future<void> main() async {
 //custom Status bar and navigation bar color
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    systemNavigationBarIconBrightness: Brightness.dark,
-    systemNavigationBarColor: LightColors.kBackgroundColor,
-    statusBarBrightness: Brightness.dark,
-    statusBarColor: LightColors.kBackgroundColor, // status bar color
-  ));
+  SystemChrome.setSystemUIOverlayStyle(darkStatusBar);
   //end region
 
 //initialized camera

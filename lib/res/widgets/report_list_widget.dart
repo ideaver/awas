@@ -1,7 +1,9 @@
 import 'package:awas/res/widgets/status_chip_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/colors/light_colors.dart';
+import '../utils/globals.dart';
 import 'kcard_widget.dart';
 import 'report_card_widget.dart';
 
@@ -15,6 +17,7 @@ class ReportListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(darkStatusBar);
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       body: ListView.builder(
