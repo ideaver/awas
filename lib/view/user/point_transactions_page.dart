@@ -1,4 +1,4 @@
-import 'package:awas/res/utils/enums.dart';
+import '/res/utils/enums.dart';
 import 'package:flutter/services.dart';
 
 import '../../res/widgets/point_transaction_list_widget.dart';

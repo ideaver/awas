@@ -1,3 +1,5 @@
+import 'package:awas/view/report/image_viewer_page.dart';
+
 import '../../res/widgets/kcard_widget.dart';
 import '../../res/widgets/ktext_form_field.dart';
 import '/res/utils/enums.dart';
@@ -30,6 +32,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
 
   @override
   void initState() {
+    SystemChrome.restoreSystemUIOverlays();
     super.initState();
     tabController = TabController(vsync: this, length: 3);
     tabController.addListener(() {
@@ -574,8 +577,13 @@ class MyImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2),
-        child: Image.asset(imgPath));
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, ImageViewerPage.routeName);
+      },
+      child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 2),
+          child: Image.asset(imgPath)),
+    );
   }
 }

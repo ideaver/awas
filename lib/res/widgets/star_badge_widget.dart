@@ -1,3 +1,4 @@
+import 'package:awas/view/user/point_transactions_page.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -19,7 +20,7 @@ class StarBadgeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/point-transactions');
+        Navigator.pushNamed(context, PointTransactionsPage.viewAsMeRouteName);
       },
       child: Chip(
         labelPadding:
