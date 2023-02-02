@@ -1,3 +1,5 @@
+import 'package:awas/res/utils/globals.dart';
+
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,6 +54,21 @@ class _ImageViewerPageState extends State<ImageViewerPage>
   Widget build(BuildContext context) {
     const Image image = Image(image: AssetImage('assets/image3.jpeg'));
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+        systemOverlayStyle: lightStatusBar,
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.share,
+                color: LightColors.kWhiteColor,
+              ))
+        ],
+      ),
       backgroundColor: Colors.transparent,
       body: Stack(
         children: [
@@ -77,30 +94,6 @@ class _ImageViewerPageState extends State<ImageViewerPage>
                   }
                 },
               )),
-          Padding(
-            padding: const EdgeInsets.all(defaultMargin),
-            child: Row(
-              children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.close,
-                      color: LightColors.kWhiteColor,
-                    )),
-                const Spacer(),
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.share,
-                      color: LightColors.kWhiteColor,
-                    )),
-              ],
-            ),
-          ),
           Align(
               alignment: Alignment.bottomCenter,
               child: FittedBox(
@@ -217,25 +210,7 @@ class _ImageViewerPageState extends State<ImageViewerPage>
   @override
   void dispose() {
     super.dispose();
-    print('logme disposed');
-    _animationController.dispose();
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: LightColors.kBackgroundColor,
-      statusBarBrightness: Brightness.dark,
-      statusBarColor: LightColors.kBackgroundColor, // status bar color
-    ));
-  }
 
-  @override
-  void deactivate() {
-    print('logme deativate');
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: LightColors.kBackgroundColor,
-      statusBarBrightness: Brightness.dark,
-      statusBarColor: LightColors.kBackgroundColor, // status bar color
-    ));
-    super.deactivate();
+    _animationController.dispose();
   }
 }

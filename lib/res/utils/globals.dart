@@ -1,4 +1,5 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// System overlays should be drawn with a light color. Intended for
@@ -6,7 +7,7 @@ import 'package:flutter/services.dart';
 const SystemUiOverlayStyle lightStatusBar = SystemUiOverlayStyle(
   systemNavigationBarColor: null, //<------ changed
   systemNavigationBarDividerColor: null,
-  statusBarColor: null,
+  statusBarColor: Colors.transparent,
   systemNavigationBarIconBrightness: Brightness.light,
   statusBarIconBrightness: Brightness.light,
   statusBarBrightness: Brightness.dark,
