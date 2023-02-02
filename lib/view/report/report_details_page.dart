@@ -65,52 +65,59 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
       //TODO: Fix transparency gap
       //TODO: Convert to animated list
-      floatingActionButton: AnimatedSlide(
-        duration: const Duration(milliseconds: 300),
-        offset: isCommentTextFieldVisible ? const Offset(0, 2) : Offset.zero,
-        child: Container(
-            height: 100,
-            padding: const EdgeInsets.symmetric(
-              horizontal: defaultMargin / 4,
-              vertical: defaultMargin / 2,
-            ),
-            decoration: const BoxDecoration(
-              color: LightColors.kBackgroundColor,
-              border: Border(
-                top: BorderSide(
-                  color: LightColors.kGreyColor,
-                  width: 3.0,
-                ),
+      floatingActionButton: commentTextFieldWidget(),
+    );
+  }
+
+  AnimatedSlide commentTextFieldWidget() {
+    return AnimatedSlide(
+      duration: const Duration(milliseconds: 300),
+      offset: isCommentTextFieldVisible ? const Offset(0, 2) : Offset.zero,
+      child: Container(
+          height: 100,
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultMargin / 4,
+            vertical: defaultMargin / 2,
+          ),
+          decoration: const BoxDecoration(
+            color: LightColors.kBackgroundColor,
+            border: Border(
+              top: BorderSide(
+                color: LightColors.kGreyColor,
+                width: 3.0,
               ),
             ),
-            child: Row(
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.attachment_rounded,
-                      color: LightColors.kPrimaryColor,
-                    )),
-                const SizedBox(width: defaultMargin / 2),
-                const Expanded(
-                  child: KtextFormFieldWidget(
-                      withEnterText: false,
-                      withTitle: false,
-                      title: 'Type message...'),
-                ),
-                const SizedBox(width: defaultMargin / 2),
-                KcardWidget(
-                    elevation: 0.0,
-                    padding: const EdgeInsets.all(15),
-                    color: LightColors.kPrimaryColor,
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.send,
-                      color: LightColors.kBackgroundColor,
-                    )),
-              ],
-            )),
-      ),
+          ),
+          child: Row(
+            children: [
+              const SizedBox(
+                width: defaultMargin / 2,
+              ),
+              // IconButton(
+              //     onPressed: () {},
+              //     icon: const Icon(
+              //       Icons.emoji_emotions,
+              //       color: LightColors.kPrimaryColor,
+              //     )),
+              const SizedBox(width: defaultMargin / 2),
+              const Expanded(
+                child: KtextFormFieldWidget(
+                    withEnterText: false,
+                    withTitle: false,
+                    title: 'Type message...'),
+              ),
+              const SizedBox(width: defaultMargin / 2),
+              KcardWidget(
+                  elevation: 0.0,
+                  padding: const EdgeInsets.all(15),
+                  color: LightColors.kPrimaryColor,
+                  onTap: () {},
+                  child: const Icon(
+                    Icons.send,
+                    color: LightColors.kBackgroundColor,
+                  )),
+            ],
+          )),
     );
   }
 
@@ -463,7 +470,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
           Text(
             'Budi - ID8982357',
             style: LightColors.blackTextStyle
-                .copyWith(fontWeight: FontWeight.bold),
+                .copyWith(fontWeight: FontWeight.bold, fontSize: 14),
           ),
           const SizedBox(height: defaultMargin / 4),
           Row(
@@ -475,7 +482,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
               Text(
                 'Staff',
                 style: LightColors.black2TextStyle
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontWeight: FontWeight.bold, fontSize: 12),
               ),
             ],
           )
@@ -569,9 +576,6 @@ class MyImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.symmetric(horizontal: 2),
-        child: FittedBox(
-          fit: BoxFit.fill,
-          child: Image.asset(imgPath),
-        ));
+        child: Image.asset(imgPath));
   }
 }

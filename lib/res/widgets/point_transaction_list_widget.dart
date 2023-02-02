@@ -4,14 +4,16 @@ import '../theme/colors/light_colors.dart';
 import 'star_circle_widget.dart';
 
 class PointTransactionListWidget extends StatelessWidget {
-  const PointTransactionListWidget({super.key});
+  final ScrollPhysics? physics;
+  const PointTransactionListWidget(
+      {super.key, this.physics = const NeverScrollableScrollPhysics()});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       body: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
+        physics: physics,
         itemCount: 20,
         itemBuilder: (context, index) {
           if (index == 0) {

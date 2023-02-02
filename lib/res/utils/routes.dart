@@ -46,7 +46,8 @@ final Map<String, WidgetBuilder> routes = {
   CreateUserPage.routeName: (context) => const CreateUserPage(),
   ChatRoomPage.routeName: (context) => const ChatRoomPage(),
   InboxPage.routeName: (context) => const InboxPage(),
-  PointTransactionsPage.routeName: (context) => const PointTransactionsPage(),
+  PointTransactionsPage.viewAsMeRouteName: (context) =>
+      const PointTransactionsPage.viewAsMe(),
   DashboardEmployeePage.routeName: (context) => const DashboardEmployeePage(),
   DashboardManagerPage.routeName: (context) => const DashboardManagerPage(),
   CameraPage.routeName: (context) => const CameraPage(),

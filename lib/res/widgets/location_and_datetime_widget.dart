@@ -23,7 +23,7 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
         const SizedBox(height: defaultMargin / 2),
         ListTile(
           onTap: () {
-            //TODO: Navigate to map
+            //TODO: implement https://pub.dev/packages/map_launcher
           },
           contentPadding: contentPadding,
           tileColor: LightColors.kPrimaryColor.withOpacity(0.1),
@@ -38,7 +38,7 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
               Text(
                 'North Mining Site',
                 style: LightColors.blackTextStyle
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontWeight: FontWeight.bold, fontSize: 14),
               ),
               const SizedBox(height: defaultMargin / 4),
               Text(
@@ -70,12 +70,12 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
               Text(
                 'Date & Time',
                 style: LightColors.subTitle2TextStyle
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontWeight: FontWeight.bold, fontSize: 12),
               ),
               const SizedBox(height: defaultMargin / 4),
               Text(
                 '03:30 PM | 03/30/2022',
-                style: LightColors.subTitleTextStyle,
+                style: LightColors.subTitle2TextStyle,
               )
             ],
           ),

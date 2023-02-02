@@ -25,7 +25,7 @@ enum NewVsExistingUser {
   existingUser;
 }
 
-enum UserPageState {
+enum PageState {
   edit,
   viewAsMe,
   viewAsOther,
