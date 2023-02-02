@@ -110,7 +110,7 @@ class TermsPage extends StatelessWidget {
                           onPressed: () {
                             ref.read(isNewUser)
                                 ? Navigator.pushReplacementNamed(
-                                    context, UserPage.routeName)
+                                    context, UserPage.editModerouteName)
                                 : Navigator.pop(context);
                           },
                           title: 'Understand');

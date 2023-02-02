@@ -1,5 +1,6 @@
 import 'package:awas/res/widgets/risk_level_grid_widget.dart';
 
+import '../../res/widgets/image_edit_dart.dart';
 import '/res/widgets/kscrollbar_widget.dart';
 import '/res/widgets/ktext_form_field.dart';
 
@@ -362,9 +363,9 @@ class _ReportFormPageState extends State<ReportFormPage>
               const SizedBox(
                 width: defaultMargin,
               ),
-              uploadedImage(),
-              uploadedImage(),
-              uploadedImage()
+              const ImageEditWidget(),
+              const ImageEditWidget(),
+              const ImageEditWidget()
             ],
           ),
         ),
@@ -372,50 +373,6 @@ class _ReportFormPageState extends State<ReportFormPage>
           height: defaultMargin,
         )
       ],
-    );
-  }
-
-  Center uploadedImage() {
-    return Center(
-      child: Stack(
-        children: [
-          SizedBox(
-            width: 120,
-            height: 120,
-            child: Center(
-              child: Stack(children: [
-                KcardWidget(
-                    onTap: () {},
-                    elevation: 0.0,
-                    height: 100,
-                    width: 100,
-                    padding: const EdgeInsets.all(0.0),
-                    child: Image.asset(
-                      'assets/bg1.jpeg',
-                      fit: BoxFit.cover,
-                    ))
-              ]),
-            ),
-          ),
-          Positioned(
-            right: 2,
-            child: Container(
-              width: 32,
-              height: 32,
-              decoration: const BoxDecoration(
-                  color: LightColors.kDangerColor, shape: BoxShape.circle),
-              child: IconButton(
-                  alignment: Alignment.center,
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.delete,
-                    color: LightColors.kWhiteColor,
-                    size: 12,
-                  )),
-            ),
-          )
-        ],
-      ),
     );
   }
 

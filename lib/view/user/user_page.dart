@@ -1,5 +1,6 @@
 import 'package:awas/res/utils/enums.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../state_management/global_states.dart';
 import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/services.dart';
 
@@ -16,7 +17,7 @@ import '/res/widgets/user_form_widget.dart';
 
 import 'package:flutter/material.dart';
 
-class UserPage extends StatefulWidget {
+class UserPage extends ConsumerStatefulWidget {
   //TODO: implement view by self vs by other
   final UserPageState userPageState;
   static const String routeName = '/profile';
@@ -30,15 +31,28 @@ class UserPage extends StatefulWidget {
   const UserPage.viewAsOther() : this(userPageState: UserPageState.viewAsOther);
 
   @override
-  State<UserPage> createState() => _UserPageState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _UserPageState();
 }
 
-class _UserPageState extends State<UserPage>
+class _UserPageState extends ConsumerState<UserPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
 
+  ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
+    //scroll controller for UserFormWidget
+    scrollController = ScrollController();
+    scrollController.addListener(() {
+      // FAB should be visible if and only if user has not scrolled to bottom
+      var userHasScrolledToBottom = scrollController.position.atEdge &&
+          scrollController.position.pixels > 0;
+
+      if (ref.read(isFabVisible) == userHasScrolledToBottom) {
+        ref.read(isFabVisible.notifier).state = !userHasScrolledToBottom;
+      }
+    });
     super.initState();
     tabController = TabController(vsync: this, length: 3);
   }

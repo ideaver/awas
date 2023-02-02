@@ -1,42 +1,25 @@
-import 'package:awas/res/utils/globals.dart';
-import 'package:awas/view/thank_you_page.dart';
-import '/view/dashboard/dashboard_employee_page.dart';
+import '/state_management/global_states.dart';
+import '/view/thank_you_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'company_custom_field_widget.dart';
-import 'kbottom_navigation_bar.dart';
 import 'kcard_widget.dart';
 import 'kelevated_button.dart';
 import 'ktext_form_field.dart';
 
-class UserFormWidget extends StatefulWidget {
+class UserFormWidget extends ConsumerStatefulWidget {
   const UserFormWidget({super.key});
 
   @override
-  State<UserFormWidget> createState() => _UserFormWidgetState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _UserFormWidgetState();
 }
 
-class _UserFormWidgetState extends State<UserFormWidget>
+class _UserFormWidgetState extends ConsumerState<UserFormWidget>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-  ScrollController scrollController = ScrollController();
-  bool isFabVisible = false; //TODO: add form button using riverpod.set to false
-
-  @override
-  void initState() {
-    scrollController = ScrollController();
-    scrollController.addListener(() {
-      // FAB should be visible if and only if user has not scrolled to bottom
-      var userHasScrolledToBottom = scrollController.position.atEdge &&
-          scrollController.position.pixels > 0;
-
-      if (isFabVisible == userHasScrolledToBottom) {
-        setState(() => isFabVisible = !userHasScrolledToBottom);
-      }
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,18 +54,25 @@ class _UserFormWidgetState extends State<UserFormWidget>
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: AnimatedSlide(
-        duration: const Duration(milliseconds: 300),
-        offset: isFabVisible ? const Offset(0, 2) : Offset.zero,
-        child: KelevatedButtonWidget.floating(
-          title: 'Save Changes',
-          onPressed: () {
-            isNewUser
-                ? Navigator.pushReplacementNamed(
-                    context, ThankYouPage.profileUpdaterouteName)
-                : Navigator.pop(context);
-          },
-        ),
+      floatingActionButton: Consumer(
+        builder: (context, ref, child) {
+          // if (!ref.read(isFabVisible)) {
+          //   return SizedBox();
+          // }
+          return AnimatedSlide(
+            duration: const Duration(milliseconds: 300),
+            offset: ref.read(isFabVisible) ? const Offset(0, 2) : Offset.zero,
+            child: KelevatedButtonWidget.floating(
+              title: 'Save Changes',
+              onPressed: () {
+                ref.read(isNewUser)
+                    ? Navigator.pushReplacementNamed(
+                        context, ThankYouPage.profileUpdaterouteName)
+                    : Navigator.pop(context);
+              },
+            ),
+          );
+        },
       ),
     );
   }
