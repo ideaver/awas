@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class ImageViewerPage extends StatefulWidget {
-  //TODO: implement hero when opening
   static const String routeName = '/image-viewer';
 
   final ImageProvider? imageProvider;

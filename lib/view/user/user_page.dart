@@ -1,4 +1,4 @@
-import 'package:awas/res/utils/enums.dart';
+import '/res/utils/enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../state_management/global_states.dart';
 import '/res/widgets/kappbar_widget.dart';
@@ -37,8 +37,22 @@ class UserPage extends ConsumerStatefulWidget {
 class _UserPageState extends ConsumerState<UserPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-
   ScrollController scrollController = ScrollController();
+
+  final Map<String, String> profileInfoData = {
+    'Date Joined': '12 Des 2022',
+    'Status': 'Active',
+    'Position': 'Employee',
+    'Last Login': 'Today'
+  };
+
+  final Map<String, String> activityInfo = {
+    'Total Reports': '21345',
+    'Total Points Trx': '456',
+    'Total Redeem points': '7',
+    'Total minus points': '67',
+    'Last Point Redeem': ' 6 oct 2021'
+  };
 
   @override
   void initState() {
@@ -60,22 +74,34 @@ class _UserPageState extends ConsumerState<UserPage>
   @override
   Widget build(BuildContext context) {
     final bool isNewUser = widget.userPageState == PageState.edit;
+
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
+        systemOverlayStyle: darkStatusBar,
         context: context,
-        title: 'My Profile',
+        title: widget.userPageState == PageState.viewAsOther
+            ? 'User Profile'
+            : 'My Profile',
         subTitle: 'ID097532858',
         actions: isNewUser
             ? []
-            : [
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Log out',
-                      style: LightColors.subTitle2TextStyle,
-                    ))
-              ],
+            : widget.userPageState == PageState.viewAsMe
+                ? [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, UserPage.editModerouteName);
+                        },
+                        icon: const Icon(
+                          Icons.edit,
+                          color: LightColors.kDarkGreyColor,
+                        )),
+                    const SizedBox(
+                      width: defaultMargin / 4,
+                    )
+                  ]
+                : [],
       ),
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
@@ -88,11 +114,91 @@ class _UserPageState extends ConsumerState<UserPage>
                 physics: const BouncingScrollPhysics(),
                 controller: tabController,
                 children: [
-                    const UserFormWidget(),
+                    widget.userPageState == PageState.viewAsMe ||
+                            widget.userPageState == PageState.viewAsOther
+                        ? Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: defaultMargin),
+                            color: LightColors.kGreyColor,
+                            child: ListView(
+                              physics: const NeverScrollableScrollPhysics(
+                                  parent: BouncingScrollPhysics()),
+                              children: [
+                                ...List.generate(
+                                    2,
+                                    (index) => Padding(
+                                          padding: const EdgeInsets.only(
+                                              top: defaultMargin),
+                                          child: KcardWidget(
+                                              width: double.infinity,
+                                              color:
+                                                  LightColors.kBackgroundColor,
+                                              elevation: 0.0,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    index == 0
+                                                        ? 'Profile info'
+                                                        : 'Activity info',
+                                                    style: LightColors
+                                                        .blackTextStyle,
+                                                  ),
+                                                  const SizedBox(
+                                                      height: defaultMargin),
+                                                  mapDataCardWidget(
+                                                      data: index == 0
+                                                          ? profileInfoData
+                                                          : activityInfo),
+                                                ],
+                                              )),
+                                        ))
+                              ],
+                            ),
+                          )
+                        : const UserFormWidget(),
                     ReportListWidget(context: context),
                     const PointTransactionListWidget()
                   ]),
       ),
+    );
+  }
+
+  DataTable mapDataCardWidget({required Map<String, String> data}) {
+    const Color textColor = LightColors.kBlackColor;
+    return DataTable(
+      headingRowHeight: 0.0,
+      dataTextStyle: LightColors.whiteTextStyle.copyWith(fontSize: 12),
+      dividerThickness: 0.0,
+      columnSpacing: defaultMargin,
+      dataRowHeight: defaultMargin,
+      columns: const [
+        DataColumn(
+          label: SizedBox(),
+        ),
+        DataColumn(
+          label: SizedBox(),
+        ),
+      ],
+      rows: [
+        ...List.generate(data.length, (index) {
+          return DataRow(
+            cells: [
+              DataCell(Text(
+                data.entries.elementAt(index).key,
+                style: LightColors.whiteTextStyle.copyWith(
+                    color: textColor,
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.bold),
+              )),
+              DataCell(Text(':   ${data.entries.elementAt(index).value}',
+                  style: LightColors.whiteTextStyle
+                      .copyWith(color: textColor, fontSize: 12))),
+            ],
+          );
+        }),
+      ],
     );
   }
 
