@@ -1,5 +1,5 @@
-import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
-import 'package:awas/view/dashboard/dashboard_employee_page.dart';
+import '/res/widgets/kbottom_navigation_bar.dart';
+import '/res/widgets/kdivider_widget.dart';
 
 import '../res/utils/enums.dart';
 import '../res/widgets/kelevated_button.dart';
@@ -49,7 +49,7 @@ class ThankYouPage extends StatelessWidget {
         thankYouPageModel = ThankYouPageModel(
             title: 'Thank You Budi, Profile Updated',
             instruction: 'Redirecting to your Dashboard...',
-            floatingActionButton: KelevatedButtonWidget.floating(
+            floatingActionButton: KelevatedButtonWidget(
               title: 'Go to Dashboard',
               onPressed: () {
                 Navigator.pushReplacementNamed(
@@ -97,13 +97,15 @@ class ThankYouPage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: defaultMargin * 4,
+            height: defaultMargin * 2,
           ),
-          pointsTransactionWidget()
+          pointsTransactionWidget(),
+          const SizedBox(
+            height: defaultMargin * 2,
+          ),
+          thankYouPageModel?.floatingActionButton ?? const SizedBox()
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: thankYouPageModel?.floatingActionButton,
     );
   }
 
@@ -111,62 +113,62 @@ class ThankYouPage extends StatelessWidget {
     return KcardWidget(
       elevation: 0.0,
       color: LightColors.kGreyColor,
-      child: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: 4,
-        itemBuilder: (context, index) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Point $index',
+                        style: LightColors.subTitle2TextStyle,
+                      ),
+                      Text(
+                        '+20',
+                        style: LightColors.subTitle3TextStyle,
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: defaultMargin / 2,
+                  ),
+                ],
+              );
+            },
+          ),
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          const KdividerWidget(),
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Point $index',
+                'Total Safety Awareness Points',
                 style: LightColors.subTitle2TextStyle,
               ),
-              const SizedBox(
-                height: defaultMargin,
+              Text(
+                '20',
+                style: LightColors.subTitleTextStyle,
               )
             ],
-          );
-        },
-      ),
-    );
-  }
-
-  Row logoAndTextWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset(
-          'assets/logo.png',
-          width: 100,
-          height: 100,
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Don\'t Worry!!',
-                style: LightColors.titleTextStyle,
-              ),
-              Text(
-                'just Input your email',
-                overflow: TextOverflow.visible,
-                style: LightColors.subTitleTextStyle,
-              ),
-              Text(
-                'to Reset Password',
-                overflow: TextOverflow.visible,
-                style: LightColors.subTitleTextStyle.copyWith(fontSize: 14),
-              ),
-            ],
           ),
-        )
-      ],
+          const SizedBox(
+            height: defaultMargin,
+          ),
+        ],
+      ),
     );
   }
 }
