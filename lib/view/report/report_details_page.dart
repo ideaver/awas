@@ -1,4 +1,4 @@
-import 'package:awas/view/report/image_viewer_page.dart';
+import '/view/report/image_viewer_page.dart';
 
 import '../../res/widgets/kcard_widget.dart';
 import '../../res/widgets/ktext_form_field.dart';
@@ -580,7 +580,10 @@ class MyImageView extends StatelessWidget {
       },
       child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 2),
-          child: Image.asset(imgPath)),
+          child: Image.asset(
+            imgPath,
+            fit: BoxFit.fitHeight,
+          )),
     );
   }
 }

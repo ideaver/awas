@@ -64,7 +64,7 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
             decoration: BoxDecoration(
                 borderRadius:
                     BorderRadius.circular(clickedCentreFAB ? 0.0 : 300.0),
-                color: LightColors.kBlackColor),
+                color: Colors.black),
           ),
         )
       ]),
