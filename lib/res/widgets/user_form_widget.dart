@@ -1,3 +1,5 @@
+import 'package:awas/res/widgets/image_edit_dart.dart';
+
 import '/state_management/global_states.dart';
 import '/view/thank_you_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +34,52 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
           children: [
             KcardWidget.tile(
                 leadingIcon: Icons.account_circle,
-                title: 'Please complete your profile'),
+                title: 'Please complete your profile below'),
+            const SizedBox(height: defaultMargin),
+            Text(
+              'Profile Picture',
+              style: LightColors.subTitleTextStyle.copyWith(fontSize: 16),
+            ),
+            const SizedBox(height: defaultMargin / 2),
+            Row(
+              children: [
+                const ImageEditWidget(),
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      KcardWidget(
+                        elevation: 0.0,
+                        color: LightColors.kBackgroundColor,
+                        padding: EdgeInsets.all(defaultMargin / 2),
+                        child: Text(
+                          'You can set your privacy from other employee. They will not be able to view your name and profile picture',
+                          style: LightColors.subTitle3TextStyle,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Checkbox(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5.0)),
+                            value: false,
+                            onChanged: (value) {},
+                          ),
+                          Expanded(
+                            child: Text(
+                              'Hide my privacy',
+                              style: LightColors.subTitle2TextStyle,
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
             const SizedBox(height: defaultMargin),
             const KtextFormFieldWidget(title: 'Name'),
             const SizedBox(height: defaultMargin),
