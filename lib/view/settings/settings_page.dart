@@ -90,6 +90,7 @@ class SettingsPage extends StatelessWidget {
             ),
             listTileWidget(
               onTap: () {
+                ScaffoldMessenger.of(context).clearSnackBars();
                 ksnackBarWidget(context, commingSoonString);
               },
               title: 'Help & Support',

@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 bool isLogedin = false;
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason> ksnackBarWidget(
     BuildContext context, String title) {
+  ScaffoldMessenger.of(context).clearSnackBars();
   return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(defaultMargin))),
     behavior: SnackBarBehavior.floating,
+    dismissDirection: DismissDirection.horizontal,
     content: Text(title),
     backgroundColor: LightColors.kDangerColor,
     duration: const Duration(seconds: 3),
