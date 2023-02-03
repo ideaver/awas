@@ -1,3 +1,4 @@
+import 'package:awas/view/user/user_page.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -35,7 +36,8 @@ class UserListWidget extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     vertical: defaultMargin, horizontal: defaultMargin),
                 onTap: () {
-                  Navigator.pushNamed(context, '/profile');
+                  //TODO: if the id the same as login then view me
+                  Navigator.pushNamed(context, UserPage.viewAsOtherRouteName);
                 },
                 elevation: 0.0,
                 color: LightColors.kBackgroundColor,

@@ -1,3 +1,5 @@
+import 'package:awas/view/user/chat_room_page.dart';
+
 import '/res/utils/enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../state_management/global_states.dart';
@@ -22,8 +24,8 @@ class UserPage extends ConsumerStatefulWidget {
   final PageState userPageState;
   static const String routeName = '/profile';
   static const String editModerouteName = '/profile-edit';
-  static const String viewAsMerouteName = '/profile-viewMe';
-  static const String viewAsOtherrouteName = '/profile-view';
+  static const String viewAsMerouteName = '/profile-me';
+  static const String viewAsOtherRouteName = '/profile-user';
 
   const UserPage({super.key, required this.userPageState});
   const UserPage.editMode() : this(userPageState: PageState.edit);
@@ -101,7 +103,19 @@ class _UserPageState extends ConsumerState<UserPage>
                       width: defaultMargin / 4,
                     )
                   ]
-                : [],
+                : [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, ChatRoomPage.routeName);
+                        },
+                        icon: const Icon(
+                          Icons.chat_bubble_rounded,
+                          color: LightColors.kPrimaryColor,
+                        )),
+                    const SizedBox(
+                      width: defaultMargin / 4,
+                    )
+                  ],
       ),
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
