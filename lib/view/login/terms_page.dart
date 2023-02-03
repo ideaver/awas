@@ -65,13 +65,14 @@ class TermsPage extends StatelessWidget {
                 children: [
                   Consumer(
                     builder: (context, ref, child) {
-                      final icChecked = ref.watch(termsChecked);
+                      final icChecked = ref.watch(termsCheckedProvider);
                       return Checkbox(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5.0)),
                         value: icChecked,
                         onChanged: (value) {
-                          ref.read(termsChecked.notifier).state = !icChecked;
+                          ref.read(termsCheckedProvider.notifier).state =
+                              !icChecked;
                         },
                       );
                     },
@@ -103,15 +104,15 @@ class TermsPage extends StatelessWidget {
                   Expanded(child: Consumer(
                     builder:
                         (BuildContext context, WidgetRef ref, Widget? child) {
-                      if (!ref.watch(termsChecked)) {
+                      if (!ref.watch(termsCheckedProvider)) {
                         return const KelevatedButtonWidget(title: 'Understand');
                       }
                       return KelevatedButtonWidget(
                           onPressed: () {
                             print(isLogedin);
-                            print(ref.read(isNewUser));
+                            print(ref.read(isNewUserProvider));
                             if (isLogedin == true) {
-                              ref.read(isNewUser)
+                              ref.read(isNewUserProvider)
                                   ? Navigator.pushReplacementNamed(
                                       context, UserPage.editModerouteName)
                                   : Navigator.pop(context);

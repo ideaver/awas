@@ -108,11 +108,13 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
           // }
           return AnimatedSlide(
             duration: const Duration(milliseconds: 300),
-            offset: ref.read(isFabVisible) ? const Offset(0, 2) : Offset.zero,
+            offset: ref.read(isFabVisibleProvider)
+                ? const Offset(0, 2)
+                : Offset.zero,
             child: KelevatedButtonWidget.floating(
               title: 'Save Changes',
               onPressed: () {
-                ref.read(isNewUser)
+                ref.read(isNewUserProvider)
                     ? Navigator.pushReplacementNamed(
                         context, ThankYouPage.profileUpdaterouteName)
                     : Navigator.pop(context);

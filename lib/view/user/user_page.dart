@@ -65,8 +65,9 @@ class _UserPageState extends ConsumerState<UserPage>
       var userHasScrolledToBottom = scrollController.position.atEdge &&
           scrollController.position.pixels > 0;
 
-      if (ref.read(isFabVisible) == userHasScrolledToBottom) {
-        ref.read(isFabVisible.notifier).state = !userHasScrolledToBottom;
+      if (ref.read(isFabVisibleProvider) == userHasScrolledToBottom) {
+        ref.read(isFabVisibleProvider.notifier).state =
+            !userHasScrolledToBottom;
       }
     });
     super.initState();

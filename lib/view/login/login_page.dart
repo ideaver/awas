@@ -135,7 +135,7 @@ class LoginPage extends StatelessWidget {
   void loginRoleAndIsNewUser(BuildContext context, WidgetRef ref) {
     switch (loginRole) {
       case Role.employee:
-        ref.read(isNewUser)
+        ref.read(isNewUserProvider)
             ? Navigator.pushReplacementNamed(context, TermsPage.routeName)
             : Navigator.pushReplacementNamed(
                 context, DashboardEmployeePage.routeName);
