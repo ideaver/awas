@@ -1,3 +1,4 @@
+import '../user/user_page.dart';
 import '/view/report/image_viewer_page.dart';
 
 import '../../res/widgets/kcard_widget.dart';
@@ -456,7 +457,8 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
   ListTile reportRoleTileWidget({required ReportRole reportRole}) {
     return ListTile(
       onTap: () {
-        Navigator.pushNamed(context, '/profile');
+        //TODO: if the id the same as login then view me
+        Navigator.pushNamed(context, UserPage.viewAsOtherRouteName);
       },
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(defaultCircular)),
