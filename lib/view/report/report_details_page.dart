@@ -214,63 +214,63 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
   }
 
   Widget commentTileWidget(int index) {
-    return Row(
-      children: [
-        SizedBox(
-          width: index.isOdd ? defaultMargin : 0,
+    return ListTile(
+      contentPadding: EdgeInsets.only(
+          top: index.isOdd ? 0 : defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin),
+      onTap: () {
+        //TODO: if the id the same as login then view me
+        Navigator.pushNamed(context, UserPage.viewAsOtherRouteName);
+      },
+      leading: Padding(
+        padding: EdgeInsets.only(left: index.isOdd ? defaultMargin * 1 : 0),
+        child: const CircleAvatar(
+          backgroundImage: AssetImage('assets/avatar1.png'),
+          radius: 20,
+          backgroundColor: LightColors.kSecondaryColor,
         ),
-        Expanded(
-          child: ListTile(
-            leading: const CircleAvatar(
-              backgroundImage: AssetImage('assets/avatar1.png'),
-              radius: 20,
-              backgroundColor: LightColors.kSecondaryColor,
-            ),
-            title: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
+      ),
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          RichText(
+            text: TextSpan(
+              text: 'Sally Rooney ',
+              style: LightColors.black2TextStyle.copyWith(fontSize: 12),
               children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'Sally Rooney ',
-                    style: LightColors.black2TextStyle.copyWith(fontSize: 12),
-                    children: [
-                      index.isOdd
-                          ? TextSpan(
-                              text: '@John Smiths ',
-                              style: LightColors.subTitle2TextStyle.copyWith(
-                                  fontSize: 12,
-                                  color: LightColors.kPrimaryColor))
-                          : TextSpan(),
-                      TextSpan(
-                          text:
-                              'Woahh 😍 which has an associated style that is used for that subtree. The text might break across multiple lines or might all be displayed on the same',
-                          style: LightColors.subTitle2TextStyle
-                              .copyWith(fontSize: 12)),
-                    ],
-                  ),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '17h',
-                      style:
-                          LightColors.subTitle3TextStyle.copyWith(fontSize: 10),
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Reply',
-                          style: LightColors.subTitle3TextStyle
-                              .copyWith(fontSize: 10),
-                        ))
-                  ],
-                ),
+                index.isOdd
+                    ? TextSpan(
+                        text: '@John Smiths ',
+                        style: LightColors.subTitle2TextStyle.copyWith(
+                            fontSize: 12, color: LightColors.kPrimaryColor))
+                    : TextSpan(),
+                TextSpan(
+                    text:
+                        'Woahh 😍 which has an associated style that is used for that subtree. The text might break across multiple lines or might all be displayed on the same',
+                    style:
+                        LightColors.subTitle2TextStyle.copyWith(fontSize: 12)),
               ],
             ),
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Text(
+                '17h',
+                style: LightColors.subTitle3TextStyle.copyWith(fontSize: 10),
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Reply',
+                    style:
+                        LightColors.subTitle3TextStyle.copyWith(fontSize: 10),
+                  ))
+            ],
+          ),
+        ],
+      ),
     );
   }
 
