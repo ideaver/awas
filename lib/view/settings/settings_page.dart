@@ -1,4 +1,8 @@
+import 'package:awas/view/login/login_page.dart';
+import 'package:awas/view/user/user_page.dart';
+
 import '../../res/utils/enums.dart';
+import '../../res/utils/globals.dart';
 import '/res/widgets/kappbar_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/kdivider_widget.dart';
@@ -21,6 +25,7 @@ class SettingsPage extends StatelessWidget {
 //TODO: slice superuser UI
   @override
   Widget build(BuildContext context) {
+    final String commingSoonString = 'Coming Soon';
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       appBar: KappBarWidget(context: context, title: 'Settings'),
@@ -34,13 +39,17 @@ class SettingsPage extends StatelessWidget {
               style: LightColors.subTitle3TextStyle,
             ),
             listTileWidget(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, UserPage.viewAsMeRouteName);
+              },
               title: 'Personal information',
               icon: Icons.person,
             ),
             listTileWidget(
               onTap: () {
                 //TODO: Navigate to Privacy settings
+
+                ksnackBarWidget(context, commingSoonString);
               },
               title: 'Privacy',
               icon: Icons.privacy_tip,
@@ -56,12 +65,16 @@ class SettingsPage extends StatelessWidget {
               style: LightColors.subTitle3TextStyle,
             ),
             listTileWidget(
-                onTap: () {},
+                onTap: () {
+                  ksnackBarWidget(context, commingSoonString);
+                },
                 title: 'Text size',
                 icon: Icons.format_size,
                 subtitle: 'Medium'),
             listTileWidget(
-                onTap: () {},
+                onTap: () {
+                  ksnackBarWidget(context, commingSoonString);
+                },
                 title: 'Language',
                 icon: Icons.format_size,
                 subtitle: 'English'),
@@ -76,17 +89,23 @@ class SettingsPage extends StatelessWidget {
               style: LightColors.subTitle3TextStyle,
             ),
             listTileWidget(
-              onTap: () {},
+              onTap: () {
+                ksnackBarWidget(context, commingSoonString);
+              },
               title: 'Help & Support',
               icon: Icons.help,
             ),
             listTileWidget(
-              onTap: () {},
+              onTap: () {
+                ksnackBarWidget(context, commingSoonString);
+              },
               title: 'Feedback & Bug Report',
               icon: Icons.insert_emoticon,
             ),
             listTileWidget(
-              onTap: () {},
+              onTap: () {
+                ksnackBarWidget(context, commingSoonString);
+              },
               title: 'About & Version',
               icon: Icons.perm_device_info,
             ),
@@ -97,7 +116,7 @@ class SettingsPage extends StatelessWidget {
                 icon: Icons.logout,
                 backgroundColor: LightColors.kSecondaryColor,
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, LoginPage.routeName);
                 },
                 title: 'Logout'),
             Image.asset(

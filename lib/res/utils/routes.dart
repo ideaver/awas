@@ -42,7 +42,7 @@ final Map<String, WidgetBuilder> routes = {
       ThankYouPage.profileUpdated(),
   TermsPage.routeName: (context) => const TermsPage(),
   UserPage.editModerouteName: (context) => const UserPage.editMode(),
-  UserPage.viewAsMerouteName: (context) => const UserPage.viewAsMe(),
+  UserPage.viewAsMeRouteName: (context) => const UserPage.viewAsMe(),
   UserPage.viewAsOtherRouteName: (context) => const UserPage.viewAsOther(),
   UserListPage.routeName: (context) => const UserListPage(),
   UserFilterPage.routeName: (context) => const UserFilterPage(),

@@ -3,6 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 bool isLogedin = false;
+ScaffoldFeatureController<SnackBar, SnackBarClosedReason> ksnackBarWidget(
+    BuildContext context, String title) {
+  return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(defaultMargin))),
+    behavior: SnackBarBehavior.floating,
+    content: Text(title),
+    backgroundColor: LightColors.kDangerColor,
+    duration: const Duration(seconds: 3),
+  ));
+}
 
 /// System overlays should be drawn with a light color. Intended for
 /// applications with a dark background.

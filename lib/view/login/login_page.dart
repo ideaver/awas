@@ -30,7 +30,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.restoreSystemUIOverlays();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: LightColors.kBackgroundColor));
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       body: Stack(children: [

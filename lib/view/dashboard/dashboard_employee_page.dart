@@ -401,7 +401,7 @@ class DashboardEmployeePage extends StatelessWidget {
                 child: InkWell(
                   customBorder: const CircleBorder(),
                   onTap: () {
-                    Navigator.pushNamed(context, UserPage.viewAsMerouteName);
+                    Navigator.pushNamed(context, UserPage.viewAsMeRouteName);
                   },
                 ),
               ),

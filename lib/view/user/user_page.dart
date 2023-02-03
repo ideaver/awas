@@ -24,7 +24,7 @@ class UserPage extends ConsumerStatefulWidget {
   final PageState userPageState;
   static const String routeName = '/profile';
   static const String editModerouteName = '/profile-edit';
-  static const String viewAsMerouteName = '/profile-me';
+  static const String viewAsMeRouteName = '/profile-me';
   static const String viewAsOtherRouteName = '/profile-user';
 
   const UserPage({super.key, required this.userPageState});

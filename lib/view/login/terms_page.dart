@@ -108,13 +108,16 @@ class TermsPage extends StatelessWidget {
                       }
                       return KelevatedButtonWidget(
                           onPressed: () {
-                            if (isLogedin) {
+                            print(isLogedin);
+                            print(ref.read(isNewUser));
+                            if (isLogedin == true) {
                               ref.read(isNewUser)
                                   ? Navigator.pushReplacementNamed(
                                       context, UserPage.editModerouteName)
                                   : Navigator.pop(context);
+                            } else {
+                              Navigator.pop(context);
                             }
-                            Navigator.pop(context);
                           },
                           title: 'Understand');
                     },
