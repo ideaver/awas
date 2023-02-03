@@ -1,4 +1,5 @@
 import '../../res/widgets/checkbox_listtile_widget.dart';
+import '../../res/widgets/kdropdown_widget.dart';
 import '/res/widgets/risk_level_grid_widget.dart';
 import '../../res/widgets/report_category_grid_widget.dart';
 import '/res/widgets/kelevated_button.dart';
@@ -40,7 +41,6 @@ class ReportFilterPage extends StatelessWidget {
             CheckboxListTileWidget(title: 'Open'),
             CheckboxListTileWidget(title: 'Close'),
             CheckboxListTileWidget(title: 'Frequent'),
-            CheckboxListTileWidget(title: 'Most liked'),
             CheckboxListTileWidget(title: 'Most shared'),
           ]),
           KexpansionTileWidget(
@@ -60,6 +60,19 @@ class ReportFilterPage extends StatelessWidget {
                 SizedBox(
                   height: defaultMargin,
                 )
+              ]),
+          KexpansionTileWidget(
+              initiallyExpanded: false,
+              title: 'Observation',
+              children: [
+                KdropdownWidget(title: 'Event'),
+                SizedBox(
+                  height: defaultMargin,
+                ),
+                KdropdownWidget(title: 'Detail'),
+                SizedBox(
+                  height: defaultMargin,
+                ),
               ]),
           KanimatedListExpansionWidget()
         ],
