@@ -1,4 +1,5 @@
 import 'package:awas/res/widgets/kelevated_button.dart';
+import 'package:flutter/services.dart';
 
 import '/res/widgets/ktext_form_field.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,9 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
     //TODO : Change to sliver
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
@@ -90,7 +94,7 @@ class ForgotPasswordPage extends StatelessWidget {
                 style: LightColors.titleTextStyle,
               ),
               Text(
-                'just Input your email',
+                'Input your email',
                 overflow: TextOverflow.visible,
                 style: LightColors.subTitleTextStyle,
               ),

@@ -73,6 +73,7 @@ class LoginPage extends StatelessWidget {
                     builder: (context, ref, child) {
                       return KelevatedButtonWidget(
                           onPressed: () {
+                            isLogedin = true;
                             loginRoleAndIsNewUser(context, ref);
                           },
                           title: 'Sign In');
@@ -166,7 +167,7 @@ class LoginPage extends StatelessWidget {
                 style: LightColors.titleTextStyle,
               ),
               Text(
-                'Welcome to AWAS app',
+                'Welcome to AwaS app',
                 overflow: TextOverflow.visible,
                 style: LightColors.subTitleTextStyle,
               ),

@@ -2,6 +2,8 @@ import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+bool isLogedin = false;
+
 /// System overlays should be drawn with a light color. Intended for
 /// applications with a dark background.
 const SystemUiOverlayStyle lightStatusBar = SystemUiOverlayStyle(
