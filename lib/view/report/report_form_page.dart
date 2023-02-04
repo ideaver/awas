@@ -1,4 +1,5 @@
 import 'package:awas/res/widgets/risk_level_grid_widget.dart';
+import 'package:awas/view/report/report_loading_page.dart';
 
 import '../../res/widgets/image_edit_dart.dart';
 import '/res/widgets/kscrollbar_widget.dart';
@@ -191,7 +192,9 @@ class _ReportFormPageState extends State<ReportFormPage>
                 flex: 2,
                 child: KelevatedButtonWidget(
                   title: 'Submit',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, ReportLoadingPage.routeName);
+                  },
                   icon: Icons.file_upload,
                 ),
               ),

@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:awas/res/widgets/kelevated_button.dart';
+import 'package:awas/view/thank_you_page.dart';
 
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,10 @@ class ReportLoadingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Timer(
+        const Duration(seconds: 2),
+        () =>
+            Navigator.pushNamed(context, ThankYouPage.profileUpdaterouteName));
     return Scaffold(
       backgroundColor: LightColors.kWhiteColor,
       body: Center(
@@ -50,12 +57,20 @@ class ReportLoadingPage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: KelevatedButtonWidget.floating(
-        title: 'Cancel',
-        onPressed: () {
-          Navigator.pushNamed(context, '/report-list');
-        },
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: Row(
+        children: [
+          Expanded(
+            child: KelevatedButtonWidget.floating(
+              title: 'Cancel',
+              onPressed: () {
+                Navigator.pushNamed(context, '/report-list');
+              },
+            ),
+          ),
+          const Spacer()
+        ],
       ),
     );
   }

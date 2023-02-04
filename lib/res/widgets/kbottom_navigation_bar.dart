@@ -1,3 +1,4 @@
+import 'package:awas/view/report/camera_page.dart';
 import 'package:flutter/services.dart';
 
 import '../utils/globals.dart';
@@ -85,12 +86,13 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
                 clickedCentreFAB =
                     !clickedCentreFAB; //to update the animated container
               });
+              Navigator.pushNamed(context, CameraPage.routeName);
             },
             tooltip: "Centre FAB",
             elevation: 4.0,
             child: Container(
               margin: const EdgeInsets.all(15.0),
-              child: const Icon(Icons.add),
+              child: const Icon(Icons.photo_camera),
             ),
           )
         : const SizedBox();
