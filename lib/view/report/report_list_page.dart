@@ -1,4 +1,5 @@
 import 'package:awas/res/utils/globals.dart';
+import 'package:awas/view/report/report_filter_page.dart';
 import 'package:awas/view/user/user_filter_page.dart';
 
 import '../../res/widgets/animation_search_bar_widget.dart';
@@ -69,7 +70,7 @@ class _ReportListPageState extends State<ReportListPage>
                   icon: const Icon(Icons.filter_alt_outlined,
                       size: 35, color: LightColors.kDarkGreyColor),
                   onPressed: () {
-                    Navigator.pushNamed(context, UserFilterPage.routeName);
+                    Navigator.pushNamed(context, ReportFilterPage.routeName);
                   }),
             ),
           ))),

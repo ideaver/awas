@@ -1,5 +1,5 @@
 import 'package:awas/res/utils/globals.dart';
-import 'package:camera/camera.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/view/report/camera_page.dart';
 
@@ -15,14 +15,14 @@ Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(darkStatusBar);
   //end region
 
-//initialized camera
-  try {
-    WidgetsFlutterBinding.ensureInitialized();
-    cameras = await availableCameras();
-  } on CameraException catch (e) {
-    logError(e.code, e.description);
-  }
-//end region
+// //initialized camera
+//   try {
+//     WidgetsFlutterBinding.ensureInitialized();
+//     cameras = await availableCameras();
+//   } on CameraException catch (e) {
+//     logError(e.code, e.description);
+//   }
+// //end region
 
   runApp(const ProviderScope(child: MyApp()));
 }
