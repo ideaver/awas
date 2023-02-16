@@ -1,3 +1,5 @@
+import 'package:awas/view/report/report_loading_page.dart';
+import 'package:awas/view/report/report_location.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
@@ -23,7 +25,8 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
         const SizedBox(height: defaultMargin / 2),
         ListTile(
           onTap: () {
-            //TODO: implement https://pub.dev/packages/map_launcher
+            //TODO: if viewer : implement https://pub.dev/packages/map_launcher
+            Navigator.pushNamed(context, ReportLocationPage.pickeRouteName);
           },
           contentPadding: contentPadding,
           tileColor: LightColors.kPrimaryColor.withOpacity(0.1),

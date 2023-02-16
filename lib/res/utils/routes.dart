@@ -2,6 +2,7 @@ import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
 import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/Archivedcamera_page.dart';
 import 'package:awas/view/report/image_viewer_page.dart';
+import 'package:awas/view/report/report_location.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -41,7 +42,7 @@ final Map<String, WidgetBuilder> routes = {
   ThankYouPage.profileUpdaterouteName: (context) =>
       ThankYouPage.profileUpdated(),
   TermsPage.routeName: (context) => const TermsPage(),
-  UserPage.editModerouteName: (context) => const UserPage.editMode(),
+  UserPage.editModerouteName: (context) => const UserPage.edit(),
   UserPage.viewAsMeRouteName: (context) => const UserPage.viewAsMe(),
   UserPage.viewAsOtherRouteName: (context) => const UserPage.viewAsOther(),
   UserListPage.routeName: (context) => const UserListPage(),
@@ -59,6 +60,8 @@ final Map<String, WidgetBuilder> routes = {
   ReportListPage.routeName: (context) => const ReportListPage(),
   ReportFilterPage.routeName: (context) => const ReportFilterPage(),
   ReportDetailsPage.routeName: (context) => const ReportDetailsPage(),
+  ReportLocationPage.pickeRouteName: (context) =>
+      const ReportLocationPage.picker(),
   ImageViewerPage.routeName: (context) => const ImageViewerPage(),
   SettingsPage.employeeRouteName: (context) => const SettingsPage.employee(),
   PointSettingPage.routeName: (context) => const PointSettingPage(),

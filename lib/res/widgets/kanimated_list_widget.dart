@@ -87,7 +87,7 @@ class _KanimatedListExpansionWidgetState
   Widget build(BuildContext context) {
     return KexpansionTileWidget(
         childrenPadding: const EdgeInsets.all(0.0),
-        title: 'Last report location',
+        title: 'Report location',
         children: [
           // IconButton(
           //   icon: const Icon(Icons.add_circle),

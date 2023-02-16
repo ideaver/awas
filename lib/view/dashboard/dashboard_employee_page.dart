@@ -1,3 +1,4 @@
+import 'package:awas/view/report/report_list_page.dart';
 import 'package:awas/view/user/user_page.dart';
 
 import '/res/widgets/pie_chart_widget.dart';
@@ -29,11 +30,11 @@ class DashboardEmployeePage extends StatelessWidget {
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [sliverAppBarWidget(context)];
           },
-          body: bodyWidget()),
+          body: bodyWidget(context)),
     );
   }
 
-  Container bodyWidget() {
+  Container bodyWidget(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
           color: LightColors.kBackgroundColor,
@@ -47,7 +48,7 @@ class DashboardEmployeePage extends StatelessWidget {
             padding: const EdgeInsets.all(defaultMargin),
             child: Column(
               children: [
-                syncNotificationWidget(),
+                syncNotificationWidget(context),
                 const SizedBox(
                   height: defaultMargin,
                 ),
@@ -329,8 +330,11 @@ class DashboardEmployeePage extends StatelessWidget {
         ));
   }
 
-  Widget syncNotificationWidget() {
+  Widget syncNotificationWidget(BuildContext context) {
     return KcardWidget(
+        onTap: () {
+          Navigator.pushNamed(context, ReportListPage.routeName);
+        },
         padding: const EdgeInsets.symmetric(
             horizontal: defaultMargin, vertical: defaultMargin / 2),
         color: LightColors.kDangerColor,

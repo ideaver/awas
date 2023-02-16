@@ -20,7 +20,6 @@ import '/res/widgets/user_form_widget.dart';
 import 'package:flutter/material.dart';
 
 class UserPage extends ConsumerStatefulWidget {
-  //TODO: implement view by self vs by other
   final PageState userPageState;
   static const String routeName = '/profile';
   static const String editModerouteName = '/profile-edit';
@@ -28,7 +27,7 @@ class UserPage extends ConsumerStatefulWidget {
   static const String viewAsOtherRouteName = '/profile-user';
 
   const UserPage({super.key, required this.userPageState});
-  const UserPage.editMode() : this(userPageState: PageState.edit);
+  const UserPage.edit() : this(userPageState: PageState.edit);
   const UserPage.viewAsMe() : this(userPageState: PageState.viewAsMe);
   const UserPage.viewAsOther() : this(userPageState: PageState.viewAsOther);
 

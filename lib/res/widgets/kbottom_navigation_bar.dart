@@ -82,10 +82,13 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
             heroTag: UniqueKey(),
             backgroundColor: LightColors.kSecondaryColor,
             onPressed: () {
-              setState(() {
-                clickedCentreFAB =
-                    !clickedCentreFAB; //to update the animated container
-              });
+              // setState(() {
+              //   clickedCentreFAB =
+              //       !clickedCentreFAB; //to update the animated container
+              // });
+              // Timer(const Duration(seconds: 1),
+              //     () => Navigator.pushNamed(context, CameraPage.routeName));
+
               Navigator.pushNamed(context, CameraPage.routeName);
             },
             tooltip: "Centre FAB",
@@ -166,6 +169,7 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
   }
 
   Widget screensWidget(int index) {
+    //TODO: Simplyfy
     switch (index) {
       case 1:
         {
