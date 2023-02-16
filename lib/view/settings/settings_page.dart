@@ -1,4 +1,9 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:awas/view/login/login_page.dart';
+import 'package:awas/view/settings/import_export_page.dart';
+import 'package:awas/view/settings/point_setting_page.dart';
+import 'package:awas/view/settings/report_setting_page.dart';
 import 'package:awas/view/user/user_page.dart';
 
 import '../../res/utils/enums.dart';
@@ -10,6 +15,8 @@ import '/res/widgets/kscrollbar_widget.dart';
 
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
+
+import 'observation/observation_card_setting_page.dart';
 
 class SettingsPage extends StatelessWidget {
   final Role role;
@@ -25,7 +32,7 @@ class SettingsPage extends StatelessWidget {
 //TODO: slice superuser UI
   @override
   Widget build(BuildContext context) {
-    final String commingSoonString = 'Coming Soon';
+    const String commingSoonString = 'Coming Soon';
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
       appBar: KappBarWidget(context: context, title: 'Settings'),
@@ -88,6 +95,9 @@ class SettingsPage extends StatelessWidget {
               'Other'.toUpperCase(),
               style: LightColors.subTitle3TextStyle,
             ),
+            currentUserRole == Role.manager
+                ? managerListTiles(context, commingSoonString)
+                : const SizedBox.shrink(),
             listTileWidget(
               onTap: () {
                 ksnackBarWidget(context, commingSoonString);
@@ -126,6 +136,44 @@ class SettingsPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget managerListTiles(BuildContext context, String commingSoonString) {
+    return Column(
+      children: [
+        listTileWidget(
+          onTap: () {
+            Navigator.pushNamed(context, ImportExportPage.routeName);
+          },
+          title: 'Import & Export Data',
+          icon: Icons.sync_alt,
+        ),
+        listTileWidget(
+          onTap: () {
+            Navigator.pushNamed(context, PointSettingPage.routeName);
+          },
+          title: 'Point Settings',
+          icon: Icons.stars_rounded,
+        ),
+        listTileWidget(
+          onTap: () {
+            Navigator.pushNamed(context, ReportSettingPage.routeName);
+          },
+          title: 'Report Settings',
+          icon: Icons.receipt,
+        ),
+        listTileWidget(
+          onTap: () {
+            Navigator.pushNamed(context, ObservationCardSettingPage.routeName);
+          },
+          title: 'Observations Settings',
+          icon: Icons.manage_search_rounded,
+        ),
+        const SizedBox(
+          height: defaultMargin * 2,
+        ),
+      ],
     );
   }
 

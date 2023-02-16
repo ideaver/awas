@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import '/res/widgets/kbottom_navigation_bar.dart';
 import '/res/widgets/kdivider_widget.dart';
 

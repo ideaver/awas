@@ -2,7 +2,11 @@ import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'enums.dart';
+
 bool isLogedin = false;
+Role currentUserRole = Role.employee;
+
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason> ksnackBarWidget(
     BuildContext context, String title) {
   ScaffoldMessenger.of(context).clearSnackBars();

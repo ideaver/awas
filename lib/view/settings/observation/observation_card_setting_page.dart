@@ -1,11 +1,8 @@
-import 'dart:convert';
-
-import '/res/widgets/kelevated_button.dart';
-import '/res/widgets/ktext_form_field.dart';
-
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'observation_checklist_setting_page.dart';
 
 class PointSettingPageModel {
   final String title;
@@ -96,7 +93,10 @@ class ObservationCardSettingPage extends StatelessWidget {
                     style: LightColors.black2TextStyle,
                   ))),
                   DataCell(IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, ObservationChecklistSettingPage.routeName);
+                      },
                       icon: const Icon(
                         Icons.edit,
                         color: LightColors.kPrimaryColor,

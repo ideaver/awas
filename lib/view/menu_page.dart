@@ -1,5 +1,7 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
 
+import '../res/utils/enums.dart';
+import '../res/utils/globals.dart';
 import '/res/widgets/kelevated_button.dart';
 import 'package:flutter/material.dart';
 
@@ -20,15 +22,36 @@ class MenuPage extends StatelessWidget {
               children: [
                 KelevatedButtonWidget(
                     onPressed: () {
+                      currentUserRole = Role.employee;
+
                       Navigator.pushNamed(
                           context, LoginPage.employeeRoleRouteName);
                     },
                     title: 'Login Employee'),
-                KelevatedButtonWidget(onPressed: () {}, title: 'Login Manager'),
-                KelevatedButtonWidget(
-                    onPressed: () {}, title: 'Login SuperUser'),
                 KelevatedButtonWidget(
                     onPressed: () {
+                      currentUserRole = Role.manager;
+
+                      Navigator.pushNamed(
+                        context,
+                        LoginPage.managerRoleRouteName,
+                      );
+                    },
+                    title: 'Login Manager'),
+                KelevatedButtonWidget(
+                    onPressed: () {
+                      currentUserRole = Role.superUser;
+
+                      Navigator.pushNamed(
+                        context,
+                        LoginPage.superUserRoleRouteName,
+                      );
+                    },
+                    title: 'Login SuperUser'),
+                KelevatedButtonWidget(
+                    onPressed: () {
+                      currentUserRole = Role.employee;
+
                       Navigator.pushNamed(context, '/all-screen');
                     },
                     title: 'View All Screens')

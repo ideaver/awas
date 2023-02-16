@@ -1,3 +1,5 @@
+import 'package:awas/view/user/chat_room_page.dart';
+
 import '/res/widgets/kdivider_widget.dart';
 import '/res/widgets/title_sepatator_widget.dart';
 
@@ -95,7 +97,11 @@ class _InboxPageState extends State<InboxPage>
           children: [
             ListTile(
               onTap: () {
-                Navigator.pushNamed(context, '/report-details');
+                if (tabController.index == 2) {
+                  Navigator.pushNamed(context, ChatRoomPage.routeName);
+                } else {
+                  Navigator.pushNamed(context, '/report-details');
+                }
               },
               tileColor: index > 3
                   ? LightColors.kBackgroundColor

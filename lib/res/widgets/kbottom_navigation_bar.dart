@@ -1,3 +1,5 @@
+import 'package:awas/res/utils/enums.dart';
+import 'package:awas/view/dashboard/dashboard_manager_page.dart';
 import 'package:awas/view/report/camera_page.dart';
 import 'package:flutter/services.dart';
 
@@ -27,11 +29,17 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
       0; //to handle which item is currently selected in the bottom app bar
 
   final Map<Widget, IconData> _screens = {
-    const DashboardEmployeePage(): Icons.home,
-    const DashboardEmployeePage(): Icons.home,
+    currentUserRole == Role.employee
+        ? const DashboardEmployeePage()
+        : const DashboardManagerPage(): Icons.home,
+    currentUserRole == Role.employee
+        ? const DashboardEmployeePage()
+        : const DashboardManagerPage(): Icons.home,
     const ReportListPage(): Icons.featured_play_list_rounded,
     const InboxPage(): Icons.notifications,
-    const SettingsPage.employee(): Icons.settings,
+    currentUserRole == Role.employee
+        ? const SettingsPage.employee()
+        : const SettingsPage.manager(): Icons.settings,
   };
 
   final List<String> bottomNavBarTitle = [

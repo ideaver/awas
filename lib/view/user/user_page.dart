@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:awas/view/user/chat_room_page.dart';
 
 import '/res/utils/enums.dart';
@@ -69,6 +71,7 @@ class _UserPageState extends ConsumerState<UserPage>
             !userHasScrolledToBottom;
       }
     });
+
     super.initState();
     tabController = TabController(vsync: this, length: 3);
   }

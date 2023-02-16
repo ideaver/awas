@@ -1,4 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:awas/view/login/terms_page.dart';
+import 'package:awas/view/user/user_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,8 +9,6 @@ import '../../res/utils/globals.dart';
 import '../../state_management/global_states.dart';
 import '/res/utils/enums.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
-import '/view/user/user_page.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 //TODO: implement session manager
 
 import '/res/widgets/ktext_form_field.dart';
@@ -20,12 +21,24 @@ class LoginPage extends StatelessWidget {
   final Role loginRole;
   static const String routeName = '/login';
   static const String employeeRoleRouteName = '/employee-login';
+  static const String managerRoleRouteName = '/manager-login';
+  static const String superUserRoleRouteName = '/super-user-login';
 
 //Constructors
   const LoginPage({super.key, required this.loginRole});
   const LoginPage.employeeRole()
       : this(
           loginRole: Role.employee,
+        );
+
+  const LoginPage.managerRole()
+      : this(
+          loginRole: Role.manager,
+        );
+
+  const LoginPage.superUserRole()
+      : this(
+          loginRole: Role.superUser,
         );
 
   @override
@@ -141,6 +154,7 @@ class LoginPage extends StatelessWidget {
                 context, DashboardEmployeePage.routeName);
         break;
       case Role.manager:
+        Navigator.pushReplacementNamed(context, UserPage.editModerouteName);
         break;
       case Role.superUser:
         break;
@@ -198,5 +212,4 @@ class LoginPage extends StatelessWidget {
   //       Navigator.pushReplacement(context,
   //           MaterialPageRoute(builder: (BuildContext context) => home())));
   // }
-
 }

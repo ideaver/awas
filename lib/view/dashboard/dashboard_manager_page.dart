@@ -1,3 +1,5 @@
+import 'package:awas/view/user/user_page.dart';
+
 import '../../res/utils/enums.dart';
 import '/res/widgets/pie_chart_widget.dart';
 import '/res/widgets/report_card_widget.dart';
@@ -35,13 +37,18 @@ class DashboardManagerPage extends StatelessWidget {
             toolbarHeight: 52,
             stretch: true,
             backgroundColor: Colors.transparent,
-            leading: const Padding(
-              padding: EdgeInsets.only(
-                  left: defaultMargin, right: defaultMargin / 3),
-              child: CircleAvatar(
-                radius: 23,
-                backgroundImage: AssetImage('assets/avatar1.png'),
-                backgroundColor: LightColors.kSecondaryColor,
+            leading: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, UserPage.editModerouteName);
+              },
+              child: const Padding(
+                padding: EdgeInsets.only(
+                    left: defaultMargin, right: defaultMargin / 3),
+                child: CircleAvatar(
+                  radius: 23,
+                  backgroundImage: AssetImage('assets/avatar1.png'),
+                  backgroundColor: LightColors.kSecondaryColor,
+                ),
               ),
             ),
             title: Text(
@@ -378,7 +385,7 @@ class DashboardManagerPage extends StatelessWidget {
                   style: LightColors.titleTextStyle.copyWith(fontSize: 16.0)),
             ),
             ...List.generate(10, (index) {
-              return Padding(
+              return const Padding(
                 padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                 child: UserListWidget(),
               );
@@ -453,8 +460,8 @@ class DashboardManagerPage extends StatelessWidget {
             .copyWith(fontSize: 24.0, color: LightColors.kBackgroundColor),
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.notifications)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.notifications)),
         const SizedBox(
           width: defaultMargin / 4,
         )

@@ -1,11 +1,9 @@
 import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
 import 'package:awas/view/menu_page.dart';
-import 'package:awas/view/report/Archivedcamera_page.dart';
 import 'package:awas/view/report/image_viewer_page.dart';
 import 'package:awas/view/report/report_location.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 import '../../view/report/camera_page.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
@@ -38,6 +36,7 @@ final Map<String, WidgetBuilder> routes = {
   '/all-screen': (context) => const AllScreenPage(),
   KbottomNavigationBar.routeName: (context) => const KbottomNavigationBar(),
   LoginPage.employeeRoleRouteName: (context) => const LoginPage.employeeRole(),
+  LoginPage.managerRoleRouteName: (context) => const LoginPage.managerRole(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
   ThankYouPage.profileUpdaterouteName: (context) =>
       ThankYouPage.profileUpdated(),
