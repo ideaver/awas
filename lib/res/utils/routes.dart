@@ -79,5 +79,5 @@ final Map<String, WidgetBuilder> routes = {
       const ObservationEventDetailsPage(),
   ObservationDetailCreatePage.routeName: (context) =>
       const ObservationDetailCreatePage(),
-  DashboardAdminPage.routeName: (context) => const DashboardAdminPage(),
+  DashboardAdminPage.routeName: (context) => DashboardAdminPage(),
 };

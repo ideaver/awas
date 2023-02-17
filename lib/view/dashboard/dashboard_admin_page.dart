@@ -3,7 +3,7 @@ import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardAdminPage extends StatelessWidget {
-  const DashboardAdminPage({Key? key}) : super(key: key);
+  DashboardAdminPage({Key? key}) : super(key: key);
 
   static const String routeName = '/dashboard-admin';
 
@@ -49,19 +49,25 @@ class DashboardAdminPage extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          Row(
-            children: buildRows(1),
-          ),
-          const Divider(
-            height: 1,
-            color: Colors.black,
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  width: 0.5,
+                  color: LightColors.kBlackColor.withOpacity(0.24),
+                ),
+              ),
+            ),
+            child: Row(
+              children: buildRows(tableHead),
+            ),
           ),
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: buildRows(20),
+                children: buildRows(tableData),
               ),
             ),
           ),
@@ -70,27 +76,143 @@ class DashboardAdminPage extends StatelessWidget {
     );
   }
 
-  List<Widget> buildCells(int count) {
-    return List.generate(
-      count,
-      (index) => Container(
-        alignment: Alignment.center,
-        width: 120.0,
+  List<Widget> buildCells(List<List<Map<String, String>>> data, int i) {
+    return List.generate(data[i].length, (j) {
+      return Container(
+        alignment: j == 0 ? Alignment.centerLeft : Alignment.center,
+        width: j == 0 ? 140.0 : 100,
         height: 60.0,
-        child: Text("${index + 1}"),
-      ),
-    );
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              data[i][j]['data'] ?? '',
+              style: LightColors.titleTextStyle.copyWith(
+                fontSize: 12,
+              ),
+            ),
+            data[i][j]['date'] != null
+                ? Text(
+                    "Registered ${data[i][j]['date']}",
+                    style: LightColors.subTitle2TextStyle.copyWith(
+                      fontSize: 10,
+                    ),
+                  )
+                : const SizedBox.shrink()
+          ],
+        ),
+      );
+    });
   }
 
-  List<Widget> buildRows(int count) {
+  List<Widget> buildRows(List<List<Map<String, String>>> data) {
     return List.generate(
-      count,
-      (index) => Container(
-        color: index.isEven ? LightColors.kGreyColor : null,
+      data.length,
+      (i) => Container(
+        color: i.isEven ? LightColors.kGreyColor : null,
         child: Row(
-          children: buildCells(4),
+          children: buildCells(data, i),
         ),
       ),
     );
   }
+
+  List<List<Map<String, String>>> tableHead = [
+    [
+      {'data': 'COMPANY'},
+      {'data': 'REPORTS'},
+      {'data': 'EMPLOYEE'},
+      {'data': 'STORAGE'},
+      {'data': 'AVG DAILY SESSION'},
+    ],
+  ];
+
+  List<List<Map<String, String>>> tableData = [
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ],
+    [
+      {'data': 'Pt. Mitra Pinastika', 'date': '23 Juni 2022'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+      {'data': '10'},
+    ]
+  ];
 }
