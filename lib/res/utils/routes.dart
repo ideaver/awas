@@ -1,11 +1,15 @@
 import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
+import 'package:awas/view/dashboard/dashboard_admin_page.dart';
 import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/image_viewer_page.dart';
 import 'package:awas/view/report/report_location.dart';
+import 'package:awas/view/settings/observation/observation_add_edit_page.dart';
+import 'package:awas/view/settings/observation/observation_detail_create_edit_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../view/report/camera_page.dart';
+import '../../view/settings/observation/observation_event_details_page.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/dashboard/dashboard_manager_page.dart';
 import '/view/login/forgot_password_page.dart';
@@ -69,5 +73,11 @@ final Map<String, WidgetBuilder> routes = {
   ObservationCardSettingPage.routeName: (context) =>
       const ObservationCardSettingPage(),
   ObservationChecklistSettingPage.routeName: (context) =>
-      const ObservationChecklistSettingPage()
+      const ObservationChecklistSettingPage(),
+  ObservationAddEditPage.routeName: (context) => const ObservationAddEditPage(),
+  ObservationEventDetailsPage.routeName: (context) =>
+      const ObservationEventDetailsPage(),
+  ObservationDetailCreatePage.routeName: (context) =>
+      const ObservationDetailCreatePage(),
+  DashboardAdminPage.routeName: (context) => const DashboardAdminPage(),
 };

@@ -59,18 +59,13 @@ class ReportLoadingPage extends StatelessWidget {
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
-      floatingActionButton: Row(
-        children: [
-          Expanded(
-            child: KelevatedButtonWidget.floating(
-              title: 'Cancel',
-              onPressed: () {
-                Navigator.pushNamed(context, '/report-list');
-              },
-            ),
-          ),
-          const Spacer()
-        ],
+      floatingActionButton: Expanded(
+        child: KelevatedButtonWidget.floating(
+          title: 'Cancel',
+          onPressed: () {
+            Navigator.pushNamed(context, '/report-list');
+          },
+        ),
       ),
     );
   }

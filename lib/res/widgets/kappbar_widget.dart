@@ -12,7 +12,8 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final String? subTitle;
   final List<Widget>? actions;
   final bool? centerTitle;
-  final PreferredSizeWidget? bottom;
+  final bool automaticallyImplyLeading;
+  final Widget? bottom;
   final Color? backgroundColor;
   final SystemUiOverlayStyle? systemOverlayStyle;
   final Widget? leading;
@@ -24,6 +25,7 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
       this.subTitle,
       this.actions,
       this.centerTitle = true,
+      this.automaticallyImplyLeading = true,
       this.bottom,
       this.backgroundColor,
       required this.context,
@@ -46,21 +48,26 @@ class KappBarWidget extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       systemOverlayStyle: systemOverlayStyle,
       leadingWidth: leading != null ? double.infinity : null,
-      leading: Align(
-        alignment: Alignment.centerLeft,
-        child: leading ??
-            IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.chevron_left_rounded,
-                  color: backgroundColor != null
-                      ? LightColors.kBackgroundColor
-                      : LightColors.kDarkGreyColor,
-                  size: 30,
-                )),
-      ),
+      leading: automaticallyImplyLeading
+          ? Align(
+              alignment: Alignment.centerLeft,
+              child: leading ??
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.chevron_left_rounded,
+                      color: backgroundColor != null
+                          ? LightColors.kBackgroundColor
+                          : LightColors.kDarkGreyColor,
+                      size: 30,
+                    ),
+                  ),
+            )
+          : null,
+      automaticallyImplyLeading: automaticallyImplyLeading,
+      titleSpacing: 0,
       backgroundColor: backgroundColor ?? LightColors.kBackgroundColor,
       elevation: elevation,
       centerTitle: subTitle != null ? false : centerTitle,

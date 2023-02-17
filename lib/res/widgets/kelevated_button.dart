@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 import '/res/theme/colors/light_colors.dart';
@@ -9,7 +11,10 @@ class KelevatedButtonWidget extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
   final IconData? icon;
+  final IconData? trailingIcon;
   final bool keyboardShow;
+  final double? elevation;
+  final Color? shadowColor;
 
   const KelevatedButtonWidget({
     Key? key,
@@ -18,16 +23,27 @@ class KelevatedButtonWidget extends StatelessWidget {
     this.backgroundColor = LightColors.kPrimaryColor,
     this.textColor = LightColors.kWhiteColor,
     this.icon,
+    this.trailingIcon,
     this.keyboardShow = false,
+    this.elevation,
+    this.shadowColor,
   }) : super(key: key);
 
   //TODO: work on hide on scroll
-  const KelevatedButtonWidget.floating(
-      {required String title,
-      required void Function() onPressed,
-      IconData? icon})
-      : this(
-            keyboardShow: true, title: title, onPressed: onPressed, icon: icon);
+  const KelevatedButtonWidget.floating({
+    required String title,
+    required void Function() onPressed,
+    IconData? icon,
+    IconData? trailingIcon,
+    double? elevation,
+    int? shadowColor,
+  }) : this(
+          keyboardShow: true,
+          title: title,
+          onPressed: onPressed,
+          icon: icon,
+          trailingIcon: trailingIcon,
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -53,25 +69,52 @@ class KelevatedButtonWidget extends StatelessWidget {
           color: textColor,
           size: icon == null ? 0 : null,
         ),
+
         style: ElevatedButton.styleFrom(
-            disabledBackgroundColor: LightColors.kPrimaryColor.withOpacity(0.2),
-            backgroundColor: backgroundColor,
-            alignment: Alignment.center,
-            side: backgroundColor != LightColors.kWhiteColor
-                ? null
-                : const BorderSide(
-                    color: LightColors.kPrimaryColor,
-                  ),
-            shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.circular(defaultCircular / 2), // <-- Radius
-            )),
+          elevation: elevation,
+          shadowColor: shadowColor,
+          disabledBackgroundColor: LightColors.kPrimaryColor.withOpacity(0.2),
+          backgroundColor: backgroundColor,
+          alignment: Alignment.center,
+          side: backgroundColor != LightColors.kWhiteColor
+              ? null
+              : const BorderSide(
+                  color: LightColors.kPrimaryColor,
+                ),
+          shape: RoundedRectangleBorder(
+            borderRadius:
+                BorderRadius.circular(defaultCircular / 2), // <-- Radius
+          ),
+        ),
         onPressed: onPressed,
-        label: Text(
-          title,
-          style: LightColors.whiteTextStyle.copyWith(
-              color: onPressed != null ? textColor : LightColors.kWhiteColor),
-          textAlign: TextAlign.center,
+        // label: Text(
+        //   title,
+        //   style: LightColors.whiteTextStyle.copyWith(
+        //     color: onPressed != null ? textColor : LightColors.kWhiteColor,
+        //   ),
+        //   textAlign: TextAlign.center,
+        // ),
+        label: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              title,
+              style: LightColors.whiteTextStyle.copyWith(
+                color: onPressed != null ? textColor : LightColors.kWhiteColor,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            trailingIcon != null
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Icon(
+                      trailingIcon,
+                      color: textColor,
+                      size: 22,
+                    ),
+                  )
+                : const SizedBox.shrink()
+          ],
         ),
       ),
     );
