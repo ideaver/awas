@@ -3,6 +3,8 @@ import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:awas/res/widgets/kelevated_button.dart';
 import 'package:flutter/material.dart';
 
+import '../../res/widgets/multiple_range_slider.dart';
+
 class RiskLevelSettingsPage extends StatefulWidget {
   const RiskLevelSettingsPage({Key? key}) : super(key: key);
 
@@ -37,53 +39,13 @@ class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
     );
   }
 
-  double _discreteValue = 10;
-  double _discreteValue2 = 50;
-  double _discreteValue3 = 100;
+  RangeLabels labels = const RangeLabels('1', "100");
+  RangeValues values = const RangeValues(1, 100);
+  RangeLabels labels2 = const RangeLabels('1', "100");
+  RangeValues values2 = const RangeValues(1, 100);
 
   Widget body() {
-    return Container(
-      child: Stack(
-        children: [
-          Slider(
-            value: _discreteValue,
-            min: 0.0,
-            max: _discreteValue2,
-            divisions: 5,
-            label: '${_discreteValue.round()}',
-            onChanged: (double value) {
-              setState(() {
-                _discreteValue = value;
-              });
-            },
-          ),
-          Slider(
-            value: _discreteValue2,
-            min: _discreteValue,
-            max: _discreteValue3,
-            divisions: 5,
-            label: '${_discreteValue2.round()}',
-            onChanged: (double value) {
-              setState(() {
-                _discreteValue2 = value;
-              });
-            },
-          ),
-          Slider(
-            value: _discreteValue3,
-            min: _discreteValue2,
-            max: 100.0,
-            divisions: 5,
-            label: '${_discreteValue3.round()}',
-            onChanged: (double value) {
-              setState(() {
-                _discreteValue3 = value;
-              });
-            },
-          ),
-        ],
-      ),
-    );
+    return const MultipleRangeSlider();
   }
 
   Widget saveButton() {
