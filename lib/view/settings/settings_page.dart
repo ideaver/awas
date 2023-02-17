@@ -1,10 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors
 
-import 'package:awas/view/login/login_page.dart';
-import 'package:awas/view/settings/import_export_page.dart';
-import 'package:awas/view/settings/point_setting_page.dart';
-import 'package:awas/view/settings/report_setting_page.dart';
-import 'package:awas/view/user/user_page.dart';
+import '/view/login/login_page.dart';
+import '/view/settings/import_export_page.dart';
+import '/view/settings/point_setting_page.dart';
+import '/view/settings/report_setting_page.dart';
+import '/view/user/user_page.dart';
 
 import '../../res/utils/enums.dart';
 import '../../res/utils/globals.dart';
@@ -19,16 +19,16 @@ import 'package:flutter/material.dart';
 import 'observation/observation_card_setting_page.dart';
 
 class SettingsPage extends StatelessWidget {
-  final Role role;
+  final Role userRole;
 
   static const String employeeRouteName = '/settings-employee';
+  static const String managerRouteName = '/settings-manager';
 
-  const SettingsPage({super.key, required this.role});
+  const SettingsPage({super.key, required this.userRole});
 
-  const SettingsPage.employee() : this(role: Role.employee);
-  const SettingsPage.manager() : this(role: Role.manager);
-  const SettingsPage.superUser() : this(role: Role.superUser);
-//TODO: slice employee UI
+  const SettingsPage.employee() : this(userRole: Role.employee);
+  const SettingsPage.manager() : this(userRole: Role.manager);
+  const SettingsPage.superUser() : this(userRole: Role.superUser);
 //TODO: slice superuser UI
   @override
   Widget build(BuildContext context) {
@@ -91,13 +91,13 @@ class SettingsPage extends StatelessWidget {
                 opacity: 1,
               ),
             ),
+            userRole == Role.manager
+                ? managerListTiles(context, commingSoonString)
+                : const SizedBox.shrink(),
             Text(
               'Other'.toUpperCase(),
               style: LightColors.subTitle3TextStyle,
             ),
-            currentUserRole == Role.manager
-                ? managerListTiles(context, commingSoonString)
-                : const SizedBox.shrink(),
             listTileWidget(
               onTap: () {
                 ksnackBarWidget(context, commingSoonString);
@@ -126,7 +126,7 @@ class SettingsPage extends StatelessWidget {
                 icon: Icons.logout,
                 backgroundColor: LightColors.kSecondaryColor,
                 onPressed: () {
-                  Navigator.pushNamed(context, LoginPage.routeName);
+                  Navigator.pushNamed(context, '/menu');
                 },
                 title: 'Logout'),
             Image.asset(
@@ -141,7 +141,12 @@ class SettingsPage extends StatelessWidget {
 
   Widget managerListTiles(BuildContext context, String commingSoonString) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          'Report'.toUpperCase(),
+          style: LightColors.subTitle3TextStyle,
+        ),
         listTileWidget(
           onTap: () {
             Navigator.pushNamed(context, ImportExportPage.routeName);

@@ -72,6 +72,7 @@ final Map<String, WidgetBuilder> routes = {
       const ReportLocationPage.view(),
   ImageViewerPage.routeName: (context) => const ImageViewerPage(),
   SettingsPage.employeeRouteName: (context) => const SettingsPage.employee(),
+  SettingsPage.managerRouteName: (context) => const SettingsPage.manager(),
   PointSettingPage.routeName: (context) => const PointSettingPage(),
   ImportExportPage.routeName: (context) => const ImportExportPage(),
   ReportSettingPage.routeName: (context) => const ReportSettingPage(),
