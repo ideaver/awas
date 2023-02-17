@@ -1,6 +1,7 @@
 import 'package:awas/view/user/user_page.dart';
 
 import '../../res/utils/enums.dart';
+import '../../res/utils/globals.dart';
 import '/res/widgets/pie_chart_widget.dart';
 import '/res/widgets/report_card_widget.dart';
 import 'package:flutter/services.dart';
@@ -28,11 +29,7 @@ class DashboardManagerPage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            floating: true,
-            pinned: false,
-            snap: true,
-            systemOverlayStyle: const SystemUiOverlayStyle(
-                statusBarColor: LightColors.kDarkBlue),
+            systemOverlayStyle: lightStatusBar,
             elevation: 0.0,
             toolbarHeight: 52,
             stretch: true,
