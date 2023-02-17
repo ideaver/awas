@@ -41,6 +41,8 @@ final Map<String, WidgetBuilder> routes = {
   KbottomNavigationBar.routeName: (context) => const KbottomNavigationBar(),
   LoginPage.employeeRoleRouteName: (context) => const LoginPage.employeeRole(),
   LoginPage.managerRoleRouteName: (context) => const LoginPage.managerRole(),
+  LoginPage.superUserRoleRouteName: (context) =>
+      const LoginPage.superUserRole(),
   ForgotPasswordPage.routeName: (context) => const ForgotPasswordPage(),
   ThankYouPage.profileUpdaterouteName: (context) =>
       ThankYouPage.profileUpdated(),

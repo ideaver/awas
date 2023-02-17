@@ -49,12 +49,13 @@ class MenuPage extends StatelessWidget {
                     },
                     title: 'Login SuperUser'),
                 KelevatedButtonWidget(
-                    onPressed: () {
-                      currentUserRole = Role.employee;
+                  onPressed: () {
+                    currentUserRole = Role.employee;
 
-                      Navigator.pushNamed(context, '/all-screen');
-                    },
-                    title: 'View All Screens')
+                    Navigator.pushNamed(context, '/all-screen');
+                  },
+                  title: 'View All Screens',
+                )
               ],
             ),
           ),

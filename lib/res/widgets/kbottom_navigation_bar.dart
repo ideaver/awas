@@ -1,4 +1,5 @@
 import 'package:awas/res/utils/enums.dart';
+import 'package:awas/view/dashboard/dashboard_admin_page.dart';
 import 'package:awas/view/dashboard/dashboard_manager_page.dart';
 import 'package:awas/view/report/camera_page.dart';
 import 'package:flutter/services.dart';
@@ -31,10 +32,14 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
   final Map<Widget, IconData> _screens = {
     currentUserRole == Role.employee
         ? const DashboardEmployeePage()
-        : const DashboardManagerPage(): Icons.home,
+        : currentUserRole == Role.manager
+            ? const DashboardManagerPage()
+            : DashboardAdminPage(): Icons.home,
     currentUserRole == Role.employee
         ? const DashboardEmployeePage()
-        : const DashboardManagerPage(): Icons.home,
+        : currentUserRole == Role.manager
+            ? const DashboardManagerPage()
+            : DashboardAdminPage(): Icons.home,
     const ReportListPage(): Icons.featured_play_list_rounded,
     const InboxPage(): Icons.notifications,
     currentUserRole == Role.employee

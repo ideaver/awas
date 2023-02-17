@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
 import 'package:awas/view/login/terms_page.dart';
 import 'package:awas/view/user/user_page.dart';
 import 'package:flutter/services.dart';
@@ -157,6 +158,7 @@ class LoginPage extends StatelessWidget {
         Navigator.pushReplacementNamed(context, UserPage.editModerouteName);
         break;
       case Role.superUser:
+        Navigator.pushReplacementNamed(context, KbottomNavigationBar.routeName);
         break;
       default:
     }

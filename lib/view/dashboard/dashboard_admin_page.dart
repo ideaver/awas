@@ -47,11 +47,16 @@ class DashboardAdminPage extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
+      padding: const EdgeInsets.only(bottom: 100),
       child: Column(
         children: [
           Container(
             decoration: BoxDecoration(
               border: Border(
+                top: BorderSide(
+                  width: 0.5,
+                  color: LightColors.kBlackColor.withOpacity(0.24),
+                ),
                 bottom: BorderSide(
                   width: 0.5,
                   color: LightColors.kBlackColor.withOpacity(0.24),
@@ -111,7 +116,7 @@ class DashboardAdminPage extends StatelessWidget {
     return List.generate(
       data.length,
       (i) => Container(
-        color: i.isEven ? LightColors.kGreyColor : null,
+        color: data.length > 1 && i.isEven ? LightColors.kGreyColor : null,
         child: Row(
           children: buildCells(data, i),
         ),
