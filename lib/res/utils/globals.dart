@@ -29,7 +29,7 @@ const SystemUiOverlayStyle lightStatusBar = SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,
   systemNavigationBarIconBrightness: Brightness.light,
   statusBarIconBrightness: Brightness.light,
-  statusBarBrightness: Brightness.dark,
+  statusBarBrightness: Brightness.light,
 );
 
 /// System overlays should be drawn with a dark color. Intended for

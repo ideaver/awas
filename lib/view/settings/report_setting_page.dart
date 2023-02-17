@@ -91,14 +91,14 @@ class ReportSettingPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Report Target Miss',
+                            'Report Target',
                             style: LightColors.black2TextStyle,
                           ),
                           const SizedBox(
                             height: 5,
                           ),
                           Text(
-                            'Daily/weekly report missed',
+                            'Target timeframe',
                             style: LightColors.subTitle2TextStyle.copyWith(
                                 fontWeight: FontWeight.normal, fontSize: 12),
                           ),
@@ -109,7 +109,7 @@ class ReportSettingPage extends StatelessWidget {
                               borderSideColor: LightColors.kDarkGreyColor,
                               withEnterText: false,
                               withTitle: false,
-                              title: '20'))),
+                              title: 'yearly'))),
                       DataCell(Switch(
                         // This bool value toggles the switch.
                         value: true,
@@ -132,7 +132,9 @@ class ReportSettingPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Save changes',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
     );
   }
