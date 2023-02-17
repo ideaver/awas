@@ -37,6 +37,7 @@ class _InboxPageState extends State<InboxPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
+      //TODO: Implement custom animated search bar
       appBar: KappBarWidget(
         context: context,
         title: 'Inbox',

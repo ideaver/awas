@@ -15,7 +15,7 @@ class ReportLocationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: KappBarWidget(context: context),
+      appBar: KappBarWidget(context: context, title: ''),
       body: SingleChildScrollView(child: KanimatedListExpansionWidget()),
     );
   }

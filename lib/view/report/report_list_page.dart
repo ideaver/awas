@@ -1,12 +1,8 @@
-import 'package:awas/res/utils/globals.dart';
-import 'package:awas/view/report/report_filter_page.dart';
-import 'package:awas/view/user/user_filter_page.dart';
+import '/view/report/report_filter_page.dart';
 
 import '../../res/widgets/animation_search_bar_widget.dart';
 import '../../res/widgets/report_list_widget.dart';
 import '/res/theme/colors/light_colors.dart';
-import '/res/widgets/kappbar_widget.dart';
-import '/res/widgets/ktabbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ReportListPage extends StatefulWidget {
@@ -33,6 +29,7 @@ class _ReportListPageState extends State<ReportListPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //TODO: Rapikan searchbar code
       appBar: PreferredSize(
           preferredSize: const Size(double.infinity, 52),
           child: SafeArea(
