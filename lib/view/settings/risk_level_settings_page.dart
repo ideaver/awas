@@ -54,7 +54,8 @@ class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
       padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
       child: KelevatedButtonWidget(
         onPressed: () {
-          // TODO
+          // TODO;
+          Navigator.pop(context);
         },
         title: 'Save Changes',
       ),

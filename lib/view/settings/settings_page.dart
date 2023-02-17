@@ -17,6 +17,7 @@ import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'observation/observation_card_setting_page.dart';
+import 'risk_level_settings_page.dart';
 
 class SettingsPage extends StatelessWidget {
   final Role userRole;
@@ -160,6 +161,13 @@ class SettingsPage extends StatelessWidget {
           },
           title: 'Point Settings',
           icon: Icons.stars_rounded,
+        ),
+        listTileWidget(
+          onTap: () {
+            Navigator.pushNamed(context, RiskLevelSettingsPage.routeName);
+          },
+          title: 'Risk Level Settings',
+          icon: Icons.manage_search_rounded,
         ),
         listTileWidget(
           onTap: () {
