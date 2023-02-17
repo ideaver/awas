@@ -5,6 +5,7 @@ import 'package:awas/view/report/image_viewer_page.dart';
 import 'package:awas/view/report/report_location.dart';
 import 'package:awas/view/settings/observation/observation_add_edit_page.dart';
 import 'package:awas/view/settings/observation/observation_detail_create_edit_page.dart';
+import 'package:awas/view/settings/risk_level_settings_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
 
@@ -82,4 +83,5 @@ final Map<String, WidgetBuilder> routes = {
   ObservationDetailCreatePage.routeName: (context) =>
       const ObservationDetailCreatePage(),
   DashboardAdminPage.routeName: (context) => DashboardAdminPage(),
+  RiskLevelSettingsPage.routeName: (context) => const RiskLevelSettingsPage(),
 };
