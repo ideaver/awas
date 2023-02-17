@@ -1,12 +1,11 @@
-import 'package:awas/res/widgets/risk_level_grid_widget.dart';
-import 'package:awas/view/report/report_loading_page.dart';
+import '/res/widgets/risk_level_grid_widget.dart';
+import '/view/report/report_loading_page.dart';
 
 import '../../res/widgets/image_edit_dart.dart';
 import '/res/widgets/kscrollbar_widget.dart';
 import '/res/widgets/ktext_form_field.dart';
 
 import '../../res/widgets/kchoicechip_widget.dart';
-import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/report_category_grid_widget.dart';
 
@@ -20,6 +19,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
 
+//TODO: Fix error scroll controller
 class ReportFormPage extends StatefulWidget {
   static const String routeName = '/report-form';
 
@@ -166,7 +166,7 @@ class _ReportFormPageState extends State<ReportFormPage>
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          child: LocationAndDateTimeTileWidget(),
+          child: LocationAndDateTimeTileWidget.edit(),
         ),
         const SizedBox(
           height: defaultMargin * 2,

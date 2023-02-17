@@ -284,7 +284,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
         const SizedBox(height: defaultMargin),
         reportRoleTileWidget(reportRole: ReportRole.validator),
         const SizedBox(height: defaultMargin),
-        const LocationAndDateTimeTileWidget(),
+        const LocationAndDateTimeTileWidget(userPageState: PageState.view),
         const SizedBox(height: defaultMargin),
         const KdividerWidget(
           horizontalMargin: 0.0,

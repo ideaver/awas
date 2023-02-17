@@ -1,3 +1,4 @@
+import 'package:awas/view/report/report_list_page.dart';
 import 'package:awas/view/user/user_page.dart';
 
 import '../../res/utils/enums.dart';
@@ -55,7 +56,7 @@ class DashboardManagerPage extends StatelessWidget {
             ),
             bottom: PreferredSize(
                 preferredSize: const Size.fromHeight(150),
-                child: riskLevelIndicatorWidget()),
+                child: riskLevelIndicatorWidget(context)),
           ),
           SliverToBoxAdapter(
             child: Container(
@@ -69,7 +70,7 @@ class DashboardManagerPage extends StatelessWidget {
                 padding: const EdgeInsets.all(defaultMargin),
                 child: Column(
                   children: [
-                    syncNotificationWidget(),
+                    syncNotificationWidget(context),
                     const SizedBox(
                       height: defaultMargin,
                     ),
@@ -139,7 +140,7 @@ class DashboardManagerPage extends StatelessWidget {
     );
   }
 
-  Padding riskLevelIndicatorWidget() {
+  Padding riskLevelIndicatorWidget(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
       child: KcardWidget(
@@ -149,34 +150,42 @@ class DashboardManagerPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.low),
-              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.medium),
-              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.high),
-              riskLevelIndicatorItemWidget(riskLevel: RiskLevel.escalation),
+              riskLevelIndicatorItemWidget(context, riskLevel: RiskLevel.low),
+              riskLevelIndicatorItemWidget(context,
+                  riskLevel: RiskLevel.medium),
+              riskLevelIndicatorItemWidget(context, riskLevel: RiskLevel.high),
+              riskLevelIndicatorItemWidget(context,
+                  riskLevel: RiskLevel.escalation),
             ],
           )),
     );
   }
 
-  Column riskLevelIndicatorItemWidget({required RiskLevel riskLevel}) {
-    return Column(
-      children: [
-        Icon(
-          riskLevel.iconData,
-          color: riskLevel.color,
-        ),
-        const SizedBox(
-          height: defaultMargin / 4,
-        ),
-        Text('30', style: LightColors.black2TextStyle),
-        const SizedBox(
-          height: defaultMargin / 4,
-        ),
-        Text(
-          riskLevel.name.toUpperCase(),
-          style: LightColors.subTitle3TextStyle,
-        ),
-      ],
+  Widget riskLevelIndicatorItemWidget(BuildContext context,
+      {required RiskLevel riskLevel}) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, ReportListPage.routeName);
+      },
+      child: Column(
+        children: [
+          Icon(
+            riskLevel.iconData,
+            color: riskLevel.color,
+          ),
+          const SizedBox(
+            height: defaultMargin / 4,
+          ),
+          Text('30', style: LightColors.black2TextStyle),
+          const SizedBox(
+            height: defaultMargin / 4,
+          ),
+          Text(
+            riskLevel.name.toUpperCase(),
+            style: LightColors.subTitle3TextStyle,
+          ),
+        ],
+      ),
     );
   }
 
@@ -394,8 +403,11 @@ class DashboardManagerPage extends StatelessWidget {
         ));
   }
 
-  Widget syncNotificationWidget() {
+  Widget syncNotificationWidget(BuildContext context) {
     return KcardWidget(
+        onTap: () {
+          Navigator.pushNamed(context, ReportListPage.routeName);
+        },
         padding: const EdgeInsets.symmetric(
             horizontal: defaultMargin, vertical: defaultMargin / 2),
         color: LightColors.kDangerColor,

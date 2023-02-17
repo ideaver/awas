@@ -116,7 +116,7 @@ class _ImportExportPageState extends State<ImportExportPage>
               Row(
                 children: [
                   const Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: KtextFormFieldWidget(
                         withEnterText: false,
                         withTitle: false,

@@ -1,8 +1,11 @@
 import 'dart:async';
 
+import 'package:awas/res/utils/enums.dart';
 import 'package:awas/res/widgets/kelevated_button.dart';
 import 'package:awas/view/thank_you_page.dart';
 
+import '../../res/utils/globals.dart';
+import '../../res/widgets/kbottom_navigation_bar.dart';
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +18,11 @@ class ReportLoadingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(
         const Duration(seconds: 2),
-        () =>
-            Navigator.pushNamed(context, ThankYouPage.profileUpdaterouteName));
+        () => Navigator.pushReplacementNamed(
+            context,
+            currentUserRole == Role.employee
+                ? ThankYouPage.profileUpdaterouteName
+                : KbottomNavigationBar.routeName));
     return Scaffold(
       backgroundColor: LightColors.kWhiteColor,
       body: Center(
