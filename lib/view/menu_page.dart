@@ -38,16 +38,16 @@ class MenuPage extends StatelessWidget {
                       );
                     },
                     title: 'Login Manager'),
-                KelevatedButtonWidget(
-                    onPressed: () {
-                      currentUserRole = Role.superUser;
+                // KelevatedButtonWidget(
+                //     onPressed: () {
+                //       currentUserRole = Role.superUser;
 
-                      Navigator.pushNamed(
-                        context,
-                        LoginPage.superUserRoleRouteName,
-                      );
-                    },
-                    title: 'Login SuperUser'),
+                //       Navigator.pushNamed(
+                //         context,
+                //         LoginPage.superUserRoleRouteName,
+                //       );
+                //     },
+                //     title: 'Login SuperUser'),
                 KelevatedButtonWidget(
                   onPressed: () {
                     currentUserRole = Role.employee;

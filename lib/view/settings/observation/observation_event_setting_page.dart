@@ -1,3 +1,4 @@
+import '../../../res/widgets/ktext_form_field.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
@@ -102,11 +103,12 @@ class ObservationEventSettingPage extends StatelessWidget {
                         '5',
                         style: LightColors.black2TextStyle,
                       ))),
-                      DataCell(Center(
-                          child: Text(
-                        '20%',
-                        style: LightColors.black2TextStyle,
-                      )))
+                      const DataCell(Center(
+                          child: KtextFormFieldWidget(
+                              borderSideColor: LightColors.kDarkGreyColor,
+                              withEnterText: false,
+                              withTitle: false,
+                              title: '20%')))
                     ],
                   );
                 }),

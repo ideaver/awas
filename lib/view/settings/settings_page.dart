@@ -164,13 +164,6 @@ class SettingsPage extends StatelessWidget {
         ),
         listTileWidget(
           onTap: () {
-            Navigator.pushNamed(context, RiskLevelSettingsPage.routeName);
-          },
-          title: 'Risk Level Settings',
-          icon: Icons.manage_search_rounded,
-        ),
-        listTileWidget(
-          onTap: () {
             Navigator.pushNamed(context, ReportSettingPage.routeName);
           },
           title: 'Report Settings',
@@ -181,6 +174,13 @@ class SettingsPage extends StatelessWidget {
             Navigator.pushNamed(context, ObservationEventSettingPage.routeName);
           },
           title: 'Observations Settings',
+          icon: Icons.manage_search_rounded,
+        ),
+        listTileWidget(
+          onTap: () {
+            Navigator.pushNamed(context, RiskLevelSettingsPage.routeName);
+          },
+          title: 'Risk Level Settings',
           icon: Icons.manage_search_rounded,
         ),
         const SizedBox(

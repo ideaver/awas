@@ -78,7 +78,7 @@ class ObservationEventDetailsPage extends StatelessWidget {
         children: [
           Text(
             'Pemakaian Peralatan Perlindungan Diri',
-            style: LightColors.titleTextStyle.copyWith(fontSize: 12),
+            style: LightColors.titleTextStyle.copyWith(fontSize: 14),
           ),
           const SizedBox(height: 18.0),
           Row(

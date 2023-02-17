@@ -135,7 +135,9 @@ class PointSettingPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Save changes',
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
     );
   }

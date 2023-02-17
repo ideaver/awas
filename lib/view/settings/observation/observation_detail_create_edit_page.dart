@@ -1,12 +1,13 @@
-import 'package:awas/res/theme/colors/light_colors.dart';
-import 'package:awas/res/widgets/kappbar_widget.dart';
-import 'package:awas/res/widgets/kelevated_button.dart';
-import 'package:awas/res/widgets/ktabbar_widget.dart';
+import '/res/theme/colors/light_colors.dart';
+import '/res/widgets/kappbar_widget.dart';
+import '/res/widgets/kelevated_button.dart';
+import '/res/widgets/ktabbar_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/widgets/ktext_form_field.dart';
 
 class ObservationDetailCreatePage extends StatefulWidget {
+  //TODO: Use enums
   final bool isEdit;
   const ObservationDetailCreatePage({Key? key, this.isEdit = false})
       : super(key: key);
@@ -208,6 +209,7 @@ class _ObservationDetailCreatePageState
       child: KelevatedButtonWidget(
         onPressed: () {
           // TODO
+          Navigator.pop(context);
         },
         title: 'Save Changes',
       ),
