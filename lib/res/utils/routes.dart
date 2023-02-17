@@ -23,7 +23,7 @@ import '/view/report/report_form_page.dart';
 import '/view/report/report_list_page.dart';
 import '/view/report/report_loading_page.dart';
 import '/view/settings/import_export_page.dart';
-import '/view/settings/observation/observation_card_setting_page.dart';
+import '../../view/settings/observation/observation_event_setting_page.dart';
 import '/view/settings/observation/observation_checklist_setting_page.dart';
 import '/view/settings/point_setting_page.dart';
 import '/view/settings/report_setting_page.dart';
@@ -76,8 +76,8 @@ final Map<String, WidgetBuilder> routes = {
   PointSettingPage.routeName: (context) => const PointSettingPage(),
   ImportExportPage.routeName: (context) => const ImportExportPage(),
   ReportSettingPage.routeName: (context) => const ReportSettingPage(),
-  ObservationCardSettingPage.routeName: (context) =>
-      const ObservationCardSettingPage(),
+  ObservationEventSettingPage.routeName: (context) =>
+      const ObservationEventSettingPage(),
   ObservationChecklistSettingPage.routeName: (context) =>
       const ObservationChecklistSettingPage(),
   ObservationAddEditPage.routeName: (context) => const ObservationAddEditPage(),

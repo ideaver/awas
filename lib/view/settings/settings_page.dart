@@ -16,7 +16,7 @@ import '/res/widgets/kscrollbar_widget.dart';
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
-import 'observation/observation_card_setting_page.dart';
+import 'observation/observation_event_setting_page.dart';
 import 'risk_level_settings_page.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -178,7 +178,7 @@ class SettingsPage extends StatelessWidget {
         ),
         listTileWidget(
           onTap: () {
-            Navigator.pushNamed(context, ObservationCardSettingPage.routeName);
+            Navigator.pushNamed(context, ObservationEventSettingPage.routeName);
           },
           title: 'Observations Settings',
           icon: Icons.manage_search_rounded,

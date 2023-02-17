@@ -72,6 +72,7 @@ class ObservationAddEditPage extends StatelessWidget {
               flex: 1,
               child: KelevatedButtonWidget(
                 onPressed: () {
+                  Navigator.pop(context);
                   if (isEdit) {
                     // TODO
                   } else {
