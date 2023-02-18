@@ -1,4 +1,5 @@
 import 'package:awas/view/report/report_list_page.dart';
+import 'package:awas/view/user/user_list_page.dart';
 import 'package:awas/view/user/user_page.dart';
 
 import '../../res/utils/enums.dart';
@@ -133,7 +134,7 @@ class DashboardManagerPage extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: sublistWidget(),
+            child: sublistWidget(context),
           )
         ],
       ),
@@ -355,7 +356,7 @@ class DashboardManagerPage extends StatelessWidget {
         ));
   }
 
-  Container sublistWidget() {
+  Container sublistWidget(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
           color: LightColors.kGreyColor,
@@ -389,8 +390,22 @@ class DashboardManagerPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(defaultMargin),
-              child: Text('Top Employee of the Month',
-                  style: LightColors.titleTextStyle.copyWith(fontSize: 16.0)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Top Employee of the Month',
+                      style:
+                          LightColors.titleTextStyle.copyWith(fontSize: 16.0)),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, UserListPage.routeName);
+                      },
+                      child: Text(
+                        'View all',
+                        style: LightColors.linkTextStyle,
+                      ))
+                ],
+              ),
             ),
             ...List.generate(10, (index) {
               return const Padding(
