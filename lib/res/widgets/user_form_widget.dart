@@ -118,7 +118,7 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
               title: 'Save Changes',
               onPressed: () {
                 ref.read(isNewUserProvider)
-                    ? currentUserRole == Role.manager
+                    ? currentUserRole == RoleEnum.manager
                         ? Navigator.pushReplacementNamed(
                             context, KbottomNavigationBar.routeName)
                         : Navigator.pushReplacementNamed(

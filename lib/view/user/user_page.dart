@@ -22,16 +22,16 @@ import '/res/widgets/user_form_widget.dart';
 import 'package:flutter/material.dart';
 
 class UserPage extends ConsumerStatefulWidget {
-  final PageState userPageState;
+  final PageStateEnum userPageState;
   static const String routeName = '/profile';
   static const String editModerouteName = '/profile-edit';
   static const String viewAsMeRouteName = '/profile-me';
   static const String viewAsOtherRouteName = '/profile-user';
 
   const UserPage({super.key, required this.userPageState});
-  const UserPage.edit() : this(userPageState: PageState.edit);
-  const UserPage.viewAsMe() : this(userPageState: PageState.viewAsMe);
-  const UserPage.viewAsOther() : this(userPageState: PageState.viewAsOther);
+  const UserPage.edit() : this(userPageState: PageStateEnum.edit);
+  const UserPage.viewAsMe() : this(userPageState: PageStateEnum.viewAsMe);
+  const UserPage.viewAsOther() : this(userPageState: PageStateEnum.viewAsOther);
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _UserPageState();
@@ -78,20 +78,20 @@ class _UserPageState extends ConsumerState<UserPage>
 
   @override
   Widget build(BuildContext context) {
-    final bool isNewUser = widget.userPageState == PageState.edit;
+    final bool isNewUser = widget.userPageState == PageStateEnum.edit;
 
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
       appBar: KappBarWidget(
         systemOverlayStyle: darkStatusBar,
         context: context,
-        title: widget.userPageState == PageState.viewAsOther
+        title: widget.userPageState == PageStateEnum.viewAsOther
             ? 'User Profile'
             : 'My Profile',
         subTitle: 'ID097532858',
         actions: isNewUser
             ? []
-            : widget.userPageState == PageState.viewAsMe
+            : widget.userPageState == PageStateEnum.viewAsMe
                 ? [
                     IconButton(
                         onPressed: () {
@@ -131,8 +131,8 @@ class _UserPageState extends ConsumerState<UserPage>
                 physics: const BouncingScrollPhysics(),
                 controller: tabController,
                 children: [
-                    widget.userPageState == PageState.viewAsMe ||
-                            widget.userPageState == PageState.viewAsOther
+                    widget.userPageState == PageStateEnum.viewAsMe ||
+                            widget.userPageState == PageStateEnum.viewAsOther
                         ? Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: defaultMargin),
@@ -244,15 +244,15 @@ class _UserPageState extends ConsumerState<UserPage>
     ]));
   }
 
-  SliverAppBar sliverAppBarWidget(PageState userPageState) {
-    final bool isNewUser = widget.userPageState == PageState.edit;
+  SliverAppBar sliverAppBarWidget(PageStateEnum userPageState) {
+    final bool isNewUser = widget.userPageState == PageStateEnum.edit;
     return SliverAppBar(
       systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: LightColors.kBackgroundColor),
       elevation: 0.0,
       backgroundColor: LightColors.kBackgroundColor,
       pinned: true,
-      expandedHeight: widget.userPageState == PageState.edit ? 230 : 280,
+      expandedHeight: widget.userPageState == PageStateEnum.edit ? 230 : 280,
       toolbarHeight: 0,
       collapsedHeight: 15,
       flexibleSpace: FlexibleSpaceBar(

@@ -30,19 +30,19 @@ class KbottomNavigationBarState extends State<KbottomNavigationBar> {
       0; //to handle which item is currently selected in the bottom app bar
 
   final Map<Widget, IconData> _screens = {
-    currentUserRole == Role.employee
+    currentUserRole == RoleEnum.employee
         ? const DashboardEmployeePage()
-        : currentUserRole == Role.manager
+        : currentUserRole == RoleEnum.manager
             ? const DashboardManagerPage()
             : DashboardAdminPage(): Icons.home,
-    currentUserRole == Role.employee
+    currentUserRole == RoleEnum.employee
         ? const DashboardEmployeePage()
-        : currentUserRole == Role.manager
+        : currentUserRole == RoleEnum.manager
             ? const DashboardManagerPage()
             : DashboardAdminPage(): Icons.home,
     const ReportListPage(): Icons.featured_play_list_rounded,
     const InboxPage(): Icons.notifications,
-    currentUserRole == Role.employee
+    currentUserRole == RoleEnum.employee
         ? const SettingsPage.employee()
         : const SettingsPage.manager(): Icons.settings,
   };

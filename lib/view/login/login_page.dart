@@ -19,7 +19,7 @@ import '../../res/theme/colors/light_colors.dart';
 import '../../res/widgets/kelevated_button.dart';
 
 class LoginPage extends StatelessWidget {
-  final Role loginRole;
+  final RoleEnum loginRole;
   static const String routeName = '/login';
   static const String employeeRoleRouteName = '/employee-login';
   static const String managerRoleRouteName = '/manager-login';
@@ -29,17 +29,17 @@ class LoginPage extends StatelessWidget {
   const LoginPage({super.key, required this.loginRole});
   const LoginPage.employeeRole()
       : this(
-          loginRole: Role.employee,
+          loginRole: RoleEnum.employee,
         );
 
   const LoginPage.managerRole()
       : this(
-          loginRole: Role.manager,
+          loginRole: RoleEnum.manager,
         );
 
   const LoginPage.superUserRole()
       : this(
-          loginRole: Role.superUser,
+          loginRole: RoleEnum.superUser,
         );
 
   @override
@@ -148,16 +148,16 @@ class LoginPage extends StatelessWidget {
 
   void loginRoleAndIsNewUser(BuildContext context, WidgetRef ref) {
     switch (loginRole) {
-      case Role.employee:
+      case RoleEnum.employee:
         ref.read(isNewUserProvider)
             ? Navigator.pushReplacementNamed(context, TermsPage.routeName)
             : Navigator.pushReplacementNamed(
                 context, DashboardEmployeePage.routeName);
         break;
-      case Role.manager:
+      case RoleEnum.manager:
         Navigator.pushReplacementNamed(context, UserPage.editModerouteName);
         break;
-      case Role.superUser:
+      case RoleEnum.superUser:
         Navigator.pushReplacementNamed(context, KbottomNavigationBar.routeName);
         break;
       default:

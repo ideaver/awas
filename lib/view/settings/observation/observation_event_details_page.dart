@@ -1,4 +1,5 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
+import 'package:awas/res/utils/globals.dart';
 import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:awas/view/settings/observation/observation_detail_create_edit_page.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class ObservationEventDetailsPage extends StatelessWidget {
 
   KappBarWidget appBar(BuildContext context) {
     return KappBarWidget(
+      systemOverlayStyle: darkStatusBar,
       context: context,
       centerTitle: false,
       titleWidget: Column(
@@ -78,7 +80,7 @@ class ObservationEventDetailsPage extends StatelessWidget {
         children: [
           Text(
             'Pemakaian Peralatan Perlindungan Diri',
-            style: LightColors.titleTextStyle.copyWith(fontSize: 14),
+            style: LightColors.titleTextStyle.copyWith(fontSize: 16),
           ),
           const SizedBox(height: 18.0),
           Row(
@@ -91,7 +93,7 @@ class ObservationEventDetailsPage extends StatelessWidget {
               Text(
                 'Pemakaian Peralatan Perlindungan Diri',
                 style: LightColors.subTitle2TextStyle.copyWith(
-                  fontSize: 12,
+                  fontSize: 14,
                   color: LightColors.kDarkBlue,
                 ),
               ),
@@ -108,7 +110,7 @@ class ObservationEventDetailsPage extends StatelessWidget {
               Text(
                 'Tidak Memakai Peralatan Perlindungan Diri',
                 style: LightColors.subTitle2TextStyle.copyWith(
-                  fontSize: 12,
+                  fontSize: 14,
                   color: LightColors.kDarkBlue,
                 ),
               ),

@@ -1,18 +1,23 @@
+import 'package:awas/res/utils/enums.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../state_management/global_states.dart';
 import '/res/widgets/kgridview_count_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'grid_tile_widget.dart';
 
-class ReportCategoryGridWidget extends StatefulWidget {
+class ReportCategoryGridWidget extends ConsumerStatefulWidget {
   const ReportCategoryGridWidget({super.key});
 
   @override
-  State<ReportCategoryGridWidget> createState() =>
+  ConsumerState<ConsumerStatefulWidget> createState() =>
       _ReportCategoryGridWidgetState();
 }
 
-class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
+class _ReportCategoryGridWidgetState
+    extends ConsumerState<ReportCategoryGridWidget> {
   //TODO: change index to enums
   int selectedIndex = 0;
 
@@ -27,6 +32,9 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
                 title: 'Safe Observation',
                 icon: Icons.policy,
                 onTap: () {
+                  ref
+                      .read(selectedReportCategoryOnReportFormProvider.notifier)
+                      .state = ReportCategoryEnum.safeObservation;
                   setState(() {
                     selectedIndex = 1;
                   });
@@ -36,6 +44,9 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
                 title: 'Unsafe Observation',
                 icon: Icons.error,
                 onTap: () {
+                  ref
+                      .read(selectedReportCategoryOnReportFormProvider.notifier)
+                      .state = ReportCategoryEnum.unSafeObservation;
                   setState(() {
                     selectedIndex = 2;
                   });
@@ -45,6 +56,10 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
                 title: 'Near Miss',
                 icon: Icons.healing,
                 onTap: () {
+                  ref
+                      .read(selectedReportCategoryOnReportFormProvider.notifier)
+                      .state = ReportCategoryEnum.nearMiss;
+
                   setState(() {
                     selectedIndex = 3;
                   });
@@ -54,6 +69,9 @@ class _ReportCategoryGridWidgetState extends State<ReportCategoryGridWidget> {
                 title: 'HIPO',
                 icon: Icons.person_outline,
                 onTap: () {
+                  ref
+                      .read(selectedReportCategoryOnReportFormProvider.notifier)
+                      .state = ReportCategoryEnum.hipo;
                   setState(() {
                     selectedIndex = 4;
                   });

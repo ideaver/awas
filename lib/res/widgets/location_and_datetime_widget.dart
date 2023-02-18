@@ -5,14 +5,14 @@ import '../theme/colors/light_colors.dart';
 import '../utils/enums.dart';
 
 class LocationAndDateTimeTileWidget extends StatelessWidget {
-  final PageState userPageState;
+  final PageStateEnum userPageState;
   const LocationAndDateTimeTileWidget({
     Key? key,
     required this.userPageState,
   }) : super(key: key);
 
   const LocationAndDateTimeTileWidget.edit()
-      : this(userPageState: PageState.edit);
+      : this(userPageState: PageStateEnum.edit);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
             //TODO: if viewer : implement https://pub.dev/packages/map_launcher
             Navigator.pushNamed(
                 context,
-                userPageState == PageState.edit
+                userPageState == PageStateEnum.edit
                     ? ReportLocationPage.pickerRouteName
                     : ReportLocationPage.viewRouteName);
           },

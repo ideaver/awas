@@ -150,19 +150,21 @@ class DashboardManagerPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              riskLevelIndicatorItemWidget(context, riskLevel: RiskLevel.low),
               riskLevelIndicatorItemWidget(context,
-                  riskLevel: RiskLevel.medium),
-              riskLevelIndicatorItemWidget(context, riskLevel: RiskLevel.high),
+                  riskLevel: RiskLevelEnum.low),
               riskLevelIndicatorItemWidget(context,
-                  riskLevel: RiskLevel.escalation),
+                  riskLevel: RiskLevelEnum.medium),
+              riskLevelIndicatorItemWidget(context,
+                  riskLevel: RiskLevelEnum.high),
+              riskLevelIndicatorItemWidget(context,
+                  riskLevel: RiskLevelEnum.escalation),
             ],
           )),
     );
   }
 
   Widget riskLevelIndicatorItemWidget(BuildContext context,
-      {required RiskLevel riskLevel}) {
+      {required RiskLevelEnum riskLevel}) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, ReportListPage.routeName);

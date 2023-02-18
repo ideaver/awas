@@ -20,16 +20,16 @@ import 'observation/observation_event_setting_page.dart';
 import 'risk_level_settings_page.dart';
 
 class SettingsPage extends StatelessWidget {
-  final Role userRole;
+  final RoleEnum userRole;
 
   static const String employeeRouteName = '/settings-employee';
   static const String managerRouteName = '/settings-manager';
 
   const SettingsPage({super.key, required this.userRole});
 
-  const SettingsPage.employee() : this(userRole: Role.employee);
-  const SettingsPage.manager() : this(userRole: Role.manager);
-  const SettingsPage.superUser() : this(userRole: Role.superUser);
+  const SettingsPage.employee() : this(userRole: RoleEnum.employee);
+  const SettingsPage.manager() : this(userRole: RoleEnum.manager);
+  const SettingsPage.superUser() : this(userRole: RoleEnum.superUser);
 //TODO: slice superuser UI
   @override
   Widget build(BuildContext context) {
@@ -92,7 +92,7 @@ class SettingsPage extends StatelessWidget {
                 opacity: 1,
               ),
             ),
-            userRole == Role.manager
+            userRole == RoleEnum.manager
                 ? managerListTiles(context, commingSoonString)
                 : const SizedBox.shrink(),
             Text(

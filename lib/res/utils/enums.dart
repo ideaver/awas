@@ -1,13 +1,13 @@
 import '/res/theme/colors/light_colors.dart';
 import 'package:flutter/material.dart';
 
-enum ConfirmationEvent {
+enum ConfirmationEventEnum {
   resetPasswordSuccess,
   profileUpdatedSuccess,
   ;
 }
 
-enum Role {
+enum RoleEnum {
   superUser,
   manager,
   supervisor,
@@ -15,17 +15,17 @@ enum Role {
   ;
 }
 
-enum ReportRole {
+enum ReportRoleEnum {
   observer,
   validator;
 }
 
-enum NewVsExistingUser {
+enum NewVsExistingUserEnum {
   newUser,
   existingUser;
 }
 
-enum PageState {
+enum PageStateEnum {
   edit,
   view,
   viewAsMe,
@@ -33,7 +33,7 @@ enum PageState {
   ;
 }
 
-enum StatusCode {
+enum StatusCodeEnum {
   badRequest(401, 'Bad request'),
   unauthorized(401, 'Unauthorized'),
   forbidden(403, 'Forbidden'),
@@ -41,7 +41,7 @@ enum StatusCode {
   internalServerError(500, 'Internal server error'),
   notImplemented(501, 'Not implemented');
 
-  const StatusCode(this.code, this.description);
+  const StatusCodeEnum(this.code, this.description);
   final int code;
   final String description;
 
@@ -49,16 +49,27 @@ enum StatusCode {
   String toString() => 'StatusCode($code, $description)';
 }
 
-enum RiskLevel {
+enum RiskLevelEnum {
   low(Icons.insert_emoticon, LightColors.kGreen),
   medium(Icons.sentiment_neutral, LightColors.kPrimaryColor),
   high(Icons.sentiment_dissatisfied, LightColors.kDarkYellow),
   escalation(Icons.sentiment_very_dissatisfied, LightColors.kDangerColor);
 
-  const RiskLevel(this.iconData, this.color);
+  const RiskLevelEnum(this.iconData, this.color);
   final IconData iconData;
   final Color color;
 
   @override
-  String toString() => 'RiskLevel($iconData, $color)';
+  String toString() => 'Risk Level($iconData, $color)';
+}
+
+enum ReportCategoryEnum {
+  safeObservation(Icons.insert_emoticon, LightColors.kGreen),
+  unSafeObservation(Icons.sentiment_neutral, LightColors.kPrimaryColor),
+  nearMiss(Icons.sentiment_dissatisfied, LightColors.kDarkYellow),
+  hipo(Icons.sentiment_very_dissatisfied, LightColors.kDangerColor);
+
+  const ReportCategoryEnum(this.iconData, this.color);
+  final IconData iconData;
+  final Color color;
 }

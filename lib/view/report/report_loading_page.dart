@@ -20,7 +20,7 @@ class ReportLoadingPage extends StatelessWidget {
         const Duration(seconds: 2),
         () => Navigator.pushReplacementNamed(
             context,
-            currentUserRole == Role.employee
+            currentUserRole == RoleEnum.employee
                 ? ThankYouPage.profileUpdaterouteName
                 : KbottomNavigationBar.routeName));
     return Scaffold(

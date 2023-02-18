@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'enums.dart';
 
 bool isLogedin = false;
-Role currentUserRole = Role.employee;
+RoleEnum currentUserRole = RoleEnum.employee;
 
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason> ksnackBarWidget(
     BuildContext context, String title) {
