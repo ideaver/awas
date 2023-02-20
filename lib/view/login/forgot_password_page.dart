@@ -13,56 +13,69 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: LightColors.kBackgroundColor));
+        systemNavigationBarColor: LightColors.kBackgroundColor,
+      ),
+    );
     //TODO : Change to sliver
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      body: Stack(children: [
-        Image.asset(
-          'assets/bg1.jpeg',
-        ),
-        Positioned(
-          top: 50,
-          child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-
-              foregroundColor: LightColors.kSecondaryColor, // <-- Splash color
-            ),
-            child: const Icon(Icons.arrow_back, color: LightColors.kWhiteColor),
+      body: Stack(
+        children: [
+          Image.asset(
+            'assets/bg1.jpeg',
           ),
-        ),
-        Stack(children: [
           Positioned(
-            top: 300,
-            height: 650,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  color: LightColors.kBackgroundColor,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(defaultCircular),
-                      topRight: Radius.circular(defaultCircular))),
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(defaultMargin),
-                children: [
-                  logoAndTextWidget(),
-                  const SizedBox(height: defaultMargin * 2),
-                  const KtextFormFieldWidget(icon: Icons.email, title: 'Email'),
-                  const SizedBox(height: defaultMargin),
-                  const SizedBox(height: defaultMargin),
-                ],
+            top: 50,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                foregroundColor:
+                    LightColors.kSecondaryColor, // <-- Splash color
+              ),
+              child: const Icon(
+                Icons.arrow_back,
+                color: LightColors.kWhiteColor,
               ),
             ),
           ),
-        ])
-      ]),
+          SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Container(
+                margin: const EdgeInsets.only(top: 200),
+                padding: const EdgeInsets.all(defaultMargin),
+                decoration: const BoxDecoration(
+                  color: LightColors.kBackgroundColor,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(defaultCircular),
+                    topRight: Radius.circular(
+                      defaultCircular,
+                    ),
+                  ),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    logoAndTextWidget(),
+                    const SizedBox(height: defaultMargin * 2),
+                    const KtextFormFieldWidget(
+                      icon: Icons.email,
+                      title: 'Email',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: KelevatedButtonWidget.floating(
         title: 'Sign In',
