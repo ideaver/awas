@@ -1,11 +1,11 @@
-import 'dart:convert';
-
-import 'package:awas/res/widgets/kelevated_button.dart';
-import 'package:awas/res/widgets/ktext_form_field.dart';
-
+import '../../../res/widgets/ktext_form_field.dart';
 import '/res/theme/colors/light_colors.dart';
 import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'observation_add_edit_page.dart';
+import 'observation_checklist_setting_page.dart';
+import 'observation_event_details_page.dart';
 
 class PointSettingPageModel {
   final String title;
@@ -20,10 +20,10 @@ class PointSettingPageModel {
       required this.switchButton});
 }
 
-class PointSettingPage extends StatelessWidget {
-  static const String routeName = '/point-setting';
+class ObservationEventSettingPage extends StatelessWidget {
+  static const String routeName = '/observation-event-setting';
 
-  const PointSettingPage({super.key});
+  const ObservationEventSettingPage({super.key});
 
   //TODO: Fix bottom spacing
 
@@ -31,12 +31,12 @@ class PointSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      appBar: KappBarWidget(title: 'Points Settings', context: context),
+      appBar:
+          KappBarWidget(title: 'Observation Event Settings', context: context),
       body: SizedBox(
         //expand to device widht
         width: double.infinity,
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               DataTable(
@@ -49,7 +49,7 @@ class PointSettingPage extends StatelessWidget {
                   DataColumn(
                     label: Expanded(
                       child: Text(
-                        'Name',
+                        'name'.toUpperCase(),
                         style: LightColors.subTitle2TextStyle,
                       ),
                     ),
@@ -57,7 +57,7 @@ class PointSettingPage extends StatelessWidget {
                   DataColumn(
                     label: Expanded(
                       child: Text(
-                        'Points',
+                        'details'.toUpperCase(),
                         style: LightColors.subTitle2TextStyle,
                       ),
                     ),
@@ -65,7 +65,7 @@ class PointSettingPage extends StatelessWidget {
                   DataColumn(
                     label: Expanded(
                       child: Text(
-                        'Active',
+                        '% Weight'.toUpperCase(),
                         style: LightColors.subTitle2TextStyle,
                       ),
                     ),
@@ -73,6 +73,10 @@ class PointSettingPage extends StatelessWidget {
                 ],
                 rows: List.generate(10, (index) {
                   return DataRow(
+                    onSelectChanged: (value) {
+                      Navigator.pushNamed(
+                          context, ObservationEventDetailsPage.routeName);
+                    },
                     color: MaterialStateProperty.resolveWith<Color?>(
                         (Set<MaterialState> states) {
                       // All rows will have the same selected color.
@@ -89,38 +93,22 @@ class PointSettingPage extends StatelessWidget {
                       return null; // Use default value for other states and odd rows.
                     }),
                     cells: [
-                      DataCell(Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Report Target Miss',
-                            style: LightColors.black2TextStyle,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Daily/weekly report missed',
-                            style: LightColors.subTitle2TextStyle.copyWith(
-                                fontWeight: FontWeight.normal, fontSize: 12),
-                          ),
-                        ],
+                      DataCell(Text(
+                        'Reaksi Orang',
+                        style:
+                            LightColors.black2TextStyle.copyWith(fontSize: 12),
                       )),
+                      DataCell(Center(
+                          child: Text(
+                        '5',
+                        style: LightColors.black2TextStyle,
+                      ))),
                       const DataCell(Center(
                           child: KtextFormFieldWidget(
                               borderSideColor: LightColors.kDarkGreyColor,
                               withEnterText: false,
                               withTitle: false,
-                              title: '20'))),
-                      DataCell(Switch(
-                        // This bool value toggles the switch.
-                        value: true,
-                        activeColor: LightColors.kSecondaryColor,
-                        onChanged: (bool value) {
-                          // This is called when the user toggles the switch.
-                        },
-                      ))
+                              title: '20%')))
                     ],
                   );
                 }),
@@ -132,12 +120,18 @@ class PointSettingPage extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: KelevatedButtonWidget.floating(
-        title: 'Save changes',
-        onPressed: () {
-          Navigator.pop(context);
-        },
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(defaultMargin),
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.pushNamed(context, ObservationAddEditPage.routeName);
+          },
+          child: const Icon(
+            Icons.add,
+            color: LightColors.kWhiteColor,
+          ),
+        ),
       ),
     );
   }

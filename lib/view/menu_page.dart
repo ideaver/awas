@@ -22,7 +22,7 @@ class MenuPage extends StatelessWidget {
               children: [
                 KelevatedButtonWidget(
                     onPressed: () {
-                      currentUserRole = Role.employee;
+                      currentUserRole = RoleEnum.employee;
 
                       Navigator.pushNamed(
                           context, LoginPage.employeeRoleRouteName);
@@ -30,7 +30,7 @@ class MenuPage extends StatelessWidget {
                     title: 'Login Employee'),
                 KelevatedButtonWidget(
                     onPressed: () {
-                      currentUserRole = Role.manager;
+                      currentUserRole = RoleEnum.manager;
 
                       Navigator.pushNamed(
                         context,
@@ -38,19 +38,19 @@ class MenuPage extends StatelessWidget {
                       );
                     },
                     title: 'Login Manager'),
-                KelevatedButtonWidget(
-                    onPressed: () {
-                      currentUserRole = Role.superUser;
+                // KelevatedButtonWidget(
+                //     onPressed: () {
+                //       currentUserRole = Role.superUser;
 
-                      Navigator.pushNamed(
-                        context,
-                        LoginPage.superUserRoleRouteName,
-                      );
-                    },
-                    title: 'Login SuperUser'),
+                //       Navigator.pushNamed(
+                //         context,
+                //         LoginPage.superUserRoleRouteName,
+                //       );
+                //     },
+                //     title: 'Login SuperUser'),
                 KelevatedButtonWidget(
                   onPressed: () {
-                    currentUserRole = Role.employee;
+                    currentUserRole = RoleEnum.employee;
 
                     Navigator.pushNamed(context, '/all-screen');
                   },

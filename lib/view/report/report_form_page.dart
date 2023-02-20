@@ -1,6 +1,10 @@
 import 'package:awas/res/widgets/risk_level_grid_widget.dart';
 import 'package:awas/view/report/camera_page.dart';
 import 'package:awas/view/report/report_loading_page.dart';
+import 'package:awas/res/utils/enums.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../state_management/global_states.dart';
 
 import '../../res/widgets/image_edit_dart.dart';
 import '/res/widgets/kscrollbar_widget.dart';
@@ -20,6 +24,7 @@ import 'package:flutter/material.dart';
 
 import 'package:dotted_border/dotted_border.dart';
 
+//TODO: Fix error scroll controller
 class ReportFormPage extends StatefulWidget {
   static const String routeName = '/report-form';
 
@@ -82,33 +87,95 @@ class _ReportFormPageState extends State<ReportFormPage>
     );
   }
 
-  ListView actionTabBarViewWidget(
+  Widget actionTabBarViewWidget(
       TextStyle titleTextStyle, BuildContext context) {
-    return ListView(
-      physics: const BouncingScrollPhysics(),
+    return Consumer(
+      builder: (context, ref, child) {
+        bool isReportCategorySafeObservation =
+            ref.read(selectedReportCategoryOnReportFormProvider) ==
+                ReportCategoryEnum.safeObservation;
+        return ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            const SizedBox(
+              height: defaultMargin,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  observedActionConditionWidget(titleTextStyle),
+                  isReportCategorySafeObservation
+                      ? const SizedBox()
+                      : impactYouBelieveWillOccurWidget(titleTextStyle),
+                ],
+              ),
+            ),
+            isReportCategorySafeObservation
+                ? const SizedBox()
+                : suggestionWordsWidget(context),
+            isReportCategorySafeObservation
+                ? const SizedBox()
+                : preventiveAndCorrectiveActionsWidget(titleTextStyle),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: LocationAndDateTimeTileWidget.edit(),
+            ),
+            const SizedBox(
+              height: defaultMargin * 2,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(defaultMargin),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: KelevatedButtonWidget(
+                      backgroundColor: LightColors.kBackgroundColor,
+                      textColor: LightColors.kPrimaryColor,
+                      title: 'Back',
+                      icon: Icons.chevron_left,
+                      onPressed: () {
+                        tabController.animateTo(tabController.previousIndex);
+                      },
+                    ),
+                  ),
+                  const Spacer(),
+                  Expanded(
+                    flex: 2,
+                    child: KelevatedButtonWidget(
+                      title: 'Submit',
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, ReportLoadingPage.routeName);
+                      },
+                      icon: Icons.file_upload,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: defaultMargin * 8,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Column preventiveAndCorrectiveActionsWidget(TextStyle titleTextStyle) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: defaultMargin,
-        ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
+          padding: const EdgeInsets.all(defaultMargin),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Observed Action/Condition',
-                style: titleTextStyle,
-              ),
-              const SizedBox(
-                height: defaultMargin,
-              ),
-              const KtextFormFieldWidget(
-                  minLines: 5, withTitle: false, title: 'description'),
-              const SizedBox(
-                height: defaultMargin,
-              ),
-              Text(
-                'Impact you believe will occur',
+                'Preventive and corrective actions',
                 style: titleTextStyle,
               ),
               const SizedBox(
@@ -119,6 +186,16 @@ class _ReportFormPageState extends State<ReportFormPage>
             ],
           ),
         ),
+        const SizedBox(
+          height: defaultMargin,
+        ),
+      ],
+    );
+  }
+
+  Column suggestionWordsWidget(BuildContext context) {
+    return Column(
+      children: [
         SizedBox(
           width: MediaQuery.of(context).size.width,
           height: 100,
@@ -144,65 +221,42 @@ class _ReportFormPageState extends State<ReportFormPage>
         const SizedBox(
           height: defaultMargin,
         ),
-        Padding(
-          padding: const EdgeInsets.all(defaultMargin),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Preventive and corrective actions',
-                style: titleTextStyle,
-              ),
-              const SizedBox(
-                height: defaultMargin,
-              ),
-              const KtextFormFieldWidget(
-                  minLines: 5, withTitle: false, title: 'description'),
-            ],
-          ),
+      ],
+    );
+  }
+
+  Column impactYouBelieveWillOccurWidget(TextStyle titleTextStyle) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Impact you believe will occur',
+          style: titleTextStyle,
         ),
+        const SizedBox(
+          height: defaultMargin / 2,
+        ),
+        const KtextFormFieldWidget(
+            minLines: 5, withTitle: false, title: 'description'),
+      ],
+    );
+  }
+
+  Column observedActionConditionWidget(TextStyle titleTextStyle) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Observed Action/Condition',
+          style: titleTextStyle,
+        ),
+        const SizedBox(
+          height: defaultMargin / 2,
+        ),
+        const KtextFormFieldWidget(
+            minLines: 5, withTitle: false, title: 'description'),
         const SizedBox(
           height: defaultMargin,
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-          child: LocationAndDateTimeTileWidget(),
-        ),
-        const SizedBox(
-          height: defaultMargin * 2,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(defaultMargin),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: KelevatedButtonWidget(
-                  backgroundColor: LightColors.kBackgroundColor,
-                  textColor: LightColors.kPrimaryColor,
-                  title: 'Back',
-                  icon: Icons.chevron_left,
-                  onPressed: () {
-                    tabController.animateTo(tabController.previousIndex);
-                  },
-                ),
-              ),
-              const Spacer(),
-              Expanded(
-                flex: 2,
-                child: KelevatedButtonWidget(
-                  title: 'Submit',
-                  onPressed: () {
-                    Navigator.pushNamed(context, ReportLoadingPage.routeName);
-                  },
-                  icon: Icons.file_upload,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          height: defaultMargin * 8,
         ),
       ],
     );

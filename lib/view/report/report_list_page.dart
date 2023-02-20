@@ -29,6 +29,7 @@ class _ReportListPageState extends State<ReportListPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //TODO: Rapikan searchbar code
       appBar: PreferredSize(
         preferredSize: const Size(double.infinity, 52),
         child: SafeArea(

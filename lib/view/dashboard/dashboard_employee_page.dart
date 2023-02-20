@@ -370,12 +370,13 @@ class DashboardEmployeePage extends StatelessWidget {
 
   AppBar appBarWidget(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       systemOverlayStyle:
           const SystemUiOverlayStyle(statusBarColor: LightColors.kPrimaryColor),
       elevation: 0.0,
       backgroundColor: LightColors.kPrimaryColor,
       toolbarHeight: 80,
-      leadingWidth: 200,
+      leadingWidth: 150,
       leading: Center(
         child: Text(
           'Hi Budi',

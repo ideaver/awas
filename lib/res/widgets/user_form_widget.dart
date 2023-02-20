@@ -1,5 +1,7 @@
 import 'package:awas/res/widgets/image_edit_dart.dart';
 
+import '../utils/enums.dart';
+import '../utils/globals.dart';
 import '/state_management/global_states.dart';
 import '/view/thank_you_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'company_custom_field_widget.dart';
+import 'kbottom_navigation_bar.dart';
 import 'kcard_widget.dart';
 import 'kelevated_button.dart';
 import 'ktext_form_field.dart';
@@ -115,8 +118,11 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
               title: 'Save Changes',
               onPressed: () {
                 ref.read(isNewUserProvider)
-                    ? Navigator.pushReplacementNamed(
-                        context, ThankYouPage.profileUpdaterouteName)
+                    ? currentUserRole == RoleEnum.manager
+                        ? Navigator.pushReplacementNamed(
+                            context, KbottomNavigationBar.routeName)
+                        : Navigator.pushReplacementNamed(
+                            context, ThankYouPage.profileUpdaterouteName)
                     : Navigator.pop(context);
               },
             ),

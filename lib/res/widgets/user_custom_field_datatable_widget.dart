@@ -26,7 +26,7 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
         DataRow(
           cells: [
             DataCell(Text(
-              'Employee Rank',
+              'Employee/Crew',
               style: LightColors.whiteTextStyle.copyWith(
                   color: textColor,
                   fontSize: 12.0,
@@ -39,7 +39,7 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
         ),
         DataRow(
           cells: [
-            DataCell(Text('Crew Rank',
+            DataCell(Text('Rank',
                 style: LightColors.whiteTextStyle.copyWith(
                     color: textColor,
                     fontSize: 12.0,
@@ -51,7 +51,7 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
         ),
         DataRow(
           cells: [
-            DataCell(Text('Vessel',
+            DataCell(Text('Dept/Vessel',
                 style: LightColors.whiteTextStyle.copyWith(
                     color: textColor,
                     fontSize: 12.0,
@@ -65,7 +65,7 @@ class UserCustomFieldDatatableWidget extends StatelessWidget {
         ),
         DataRow(
           cells: [
-            DataCell(Text('Office',
+            DataCell(Text('Company',
                 style: LightColors.whiteTextStyle.copyWith(
                     color: textColor,
                     fontSize: 12.0,

@@ -1,13 +1,18 @@
-import 'package:awas/view/report/report_loading_page.dart';
 import 'package:awas/view/report/report_location.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/colors/light_colors.dart';
+import '../utils/enums.dart';
 
 class LocationAndDateTimeTileWidget extends StatelessWidget {
+  final PageStateEnum userPageState;
   const LocationAndDateTimeTileWidget({
     Key? key,
+    required this.userPageState,
   }) : super(key: key);
+
+  const LocationAndDateTimeTileWidget.edit()
+      : this(userPageState: PageStateEnum.edit);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,11 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
         ListTile(
           onTap: () {
             //TODO: if viewer : implement https://pub.dev/packages/map_launcher
-            Navigator.pushNamed(context, ReportLocationPage.pickeRouteName);
+            Navigator.pushNamed(
+                context,
+                userPageState == PageStateEnum.edit
+                    ? ReportLocationPage.pickerRouteName
+                    : ReportLocationPage.viewRouteName);
           },
           contentPadding: contentPadding,
           tileColor: LightColors.kPrimaryColor.withOpacity(0.1),

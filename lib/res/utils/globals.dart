@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'enums.dart';
 
 bool isLogedin = false;
-Role currentUserRole = Role.employee;
+RoleEnum currentUserRole = RoleEnum.employee;
 
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason> ksnackBarWidget(
     BuildContext context, String title) {
@@ -29,7 +29,7 @@ const SystemUiOverlayStyle lightStatusBar = SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,
   systemNavigationBarIconBrightness: Brightness.light,
   statusBarIconBrightness: Brightness.light,
-  statusBarBrightness: Brightness.dark,
+  statusBarBrightness: Brightness.light,
 );
 
 /// System overlays should be drawn with a dark color. Intended for

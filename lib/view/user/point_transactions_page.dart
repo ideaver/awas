@@ -9,14 +9,14 @@ import '/res/widgets/kcard_widget.dart';
 import 'package:flutter/material.dart';
 
 class PointTransactionsPage extends StatelessWidget {
-  final PageState pointTransactionsPageState;
+  final PageStateEnum pointTransactionsPageState;
   static const String routeName = '/point-transactions';
   static const String viewAsMeRouteName = '/my-point-transactions';
 
   const PointTransactionsPage(
       {super.key, required this.pointTransactionsPageState});
   const PointTransactionsPage.viewAsMe()
-      : this(pointTransactionsPageState: PageState.viewAsMe);
+      : this(pointTransactionsPageState: PageStateEnum.viewAsMe);
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +24,13 @@ class PointTransactionsPage extends StatelessWidget {
       backgroundColor: LightColors.kGreyColor,
       appBar: KappBarWidget(
         context: context,
-        title: pointTransactionsPageState == PageState.viewAsMe
+        title: pointTransactionsPageState == PageStateEnum.viewAsMe
             ? 'My Points History'
             : 'Budi Point History',
         systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: LightColors.kBackgroundColor),
       ),
-      body: pointTransactionsPageState == PageState.viewAsMe
+      body: pointTransactionsPageState == PageStateEnum.viewAsMe
           ? NestedScrollView(
               physics: const BouncingScrollPhysics(),
               headerSliverBuilder: (context, innerBoxIsScrolled) {

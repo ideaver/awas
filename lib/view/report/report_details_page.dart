@@ -285,11 +285,11 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       padding: const EdgeInsets.symmetric(horizontal: defaultMargin),
       children: [
         const SizedBox(height: defaultMargin),
-        reportRoleTileWidget(reportRole: ReportRole.observer),
+        reportRoleTileWidget(reportRole: ReportRoleEnum.observer),
         const SizedBox(height: defaultMargin),
-        reportRoleTileWidget(reportRole: ReportRole.validator),
+        reportRoleTileWidget(reportRole: ReportRoleEnum.validator),
         const SizedBox(height: defaultMargin),
-        const LocationAndDateTimeTileWidget(),
+        const LocationAndDateTimeTileWidget(userPageState: PageStateEnum.view),
         const SizedBox(height: defaultMargin),
         const KdividerWidget(
           horizontalMargin: 0.0,
@@ -459,7 +459,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
     );
   }
 
-  ListTile reportRoleTileWidget({required ReportRole reportRole}) {
+  ListTile reportRoleTileWidget({required ReportRoleEnum reportRole}) {
     return ListTile(
       onTap: () {
         //TODO: if the id the same as login then view me
@@ -498,7 +498,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
         ],
       ),
       trailing: Chip(
-        backgroundColor: reportRole == ReportRole.observer
+        backgroundColor: reportRole == ReportRoleEnum.observer
             ? LightColors.kPrimaryColor.withOpacity(0.1)
             : LightColors.kTertiaryColor.withOpacity(0.5),
         label: Text(

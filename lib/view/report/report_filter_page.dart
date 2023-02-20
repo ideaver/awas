@@ -40,7 +40,7 @@ class ReportFilterPage extends StatelessWidget {
             CheckboxListTileWidget(title: 'Trending'),
             CheckboxListTileWidget(title: 'Open'),
             CheckboxListTileWidget(title: 'Close'),
-            CheckboxListTileWidget(title: 'Frequent'),
+            CheckboxListTileWidget(title: 'TOP Five Risk'),
             CheckboxListTileWidget(title: 'Most shared'),
           ]),
           KexpansionTileWidget(
