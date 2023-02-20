@@ -46,31 +46,29 @@ class ForgotPasswordPage extends StatelessWidget {
           ),
           SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            child: SizedBox(
+            child: Container(
               width: MediaQuery.of(context).size.width,
-              child: Container(
-                margin: const EdgeInsets.only(top: 200),
-                padding: const EdgeInsets.all(defaultMargin),
-                decoration: const BoxDecoration(
-                  color: LightColors.kBackgroundColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(defaultCircular),
-                    topRight: Radius.circular(
-                      defaultCircular,
-                    ),
+              margin: const EdgeInsets.only(top: 200),
+              padding: const EdgeInsets.all(defaultMargin),
+              decoration: const BoxDecoration(
+                color: LightColors.kBackgroundColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(defaultCircular),
+                  topRight: Radius.circular(
+                    defaultCircular,
                   ),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    logoAndTextWidget(),
-                    const SizedBox(height: defaultMargin * 2),
-                    const KtextFormFieldWidget(
-                      icon: Icons.email,
-                      title: 'Email',
-                    ),
-                  ],
-                ),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  logoAndTextWidget(),
+                  const SizedBox(height: defaultMargin * 2),
+                  const KtextFormFieldWidget(
+                    icon: Icons.email,
+                    title: 'Email',
+                  ),
+                ],
               ),
             ),
           ),
