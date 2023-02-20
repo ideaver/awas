@@ -61,6 +61,7 @@ class KtextFormFieldWidget extends StatelessWidget {
       : this(
           title: title,
           obscureText: true,
+          icon: Icons.lock,
           suffix: IconButton(
             onPressed: onPressed,
             icon: const Icon(
@@ -81,6 +82,7 @@ class KtextFormFieldWidget extends StatelessWidget {
                 style: labelStyle ??
                     LightColors.subTitleTextStyle.copyWith(
                       fontSize: 16,
+                      color: LightColors.kBlackColor,
                     ),
               ),
               field(),

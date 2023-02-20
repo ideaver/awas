@@ -16,6 +16,7 @@ class KelevatedButtonWidget extends StatelessWidget {
   final double? elevation;
   final Color? shadowColor;
   final bool showBackground;
+  final double? iconSize;
 
   const KelevatedButtonWidget({
     Key? key,
@@ -29,6 +30,7 @@ class KelevatedButtonWidget extends StatelessWidget {
     this.elevation,
     this.shadowColor,
     this.showBackground = false,
+    this.iconSize,
   }) : super(key: key);
 
   //TODO: work on hide on scroll
@@ -39,7 +41,8 @@ class KelevatedButtonWidget extends StatelessWidget {
     IconData? trailingIcon,
     double? elevation,
     int? shadowColor,
-    final bool? showBackground,
+    bool? showBackground,
+    double? iconSize,
   }) : this(
           keyboardShow: true,
           title: title,
@@ -47,6 +50,7 @@ class KelevatedButtonWidget extends StatelessWidget {
           icon: icon,
           trailingIcon: trailingIcon,
           showBackground: true,
+          iconSize: iconSize,
         );
 
   @override
@@ -82,11 +86,13 @@ class KelevatedButtonWidget extends StatelessWidget {
     return SizedBox(
       height: 40,
       child: ElevatedButton.icon(
-        icon: Icon(
-          icon,
-          color: textColor,
-          size: icon == null ? 0 : null,
-        ),
+        icon: icon != null
+            ? Icon(
+                icon,
+                color: textColor,
+                size: iconSize,
+              )
+            : const SizedBox.shrink(),
 
         style: ElevatedButton.styleFrom(
           elevation: elevation,
@@ -100,8 +106,9 @@ class KelevatedButtonWidget extends StatelessWidget {
                   color: LightColors.kPrimaryColor,
                 ),
           shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(defaultCircular / 2), // <-- Radius
+            borderRadius: BorderRadius.circular(
+              defaultCircular / 2,
+            ), // <-- Radius
           ),
         ),
         onPressed: onPressed,

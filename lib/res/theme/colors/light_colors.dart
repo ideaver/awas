@@ -39,6 +39,8 @@ class LightColors {
   static const Color kBackgroundColor = Color(0xffffffff); //0xFF000000
   static const Color kGreyColor = Color(0xFFF5F5F5);
   static const Color kDarkGreyColor = Color(0xFF9599a4);
+  static const Color kDarkGreyColor2 = Color(0xFFD7D7D7);
+  static const Color kDarkGreyColor3 = Color(0xFFECECEC);
   static const Color kWhiteColor = Color(0xFFFFFFFF);
   static const Color kBlackColor = Color(0xFF333333);
 

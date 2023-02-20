@@ -1,4 +1,5 @@
 import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
+import 'package:awas/view/company/company_onboarding_page.dart';
 import 'package:awas/view/dashboard/dashboard_admin_page.dart';
 import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/image_viewer_page.dart';
@@ -92,4 +93,5 @@ final Map<String, WidgetBuilder> routes = {
       const ObservationDetailPage.edit(),
   DashboardAdminPage.routeName: (context) => DashboardAdminPage(),
   RiskLevelSettingsPage.routeName: (context) => const RiskLevelSettingsPage(),
+  CompanyOnboarding.routeName: (context) => const CompanyOnboarding(),
 };

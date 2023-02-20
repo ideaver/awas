@@ -2,6 +2,7 @@
 
 import 'package:awas/res/utils/url_launcher.dart';
 import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
+import 'package:awas/view/company/company_onboarding_page.dart';
 import 'package:awas/view/login/terms_page.dart';
 import 'package:awas/view/report/camera_page.dart';
 import 'package:awas/view/user/user_page.dart';
@@ -84,7 +85,9 @@ class LoginPage extends StatelessWidget {
                     title: 'Email',
                   ),
                   const SizedBox(height: defaultMargin),
-                  KtextFormFieldWidget.password(title: 'Password'),
+                  KtextFormFieldWidget.password(
+                    title: 'Password',
+                  ),
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
@@ -96,6 +99,46 @@ class LoginPage extends StatelessWidget {
                         style: LightColors.linkTextStyle,
                       ),
                     ),
+                  ),
+                  const SizedBox(height: defaultMargin),
+                  Row(
+                    children: [
+                      Consumer(
+                        builder: (context, ref, child) {
+                          final icChecked = ref.watch(termsCheckedProvider);
+                          return Checkbox(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            value: icChecked,
+                            onChanged: (value) {
+                              ref.read(termsCheckedProvider.notifier).state =
+                                  !icChecked;
+                            },
+                          );
+                        },
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'I have read',
+                            style: LightColors.subTitle2TextStyle.copyWith(
+                              color: LightColors.kBlackColor,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/terms');
+                            },
+                            child: Text(
+                              'Terms & Conditions',
+                              style: LightColors.linkTextStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   const SizedBox(height: defaultMargin),
                   Consumer(
@@ -117,6 +160,8 @@ class LoginPage extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     child: KelevatedButtonWidget(
                       backgroundColor: LightColors.kDarkGreyColor,
+                      icon: Icons.camera_alt,
+                      iconSize: 18,
                       onPressed: () {
                         Navigator.pushNamed(context, CameraPage.routeName);
                       },
@@ -128,28 +173,11 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'I have read',
-                        style: LightColors.subTitle2TextStyle,
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/terms');
-                        },
-                        child: Text(
-                          'Terms & Conditions',
-                          style: LightColors.linkTextStyle,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: defaultMargin),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
                         'Dont have an Account?',
-                        style: LightColors.subTitle2TextStyle
-                            .copyWith(fontSize: 14),
+                        style: LightColors.subTitle2TextStyle.copyWith(
+                          fontSize: 14,
+                          color: LightColors.kBlackColor,
+                        ),
                       ),
                       TextButton(
                         onPressed: () {
@@ -171,7 +199,39 @@ class LoginPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // const SizedBox(height: defaultMargin * 4),
+                  const SizedBox(height: defaultMargin / 2),
+                  Text(
+                    'Or',
+                    style: LightColors.subTitle2TextStyle.copyWith(
+                      fontSize: 14,
+                      color: LightColors.kBlackColor,
+                    ),
+                  ),
+                  const SizedBox(height: defaultMargin),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: KelevatedButtonWidget(
+                      backgroundColor: LightColors.kRed,
+                      trailingIcon: Icons.keyboard_arrow_right,
+                      iconSize: 18,
+                      onPressed: () {
+                        Navigator.pushNamed(
+                            context, CompanyOnboarding.routeName);
+                      },
+                      title: 'Register Company',
+                    ),
+                  ),
+                  const SizedBox(height: defaultMargin / 2),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Free 30 Day Trial',
+                      style: LightColors.subTitle2TextStyle.copyWith(
+                        fontSize: 14,
+                        color: LightColors.kBlackColor,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
