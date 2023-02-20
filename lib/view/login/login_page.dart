@@ -26,6 +26,7 @@ class LoginPage extends StatelessWidget {
   static const String routeName = '/login';
   static const String employeeRoleRouteName = '/employee-login';
   static const String managerRoleRouteName = '/manager-login';
+  static const String companyRoleRouteName = '/company-login';
   static const String superUserRoleRouteName = '/super-user-login';
 
 //Constructors
@@ -43,6 +44,11 @@ class LoginPage extends StatelessWidget {
   const LoginPage.superUserRole()
       : this(
           loginRole: RoleEnum.superUser,
+        );
+
+  const LoginPage.company()
+      : this(
+          loginRole: RoleEnum.company,
         );
 
   @override

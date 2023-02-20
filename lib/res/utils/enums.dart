@@ -9,10 +9,10 @@ enum ConfirmationEventEnum {
 
 enum RoleEnum {
   superUser,
+  company,
   manager,
   supervisor,
   employee,
-  ;
 }
 
 enum ReportRoleEnum {

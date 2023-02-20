@@ -33,7 +33,7 @@ class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
     ),
     RangeModel(
       name: 'Medium Risk',
-      color: Colors.yellow,
+      color: Colors.amber,
       minValue: 100,
       maxValue: 200,
     ),
@@ -72,6 +72,9 @@ class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
 
   Widget body() {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      padding:
+          const EdgeInsets.only(top: defaultMargin, bottom: defaultMargin * 3),
       child: MultipleRangeSlider(
         ranges: sliderData,
         maxValueController: maxValueController,
