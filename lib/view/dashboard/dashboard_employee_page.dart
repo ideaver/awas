@@ -1,3 +1,6 @@
+import 'package:animated_custom_dropdown/custom_dropdown.dart';
+import 'package:awas/res/widgets/kdropdown_widget.dart';
+import 'package:awas/view/report/camera_page.dart';
 import 'package:awas/view/report/report_list_page.dart';
 import 'package:awas/view/user/user_page.dart';
 
@@ -26,21 +29,26 @@ class DashboardEmployeePage extends StatelessWidget {
       backgroundColor: LightColors.kPrimaryColor,
       appBar: appBarWidget(context),
       body: NestedScrollView(
-          physics: const BouncingScrollPhysics(),
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [sliverAppBarWidget(context)];
-          },
-          body: bodyWidget(context)),
+        physics: const BouncingScrollPhysics(),
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [sliverAppBarWidget(context)];
+        },
+        body: bodyWidget(context),
+      ),
     );
   }
 
   Container bodyWidget(BuildContext context) {
+    final jobRoleCtrl = TextEditingController();
+
     return Container(
       decoration: const BoxDecoration(
-          color: LightColors.kBackgroundColor,
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(defaultCircular * 2),
-              topRight: Radius.circular(defaultCircular * 2))),
+        color: LightColors.kBackgroundColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(defaultCircular * 2),
+          topRight: Radius.circular(defaultCircular * 2),
+        ),
+      ),
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
         children: [
@@ -54,26 +62,39 @@ class DashboardEmployeePage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text('Report Overview',
-                        style: LightColors.titleTextStyle
-                            .copyWith(fontSize: 16.0)),
+                    Text(
+                      'Report Overview',
+                      style:
+                          LightColors.titleTextStyle.copyWith(fontSize: 16.0),
+                    ),
                     const Spacer(),
-                    Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: ActionChip(
-                        onPressed: () {},
-                        backgroundColor: LightColors.kInfoColor,
-                        label: Text(
-                          '2022',
-                          style: LightColors.whiteTextStyle.copyWith(
-                              fontWeight: FontWeight.bold, fontSize: 12),
-                        ),
-                        avatar: const Icon(
-                          Icons.arrow_drop_down,
-                          color: LightColors.kBackgroundColor,
-                        ),
+                    const SizedBox(
+                      width: 90,
+                      height: 32,
+                      child: KdropdownWidget(
+                        fillColor: LightColors.kInfoColor,
+                        hintText: '2022',
+                        items: ['2021', '2020', '2019', '2018'],
                       ),
                     ),
+                    // Directionality(
+                    //   textDirection: TextDirection.rtl,
+                    //   child: ActionChip(
+                    //     onPressed: () {},
+                    //     backgroundColor: LightColors.kInfoColor,
+                    //     label: Text(
+                    //       '2022',
+                    //       style: LightColors.whiteTextStyle.copyWith(
+                    //         fontWeight: FontWeight.bold,
+                    //         fontSize: 12,
+                    //       ),
+                    //     ),
+                    //     avatar: const Icon(
+                    //       Icons.arrow_drop_down,
+                    //       color: LightColors.kBackgroundColor,
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
                 const SizedBox(
@@ -104,7 +125,7 @@ class DashboardEmployeePage extends StatelessWidget {
                 const SizedBox(
                   height: defaultMargin,
                 ),
-                PieChartWidget(),
+                const PieChartWidget(),
               ],
             ),
           ),
@@ -180,154 +201,171 @@ class DashboardEmployeePage extends StatelessWidget {
 
   SliverAppBar sliverAppBarWidget(BuildContext context) {
     return SliverAppBar(
-        automaticallyImplyLeading: false,
-        expandedHeight: MediaQuery.of(context).size.height / 4,
-        flexibleSpace: FlexibleSpaceBar(
-          background: Padding(
-            padding: const EdgeInsets.only(
-                bottom: defaultMargin,
-                left: defaultMargin,
-                right: defaultMargin),
-            child: KcardWidget(
-                onTap: () {},
-                elevation: 0.0,
-                color: LightColors.kBackgroundColor.withOpacity(0.1),
-                borderColor: LightColors.kBackgroundColor,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Your total Report',
-                            style: LightColors.subTitle2TextStyle.copyWith(
-                                color: LightColors.kBackgroundColor,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            height: defaultMargin / 2,
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              style: LightColors.linkTextStyle.copyWith(
-                                  letterSpacing: 2,
-                                  color: LightColors.kBackgroundColor),
-                              children: const [
-                                TextSpan(
-                                    text: '23/',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 32)),
-                                TextSpan(
-                                    text: '35', style: TextStyle(fontSize: 20)),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: defaultMargin / 2,
-                          ),
-                          Expanded(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                const Icon(
-                                  Icons.arrow_drop_up,
-                                  color: LightColors.kWhiteColor,
-                                ),
-                                Text(
-                                  '+3',
-                                  style: LightColors.black2TextStyle.copyWith(
-                                    color: LightColors.kBackgroundColor,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: defaultMargin,
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    'period of month',
-                                    style: LightColors.subTitle2TextStyle
-                                        .copyWith(
-                                            color:
-                                                LightColors.kBackgroundColor),
-                                  ),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
+      automaticallyImplyLeading: false,
+      expandedHeight: MediaQuery.of(context).size.height / 4,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Padding(
+          padding: const EdgeInsets.only(
+            bottom: defaultMargin,
+            left: defaultMargin,
+            right: defaultMargin,
+          ),
+          child: KcardWidget(
+            onTap: () {},
+            elevation: 0.0,
+            color: LightColors.kBackgroundColor.withOpacity(0.1),
+            borderColor: LightColors.kBackgroundColor,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Your total Report',
+                        style: LightColors.subTitle2TextStyle.copyWith(
+                            color: LightColors.kBackgroundColor,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    const Expanded(
-                      flex: 1,
-                      child: KcardWidget(
-                        color: LightColors.kLavender,
-                        elevation: 5.0,
-                        padding: EdgeInsets.all(defaultMargin / 2),
-                        child: Icon(
-                          Icons.photo_camera,
-                          color: LightColors.kPrimaryColor,
+                      const SizedBox(
+                        height: defaultMargin / 2,
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          style: LightColors.linkTextStyle.copyWith(
+                              letterSpacing: 2,
+                              color: LightColors.kBackgroundColor),
+                          children: const [
+                            TextSpan(
+                              text: '23/',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 32,
+                              ),
+                            ),
+                            TextSpan(
+                              text: '35',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ],
                         ),
                       ),
-                    )
-                  ],
-                )),
+                      const SizedBox(
+                        height: defaultMargin / 2,
+                      ),
+                      Expanded(
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.arrow_drop_up,
+                              color: LightColors.kWhiteColor,
+                            ),
+                            Text(
+                              '+3',
+                              style: LightColors.black2TextStyle.copyWith(
+                                color: LightColors.kBackgroundColor,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: defaultMargin,
+                            ),
+                            Expanded(
+                              child: Text(
+                                'period of month',
+                                style: LightColors.subTitle2TextStyle.copyWith(
+                                  color: LightColors.kBackgroundColor,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                KcardWidget(
+                  onTap: () {
+                    Navigator.pushNamed(context, CameraPage.routeName);
+                  },
+                  color: LightColors.kLavender,
+                  elevation: 5.0,
+                  padding: const EdgeInsets.all(defaultMargin / 2),
+                  child: const Icon(
+                    Icons.photo_camera,
+                    color: LightColors.kPrimaryColor,
+                  ),
+                )
+              ],
+            ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Container sublistWidget() {
     return Container(
-        decoration: const BoxDecoration(
-            color: LightColors.kGreyColor,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(defaultCircular * 2),
-                topRight: Radius.circular(defaultCircular * 2))),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: defaultMargin,
+      decoration: const BoxDecoration(
+        color: LightColors.kGreyColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(defaultCircular * 2),
+          topRight: Radius.circular(defaultCircular * 2),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(
+            height: defaultMargin,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(defaultMargin),
+            child: Text(
+              'Trending Report',
+              style: LightColors.titleTextStyle.copyWith(fontSize: 16.0),
             ),
-            Padding(
-              padding: const EdgeInsets.all(defaultMargin),
-              child: Text('Trending Report',
-                  style: LightColors.titleTextStyle.copyWith(fontSize: 16.0)),
+          ),
+          SizedBox(
+            height: 180,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: defaultMargin,
+                    left: defaultMargin,
+                  ),
+                  child: AspectRatio(
+                    aspectRatio: 1.8,
+                    child: ReportCardWidget(context: context),
+                  ),
+                );
+              },
             ),
-            SizedBox(
-              height: 180,
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                          bottom: defaultMargin, left: defaultMargin),
-                      child: AspectRatio(
-                          aspectRatio: 1.8,
-                          child: ReportCardWidget(context: context)),
-                    );
-                  }),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(defaultMargin),
+            child: Text(
+              'Top Employee of the Month',
+              style: LightColors.titleTextStyle.copyWith(fontSize: 16.0),
             ),
-            Padding(
-              padding: const EdgeInsets.all(defaultMargin),
-              child: Text('Top Employee of the Month',
-                  style: LightColors.titleTextStyle.copyWith(fontSize: 16.0)),
-            ),
-            ...List.generate(10, (index) {
-              return Padding(
-                padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-                child: UserListWidget(),
-              );
-            }),
-            const SizedBox(
-              height: defaultMargin * 8,
-            )
-          ],
-        ));
+          ),
+          ...List.generate(10, (index) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: UserListWidget(),
+            );
+          }),
+          const SizedBox(
+            height: defaultMargin * 8,
+          )
+        ],
+      ),
+    );
   }
 
   Widget syncNotificationWidget(BuildContext context) {
@@ -336,7 +374,9 @@ class DashboardEmployeePage extends StatelessWidget {
           Navigator.pushNamed(context, ReportListPage.routeName);
         },
         padding: const EdgeInsets.symmetric(
-            horizontal: defaultMargin, vertical: defaultMargin / 2),
+          horizontal: defaultMargin,
+          vertical: defaultMargin / 2,
+        ),
         color: LightColors.kDangerColor,
         elevation: 0.0,
         child: Row(
@@ -363,7 +403,10 @@ class DashboardEmployeePage extends StatelessWidget {
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right, color: LightColors.kWhiteColor),
+            const Icon(
+              Icons.chevron_right,
+              color: LightColors.kWhiteColor,
+            ),
           ],
         ));
   }
@@ -371,8 +414,9 @@ class DashboardEmployeePage extends StatelessWidget {
   AppBar appBarWidget(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      systemOverlayStyle:
-          const SystemUiOverlayStyle(statusBarColor: LightColors.kPrimaryColor),
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarColor: LightColors.kPrimaryColor,
+      ),
       elevation: 0.0,
       backgroundColor: LightColors.kPrimaryColor,
       toolbarHeight: 80,
@@ -380,8 +424,10 @@ class DashboardEmployeePage extends StatelessWidget {
       leading: Center(
         child: Text(
           'Hi Budi',
-          style: LightColors.titleTextStyle
-              .copyWith(fontSize: 24.0, color: LightColors.kBackgroundColor),
+          style: LightColors.titleTextStyle.copyWith(
+            fontSize: 24.0,
+            color: LightColors.kBackgroundColor,
+          ),
         ),
       ),
       centerTitle: true,
@@ -399,10 +445,12 @@ class DashboardEmployeePage extends StatelessWidget {
                 width: 40,
                 height: 50,
                 decoration: const BoxDecoration(
-                    color: LightColors.kSecondaryColor,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage('assets/avatar1.png'))),
+                  color: LightColors.kSecondaryColor,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage('assets/avatar1.png'),
+                  ),
+                ),
                 child: InkWell(
                   customBorder: const CircleBorder(),
                   onTap: () {
