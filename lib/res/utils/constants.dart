@@ -32,6 +32,9 @@ class KeyboardUtil {
   }
 }
 
+// WhatsApp API
+const String whatsAppApi = "whatsapp://send?text=Hello World!";
+
 // final otpInputDecoration = InputDecoration(
 //   contentPadding: EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
 //   border: outlineInputBorder(),

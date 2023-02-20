@@ -1,7 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:awas/res/utils/url_launcher.dart';
 import 'package:awas/res/widgets/kbottom_navigation_bar.dart';
 import 'package:awas/view/login/terms_page.dart';
+import 'package:awas/view/report/camera_page.dart';
 import 'package:awas/view/user/user_page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,105 +46,133 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: LightColors.kBackgroundColor));
+        systemNavigationBarColor: LightColors.kBackgroundColor,
+      ),
+    );
     return Scaffold(
       backgroundColor: LightColors.kBackgroundColor,
-      body: Stack(children: [
-        Image.asset(
-          'assets/bg1.jpeg',
-        ), //TODO: change to scrollable inseted of fixed
-        Stack(children: [
-          Positioned(
-            top: 200,
-            height: 650,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  color: LightColors.kBackgroundColor,
-                  borderRadius: BorderRadius.only(
+      body: Stack(
+        children: [
+          Image.asset(
+            'assets/bg1.jpeg',
+          ), //TODO: change to scrollable inseted of fixed
+          Stack(
+            children: [
+              Positioned(
+                top: 200,
+                height: 650,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: const BoxDecoration(
+                    color: LightColors.kBackgroundColor,
+                    borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(defaultCircular),
-                      topRight: Radius.circular(defaultCircular))),
-              child: ListView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(defaultMargin),
-                children: [
-                  logoAndTextWidget(),
-                  const SizedBox(height: defaultMargin),
-                  const KtextFormFieldWidget(icon: Icons.email, title: 'Email'),
-                  const SizedBox(height: defaultMargin),
-                  KtextFormFieldWidget.password(title: 'Password'),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/forgot-password');
+                      topRight: Radius.circular(
+                        defaultCircular,
+                      ),
+                    ),
+                  ),
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    padding: const EdgeInsets.all(defaultMargin),
+                    children: [
+                      logoAndTextWidget(),
+                      const SizedBox(height: defaultMargin),
+                      const KtextFormFieldWidget(
+                          icon: Icons.email, title: 'Email'),
+                      const SizedBox(height: defaultMargin),
+                      KtextFormFieldWidget.password(title: 'Password'),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/forgot-password');
+                            },
+                            child: Text(
+                              'Forgot Password?',
+                              style: LightColors.linkTextStyle,
+                            )),
+                      ),
+                      const SizedBox(height: defaultMargin),
+                      Consumer(
+                        builder: (context, ref, child) {
+                          return KelevatedButtonWidget(
+                            onPressed: () {
+                              isLogedin = true;
+                              loginRoleAndIsNewUser(context, ref);
+                            },
+                            title: 'Sign In',
+                          );
                         },
-                        child: Text(
-                          'Forgot Password?',
-                          style: LightColors.linkTextStyle,
-                        )),
-                  ),
-                  const SizedBox(height: defaultMargin),
-                  Consumer(
-                    builder: (context, ref, child) {
-                      return KelevatedButtonWidget(
-                          onPressed: () {
-                            isLogedin = true;
-                            loginRoleAndIsNewUser(context, ref);
-                          },
-                          title: 'Sign In');
-                    },
-                  ),
-                  const SizedBox(height: defaultMargin),
-                  KelevatedButtonWidget(
-                      backgroundColor: LightColors.kDarkGreyColor,
-                      onPressed: () {},
-                      title: 'Offline Report'),
-                  const SizedBox(height: defaultMargin),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'I have read',
-                        style: LightColors.subTitle2TextStyle,
                       ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/terms');
-                          },
-                          child: Text(
-                            'Terms & Conditions',
-                            style: LightColors.linkTextStyle,
-                          )),
-                    ],
-                  ),
-                  const SizedBox(height: defaultMargin),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Dont have an Account?',
-                        style: LightColors.subTitle2TextStyle
-                            .copyWith(fontSize: 14),
+                      const SizedBox(height: defaultMargin),
+                      KelevatedButtonWidget(
+                        backgroundColor: LightColors.kDarkGreyColor,
+                        onPressed: () {
+                          Navigator.pushNamed(context, CameraPage.routeName);
+                        },
+                        title: 'Offline Report',
                       ),
-                      TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Ask Manager',
-                            style: LightColors.linkTextStyle
+                      const SizedBox(height: defaultMargin),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'I have read',
+                            style: LightColors.subTitle2TextStyle,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/terms');
+                            },
+                            child: Text(
+                              'Terms & Conditions',
+                              style: LightColors.linkTextStyle,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: defaultMargin),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Dont have an Account?',
+                            style: LightColors.subTitle2TextStyle
                                 .copyWith(fontSize: 14),
-                          )),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              // TODO
+                              String phone = "62855335566";
+                              String parsedMessage =
+                                  'Halo, can i get my Account please?';
+
+                              UrlLauncher.whatsapp(
+                                phone: phone,
+                                message: parsedMessage,
+                              );
+                            },
+                            child: Text(
+                              'Ask Manager',
+                              style: LightColors.linkTextStyle
+                                  .copyWith(fontSize: 14),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: defaultMargin * 4),
                     ],
                   ),
-                  const SizedBox(height: defaultMargin * 4),
-                ],
+                ),
               ),
-            ),
-          ),
-        ])
-      ]),
+            ],
+          )
+        ],
+      ),
     );
   }
 
