@@ -65,10 +65,12 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       backgroundColor: LightColors.kBackgroundColor,
       appBar: appBarWidget(context),
       body: bodyWidget(contentTextStyle, titleTextStyle),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
+      // floatingActionButtonLocation:
+      //     FloatingActionButtonLocation.miniCenterDocked,
       //TODO: Fix transparency gap
       //TODO: Convert to animated list
-      floatingActionButton: commentTextFieldWidget(),
+      bottomSheet: commentTextFieldWidget(),
+      resizeToAvoidBottomInset: true,
     );
   }
 
@@ -77,50 +79,53 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       duration: const Duration(milliseconds: 300),
       offset: isCommentTextFieldVisible ? const Offset(0, 2) : Offset.zero,
       child: Container(
-          height: 100,
-          padding: const EdgeInsets.symmetric(
-            horizontal: defaultMargin / 4,
-            vertical: defaultMargin / 2,
-          ),
-          decoration: const BoxDecoration(
-            color: LightColors.kBackgroundColor,
-            border: Border(
-              top: BorderSide(
-                color: LightColors.kGreyColor,
-                width: 3.0,
-              ),
+        height: 100,
+        padding: const EdgeInsets.symmetric(
+          horizontal: defaultMargin / 4,
+          vertical: defaultMargin / 2,
+        ),
+        decoration: const BoxDecoration(
+          color: LightColors.kBackgroundColor,
+          border: Border(
+            top: BorderSide(
+              color: LightColors.kGreyColor,
+              width: 3.0,
             ),
           ),
-          child: Row(
-            children: [
-              const SizedBox(
-                width: defaultMargin / 2,
+        ),
+        child: Row(
+          children: [
+            // const SizedBox(
+            //   width: defaultMargin / 2,
+            // ),
+            // IconButton(
+            //     onPressed: () {},
+            //     icon: const Icon(
+            //       Icons.emoji_emotions,
+            //       color: LightColors.kPrimaryColor,
+            //     )),
+            const SizedBox(width: defaultMargin / 2),
+            const Expanded(
+              child: KtextFormFieldWidget(
+                withEnterText: false,
+                withTitle: false,
+                title: 'Type message...',
               ),
-              // IconButton(
-              //     onPressed: () {},
-              //     icon: const Icon(
-              //       Icons.emoji_emotions,
-              //       color: LightColors.kPrimaryColor,
-              //     )),
-              const SizedBox(width: defaultMargin / 2),
-              const Expanded(
-                child: KtextFormFieldWidget(
-                    withEnterText: false,
-                    withTitle: false,
-                    title: 'Type message...'),
+            ),
+            const SizedBox(width: defaultMargin / 2),
+            KcardWidget(
+              elevation: 0.0,
+              padding: const EdgeInsets.all(15),
+              color: LightColors.kPrimaryColor,
+              onTap: () {},
+              child: const Icon(
+                Icons.send,
+                color: LightColors.kBackgroundColor,
               ),
-              const SizedBox(width: defaultMargin / 2),
-              KcardWidget(
-                  elevation: 0.0,
-                  padding: const EdgeInsets.all(15),
-                  color: LightColors.kPrimaryColor,
-                  onTap: () {},
-                  child: const Icon(
-                    Icons.send,
-                    color: LightColors.kBackgroundColor,
-                  )),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -245,7 +250,7 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
                         text: '@John Smiths ',
                         style: LightColors.subTitle2TextStyle.copyWith(
                             fontSize: 12, color: LightColors.kPrimaryColor))
-                    : TextSpan(),
+                    : const TextSpan(),
                 TextSpan(
                     text:
                         'Woahh 😍 which has an associated style that is used for that subtree. The text might break across multiple lines or might all be displayed on the same',

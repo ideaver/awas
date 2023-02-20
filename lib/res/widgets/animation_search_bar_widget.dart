@@ -8,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart'
     show ProviderScope, StateProvider, Consumer;
 
 import '../../state_management/global_states.dart';
-import '../theme/colors/light_colors.dart';
 
 // ignore: must_be_immutable
 class AnimationSearchBarWidget extends StatelessWidget {
@@ -202,43 +201,46 @@ class AnimationSearchBarWidget extends StatelessWidget {
               ),
 
               ///  search button
-              Expanded(
-                child: AnimatedOpacity(
-                  opacity: _isSearching ? 0 : 1,
+              AnimatedOpacity(
+                opacity: _isSearching ? 0 : 1,
+                duration: _duration,
+                child: AnimatedContainer(
+                  curve: Curves.easeInOutCirc,
                   duration: _duration,
-                  child: AnimatedContainer(
-                    curve: Curves.easeInOutCirc,
-                    duration: _duration,
-                    width: _isSearching ? 0 : 35,
-                    height: _isSearching ? 0 : 35,
-                    child: FittedBox(
-                      child: KCustomButton(
-                          widget: Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Icon(Icons.search,
-                                  size: 35,
-                                  color: searchIconColor ??
-                                      Colors.black.withOpacity(.7))),
-                          onPressed: () => _searchNotifier.state = true),
+                  width: _isSearching ? 0 : 28,
+                  height: _isSearching ? 0 : 28,
+                  child: FittedBox(
+                    child: KCustomButton(
+                      widget: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: Icon(
+                          Icons.search,
+                          // size: 32,
+                          color:
+                              searchIconColor ?? Colors.black.withOpacity(.7),
+                        ),
+                      ),
+                      onPressed: () => _searchNotifier.state = true,
                     ),
                   ),
                 ),
               ),
-              Expanded(
-                child: AnimatedOpacity(
-                  opacity: _isSearching ? 0 : 1,
-                  duration: _duration,
-                  child: AnimatedContainer(
-                    curve: Curves.easeInOutCirc,
+              if (trailling != null)
+                Expanded(
+                  child: AnimatedOpacity(
+                    opacity: _isSearching ? 0 : 1,
                     duration: _duration,
-                    width: _isSearching ? 0 : 35,
-                    height: _isSearching ? 0 : 35,
-                    child: FittedBox(
-                      child: trailling,
+                    child: AnimatedContainer(
+                      curve: Curves.easeInOutCirc,
+                      duration: _duration,
+                      width: _isSearching ? 0 : 35,
+                      height: _isSearching ? 0 : 35,
+                      child: FittedBox(
+                        child: trailling,
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
@@ -264,19 +266,22 @@ class KCustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
+      borderRadius: BorderRadius.circular(radius ?? 50),
+      child: Material(
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(radius ?? 50),
-        child: Material(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(radius ?? 50),
-            child: InkWell(
-                splashColor: Theme.of(context).primaryColor.withOpacity(.2),
-                highlightColor: Theme.of(context).primaryColor.withOpacity(.05),
-                onTap: onPressed,
-                onLongPress: onLongPress,
-                child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                    child: widget))));
+        child: InkWell(
+          splashColor: Theme.of(context).primaryColor.withOpacity(.2),
+          highlightColor: Theme.of(context).primaryColor.withOpacity(.05),
+          onTap: onPressed,
+          onLongPress: onLongPress,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+            child: widget,
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -296,26 +301,32 @@ class KBackButton extends StatelessWidget {
     return ClipRRect(
         borderRadius: BorderRadius.circular(50),
         child: Material(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(50),
-            child: InkWell(
-                splashColor: Theme.of(context).primaryColor.withOpacity(.2),
-                highlightColor: Theme.of(context).primaryColor.withOpacity(.05),
-                onTap: () async {
-                  previousScreen == null
-                      ? Navigator.pop(context)
-                      : Navigator.pushReplacement(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) => previousScreen!));
-                },
-                child: Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: Icon(icon ?? Icons.arrow_back_ios_new,
-                            color: iconColor ?? Colors.black.withOpacity(.7),
-                            size: 25))))));
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(50),
+          child: InkWell(
+            splashColor: Theme.of(context).primaryColor.withOpacity(.2),
+            highlightColor: Theme.of(context).primaryColor.withOpacity(.05),
+            onTap: () async {
+              previousScreen == null
+                  ? Navigator.pop(context)
+                  : Navigator.pushReplacement(
+                      context,
+                      CupertinoPageRoute(
+                          builder: (context) => previousScreen!));
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(3),
+              child: SizedBox(
+                width: 30,
+                height: 30,
+                child: Icon(
+                  icon ?? Icons.arrow_back_ios_new,
+                  color: iconColor ?? Colors.black.withOpacity(.7),
+                  size: 25,
+                ),
+              ),
+            ),
+          ),
+        ));
   }
 }

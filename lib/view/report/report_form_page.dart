@@ -1,4 +1,5 @@
 import 'package:awas/res/widgets/risk_level_grid_widget.dart';
+import 'package:awas/view/report/camera_page.dart';
 import 'package:awas/view/report/report_loading_page.dart';
 
 import '../../res/widgets/image_edit_dart.dart';
@@ -6,7 +7,6 @@ import '/res/widgets/kscrollbar_widget.dart';
 import '/res/widgets/ktext_form_field.dart';
 
 import '../../res/widgets/kchoicechip_widget.dart';
-import '/res/widgets/kcard_widget.dart';
 import '/res/widgets/kelevated_button.dart';
 import '/res/widgets/report_category_grid_widget.dart';
 
@@ -73,7 +73,7 @@ class _ReportFormPageState extends State<ReportFormPage>
             )),
       ),
       body: TabBarView(
-          physics: const BouncingScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           controller: tabController,
           children: [
             observationTabBarViewWidget(titleTextStyle, context),
@@ -379,22 +379,27 @@ class _ReportFormPageState extends State<ReportFormPage>
     );
   }
 
-  Center cameraAddWidget() {
-    return Center(
-      child: FittedBox(
-        child: DottedBorder(
-          borderType: BorderType.RRect,
-          radius: const Radius.circular(defaultCircular),
-          padding: const EdgeInsets.all(5),
-          dashPattern: const [3, 3, 3, 3],
-          color: LightColors.kDarkGreyColor,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
-            child: Container(
-              height: 80,
-              width: 80,
-              color: LightColors.kGreyColor,
-              child: const Icon(Icons.photo_camera),
+  Widget cameraAddWidget() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, CameraPage.routeName);
+      },
+      child: Center(
+        child: FittedBox(
+          child: DottedBorder(
+            borderType: BorderType.RRect,
+            radius: const Radius.circular(defaultCircular),
+            padding: const EdgeInsets.all(5),
+            dashPattern: const [3, 3, 3, 3],
+            color: LightColors.kDarkGreyColor,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              child: Container(
+                height: 80,
+                width: 80,
+                color: LightColors.kGreyColor,
+                child: const Icon(Icons.photo_camera),
+              ),
             ),
           ),
         ),

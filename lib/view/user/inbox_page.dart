@@ -1,11 +1,11 @@
+import 'package:awas/res/widgets/ktabbar_widget.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 
+import '../../res/widgets/animation_search_bar_widget.dart';
 import '/res/widgets/kdivider_widget.dart';
 import '/res/widgets/title_sepatator_widget.dart';
 
 import '/res/theme/colors/light_colors.dart';
-import '/res/widgets/kappbar_widget.dart';
-import '/res/widgets/ktabbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class InboxPage extends StatefulWidget {
@@ -20,11 +20,13 @@ class InboxPage extends StatefulWidget {
 class _InboxPageState extends State<InboxPage>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
+  late TextEditingController controller;
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(vsync: this, length: 4);
+    controller = TextEditingController();
   }
 
   @override
@@ -37,33 +39,85 @@ class _InboxPageState extends State<InboxPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: LightColors.kGreyColor,
-      appBar: KappBarWidget(
-        context: context,
-        title: 'Inbox',
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-                color: LightColors.kPrimaryColor,
-              ))
-        ],
-        bottom: KtabBarWidget(
-            isScrollable: true,
-            controller: tabController,
-            labelIcon: Container(
-              margin: const EdgeInsets.only(left: 5),
-              padding: const EdgeInsets.all(5),
-              decoration: const BoxDecoration(
-                  color: LightColors.kRed, shape: BoxShape.circle),
-              child: Text(
-                '12',
-                style: LightColors.whiteTextStyle
-                    .copyWith(fontSize: 10.0, fontWeight: FontWeight.bold),
+      appBar: PreferredSize(
+        preferredSize: const Size(double.infinity, 116),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  color: LightColors.kBackgroundColor,
+                ),
+                alignment: Alignment.center,
+                child: AnimationSearchBarWidget(
+                  textStyle: LightColors.titleTextStyle.copyWith(
+                    fontSize: 18.0,
+                  ),
+                  closeIconColor: LightColors.kDarkGreyColor,
+                  hintStyle: LightColors.subTitle2TextStyle,
+                  backIconColor: LightColors.kDarkGreyColor,
+                  searchIconColor: LightColors.kDarkGreyColor,
+                  centerTitle: 'Inbox',
+                  onChanged: (text) {
+                    // TODO
+                  },
+                  searchTextEditingController: controller,
+                  horizontalPadding: defaultMargin / 2,
+                ),
               ),
-            ),
-            titles: const ['All', 'Alert', 'Chat', 'Mention']),
+              Container(
+                decoration: const BoxDecoration(
+                  color: LightColors.kBackgroundColor,
+                ),
+                child: KtabBarWidget(
+                  isScrollable: true,
+                  controller: tabController,
+                  labelIcon: Container(
+                    margin: const EdgeInsets.only(left: 5),
+                    padding: const EdgeInsets.all(5),
+                    decoration: const BoxDecoration(
+                        color: LightColors.kRed, shape: BoxShape.circle),
+                    child: Text(
+                      '12',
+                      style: LightColors.whiteTextStyle.copyWith(
+                          fontSize: 10.0, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  titles: const ['All', 'Alert', 'Chat', 'Mention'],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
+      // appBar: KappBarWidget(
+      //   context: context,
+      //   title: 'Inbox',
+      //   actions: [
+      //     IconButton(
+      //         onPressed: () {},
+      //         icon: const Icon(
+      //           Icons.search,
+      //           color: LightColors.kPrimaryColor,
+      //         ))
+      //   ],
+      //   bottom: KtabBarWidget(
+      //     isScrollable: true,
+      //     controller: tabController,
+      //     labelIcon: Container(
+      //       margin: const EdgeInsets.only(left: 5),
+      //       padding: const EdgeInsets.all(5),
+      //       decoration: const BoxDecoration(
+      //           color: LightColors.kRed, shape: BoxShape.circle),
+      //       child: Text(
+      //         '12',
+      //         style: LightColors.whiteTextStyle
+      //             .copyWith(fontSize: 10.0, fontWeight: FontWeight.bold),
+      //       ),
+      //     ),
+      //     titles: const ['All', 'Alert', 'Chat', 'Mention'],
+      //   ),
+      // ),
       body: TabBarView(
           physics: const BouncingScrollPhysics(),
           controller: tabController,

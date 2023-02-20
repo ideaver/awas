@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:awas/res/widgets/kcard_widget.dart';
-import 'package:awas/res/widgets/kdivider_widget.dart';
 import 'package:awas/res/widgets/ktext_form_field.dart';
+import 'package:awas/view/user/user_page.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle, rootBundle;
@@ -45,9 +45,13 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: KappBarWidget(
-          elevation: 0.5,
-          centerTitle: false,
-          titleWidget: Row(
+        elevation: 0.5,
+        centerTitle: false,
+        titleWidget: GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, UserPage.viewAsOtherRouteName);
+          },
+          child: Row(
             children: [
               const CircleAvatar(
                 radius: 23,
@@ -76,7 +80,9 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
               ),
             ],
           ),
-          context: context),
+        ),
+        context: context,
+      ),
       body: Chat(
         scrollPhysics: const BouncingScrollPhysics(),
         messages: _messages,
@@ -88,49 +94,50 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
         showUserNames: true,
         user: _user,
         customBottomWidget: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: defaultMargin / 4,
-              vertical: defaultMargin / 2,
-            ),
-            decoration: const BoxDecoration(
-              border: Border(
-                top: BorderSide(
-                  color: LightColors.kGreyColor,
-                  width: 3.0,
-                ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: defaultMargin / 4,
+            vertical: defaultMargin / 2,
+          ),
+          decoration: const BoxDecoration(
+            border: Border(
+              top: BorderSide(
+                color: LightColors.kGreyColor,
+                width: 3.0,
               ),
             ),
-            child: Row(
-              children: [
-                IconButton(
-                    onPressed: () {
-                      _handleAttachmentPressed();
-                    },
-                    icon: const Icon(
-                      Icons.attachment_rounded,
-                      color: LightColors.kPrimaryColor,
-                    )),
-                const SizedBox(width: defaultMargin / 2),
-                const Expanded(
-                  child: KtextFormFieldWidget(
-                      withEnterText: false,
-                      withTitle: false,
-                      title: 'Type message...'),
-                ),
-                const SizedBox(width: defaultMargin / 2),
-                KcardWidget(
-                    elevation: 0.0,
-                    padding: const EdgeInsets.all(15),
+          ),
+          child: Row(
+            children: [
+              IconButton(
+                  onPressed: () {
+                    _handleAttachmentPressed();
+                  },
+                  icon: const Icon(
+                    Icons.attachment_rounded,
                     color: LightColors.kPrimaryColor,
-                    onTap: () {
-                      _handleSendPressed(const types.PartialText(text: 'asfa'));
-                    },
-                    child: const Icon(
-                      Icons.send,
-                      color: LightColors.kBackgroundColor,
-                    )),
-              ],
-            )),
+                  )),
+              const SizedBox(width: defaultMargin / 2),
+              const Expanded(
+                child: KtextFormFieldWidget(
+                    withEnterText: false,
+                    withTitle: false,
+                    title: 'Type message...'),
+              ),
+              const SizedBox(width: defaultMargin / 2),
+              KcardWidget(
+                  elevation: 0.0,
+                  padding: const EdgeInsets.all(15),
+                  color: LightColors.kPrimaryColor,
+                  onTap: () {
+                    _handleSendPressed(const types.PartialText(text: 'asfa'));
+                  },
+                  child: const Icon(
+                    Icons.send,
+                    color: LightColors.kBackgroundColor,
+                  )),
+            ],
+          ),
+        ),
       ),
     );
   }
