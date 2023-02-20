@@ -93,6 +93,7 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: defaultMargin),
                   KtextFormFieldWidget.password(
                     title: 'Password',
+                    icon: Icons.lock,
                   ),
                   Align(
                     alignment: Alignment.centerRight,

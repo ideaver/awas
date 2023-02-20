@@ -76,6 +76,7 @@ class _MultipleRangeSliderState extends State<MultipleRangeSlider> {
                     // height: 28,
                     child: KtextFormFieldWidget(
                       controller: widget.maxValueController,
+                      isDense: true,
                       onChanged: (text) {
                         if (text.isNotEmpty) {
                           widget.ranges.first.maxValue = double.tryParse(text)!;
@@ -118,6 +119,7 @@ class _MultipleRangeSliderState extends State<MultipleRangeSlider> {
                     // height: 28,
                     child: KtextFormFieldWidget(
                       controller: widget.minValueController,
+                      isDense: true,
                       onChanged: (text) {
                         if (text.isNotEmpty) {
                           widget.ranges.last.maxValue = double.tryParse(text)!;

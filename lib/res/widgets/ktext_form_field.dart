@@ -13,6 +13,7 @@ class KtextFormFieldWidget extends StatelessWidget {
   final int? minLines;
   final bool withCounterText;
   final bool withEnterText;
+  final bool isDense;
   final Color borderSideColor;
   final Color? fillColor;
   final TextStyle? labelStyle;
@@ -42,6 +43,7 @@ class KtextFormFieldWidget extends StatelessWidget {
     this.minLines,
     this.withCounterText = false,
     this.withEnterText = true,
+    this.isDense = false,
     this.borderSideColor = LightColors.kGreyColor,
     this.fillColor,
     this.labelStyle,
@@ -57,11 +59,11 @@ class KtextFormFieldWidget extends StatelessWidget {
 
   // ignore: use_key_in_widget_constructors
   KtextFormFieldWidget.password(
-      {required String title, void Function()? onPressed})
+      {required String title, IconData? icon, void Function()? onPressed})
       : this(
           title: title,
           obscureText: true,
-          icon: Icons.lock,
+          icon: icon,
           suffix: IconButton(
             onPressed: onPressed,
             icon: const Icon(
@@ -108,7 +110,7 @@ class KtextFormFieldWidget extends StatelessWidget {
         keyboardType: keyboardType ?? TextInputType.text,
         inputFormatters: inputFormatters,
         decoration: InputDecoration(
-          isDense: true,
+          isDense: isDense,
           // counter: null,
           counterStyle: LightColors.subTitle2TextStyle,
           counterText: withCounterText ? '1230 Char' : null,
