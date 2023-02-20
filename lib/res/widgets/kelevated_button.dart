@@ -15,6 +15,7 @@ class KelevatedButtonWidget extends StatelessWidget {
   final bool keyboardShow;
   final double? elevation;
   final Color? shadowColor;
+  final BoxDecoration? boxDecoration;
 
   const KelevatedButtonWidget({
     Key? key,
@@ -27,6 +28,7 @@ class KelevatedButtonWidget extends StatelessWidget {
     this.keyboardShow = false,
     this.elevation,
     this.shadowColor,
+    this.boxDecoration,
   }) : super(key: key);
 
   //TODO: work on hide on scroll
@@ -37,12 +39,14 @@ class KelevatedButtonWidget extends StatelessWidget {
     IconData? trailingIcon,
     double? elevation,
     int? shadowColor,
+    final BoxDecoration? boxDecoration,
   }) : this(
           keyboardShow: true,
           title: title,
           onPressed: onPressed,
           icon: icon,
           trailingIcon: trailingIcon,
+          boxDecoration: boxDecoration,
         );
 
   @override
@@ -52,7 +56,10 @@ class KelevatedButtonWidget extends StatelessWidget {
           ? Container(
               width: double.infinity,
               padding: const EdgeInsets.symmetric(
-                  horizontal: defaultMargin, vertical: defaultMargin * 2),
+                horizontal: defaultMargin,
+                vertical: defaultMargin,
+              ),
+              decoration: boxDecoration,
               child: elevatedButtonWidget(),
             )
           : const SizedBox();

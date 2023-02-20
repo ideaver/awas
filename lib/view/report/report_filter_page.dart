@@ -77,12 +77,21 @@ class ReportFilterPage extends StatelessWidget {
           KanimatedListExpansionWidget()
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: KelevatedButtonWidget.floating(
+      bottomSheet: KelevatedButtonWidget.floating(
         title: 'Confirm (6)',
         onPressed: () {
           Navigator.pop(context);
         },
+        boxDecoration: BoxDecoration(
+          color: LightColors.kBackgroundColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              offset: const Offset(0, -4),
+              blurRadius: 6,
+            )
+          ],
+        ),
       ),
     );
   }
