@@ -275,11 +275,17 @@ class _ReportFormPageState extends State<ReportFormPage>
           )
         ]),
         const KexpansionTileWidget(title: 'Observation', children: [
-          KdropdownWidget(title: 'Event'),
+          KdropdownWidget(
+            title: 'Event',
+            items: ['items!'],
+          ),
           SizedBox(
             height: defaultMargin,
           ),
-          KdropdownWidget(title: 'Detail'),
+          KdropdownWidget(
+            title: 'Detail',
+            items: ['items!'],
+          ),
           SizedBox(
             height: defaultMargin,
           ),

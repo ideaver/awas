@@ -65,11 +65,17 @@ class ReportFilterPage extends StatelessWidget {
               initiallyExpanded: false,
               title: 'Observation',
               children: [
-                KdropdownWidget(title: 'Event'),
+                KdropdownWidget(
+                  title: 'Event',
+                  items: ['items!'],
+                ),
                 SizedBox(
                   height: defaultMargin,
                 ),
-                KdropdownWidget(title: 'Detail'),
+                KdropdownWidget(
+                  title: 'Detail',
+                  items: ['items!'],
+                ),
                 SizedBox(
                   height: defaultMargin,
                 ),
@@ -82,16 +88,6 @@ class ReportFilterPage extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context);
         },
-        boxDecoration: BoxDecoration(
-          color: LightColors.kBackgroundColor,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.06),
-              offset: const Offset(0, -4),
-              blurRadius: 6,
-            )
-          ],
-        ),
       ),
     );
   }

@@ -32,16 +32,20 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
       body: Form(
         child: ListView(
           physics: const NeverScrollableScrollPhysics(
-              parent: BouncingScrollPhysics()),
+            parent: BouncingScrollPhysics(),
+          ),
           padding: const EdgeInsets.all(defaultMargin),
           children: [
             KcardWidget.tile(
-                leadingIcon: Icons.account_circle,
-                title: 'Please complete your profile below'),
+              leadingIcon: Icons.account_circle,
+              title: 'Please complete your profile below',
+            ),
             const SizedBox(height: defaultMargin),
             Text(
               'Profile Picture',
-              style: LightColors.subTitleTextStyle.copyWith(fontSize: 16),
+              style: LightColors.subTitleTextStyle.copyWith(
+                fontSize: 16,
+              ),
             ),
             const SizedBox(height: defaultMargin / 2),
             Row(
@@ -56,7 +60,7 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
                       KcardWidget(
                         elevation: 0.0,
                         color: LightColors.kBackgroundColor,
-                        padding: EdgeInsets.all(defaultMargin / 2),
+                        padding: const EdgeInsets.all(defaultMargin / 2),
                         child: Text(
                           'You can set your privacy from other employee. They will not be able to view your name and profile picture',
                           style: LightColors.subTitle3TextStyle,
@@ -66,7 +70,8 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
                         children: [
                           Checkbox(
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0)),
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
                             value: false,
                             onChanged: (value) {},
                           ),
@@ -120,9 +125,13 @@ class _UserFormWidgetState extends ConsumerState<UserFormWidget>
                 ref.read(isNewUserProvider)
                     ? currentUserRole == RoleEnum.manager
                         ? Navigator.pushReplacementNamed(
-                            context, KbottomNavigationBar.routeName)
+                            context,
+                            KbottomNavigationBar.routeName,
+                          )
                         : Navigator.pushReplacementNamed(
-                            context, ThankYouPage.profileUpdaterouteName)
+                            context,
+                            ThankYouPage.profileUpdaterouteName,
+                          )
                     : Navigator.pop(context);
               },
             ),

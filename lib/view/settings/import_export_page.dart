@@ -40,7 +40,7 @@ class _ImportExportPageState extends State<ImportExportPage>
         context: context,
         title: 'Import & Export Data',
         bottom: KtabBarWidget(
-            controller: tabController, titles: ['Export', 'Import']),
+            controller: tabController, titles: const ['Export', 'Import']),
       ),
       body: TabBarView(
         controller: tabController,
@@ -55,11 +55,17 @@ class _ImportExportPageState extends State<ImportExportPage>
               const SizedBox(
                 height: defaultMargin,
               ),
-              const KdropdownWidget(title: 'Export Data'),
+              const KdropdownWidget(
+                title: 'Export Data',
+                items: ['items!'],
+              ),
               const SizedBox(
                 height: defaultMargin,
               ),
-              const KdropdownWidget(title: 'Export Condition'),
+              const KdropdownWidget(
+                title: 'Export Condition',
+                items: ['items!'],
+              ),
             ],
           ),
           ListView(

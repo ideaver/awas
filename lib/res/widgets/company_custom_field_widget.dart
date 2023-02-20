@@ -10,13 +10,31 @@ class CompanyCustomFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        KdropdownWidget(title: 'Crew Rank'),
-        SizedBox(height: defaultMargin),
-        KdropdownWidget(title: 'Employee Rank'),
-        SizedBox(height: defaultMargin),
-        KdropdownWidget(title: 'Vessel'),
-        SizedBox(height: defaultMargin),
-        KdropdownWidget(title: 'Office'),
+        KdropdownWidget(
+          title: 'Crew Rank',
+          items: ['items!'],
+        ),
+        SizedBox(
+          height: defaultMargin,
+        ),
+        KdropdownWidget(
+          title: 'Employee Rank',
+          items: ['items!'],
+        ),
+        SizedBox(
+          height: defaultMargin,
+        ),
+        KdropdownWidget(
+          title: 'Vessel',
+          items: ['items!'],
+        ),
+        SizedBox(
+          height: defaultMargin,
+        ),
+        KdropdownWidget(
+          title: 'Office',
+          items: ['items!'],
+        ),
       ],
     );
   }

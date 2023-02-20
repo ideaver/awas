@@ -12,14 +12,14 @@ class KdropdownWidget extends StatefulWidget {
   final TextStyle? selectedStyle;
   final bool excludeSelected;
   final Widget? fieldSuffixIcon;
-  final List<String>? items;
+  final List<String> items;
   final TextEditingController? controller;
 
   const KdropdownWidget({
     Key? key,
     this.title,
     this.hintText,
-    this.items,
+    required this.items,
     this.fillColor,
     this.borderRadius,
     this.titleStyle,

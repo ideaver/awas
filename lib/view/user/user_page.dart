@@ -89,41 +89,14 @@ class _UserPageState extends ConsumerState<UserPage>
             ? 'User Profile'
             : 'My Profile',
         subTitle: 'ID097532858',
-        actions: isNewUser
-            ? []
-            : widget.userPageState == PageStateEnum.viewAsMe
-                ? [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, UserPage.editModerouteName);
-                        },
-                        icon: const Icon(
-                          Icons.edit,
-                          color: LightColors.kDarkGreyColor,
-                        )),
-                    const SizedBox(
-                      width: defaultMargin / 4,
-                    )
-                  ]
-                : [
-                    IconButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, ChatRoomPage.routeName);
-                        },
-                        icon: const Icon(
-                          Icons.chat_bubble_rounded,
-                          color: LightColors.kPrimaryColor,
-                        )),
-                    const SizedBox(
-                      width: defaultMargin / 4,
-                    )
-                  ],
+        actions: actions(isNewUser),
       ),
       body: NestedScrollView(
         physics: const BouncingScrollPhysics(),
         headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [sliverAppBarWidget(widget.userPageState)];
+          return [
+            sliverAppBarWidget(widget.userPageState),
+          ];
         },
         body: isNewUser
             ? const UserFormWidget()
@@ -131,53 +104,88 @@ class _UserPageState extends ConsumerState<UserPage>
                 physics: const BouncingScrollPhysics(),
                 controller: tabController,
                 children: [
-                    widget.userPageState == PageStateEnum.viewAsMe ||
-                            widget.userPageState == PageStateEnum.viewAsOther
-                        ? Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: defaultMargin),
-                            color: LightColors.kGreyColor,
-                            child: ListView(
-                              physics: const NeverScrollableScrollPhysics(
-                                  parent: BouncingScrollPhysics()),
-                              children: [
-                                ...List.generate(
-                                    2,
-                                    (index) => Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: defaultMargin),
-                                          child: KcardWidget(
-                                              width: double.infinity,
-                                              color:
-                                                  LightColors.kBackgroundColor,
-                                              elevation: 0.0,
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    index == 0
-                                                        ? 'Profile info'
-                                                        : 'Activity info',
-                                                    style: LightColors
-                                                        .blackTextStyle,
-                                                  ),
-                                                  const SizedBox(
-                                                      height: defaultMargin),
-                                                  mapDataCardWidget(
-                                                      data: index == 0
-                                                          ? profileInfoData
-                                                          : activityInfo),
-                                                ],
-                                              )),
-                                        ))
-                              ],
-                            ),
-                          )
-                        : const UserFormWidget(),
-                    ReportListWidget(context: context),
-                    const PointTransactionListWidget()
-                  ]),
+                  widget.userPageState == PageStateEnum.viewAsMe ||
+                          widget.userPageState == PageStateEnum.viewAsOther
+                      ? userInfo()
+                      : const UserFormWidget(),
+                  ReportListWidget(context: context),
+                  const PointTransactionListWidget()
+                ],
+              ),
+      ),
+    );
+  }
+
+  List<Widget> actions(bool isNewUser) {
+    return isNewUser
+        ? []
+        : widget.userPageState == PageStateEnum.viewAsMe
+            ? [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, UserPage.editModerouteName);
+                  },
+                  icon: const Icon(
+                    Icons.edit,
+                    color: LightColors.kDarkGreyColor,
+                  ),
+                ),
+                const SizedBox(
+                  width: defaultMargin / 4,
+                )
+              ]
+            : [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, ChatRoomPage.routeName);
+                    },
+                    icon: const Icon(
+                      Icons.chat_bubble_rounded,
+                      color: LightColors.kPrimaryColor,
+                    )),
+                const SizedBox(
+                  width: defaultMargin / 4,
+                )
+              ];
+  }
+
+  Widget userInfo() {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: defaultMargin,
+      ),
+      color: LightColors.kGreyColor,
+      child: ListView(
+        physics: const NeverScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
+        ),
+        children: [
+          ...List.generate(2, (i) => userInfoCard(i)),
+        ],
+      ),
+    );
+  }
+
+  Widget userInfoCard(int i) {
+    return Padding(
+      padding: const EdgeInsets.only(top: defaultMargin),
+      child: KcardWidget(
+        width: double.infinity,
+        color: LightColors.kBackgroundColor,
+        elevation: 0.0,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              i == 0 ? 'Profile info' : 'Activity info',
+              style: LightColors.blackTextStyle,
+            ),
+            const SizedBox(height: defaultMargin),
+            mapDataCardWidget(
+              data: i == 0 ? profileInfoData : activityInfo,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -202,16 +210,25 @@ class _UserPageState extends ConsumerState<UserPage>
         ...List.generate(data.length, (index) {
           return DataRow(
             cells: [
-              DataCell(Text(
-                data.entries.elementAt(index).key,
-                style: LightColors.whiteTextStyle.copyWith(
+              DataCell(
+                Text(
+                  data.entries.elementAt(index).key,
+                  style: LightColors.whiteTextStyle.copyWith(
                     color: textColor,
                     fontSize: 12.0,
-                    fontWeight: FontWeight.bold),
-              )),
-              DataCell(Text(':   ${data.entries.elementAt(index).value}',
-                  style: LightColors.whiteTextStyle
-                      .copyWith(color: textColor, fontSize: 12))),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              DataCell(
+                Text(
+                  ':   ${data.entries.elementAt(index).value}',
+                  style: LightColors.whiteTextStyle.copyWith(
+                    color: textColor,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
             ],
           );
         }),
@@ -236,7 +253,10 @@ class _UserPageState extends ConsumerState<UserPage>
                 'Please Complete your profile first',
                 style: LightColors.whiteTextStyle,
               ),
-              const Icon(Icons.chevron_right, color: LightColors.kWhiteColor),
+              const Icon(
+                Icons.chevron_right,
+                color: LightColors.kWhiteColor,
+              ),
             ],
           ),
         ),
@@ -248,7 +268,8 @@ class _UserPageState extends ConsumerState<UserPage>
     final bool isNewUser = widget.userPageState == PageStateEnum.edit;
     return SliverAppBar(
       systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: LightColors.kBackgroundColor),
+        statusBarColor: LightColors.kBackgroundColor,
+      ),
       elevation: 0.0,
       backgroundColor: LightColors.kBackgroundColor,
       pinned: true,
@@ -256,14 +277,15 @@ class _UserPageState extends ConsumerState<UserPage>
       toolbarHeight: 0,
       collapsedHeight: 15,
       flexibleSpace: FlexibleSpaceBar(
-          stretchModes: const [StretchMode.blurBackground],
-          background: Padding(
-            padding: EdgeInsets.only(
-                left: defaultMargin,
-                right: defaultMargin,
-                bottom: isNewUser ? defaultMargin : 80),
-            child: const ProfileCardWidget(),
-          )),
+        stretchModes: const [StretchMode.blurBackground],
+        background: Padding(
+          padding: EdgeInsets.only(
+              left: defaultMargin,
+              right: defaultMargin,
+              bottom: isNewUser ? defaultMargin : 80),
+          child: const ProfileCardWidget(),
+        ),
+      ),
       bottom: isNewUser
           ? null
           : KtabBarWidget(
