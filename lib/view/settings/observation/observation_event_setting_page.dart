@@ -4,7 +4,6 @@ import '/res/widgets/kappbar_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'observation_add_edit_page.dart';
-import 'observation_checklist_setting_page.dart';
 import 'observation_event_details_page.dart';
 
 class PointSettingPageModel {
@@ -125,7 +124,8 @@ class ObservationEventSettingPage extends StatelessWidget {
         padding: const EdgeInsets.all(defaultMargin),
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.pushNamed(context, ObservationAddEditPage.routeName);
+            Navigator.pushNamed(
+                context, ObservationEventPage.createModeRouteName);
           },
           child: const Icon(
             Icons.add,

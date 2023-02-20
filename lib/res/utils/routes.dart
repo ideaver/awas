@@ -4,7 +4,7 @@ import 'package:awas/view/menu_page.dart';
 import 'package:awas/view/report/image_viewer_page.dart';
 import 'package:awas/view/report/report_location.dart';
 import 'package:awas/view/settings/observation/observation_add_edit_page.dart';
-import 'package:awas/view/settings/observation/observation_detail_create_edit_page.dart';
+import 'package:awas/view/settings/observation/observation_detail_page.dart';
 import 'package:awas/view/settings/risk_level_settings_page.dart';
 import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
@@ -80,11 +80,16 @@ final Map<String, WidgetBuilder> routes = {
       const ObservationEventSettingPage(),
   ObservationChecklistSettingPage.routeName: (context) =>
       const ObservationChecklistSettingPage(),
-  ObservationAddEditPage.routeName: (context) => const ObservationAddEditPage(),
+  ObservationEventPage.createModeRouteName: (context) =>
+      const ObservationEventPage.create(),
+  ObservationEventPage.editModerouteName: (context) =>
+      const ObservationEventPage.edit(),
   ObservationEventDetailsPage.routeName: (context) =>
       const ObservationEventDetailsPage(),
-  ObservationDetailCreatePage.routeName: (context) =>
-      const ObservationDetailCreatePage(),
+  ObservationDetailPage.createModeRouteName: (context) =>
+      const ObservationDetailPage.create(),
+  ObservationDetailPage.editModerouteName: (context) =>
+      const ObservationDetailPage.edit(),
   DashboardAdminPage.routeName: (context) => DashboardAdminPage(),
   RiskLevelSettingsPage.routeName: (context) => const RiskLevelSettingsPage(),
 };

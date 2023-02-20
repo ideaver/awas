@@ -39,11 +39,11 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       // FAB should be visible if and only if user has not scrolled to bottom
       if (tabController.index == 2) {
         setState(() {
-          isCommentTextFieldVisible = false;
+          isCommentTextFieldVisible = true;
         });
       } else {
         setState(() {
-          isCommentTextFieldVisible = true;
+          isCommentTextFieldVisible = false;
         });
       }
     });
@@ -65,16 +65,14 @@ class _ReportDetailsPageState extends State<ReportDetailsPage>
       backgroundColor: LightColors.kBackgroundColor,
       appBar: appBarWidget(context),
       body: bodyWidget(contentTextStyle, titleTextStyle),
-      // floatingActionButtonLocation:
-      //     FloatingActionButtonLocation.miniCenterDocked,
-      //TODO: Fix transparency gap
-      //TODO: Convert to animated list
-      bottomSheet: commentTextFieldWidget(),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: commentTextFieldWidget(),
       resizeToAvoidBottomInset: true,
     );
   }
 
-  AnimatedSlide commentTextFieldWidget() {
+  Widget commentTextFieldWidget() {
     return AnimatedSlide(
       duration: const Duration(milliseconds: 300),
       offset: isCommentTextFieldVisible ? const Offset(0, 2) : Offset.zero,

@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:awas/view/report/report_location.dart';
 import 'package:flutter/material.dart';
 
@@ -32,10 +34,11 @@ class LocationAndDateTimeTileWidget extends StatelessWidget {
           onTap: () {
             //TODO: if viewer : implement https://pub.dev/packages/map_launcher
             Navigator.pushNamed(
-                context,
-                userPageState == PageStateEnum.edit
-                    ? ReportLocationPage.pickerRouteName
-                    : ReportLocationPage.viewRouteName);
+              context,
+              userPageState == PageStateEnum.edit
+                  ? ReportLocationPage.pickerRouteName
+                  : ReportLocationPage.viewRouteName,
+            );
           },
           contentPadding: contentPadding,
           tileColor: LightColors.kPrimaryColor.withOpacity(0.1),

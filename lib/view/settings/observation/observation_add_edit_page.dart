@@ -1,16 +1,25 @@
+// ignore_for_file: use_key_in_widget_constructors
+
+import 'package:awas/res/utils/enums.dart';
 import 'package:awas/res/widgets/kappbar_widget.dart';
 import 'package:awas/res/widgets/ktext_form_field.dart';
+import 'package:awas/view/settings/observation/observation_detail_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../res/theme/colors/light_colors.dart';
 import '../../../res/widgets/kelevated_button.dart';
 
-class ObservationAddEditPage extends StatelessWidget {
-  final bool isEdit;
-  const ObservationAddEditPage({Key? key, this.isEdit = false})
-      : super(key: key);
+class ObservationEventPage extends StatelessWidget {
+  final PageStateEnum userPageState;
+  static const String routeName = '/observation-event-create';
+  static const String editModerouteName = '/observation-event-edit';
+  static const String createModeRouteName = '/observation-event-create';
 
-  static const String routeName = '/observation-add-edit';
+  const ObservationEventPage({super.key, required this.userPageState});
+
+  const ObservationEventPage.edit() : this(userPageState: PageStateEnum.edit);
+  const ObservationEventPage.create()
+      : this(userPageState: PageStateEnum.create);
 
   @override
   Widget build(BuildContext context) {
@@ -18,74 +27,155 @@ class ObservationAddEditPage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: appBar(context),
       body: body(context),
+      bottomSheet: bottomButtons(context),
     );
   }
 
   KappBarWidget appBar(BuildContext context) {
     return KappBarWidget(
-      title: '${isEdit ? 'Edit' : 'Create'} Observation Event',
+      title:
+          '${userPageState == PageStateEnum.edit ? 'Edit' : 'Create'} Observation Event',
       context: context,
     );
   }
 
   Widget body(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: defaultMargin,
-        vertical: defaultMargin,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Expanded(
-            child: KtextFormFieldWidget(title: 'Event Name'),
+    return Column(
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: defaultMargin,
+            vertical: defaultMargin,
           ),
-          bottomButtons(context),
-        ],
+          child: KtextFormFieldWidget(title: 'Event Name'),
+        ),
+        ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: 3,
+          shrinkWrap: true,
+          itemBuilder: (context, i) {
+            return obsDetailList(context, i);
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget obsDetailList(BuildContext context, int i) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ObservationDetailPage.editModerouteName,
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 28),
+        decoration: BoxDecoration(
+          color: i.isOdd ? LightColors.kGreyColor : null,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Pemakaian Peralatan Perlindungan Diri ',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: LightColors.titleTextStyle.copyWith(fontSize: 16),
+            ),
+            const SizedBox(height: 18.0),
+            Row(
+              children: [
+                const Icon(
+                  Icons.add_circle_outline_rounded,
+                  size: 12,
+                ),
+                const SizedBox(width: 8.0),
+                Flexible(
+                  child: Text(
+                    'Pemakaian Peralatan Perlindungan Diri',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: LightColors.subTitle2TextStyle.copyWith(
+                      fontSize: 14,
+                      color: LightColors.kDarkBlue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 2.0),
+            Row(
+              children: [
+                const Icon(
+                  Icons.remove_circle_outline_rounded,
+                  size: 12,
+                ),
+                const SizedBox(width: 8.0),
+                Flexible(
+                  child: Text(
+                    'Tidak Memakai Peralatan Perlindungan Diri',
+                    style: LightColors.subTitle2TextStyle.copyWith(
+                      fontSize: 14,
+                      color: LightColors.kDarkBlue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget bottomButtons(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: KelevatedButtonWidget(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                title: 'Back',
-                elevation: 0,
-                shadowColor: Colors.transparent,
-                icon: Icons.keyboard_arrow_left,
-                textColor: LightColors.kPrimaryColor,
-                backgroundColor: LightColors.Blue.withOpacity(0.1),
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: defaultMargin,
+        horizontal: defaultMargin,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: KelevatedButtonWidget(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  title: 'Back',
+                  elevation: 0,
+                  shadowColor: Colors.transparent,
+                  icon: Icons.keyboard_arrow_left,
+                  textColor: LightColors.kPrimaryColor,
+                  backgroundColor: LightColors.Blue.withOpacity(0.1),
+                ),
               ),
-            ),
-            const SizedBox(
-              width: defaultMargin / 2,
-            ),
-            Expanded(
-              flex: 1,
-              child: KelevatedButtonWidget(
-                onPressed: () {
-                  Navigator.pop(context);
-                  if (isEdit) {
-                    // TODO
-                  } else {
-                    // TODO
-                  }
-                },
-                title: isEdit ? 'Save' : 'Add',
-                trailingIcon: Icons.add,
+              const SizedBox(
+                width: defaultMargin / 2,
               ),
-            )
-          ],
-        ),
-      ],
+              Expanded(
+                flex: 1,
+                child: KelevatedButtonWidget(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    if (userPageState == PageStateEnum.edit) {
+                      // TODO
+                    } else {
+                      // TODO
+                    }
+                  },
+                  title: userPageState == PageStateEnum.edit ? 'Save' : 'Add',
+                  trailingIcon: Icons.add,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

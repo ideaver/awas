@@ -1,7 +1,7 @@
 import 'package:awas/res/theme/colors/light_colors.dart';
 import 'package:awas/res/utils/globals.dart';
 import 'package:awas/res/widgets/kappbar_widget.dart';
-import 'package:awas/view/settings/observation/observation_detail_create_edit_page.dart';
+import 'package:awas/view/settings/observation/observation_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class ObservationEventDetailsPage extends StatelessWidget {
@@ -64,59 +64,75 @@ class ObservationEventDetailsPage extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       itemCount: 3,
       itemBuilder: (context, i) {
-        return obsList(i);
+        return obsDetailList(context, i);
       },
     );
   }
 
-  Widget obsList(int i) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 28),
-      decoration: BoxDecoration(
-        color: i.isOdd ? LightColors.kGreyColor : null,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Pemakaian Peralatan Perlindungan Diri',
-            style: LightColors.titleTextStyle.copyWith(fontSize: 16),
-          ),
-          const SizedBox(height: 18.0),
-          Row(
-            children: [
-              const Icon(
-                Icons.add_circle_outline_rounded,
-                size: 12,
-              ),
-              const SizedBox(width: 8.0),
-              Text(
-                'Pemakaian Peralatan Perlindungan Diri',
-                style: LightColors.subTitle2TextStyle.copyWith(
-                  fontSize: 14,
-                  color: LightColors.kDarkBlue,
+  Widget obsDetailList(BuildContext context, int i) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          ObservationDetailPage.editModerouteName,
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 28),
+        decoration: BoxDecoration(
+          color: i.isOdd ? LightColors.kGreyColor : null,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Pemakaian Peralatan Perlindungan Diri ',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: LightColors.titleTextStyle.copyWith(fontSize: 16),
+            ),
+            const SizedBox(height: 18.0),
+            Row(
+              children: [
+                const Icon(
+                  Icons.add_circle_outline_rounded,
+                  size: 12,
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 2.0),
-          Row(
-            children: [
-              const Icon(
-                Icons.remove_circle_outline_rounded,
-                size: 12,
-              ),
-              const SizedBox(width: 8.0),
-              Text(
-                'Tidak Memakai Peralatan Perlindungan Diri',
-                style: LightColors.subTitle2TextStyle.copyWith(
-                  fontSize: 14,
-                  color: LightColors.kDarkBlue,
+                const SizedBox(width: 8.0),
+                Flexible(
+                  child: Text(
+                    'Pemakaian Peralatan Perlindungan Diri',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: LightColors.subTitle2TextStyle.copyWith(
+                      fontSize: 14,
+                      color: LightColors.kDarkBlue,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+            const SizedBox(height: 2.0),
+            Row(
+              children: [
+                const Icon(
+                  Icons.remove_circle_outline_rounded,
+                  size: 12,
+                ),
+                const SizedBox(width: 8.0),
+                Flexible(
+                  child: Text(
+                    'Tidak Memakai Peralatan Perlindungan Diri',
+                    style: LightColors.subTitle2TextStyle.copyWith(
+                      fontSize: 14,
+                      color: LightColors.kDarkBlue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -124,7 +140,7 @@ class ObservationEventDetailsPage extends StatelessWidget {
   Widget floatingActionButton(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        Navigator.pushNamed(context, ObservationDetailCreatePage.routeName);
+        Navigator.pushNamed(context, ObservationDetailPage.createModeRouteName);
       },
       child: const Icon(
         Icons.add,

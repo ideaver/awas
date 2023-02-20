@@ -26,6 +26,7 @@ enum NewVsExistingUserEnum {
 }
 
 enum PageStateEnum {
+  create,
   edit,
   view,
   viewAsMe,
