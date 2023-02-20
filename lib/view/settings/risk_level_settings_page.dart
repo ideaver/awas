@@ -15,6 +15,36 @@ class RiskLevelSettingsPage extends StatefulWidget {
 }
 
 class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
+  TextEditingController maxValueController = TextEditingController(text: '400');
+  TextEditingController minValueController = TextEditingController(text: '0');
+
+  List<RangeModel> sliderData = [
+    RangeModel(
+      name: 'Escalation Risk',
+      color: Colors.red,
+      minValue: 300,
+      maxValue: 400,
+    ),
+    RangeModel(
+      name: 'High Risk',
+      color: Colors.blue,
+      minValue: 200,
+      maxValue: 300,
+    ),
+    RangeModel(
+      name: 'Medium Risk',
+      color: Colors.yellow,
+      minValue: 100,
+      maxValue: 200,
+    ),
+    RangeModel(
+      name: 'Low Risk',
+      color: Colors.green,
+      minValue: 0,
+      maxValue: 100,
+    ),
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -26,7 +56,8 @@ class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
       backgroundColor: Colors.white,
       appBar: appBar(context),
       body: body(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: saveButton(),
     );
   }
@@ -39,13 +70,15 @@ class _RiskLevelSettingsPageState extends State<RiskLevelSettingsPage> {
     );
   }
 
-  RangeLabels labels = const RangeLabels('1', "100");
-  RangeValues values = const RangeValues(1, 100);
-  RangeLabels labels2 = const RangeLabels('1', "100");
-  RangeValues values2 = const RangeValues(1, 100);
-
   Widget body() {
-    return const MultipleRangeSlider();
+    return SingleChildScrollView(
+      child: MultipleRangeSlider(
+        ranges: sliderData,
+        maxValueController: maxValueController,
+        minValueController: minValueController,
+        sliderHeight: 400,
+      ),
+    );
   }
 
   Widget saveButton() {
