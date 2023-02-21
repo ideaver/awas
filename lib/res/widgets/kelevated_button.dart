@@ -49,7 +49,7 @@ class KelevatedButtonWidget extends StatelessWidget {
           onPressed: onPressed,
           icon: icon,
           trailingIcon: trailingIcon,
-          showBackground: true,
+          showBackground: false,
           iconSize: iconSize,
         );
 
