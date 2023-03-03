@@ -12,6 +12,7 @@ import 'package:awas/view/user/chat_room_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../view/report/camera_page.dart';
+import '../../view/report/five_why_quest_form_page.dart';
 import '../../view/settings/observation/observation_event_details_page.dart';
 import '/view/dashboard/dashboard_employee_page.dart';
 import '/view/dashboard/dashboard_manager_page.dart';
@@ -96,4 +97,5 @@ final Map<String, WidgetBuilder> routes = {
   RiskLevelSettingsPage.routeName: (context) => const RiskLevelSettingsPage(),
   CompanyOnboarding.routeName: (context) => const CompanyOnboarding(),
   CompanyDetails.routeName: (context) => const CompanyDetails(),
+  FiveWhyQuestFormPage.routeName: (context) => const FiveWhyQuestFormPage(),
 };

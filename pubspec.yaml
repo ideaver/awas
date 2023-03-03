@@ -52,6 +52,13 @@ dependencies:
   open_filex: ^4.3.2
   url_launcher: ^6.1.9
 
+  # # Awas Template
+  # awas_core:
+  #   git:
+  #     url: https://github.com/ideaver/awas-core.git
+  #     ref: main # branch name
+  #   # path: ../awas-core
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
