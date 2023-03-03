@@ -70,7 +70,7 @@ class _FiveWhyQuestFormPageState extends State<FiveWhyQuestFormPage> {
           ),
           const SizedBox(height: defaultMargin / 2),
           Text(
-            'Identify the root cause with 5 hy questions form below',
+            'Identify the root cause with 5 why questions form below',
             textAlign: TextAlign.center,
             style: LightColors.blackTextStyle,
           ),
