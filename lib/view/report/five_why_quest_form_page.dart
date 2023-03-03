@@ -201,12 +201,11 @@ class _FiveWhyQuestFormPageState extends State<FiveWhyQuestFormPage> {
                   controller.clear();
                 }
 
-                final text = await showDialog(
+                final text = await showModalBottomSheet(
                   context: context,
+                  isScrollControlled: true,
                   builder: (context) {
-                    return Dialog(
-                      child: answerFieldDialog(i),
-                    );
+                    return answerFieldDialog(i);
                   },
                 );
 
@@ -216,14 +215,14 @@ class _FiveWhyQuestFormPageState extends State<FiveWhyQuestFormPage> {
 
                     if (answers.length < 5 && answers.length < i + 2) {
                       answers.add('');
+
+                      scrollController.animateTo(
+                        scrollController.position.maxScrollExtent,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.decelerate,
+                      );
                     }
                   });
-
-                  scrollController.animateTo(
-                    scrollController.position.maxScrollExtent,
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.decelerate,
-                  );
                 }
               },
               child: Container(
@@ -250,78 +249,83 @@ class _FiveWhyQuestFormPageState extends State<FiveWhyQuestFormPage> {
   }
 
   Widget answerFieldDialog(int i) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(defaultMargin / 1.5),
-          decoration: BoxDecoration(
-            color: LightColors.kGreyColor,
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 30,
-                height: 30,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: LightColors.kDarkGreyColor3,
-                  shape: BoxShape.circle,
-                ),
-                child: Text(
-                  '${i + 1}',
-                  style: LightColors.black2TextStyle.copyWith(
-                    fontSize: 12,
-                    color: LightColors.kDarkGreyColor,
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(defaultMargin / 1.5),
+            decoration: BoxDecoration(
+              color: LightColors.kGreyColor,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Row(
+              children: [
+                Container(
+                  width: 30,
+                  height: 30,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: LightColors.kDarkGreyColor3,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Text(
+                    '${i + 1}',
+                    style: LightColors.black2TextStyle.copyWith(
+                      fontSize: 12,
+                      color: LightColors.kDarkGreyColor,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(width: defaultMargin / 2),
-              Flexible(
-                child: Text(
-                  'Why do you think ${i == 0 ? 'it' : 'number $i  above'} happened?',
-                  style: LightColors.black2TextStyle.copyWith(fontSize: 12),
+                const SizedBox(width: defaultMargin / 2),
+                Flexible(
+                  child: Text(
+                    'Why do you think ${i == 0 ? 'it' : 'number $i  above'} happened?',
+                    style: LightColors.black2TextStyle.copyWith(fontSize: 12),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-        const Divider(height: 0),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: defaultMargin / 1.5,
-            vertical: defaultMargin / 2,
-          ),
-          child: KtextFormFieldWidget(
-            controller: controller,
-            withTitle: false,
-            hintText: 'Answer...',
-            minLines: 3,
-            style: LightColors.subTitle3TextStyle.copyWith(
-              color: LightColors.kBlackColor,
+              ],
             ),
-            contentPadding: const EdgeInsets.all(defaultMargin / 1.5),
           ),
-        ),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.fromLTRB(
-            defaultMargin / 1.5,
-            0,
-            defaultMargin / 1.5,
-            defaultMargin / 1.5,
+          const Divider(height: 0),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: defaultMargin / 1.5,
+              vertical: defaultMargin / 2,
+            ),
+            child: KtextFormFieldWidget(
+              controller: controller,
+              withTitle: false,
+              hintText: 'Answer...',
+              minLines: 4,
+              style: LightColors.subTitle3TextStyle.copyWith(
+                color: LightColors.kBlackColor,
+              ),
+              contentPadding: const EdgeInsets.all(defaultMargin / 1.5),
+            ),
           ),
-          child: KelevatedButtonWidget(
-            onPressed: () {
-              Navigator.pop(context, controller.text);
-            },
-            elevation: 0,
-            title: 'Save',
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.fromLTRB(
+              defaultMargin / 1.5,
+              0,
+              defaultMargin / 1.5,
+              defaultMargin / 1.5,
+            ),
+            child: KelevatedButtonWidget(
+              onPressed: () {
+                Navigator.pop(context, controller.text);
+              },
+              elevation: 0,
+              title: 'Save',
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
