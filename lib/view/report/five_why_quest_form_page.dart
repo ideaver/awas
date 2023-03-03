@@ -204,6 +204,12 @@ class _FiveWhyQuestFormPageState extends State<FiveWhyQuestFormPage> {
                 final text = await showModalBottomSheet(
                   context: context,
                   isScrollControlled: true,
+                  shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(defaultCircular),
+                      topRight: Radius.circular(defaultCircular),
+                    ),
+                  ),
                   builder: (context) {
                     return answerFieldDialog(i);
                   },
@@ -259,9 +265,12 @@ class _FiveWhyQuestFormPageState extends State<FiveWhyQuestFormPage> {
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(defaultMargin / 1.5),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: LightColors.kGreyColor,
-              borderRadius: BorderRadius.circular(4),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(defaultCircular),
+                topRight: Radius.circular(defaultCircular),
+              ),
             ),
             child: Row(
               children: [
