@@ -1,4 +1,4 @@
-import 'package:awas/res/utils/globals.dart';
+import 'package:awas_core/res/utils/globals.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

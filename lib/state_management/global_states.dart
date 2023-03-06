@@ -1,4 +1,4 @@
-import 'package:awas/res/utils/enums.dart';
+import 'package:awas_core/res/utils/enums.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final isNewUserProvider = StateProvider.autoDispose<bool>((ref) => true);
