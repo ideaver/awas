@@ -95,6 +95,7 @@ class _InboxViewState extends State<InboxView>
       // ),
       appBar: KappBarWidget(
         context: context,
+        automaticallyImplyLeading: false,
         titleWidget: Container(
           decoration: const BoxDecoration(
             color: LightColors.kBackgroundColor,

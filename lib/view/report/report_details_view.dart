@@ -32,28 +32,31 @@ class ReportDetailsView extends StatefulWidget {
 class _ReportDetailsViewState extends State<ReportDetailsView>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-  bool isCommentTextFieldVisible = true;
+  bool isCommentTextFieldVisible = false;
 
   @override
   void initState() {
     super.initState();
     tabController = TabController(vsync: this, length: 3);
-    tabController.addListener(() {
-      // FAB should be visible if and only if user has not scrolled to bottom
-      if (tabController.index == 2) {
-        setState(() {
-          isCommentTextFieldVisible = true;
-        });
-      } else {
-        setState(() {
-          isCommentTextFieldVisible = false;
-        });
-      }
-    });
+    tabController.addListener(tabListener);
+  }
+
+  void tabListener() {
+    // FAB should be visible if and only if user has not scrolled to bottom
+    if (tabController.index == 2) {
+      setState(() {
+        isCommentTextFieldVisible = true;
+      });
+    } else {
+      setState(() {
+        isCommentTextFieldVisible = false;
+      });
+    }
   }
 
   @override
   void dispose() {
+    tabController.removeListener(tabListener);
     tabController.dispose();
     super.dispose();
   }
@@ -110,7 +113,7 @@ class _ReportDetailsViewState extends State<ReportDetailsView>
               child: KtextFormFieldWidget(
                 withEnterText: false,
                 withTitle: false,
-                title: 'Type message...',
+                hintText: 'Type message...',
               ),
             ),
             const SizedBox(width: defaultMargin / 2),
