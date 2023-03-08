@@ -45,11 +45,11 @@ class _ReportDetailsViewState extends State<ReportDetailsView>
     // FAB should be visible if and only if user has not scrolled to bottom
     if (tabController.index == 2) {
       setState(() {
-        isCommentTextFieldVisible = true;
+        isCommentTextFieldVisible = false;
       });
     } else {
       setState(() {
-        isCommentTextFieldVisible = false;
+        isCommentTextFieldVisible = true;
       });
     }
   }
